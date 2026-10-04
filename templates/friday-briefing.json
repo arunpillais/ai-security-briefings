@@ -1,0 +1,25 @@
+{
+  "id": "2026-10-09",
+  "date": "2026-10-09",
+  "status": "draft",
+  "title": "REPLACE: Weekly AI Security Briefing",
+  "summary": "REPLACE: A concise editorial view of the most useful developments this week.",
+  "topics": [
+    "AI/LLM security",
+    "Secure SDLC for AI",
+    "AI-assisted security engineering"
+  ],
+  "items": [
+    {
+      "title": "REPLACE: Paper or report title",
+      "publisher": "REPLACE: Authors / institution",
+      "date": "2026-10-09",
+      "url": "https://example.com/replace-with-source",
+      "mustRead": true,
+      "whatChanged": "REPLACE: Newly demonstrated finding or meaningful update.",
+      "whyItMatters": "REPLACE: Specific architecture or delivery implication.",
+      "worthReading": "REPLACE: The sections, tables, or findings worth reading.",
+      "limitations": "REPLACE: Evidence quality, evaluation scope, and material limitations."
+    }
+  ]
+}
