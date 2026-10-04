@@ -1,3 +1,51 @@
 {
-  "briefings": []
+  "briefings": [
+    {
+      "id": "2026-10-04",
+      "date": "2026-10-04",
+      "status": "published",
+      "title": "AI Security Leadership: From Agent Controls to Risk Operations",
+      "summary": "Launch edition — three foundational reads connecting secure AI architecture, measurable risk operations, and enterprise accountability. These sources predate this week and are selected for enduring practical value. The leadership actions below are editorial recommendations, not claims about any vendor's current capabilities. The priority: make AI-assisted decisions traceable, constrain consequential actions, and verify outcomes before declaring risk reduced.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "Designing AI agents to resist prompt injection",
+          "publisher": "OpenAI — Thomas Shadwell and Adrian Spânu",
+          "date": "2026-03-11",
+          "url": "https://openai.com/index/designing-agents-to-resist-prompt-injection/",
+          "mustRead": true,
+          "whatChanged": "The article describes prompt injection as increasingly resembling social engineering and explains a source-to-sink view: attacker-controlled content becomes dangerous when connected to sensitive data or powerful actions.",
+          "whyItMatters": "Architecture and delivery implication: map untrusted retrieval inputs to tool permissions, data access and outbound destinations. Editorial recommendation: add action authorization, constrained credentials and adversarial release gates to the Secure SDLC. For risk operations products, start with evidence-backed recommendations and require policy checks before remediation.",
+          "worthReading": "Read 'Social engineering and AI agents' and 'How this informs our defenses in ChatGPT'. Practical exercise: threat-model a vulnerability triage agent that reads scanner findings and can create tickets or change infrastructure; specify which actions require approval and what evidence is logged.",
+          "limitations": "Vendor-authored architecture discussion, not independent proof of universal protection. Its examples do not establish that an input classifier or any single control eliminates prompt injection."
+        },
+        {
+          "title": "How we monitor internal coding agents for misalignment",
+          "publisher": "OpenAI — Marcus Williams, Hao Sun and colleagues",
+          "date": "2026-03-19",
+          "url": "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/",
+          "mustRead": false,
+          "whatChanged": "OpenAI describes monitoring internal coding-agent interactions, severity classification and human escalation. The published system reviews interactions asynchronously, within 30 minutes of completion; synchronous blocking is described as a future direction.",
+          "whyItMatters": "Risk operations product implication: an alert needs tenant context, an owner, a response workflow and closure evidence. Editorial recommendation for ROC/mROC and MSSP strategy: measure monitoring coverage, time to review, time to contain, false-positive burden and verified remediation, alongside any risk score. Keep customer data and delegated actions within contract scope.",
+          "worthReading": "Read 'Our approach & how it works', 'Limitations' and 'Towards a safety case with monitoring'. Build a product acceptance criterion: every consequential agent action has a trace, policy decision, accountable owner and independently checked result.",
+          "limitations": "Internal vendor deployment evidence is not an MSSP benchmark. The authors cannot confidently quantify real-world false negatives. Post-action monitoring may detect harm too late; enterprise APIs may not expose model reasoning traces."
+        },
+        {
+          "title": "NIST Cyber AI Profile — Initial Preliminary Draft",
+          "publisher": "NIST and MITRE — Katerina Megas and colleagues",
+          "date": "2025-12-16",
+          "url": "https://csrc.nist.gov/pubs/ir/8596/iprd",
+          "mustRead": false,
+          "whatChanged": "This preliminary draft organizes AI cybersecurity considerations around CSF 2.0 and three focus areas: securing AI components, using AI for cyber defense, and countering AI-enabled attacks. It offers a common vocabulary across engineering and governance.",
+          "whyItMatters": "ISO and Field-CISO implication: assign AI risk ownership across product, security, operations and suppliers. Editorial recommendation: maintain an AI system inventory with data sensitivity, permissions, control evidence and residual-risk decisions. Architecture leaders can turn this into reusable delivery controls; product leaders can expose evidence and accountable workflows to customers.",
+          "worthReading": "Read the focus-area descriptions and CSF outcome mapping. Prepare a one-page control review for an enterprise RAG or remediation agent: business purpose, data boundaries, tool authority, evaluation evidence, incident owner and containment procedure.",
+          "limitations": "The linked publication is an initial preliminary draft, not a final standard or certification checklist. Framework alignment alone does not demonstrate control effectiveness; validate controls in the actual deployment."
+        }
+      ]
+    }
+  ]
 }
