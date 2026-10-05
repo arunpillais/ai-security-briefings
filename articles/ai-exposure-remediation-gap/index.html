@@ -1,0 +1,3464 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>When AI Finds Exposure Faster Than Organizations Can Retire It | Arun Pillai</title><meta name="description" content="When AI Finds Exposure Faster Than Organizations Can Retire It AI can scale vulnerability discovery. It cannot automatically scale organizational judgment. There is a version of the AI-security future that sounds almost perfect. We find vulnerabiliti"><link rel="canonical" href="https://www.linkedin.com/pulse/when-ai-finds-exposure-faster-than-organizations-can-arun-lrchf"><meta property="og:title" content="When AI Finds Exposure Faster Than Organizations Can Retire It"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"When AI Finds Exposure Faster Than Organizations Can Retire It","datePublished":"2026-09-01T18:12:09.000+00:00","dateModified":"2026-09-01T18:12:22.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/when-ai-finds-exposure-faster-than-organizations-can-arun-lrchf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>When AI Finds Exposure Faster Than Organizations Can Retire It</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-09-01">2026-09-01</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/when-ai-finds-exposure-faster-than-organizations-can-arun-lrchf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../remediation-economics/">← Previous: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../closed-does-not-mean-reduced/">Next: Closed Does Not Mean Reduced →</a></nav><img class="article-cover" alt="When AI Finds Exposure Faster Than Organizations Can Retire It" loading="lazy" src="../../assets/articles/ai-exposure-remediation-gap-0.webp"/><article class="article-body">
+
+
+<h2 data-test-id="pulse-publishing-h1">
+When AI Finds Exposure Faster Than Organizations Can Retire It
+</h2>
+
+
+
+<h3>AI can scale vulnerability discovery. It cannot automatically scale organizational judgment.</h3>
+
+
+
+<p>
+There is a version of the AI-security future that sounds almost perfect.
+</p>
+
+
+
+<p>
+We find vulnerabilities faster.
+</p>
+
+
+
+<p>
+AI removes duplicates.
+</p>
+
+
+
+<p>
+It explains likely root cause.
+</p>
+
+
+
+<p>
+It maps dependencies.
+</p>
+
+
+
+<p>
+It proposes a fix.
+</p>
+
+
+
+<p>
+Sometimes it writes the fix.
+</p>
+
+
+
+<p>
+Eventually, for the right class of change, it may deploy and verify that fix without waiting for a human.
+</p>
+
+
+
+<p>
+That is real progress.
+</p>
+
+
+
+<p>
+But I keep coming back to one less exciting question:
+</p>
+
+
+
+<blockquote class="w-auto">What happens when the machine becomes faster than the organization around it?</blockquote>
+
+
+
+<p>
+Consider a deliberately illustrative product-company scenario.
+</p>
+
+
+
+<p>
+Last year, Security brought roughly 100 findings into the quarterly review.
+</p>
+
+
+
+<p>
+Now AI-assisted discovery surfaces 1,000 candidates.
+</p>
+
+
+
+<p>
+Triage takes minutes rather than days.
+</p>
+
+
+
+<p>
+Potential remediation appears beside many of the findings.
+</p>
+
+
+
+<p>
+Some arrive with suggested code changes before an engineer has even opened the ticket.
+</p>
+
+
+
+<p>
+The demonstration looks impressive.
+</p>
+
+
+
+<p>
+Then somebody opens the engineering plan.
+</p>
+
+
+
+<p>
+There are still thirteen weeks in the quarter.
+</p>
+
+
+
+<p>
+The release calendar did not become ten times larger.
+</p>
+
+
+
+<p>
+Product still has customer commitments.
+</p>
+
+
+
+<p>
+Production still has change windows.
+</p>
+
+
+
+<p>
+Engineers still have on-call responsibilities.
+</p>
+
+
+
+<p>
+Regression testing still takes time.
+</p>
+
+
+
+<p>
+Architecture still contains dependencies nobody wants to discover by breaking them.
+</p>
+
+
+
+<p>
+And someone still has to answer:
+</p>
+
+
+
+<p>
+What can we safely automate?
+</p>
+
+
+
+<p>
+What genuinely requires engineering judgment?
+</p>
+
+
+
+<p>
+What should not be remediated at all, but transformed architecturally?
+</p>
+
+
+
+<p>
+And finally:
+</p>
+
+
+
+<p>
+How do we know the exposure actually went away?
+</p>
+
+
+
+<p>
+That is where I think the next vulnerability-management problem is emerging.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI may remove the discovery bottleneck only to expose the decision-and-retirement bottleneck underneath it.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI really is accelerating the front end
+</h2>
+
+
+
+<p>
+I do not think it helps to frame AI as either magic or menace.
+</p>
+
+
+
+<p>
+The evidence is more useful than either extreme.
+</p>
+
+
+
+<p>
+ProjectDiscovery's 2026 AI Coding Impact Report, based on 200 practitioners, reported increased engineering delivery across respondents, with 49% attributing most of that acceleration to AI-assisted coding.
+</p>
+
+
+
+<p>
+At the same time, 62% of security teams surveyed said keeping pace was becoming harder. [1]
+</p>
+
+
+
+<p>
+That tension is important.
+</p>
+
+
+
+<p>
+Faster engineering can create more software change.
+</p>
+
+
+
+<p>
+Faster security tooling can create more findings.
+</p>
+
+
+
+<p>
+Neither automatically creates more safe production-change capacity.
+</p>
+
+
+
+<p>
+Academic research points in a similar direction.
+</p>
+
+
+
+<p>
+Malkawi and Alhajj's 2026 systematic review of AI-powered vulnerability detection and patch management found meaningful opportunities around detection precision, scalability, automation and response speed, while also highlighting limitations involving validation, transparency, trust, adversarial robustness and real-world deployment. [2]
+</p>
+
+
+
+<p>
+Kholoosi, Le and Babar studied how practitioners are actually experiencing AI-powered vulnerability-management tools.
+</p>
+
+
+
+<p>
+Across 60 practitioners from 27 countries, users valued speed and coverage, and 69% of users reported satisfaction.
+</p>
+
+
+
+<p>
+But false positives, missing context and trust remained recurring concerns.
+</p>
+
+
+
+<p>
+Most importantly, AI output was still being mediated through human oversight and organizational governance. [3]
+</p>
+
+
+
+<p>
+That is not evidence that AI has failed.
+</p>
+
+
+
+<p>
+It is evidence that AI is entering the real world.
+</p>
+
+
+
+<p>
+And the real world contains something no model automatically inherits:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+business consequence.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+We may be solving the wrong bottleneck
+</h2>
+
+
+
+<p>
+This series started with one argument:
+</p>
+
+
+
+<blockquote class="w-auto">The job is not to manage vulnerabilities. The job is to manage exploitable business exposure.</blockquote>
+
+
+
+<p>
+Since then, the pieces have built on each other.
+</p>
+
+
+
+<p>
+Severity is not business risk.
+</p>
+
+
+
+<p>
+Ownership cannot remain ambiguous.
+</p>
+
+
+
+<p>
+Patching is one intervention, not the outcome.
+</p>
+
+
+
+<p>
+Risk acceptance should not quietly become permanent architecture.
+</p>
+
+
+
+<p>
+Deferred decisions accumulate into Exposure Debt.
+</p>
+
+
+
+<p>
+And in <a href="https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf/?trk=article-ssr-frontend-pulse_little-text-block">Article 8</a>:
+</p>
+
+
+
+<blockquote class="w-auto">A remediation backlog is a capital-allocation problem disguised as a security problem.</blockquote>
+
+
+
+<p>
+AI makes that progression more important.
+</p>
+
+
+
+<p>
+Because if finding exposure becomes dramatically cheaper, the scarce resource moves somewhere else.
+</p>
+
+
+
+<p>
+The Verizon 2026 DBIR vulnerability-remediation analysis contributed by Qualys gives a useful picture of the underlying capacity problem.
+</p>
+
+
+
+<p>
+Across more than one billion KEV-linked records, KEV-associated vulnerability instances increased approximately 7.7 times over four years.
+</p>
+
+
+
+<p>
+Median detection-to-closure remained around nine days.
+</p>
+
+
+
+<p>
+Yet the population of still-open instances at day 28 grew from approximately 31 million to 184 million. [4]
+</p>
+
+
+
+<p>
+The engine did not necessarily become slower.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The volume outran the engine.
+</h2>
+
+
+
+<p>
+Veracode's 2026 State of Software Security adds another dimension.
+</p>
+
+
+
+<p>
+Across approximately 1.6 million applications, the report found 82% of organizations carrying security debt, while critical security debt increased 20% year over year. [5]
+</p>
+
+
+
+<p>
+Now add:
+</p>
+
+
+
+<p>
+AI-assisted development,
+</p>
+
+
+
+<p>
+AI-assisted vulnerability discovery,
+</p>
+
+
+
+<p>
+AI-assisted triage,
+</p>
+
+
+
+<p>
+AI-generated patches,
+</p>
+
+
+
+<p>
+and increasingly agentic execution.
+</p>
+
+
+
+<p>
+At some point, the executive question changes.
+</p>
+
+
+
+<p>
+It is no longer:
+</p>
+
+
+
+<blockquote class="w-auto">How quickly can we find exposure?</blockquote>
+
+
+
+<p>
+It becomes:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+How quickly can we safely retire it?
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Exposure Retirement Capacity
+</h2>
+
+
+
+<p>
+I use Exposure Retirement Capacity as a proposed leadership lens.
+</p>
+
+
+
+<p>
+It is not an established industry metric.
+</p>
+
+
+
+<p>
+And I do not want it turned into another arbitrary score.
+</p>
+
+
+
+<p>
+My definition is:
+</p>
+
+
+
+<blockquote class="w-auto">Exposure Retirement Capacity is the enterprise's practical ability to convert validated exposure into owned, authorized, engineered, deployed and verified risk reduction.</blockquote>
+
+
+
+<p>
+Every word matters.
+</p>
+
+
+
+<p>
+A vulnerability may be validated but have no owner.
+</p>
+
+
+
+<p>
+It may have an owner but no decision.
+</p>
+
+
+
+<p>
+It may have a decision but no engineering capacity.
+</p>
+
+
+
+<p>
+Engineering may finish the change but have no acceptable deployment window.
+</p>
+
+
+
+<p>
+The change may deploy perfectly but never be verified for actual security effect.
+</p>
+
+
+
+<p>
+Which is why the operating chain across this series remains:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+FIND → OWN → DECIDE → ACT → VERIFY
+</h2>
+
+
+
+<p>
+AI can accelerate FIND enormously.
+</p>
+
+
+
+<p>
+It can assist OWN.
+</p>
+
+
+
+<p>
+It can enrich DECIDE.
+</p>
+
+
+
+<p>
+It will increasingly automate parts of ACT.
+</p>
+
+
+
+<p>
+But the complete chain still contains:
+</p>
+
+
+
+<p>
+business consequence,
+</p>
+
+
+
+<p>
+authority,
+</p>
+
+
+
+<p>
+architecture,
+</p>
+
+
+
+<p>
+engineering capacity,
+</p>
+
+
+
+<p>
+release sequencing,
+</p>
+
+
+
+<p>
+regression testing,
+</p>
+
+
+
+<p>
+customer impact,
+</p>
+
+
+
+<p>
+production safety,
+</p>
+
+
+
+<p>
+and verification.
+</p>
+
+
+
+<p>
+The model becomes faster.
+</p>
+
+
+
+<p>
+Those constraints do not disappear.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Put simple numbers around it
+</h2>
+
+
+
+<p>
+Consider another intentionally hypothetical scenario.
+</p>
+
+
+
+<p>
+The numbers are not benchmarks. They are there to expose the arithmetic.
+</p>
+
+
+
+<p>
+AI-assisted tooling produces:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+1,000 candidate findings
+</h2>
+
+
+
+<p>
+After deduplication, contextual review and removal of non-actionable results:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+800 remain actionable
+</h2>
+
+
+
+<p>
+The organization separates them into:
+</p>
+
+
+
+<p>
+320 — AUTOMATE
+</p>
+
+
+
+<p>
+360 — ENGINEER
+</p>
+
+
+
+<p>
+120 — TRANSFORM
+</p>
+
+
+
+<p>
+That totals 800.
+</p>
+
+
+
+<p>
+Now look only at the ENGINEER lane.
+</p>
+
+
+
+<p>
+Suppose six engineers can protect 20% of a thirteen-week quarter for this class of work.
+</p>
+
+
+
+<p>
+Available capacity:
+</p>
+
+
+
+<p>
+6 engineers × 13 weeks × 40 hours × 20%
+</p>
+
+
+
+<p>
+=
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+624 engineering hours
+</h2>
+
+
+
+<p>
+Now assume the 360 engineering-dependent findings average only four hours each.
+</p>
+
+
+
+<p>
+Required capacity:
+</p>
+
+
+
+<p>
+360 × 4 hours
+</p>
+
+
+
+<p>
+=
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+1,440 engineering hours
+</h2>
+
+
+
+<p>
+Demand is approximately 2.3 times available capacity.
+</p>
+
+
+
+<p>
+And four hours is deliberately modest.
+</p>
+
+
+
+<p>
+Some remediation might take thirty minutes.
+</p>
+
+
+
+<p>
+A major dependency migration might take several days.
+</p>
+
+
+
+<p>
+An identity change could take weeks.
+</p>
+
+
+
+<p>
+The numbers will differ everywhere.
+</p>
+
+
+
+<p>
+The management reality will not:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Finding more does not manufacture the capacity required to change production safely.
+</h2>
+
+
+
+<p>
+That is why I do not think AI makes Remediation Economics obsolete.
+</p>
+
+
+
+<p>
+It makes it more important.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+But before allocating human capacity, remove the work that should not require it
+</h2>
+
+
+
+<p>
+A useful challenge to the argument in Article 8 was this:
+</p>
+
+
+
+<p>
+Before deciding which vulnerability deserves scarce engineering capacity, first ask:
+</p>
+
+
+
+<blockquote class="w-auto">Does this remediation need scarce human engineering capacity at all?</blockquote>
+
+
+
+<p>
+That changes the model.
+</p>
+
+
+
+<p>
+I would therefore split remediation into three lanes:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AUTOMATE → ENGINEER → TRANSFORM
+</h2>
+
+
+
+<p>
+Not as another score.
+</p>
+
+
+
+<p>
+As a filter for where human judgment should actually be spent.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AUTOMATE
+</h2>
+
+
+
+<p>
+Some remediation is repetitive, deterministic and sufficiently bounded that mature organizations should increasingly evaluate it for automation.
+</p>
+
+
+
+<p>
+Examples might include:
+</p>
+
+
+
+<p>
+approved package updates,
+</p>
+
+
+
+<p>
+standard image refreshes,
+</p>
+
+
+
+<p>
+known-safe configuration corrections,
+</p>
+
+
+
+<p>
+bounded policy changes,
+</p>
+
+
+
+<p>
+or routine patch deployment where testing and rollback already exist.
+</p>
+
+
+
+<p>
+But I would avoid calling these changes “easy.”
+</p>
+
+
+
+<p>
+The better word is:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+bounded.
+</h2>
+
+
+
+<p>
+Can we precisely constrain what the automation may change?
+</p>
+
+
+
+<p>
+Can we observe the result?
+</p>
+
+
+
+<p>
+Can we detect failure?
+</p>
+
+
+
+<p>
+Can we reverse it safely?
+</p>
+
+
+
+<p>
+Can we independently verify that the security outcome occurred?
+</p>
+
+
+
+<p>
+If yes, ask why this work should continue competing for scarce human engineering attention.
+</p>
+
+
+
+<p>
+But there is an important qualification.
+</p>
+
+
+
+<p>
+An automated remediation may consume almost no incremental roadmap engineering effort.
+</p>
+
+
+
+<p>
+That does not mean automation itself is free.
+</p>
+
+
+
+<p>
+Someone still has to:
+</p>
+
+
+
+<p>
+build or procure the capability,
+</p>
+
+
+
+<p>
+constrain its permissions,
+</p>
+
+
+
+<p>
+test it,
+</p>
+
+
+
+<p>
+operate it,
+</p>
+
+
+
+<p>
+monitor it,
+</p>
+
+
+
+<p>
+maintain rollback,
+</p>
+
+
+
+<p>
+manage exceptions,
+</p>
+
+
+
+<p>
+and verify its output.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Automation can remove repetitive execution. It does not remove engineering discipline.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+ENGINEER
+</h2>
+
+
+
+<p>
+Then there is remediation where context matters.
+</p>
+
+
+
+<p>
+A framework upgrade with breaking APIs.
+</p>
+
+
+
+<p>
+A dependency chain crossing multiple services.
+</p>
+
+
+
+<p>
+Application-specific regression risk.
+</p>
+
+
+
+<p>
+A shared production service.
+</p>
+
+
+
+<p>
+A change that could alter customer behaviour.
+</p>
+
+
+
+<p>
+This work genuinely requires engineering judgment.
+</p>
+
+
+
+<p>
+This is where Remediation Economics belongs.
+</p>
+
+
+
+<p>
+The question is not:
+</p>
+
+
+
+<blockquote class="w-auto">How quickly can we close this finding?</blockquote>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<blockquote class="w-auto">Which intervention produces the strongest defensible reduction in consequential exposure for the engineering effort, operational disruption and time required?</blockquote>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+patch.
+</p>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+upgrade.
+</p>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+reduce privilege.
+</p>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+break the attack path.
+</p>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+isolate.
+</p>
+
+
+
+<p>
+Sometimes:
+</p>
+
+
+
+<p>
+replace the component.
+</p>
+
+
+
+<p>
+AI may help generate those choices.
+</p>
+
+
+
+<p>
+But Engineering still has to understand what the choice means inside the real architecture.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+TRANSFORM
+</h2>
+
+
+
+<p>
+And then there is the work that should never have remained in the vulnerability queue.
+</p>
+
+
+
+<p>
+The platform is EOL.
+</p>
+
+
+
+<p>
+The identity architecture is outdated.
+</p>
+
+
+
+<p>
+An old authentication mechanism survives because too much depends on it.
+</p>
+
+
+
+<p>
+A temporary bridge has become permanent infrastructure.
+</p>
+
+
+
+<p>
+The same class of vulnerability keeps returning because the architecture keeps producing it.
+</p>
+
+
+
+<p>
+That is not primarily a patch problem.
+</p>
+
+
+
+<p>
+It is Exposure Debt.
+</p>
+
+
+
+<p>
+And this creates an AI-era problem worth watching.
+</p>
+
+
+
+<p>
+Suppose AI becomes exceptionally efficient at repeatedly mitigating vulnerabilities created by obsolete architecture.
+</p>
+
+
+
+<p>
+Leadership may conclude:
+</p>
+
+
+
+<blockquote class="w-auto">“The risk is manageable now.”</blockquote>
+
+
+
+<p>
+Possibly.
+</p>
+
+
+
+<p>
+But another interpretation is:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Automation has made carrying bad architecture temporarily cheaper.
+</h2>
+
+
+
+<p>
+That can be strategically useful.
+</p>
+
+
+
+<p>
+It can also delay the moment when leadership finally confronts the structural problem.
+</p>
+
+
+
+<p>
+An AI system that treats symptoms very efficiently has not necessarily removed the debt underneath them.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Severity is the wrong boundary for autonomy
+</h2>
+
+
+
+<p>
+This may be the most important practical takeaway in this article.
+</p>
+
+
+
+<p>
+Imagine two hypothetical vulnerabilities.
+</p>
+
+
+
+<p>
+Vulnerability A
+</p>
+
+
+
+<p>
+Critical severity.
+</p>
+
+
+
+<p>
+Standardized isolated workload.
+</p>
+
+
+
+<p>
+A well-tested fix.
+</p>
+
+
+
+<p>
+Rollback in seconds.
+</p>
+
+
+
+<p>
+Very limited blast radius.
+</p>
+
+
+
+<p>
+Vulnerability B
+</p>
+
+
+
+<p>
+Medium severity.
+</p>
+
+
+
+<p>
+But the remediation changes authentication across thousands of users, modifies a shared production database, or alters an API contract relied upon by major customers.
+</p>
+
+
+
+<p>
+Which deserves more human scrutiny?
+</p>
+
+
+
+<p>
+Potentially B.
+</p>
+
+
+
+<p>
+That tells us something.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The autonomy boundary should not be determined by vulnerability severity alone.
+</h2>
+
+
+
+<p>
+I would assess at least four dimensions:
+</p>
+
+
+
+<p>
+Reversibility — if the action fails, can we safely and quickly undo it?
+</p>
+
+
+
+<p>
+Blast Radius — how much of the product, environment or customer base can the change affect?
+</p>
+
+
+
+<p>
+Confidence — how well do we understand both the fix and its downstream consequences?
+</p>
+
+
+
+<p>
+Business Consequence — what happens if the remediation itself is wrong?
+</p>
+
+
+
+<p>
+Severity remains important.
+</p>
+
+
+
+<p>
+But severity describes the weakness.
+</p>
+
+
+
+<p>
+It does not describe the danger of the intervention intended to fix it.
+</p>
+
+
+
+<p>
+Those are different risks.
+</p>
+
+
+
+<p>
+And confusing them could create an autonomous-remediation policy that automates exactly the wrong changes.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Task authority is not change authority
+</h2>
+
+
+
+<p>
+Consider a hypothetical production scenario.
+</p>
+
+
+
+<p>
+An AI remediation agent receives a narrow instruction:
+</p>
+
+
+
+<blockquote class="w-auto">Fix this production defect.</blockquote>
+
+
+
+<p>
+It discovers two technically valid paths.
+</p>
+
+
+
+<p>
+One is a surgical change.
+</p>
+
+
+
+<p>
+The other rebuilds a larger production component and also eliminates the defect.
+</p>
+
+
+
+<p>
+From the agent's perspective, both may satisfy the objective.
+</p>
+
+
+
+<p>
+From the business's perspective, the second might be completely unacceptable.
+</p>
+
+
+
+<p>
+The problem is not necessarily that the agent reasoned incorrectly.
+</p>
+
+
+
+<p>
+The organization may have failed to distinguish:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+task authority
+</h2>
+
+
+
+<p>
+from:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+change authority.
+</h2>
+
+
+
+<p>
+“Fix the problem” does not mean:
+</p>
+
+
+
+<p>
+“Change anything necessary in production.”
+</p>
+
+
+
+<p>
+That is why autonomous remediation needs something stronger than an objective.
+</p>
+
+
+
+<p>
+It needs an:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Autonomy Envelope
+</h2>
+
+
+
+<p>
+Before execution, the organization should define:
+</p>
+
+
+
+<p>
+what systems may be touched,
+</p>
+
+
+
+<p>
+what actions are permitted,
+</p>
+
+
+
+<p>
+what blast radius is acceptable,
+</p>
+
+
+
+<p>
+what rollback capability must exist,
+</p>
+
+
+
+<p>
+what evidence must be collected,
+</p>
+
+
+
+<p>
+and when human authorization becomes mandatory.
+</p>
+
+
+
+<p>
+The machine should not infer how much production authority leadership intended to give it.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Then another bottleneck appears: verification
+</h2>
+
+
+
+<p>
+AI can increasingly generate plausible remediation.
+</p>
+
+
+
+<p>
+But plausible is not the same as correct.
+</p>
+
+
+
+<p>
+Sajadi, Damevski and Chatterjee studied AI-generated patches across more than 20,000 GitHub issues and found that LLM and agentic automated-repair approaches can introduce new vulnerabilities, particularly when systems have incomplete contextual information or greater autonomous freedom. [6]
+</p>
+
+
+
+<p>
+That does not mean:
+</p>
+
+
+
+<blockquote class="w-auto">AI-generated patches are inherently unsafe.</blockquote>
+
+
+
+<p>
+It means:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+generation is not verification.
+</h2>
+
+
+
+<p>
+Wang, Pradel and Liu examined a related issue using SWE-bench Verified.
+</p>
+
+
+
+<p>
+Among patches classified as plausible, 29.6% exhibited behaviour different from the human ground-truth patch.
+</p>
+
+
+
+<p>
+Manual inspection concluded 28.6% of those behaviourally divergent patches were certainly incorrect. [7]
+</p>
+
+
+
+<p>
+Now translate that into an operating model.
+</p>
+
+
+
+<p>
+Suppose AI proposes or executes:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+400 remediation actions
+</h2>
+
+
+
+<p>
+during a quarter.
+</p>
+
+
+
+<p>
+The organization can meaningfully verify:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+250
+</h2>
+
+
+
+<p>
+What are the remaining:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+150?
+</h2>
+
+
+
+<p>
+They are not necessarily unresolved vulnerabilities anymore.
+</p>
+
+
+
+<p>
+But neither are they defensibly verified fixes.
+</p>
+
+
+
+<p>
+We have created:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Verification Backlog
+</h2>
+
+
+
+<p>
+And that may become one of the most important metrics of AI-era vulnerability management.
+</p>
+
+
+
+<blockquote class="w-auto">AI can generate remediation faster than organizations can generate confidence.</blockquote>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+A green deployment is not necessarily a security outcome
+</h2>
+
+
+
+<p>
+A patch compiles.
+</p>
+
+
+
+<p>
+The pipeline passes.
+</p>
+
+
+
+<p>
+Deployment succeeds.
+</p>
+
+
+
+<p>
+Monitoring remains green.
+</p>
+
+
+
+<p>
+The vulnerability ticket automatically closes.
+</p>
+
+
+
+<p>
+Everyone moves on.
+</p>
+
+
+
+<p>
+But what exactly did we prove?
+</p>
+
+
+
+<p>
+Before I count an AI-assisted remediation as successful risk reduction, I want evidence that:
+</p>
+
+
+
+<p>
+the vulnerable condition changed,
+</p>
+
+
+
+<p>
+the relevant attacker opportunity changed,
+</p>
+
+
+
+<p>
+the application still behaves correctly,
+</p>
+
+
+
+<p>
+the intended security control actually functions,
+</p>
+
+
+
+<p>
+and the remediation did not create another material weakness or operational failure elsewhere.
+</p>
+
+
+
+<p>
+That is a much higher bar than:
+</p>
+
+
+
+<blockquote class="w-auto">Deployment succeeded.</blockquote>
+
+
+
+<p>
+It should be.
+</p>
+
+
+
+<p>
+Because:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Closed is a workflow state. Reduced is a risk outcome.
+</h2>
+
+
+
+<p>
+The faster remediation becomes, the more important that distinction becomes.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Human judgment should become scarcer — and more valuable
+</h2>
+
+
+
+<p>
+There is a version of the automation conversation that treats humans as inefficiency waiting to be removed.
+</p>
+
+
+
+<p>
+For repetitive work, sometimes that is fair.
+</p>
+
+
+
+<p>
+For consequential decisions, I think it misses the point.
+</p>
+
+
+
+<p>
+Research on human-AI integration in cybersecurity emphasizes appropriate task allocation, organizational context, trust and human oversight rather than simply maximizing automation. [8]
+</p>
+
+
+
+<p>
+Research on agentic AI similarly highlights new security and governance issues once systems can plan, invoke tools and execute multi-step actions rather than simply recommend something. [9][10]
+</p>
+
+
+
+<p>
+As machines become better at repetitive execution, human attention should move toward the work where context matters most:
+</p>
+
+
+
+<p>
+architecture,
+</p>
+
+
+
+<p>
+business consequence,
+</p>
+
+
+
+<p>
+ambiguous situations,
+</p>
+
+
+
+<p>
+high-blast-radius change,
+</p>
+
+
+
+<p>
+exceptions,
+</p>
+
+
+
+<p>
+risk acceptance,
+</p>
+
+
+
+<p>
+and verification.
+</p>
+
+
+
+<p>
+So I would not define success as:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+remove the human.
+</h2>
+
+
+
+<p>
+I would define it as:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+stop wasting human judgment on work that does not require judgment.
+</h2>
+
+
+
+<p>
+That is a much more valuable use of AI.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI changes execution speed. It does not erase accountability.
+</h2>
+
+
+
+<p>
+A machine may identify the vulnerability.
+</p>
+
+
+
+<p>
+A machine may recommend the fix.
+</p>
+
+
+
+<p>
+A machine may generate it.
+</p>
+
+
+
+<p>
+Eventually, a machine may deploy it.
+</p>
+
+
+
+<p>
+But if that change disrupts:
+</p>
+
+
+
+<p>
+customer authentication,
+</p>
+
+
+
+<p>
+billing,
+</p>
+
+
+
+<p>
+a production database,
+</p>
+
+
+
+<p>
+a critical workflow,
+</p>
+
+
+
+<p>
+or a revenue-generating service,
+</p>
+
+
+
+<p>
+somebody still owns the consequence.
+</p>
+
+
+
+<p>
+The ownership model from earlier in this series therefore survives AI.
+</p>
+
+
+
+<p>
+Security owns the integrity of the vulnerability-management system, threat and exposure context, and verification expectations.
+</p>
+
+
+
+<p>
+Engineering and Platform own safe technical implementation inside systems they control.
+</p>
+
+
+
+<p>
+Product and Business owners understand customer and operational consequence.
+</p>
+
+
+
+<p>
+Authorized Risk Owners decide whether meaningful residual exposure continues to be carried.
+</p>
+
+
+
+<p>
+AI can participate across the process.
+</p>
+
+
+
+<p>
+It does not make accountability ownerless.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Automation can move action faster. It cannot automatically transfer accountability for the outcome.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Five decisions I would put in front of executives now
+</h2>
+
+
+
+<h3>1. Define the autonomy envelope before scaling the tooling</h3>
+
+
+
+<p>
+Do not ask:
+</p>
+
+
+
+<blockquote class="w-auto">“Are we comfortable with AI remediation?”</blockquote>
+
+
+
+<p>
+That is too vague to govern anything.
+</p>
+
+
+
+<p>
+Ask:
+</p>
+
+
+
+<p>
+What systems may it touch?
+</p>
+
+
+
+<p>
+What changes may it execute?
+</p>
+
+
+
+<p>
+What blast radius is acceptable?
+</p>
+
+
+
+<p>
+What must be reversible?
+</p>
+
+
+
+<p>
+Which actions always require human approval?
+</p>
+
+
+
+<p>
+What verification must be produced?
+</p>
+
+
+
+<p>
+Make those boundaries technically enforceable.
+</p>
+
+
+
+<h3>2. Remove routine remediation from competition for human judgment</h3>
+
+
+
+<p>
+For every repetitive remediation ask:
+</p>
+
+
+
+<blockquote class="w-auto">If it is deterministic, bounded, observable, reversible and independently verifiable, why is a human still executing it?</blockquote>
+
+
+
+<p>
+The goal is not maximum automation.
+</p>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+maximum safe removal of unnecessary human work.
+</h2>
+
+
+
+<h3>3. Invest in Exposure Retirement Capacity, not only discovery capacity</h3>
+
+
+
+<p>
+Organizations are funding:
+</p>
+
+
+
+<p>
+AI scanners,
+</p>
+
+
+
+<p>
+attack-surface discovery,
+</p>
+
+
+
+<p>
+code analysis,
+</p>
+
+
+
+<p>
+automated triage,
+</p>
+
+
+
+<p>
+and remediation-generation systems.
+</p>
+
+
+
+<p>
+Executives should ask whether comparable attention is being given to:
+</p>
+
+
+
+<p>
+engineering capacity,
+</p>
+
+
+
+<p>
+decision authority,
+</p>
+
+
+
+<p>
+change windows,
+</p>
+
+
+
+<p>
+architecture modernization,
+</p>
+
+
+
+<p>
+and verification.
+</p>
+
+
+
+<p>
+A dramatically faster scanner connected to the same downstream organization may simply generate a better-informed backlog.
+</p>
+
+
+
+<h3>4. Promote structural exposure out of the remediation queue</h3>
+
+
+
+<p>
+If AI keeps fixing the same problem because architecture keeps recreating it, stop celebrating remediation throughput.
+</p>
+
+
+
+<p>
+Ask:
+</p>
+
+
+
+<blockquote class="w-auto">What structural decision are we postponing?</blockquote>
+
+
+
+<p>
+Move the issue into:
+</p>
+
+
+
+<p>
+platform modernization,
+</p>
+
+
+
+<p>
+identity transformation,
+</p>
+
+
+
+<p>
+lifecycle replacement,
+</p>
+
+
+
+<p>
+or architecture investment.
+</p>
+
+
+
+<p>
+AI should help retire Exposure Debt.
+</p>
+
+
+
+<p>
+Not make it comfortable enough to keep forever.
+</p>
+
+
+
+<h3>5. Fund verification whenever you fund remediation acceleration</h3>
+
+
+
+<p>
+This is the one I would watch most carefully.
+</p>
+
+
+
+<p>
+Leadership approves AI because the business case says:
+</p>
+
+
+
+<p>
+three times the remediation throughput,
+</p>
+
+
+
+<p>
+less engineering effort,
+</p>
+
+
+
+<p>
+faster response.
+</p>
+
+
+
+<p>
+The tooling works.
+</p>
+
+
+
+<p>
+Remediation generation triples.
+</p>
+
+
+
+<p>
+Verification capacity remains flat.
+</p>
+
+
+
+<p>
+The bottleneck moves downstream.
+</p>
+
+
+
+<p>
+So:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Every investment that increases remediation velocity should explicitly account for verification velocity.
+</h2>
+
+
+
+<p>
+Otherwise the enterprise is funding action without funding confidence.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What I would put on the executive dashboard
+</h2>
+
+
+
+<p>
+I would not lead with number of AI-generated patches.
+</p>
+
+
+
+<p>
+I would not report token consumption.
+</p>
+
+
+
+<p>
+And “percent automated” by itself tells me very little.
+</p>
+
+
+
+<p>
+I would watch four proposed leadership lenses.
+</p>
+
+
+
+<p>
+These are not industry standards. They are management questions.
+</p>
+
+
+
+<p>
+Automation Escape Rate — how much genuinely routine remediation still reaches human engineers even though it appears suitable for bounded automation?
+</p>
+
+
+
+<p>
+Decision Queue Age — how long do material exposures wait for ownership, authorization or treatment decisions rather than actual implementation?
+</p>
+
+
+
+<p>
+Time to Verified Risk Reduction — start the clock at discovery and stop it only when meaningful exposure is demonstrably reduced.
+</p>
+
+
+
+<p>
+Verification Backlog — how many AI-assisted or automated changes are still waiting for defensible evidence of effectiveness and operational safety?
+</p>
+
+
+
+<p>
+If vulnerability closure improves while Verification Backlog grows rapidly, leadership may be celebrating the wrong green number.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What this means for fast-moving product companies
+</h2>
+
+
+
+<p>
+Product companies naturally like automation.
+</p>
+
+
+
+<p>
+So do I.
+</p>
+
+
+
+<p>
+Automate toil.
+</p>
+
+
+
+<p>
+Protect developer productivity.
+</p>
+
+
+
+<p>
+Ship faster.
+</p>
+
+
+
+<p>
+Remove repetitive work.
+</p>
+
+
+
+<p>
+But speed creates a subtle governance problem.
+</p>
+
+
+
+<p>
+An automated change proven safe on fifty standardized services can quietly become approved for five hundred.
+</p>
+
+
+
+<p>
+A package-update capability can gradually expand into configuration changes.
+</p>
+
+
+
+<p>
+A recommendation engine becomes an execution engine.
+</p>
+
+
+
+<p>
+And nobody necessarily stops to say:
+</p>
+
+
+
+<blockquote class="w-auto">We just changed the autonomy boundary.</blockquote>
+
+
+
+<p>
+That boundary needs to be deliberate.
+</p>
+
+
+
+<p>
+Write it before scaling the platform.
+</p>
+
+
+
+<p>
+Fund verification alongside automation.
+</p>
+
+
+
+<p>
+And pay attention to trust.
+</p>
+
+
+
+<p>
+Because once engineers stop trusting automated remediation, something predictable happens.
+</p>
+
+
+
+<p>
+They manually inspect everything.
+</p>
+
+
+
+<p>
+The tooling remains deployed.
+</p>
+
+
+
+<p>
+The ROI remains in the original business case.
+</p>
+
+
+
+<p>
+But the productivity gain disappears into human rechecking.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Trust determines whether automation actually scales.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Regulated environments face a different version of the problem
+</h2>
+
+
+
+<p>
+Many regulated organizations already have strong:
+</p>
+
+
+
+<p>
+change management,
+</p>
+
+
+
+<p>
+approval,
+</p>
+
+
+
+<p>
+audit,
+</p>
+
+
+
+<p>
+and evidence processes.
+</p>
+
+
+
+<p>
+That is an advantage.
+</p>
+
+
+
+<p>
+But those processes often assume:
+</p>
+
+
+
+<p>
+a human initiated the change,
+</p>
+
+
+
+<p>
+a human understands why it was selected,
+</p>
+
+
+
+<p>
+and a human can explain its expected impact.
+</p>
+
+
+
+<p>
+AI-generated or agent-executed remediation changes that assumption.
+</p>
+
+
+
+<p>
+So I would not equate:
+</p>
+
+
+
+<blockquote class="w-auto">existing change management</blockquote>
+
+
+
+<p>
+with:
+</p>
+
+
+
+<blockquote class="w-auto">safe autonomous remediation.</blockquote>
+
+
+
+<p>
+For consequential systems, I would want an evidence trail showing:
+</p>
+
+
+
+<p>
+what proposed the change,
+</p>
+
+
+
+<p>
+what authority permitted it,
+</p>
+
+
+
+<p>
+what scope was allowed,
+</p>
+
+
+
+<p>
+what validation occurred,
+</p>
+
+
+
+<p>
+what rollback existed,
+</p>
+
+
+
+<p>
+and what proved the expected security outcome actually occurred.
+</p>
+
+
+
+<p>
+There is an important distinction here:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Compliance proves a required process happened. Verification proves the security outcome happened.
+</h2>
+
+
+
+<p>
+Leadership should be able to ask for both.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Monday-morning exercise
+</h2>
+
+
+
+<p>
+Take the top fifty remediation items currently consuming Security or Engineering attention.
+</p>
+
+
+
+<p>
+Do not rank them first.
+</p>
+
+
+
+<p>
+Classify them:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AUTOMATE
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+ENGINEER
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+TRANSFORM
+</h2>
+
+
+
+<p>
+For everything in AUTOMATE, ask:
+</p>
+
+
+
+<p>
+Is it bounded?
+</p>
+
+
+
+<p>
+Observable?
+</p>
+
+
+
+<p>
+Reversible?
+</p>
+
+
+
+<p>
+Verifiable?
+</p>
+
+
+
+<p>
+If yes:
+</p>
+
+
+
+<blockquote class="w-auto">Why is a human still doing it?</blockquote>
+
+
+
+<p>
+For everything in ENGINEER, ask:
+</p>
+
+
+
+<p>
+What specifically requires human judgment?
+</p>
+
+
+
+<p>
+Architecture?
+</p>
+
+
+
+<p>
+Regression risk?
+</p>
+
+
+
+<p>
+Customer consequence?
+</p>
+
+
+
+<p>
+Business sequencing?
+</p>
+
+
+
+<p>
+Or is the human involved because the organization has not created enough confidence to automate it safely?
+</p>
+
+
+
+<p>
+For everything in TRANSFORM, ask:
+</p>
+
+
+
+<blockquote class="w-auto">What structural decision are we avoiding by continuing to call this a vulnerability?</blockquote>
+
+
+
+<p>
+Then run one final test.
+</p>
+
+
+
+<p>
+Assume AI doubles your validated findings tomorrow.
+</p>
+
+
+
+<p>
+Which lane absorbs the increase?
+</p>
+
+
+
+<p>
+If the answer is:
+</p>
+
+
+
+<blockquote class="w-auto">“Engineering will have to cope.”</blockquote>
+
+
+
+<p>
+then AI has not increased your Exposure Retirement Capacity.
+</p>
+
+
+
+<p>
+It has increased your discovery capacity.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Those are not the same achievement.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+My position
+</h2>
+
+
+
+<p>
+I am optimistic about AI in vulnerability management.
+</p>
+
+
+
+<p>
+I want machines doing far more repetitive work.
+</p>
+
+
+
+<p>
+I want:
+</p>
+
+
+
+<p>
+faster discovery,
+</p>
+
+
+
+<p>
+better context,
+</p>
+
+
+
+<p>
+better remediation suggestions,
+</p>
+
+
+
+<p>
+safer automation,
+</p>
+
+
+
+<p>
+and less human time wasted transferring information between security tools and engineering queues.
+</p>
+
+
+
+<p>
+But there is a difference between:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+automation
+</h2>
+
+
+
+<p>
+and:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+autonomy.
+</h2>
+
+
+
+<p>
+And there is an even bigger difference between:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+a remediation action
+</h2>
+
+
+
+<p>
+and:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+verified risk reduction.
+</h2>
+
+
+
+<p>
+The organizations that benefit most from AI will not necessarily be the ones that find the most vulnerabilities.
+</p>
+
+
+
+<p>
+They may not even be the ones generating the most patches.
+</p>
+
+
+
+<p>
+They will be the organizations that know:
+</p>
+
+
+
+<p>
+what machines can safely do,
+</p>
+
+
+
+<p>
+where human judgment creates disproportionate value,
+</p>
+
+
+
+<p>
+when architecture—not another patch—must change,
+</p>
+
+
+
+<p>
+and what evidence is required before anyone is allowed to say:
+</p>
+
+
+
+<blockquote class="w-auto">“The exposure is gone.”</blockquote>
+
+
+
+<p>
+Because:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI can scale vulnerability discovery. It cannot automatically scale organizational judgment.
+</h2>
+
+
+
+<p>
+And:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI can generate remediation faster than organizations can generate confidence.
+</h2>
+
+
+
+<p>
+The next vulnerability-management bottleneck may therefore not be finding exposure.
+</p>
+
+
+
+<p>
+It may be:
+</p>
+
+
+
+<p>
+owning it,
+</p>
+
+
+
+<p>
+deciding what matters,
+</p>
+
+
+
+<p>
+changing production safely,
+</p>
+
+
+
+<p>
+and proving the attacker actually lost an opportunity.
+</p>
+
+
+
+<p>
+In other words:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+retiring exposure.
+</h2>
+
+
+
+<p>
+The organizations that lead this next phase will not simply deploy the most AI.
+</p>
+
+
+
+<p>
+They will convert machine speed into verified risk reduction without allowing automation to outrun judgment.
+</p>
+
+
+
+<p>
+Finding exposure faster is progress.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Retiring it safely is the outcome.
+</h2>
+
+
+
+<h3>Next — and final — article in this series</h3>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Closed Does Not Mean Reduced
+</h2>
+
+
+
+<p>
+The ticket says Closed.
+</p>
+
+
+
+<p>
+The patch says Deployed.
+</p>
+
+
+
+<p>
+The compensating control says Implemented.
+</p>
+
+
+
+<p>
+The scanner no longer complains.
+</p>
+
+
+
+<p>
+But what evidence proves the attacker actually lost an opportunity?
+</p>
+
+
+
+<p>
+Article 10 will bring Exposure Decisions to the final stage:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+VERIFY
+</h2>
+
+
+
+<p>
+Because the objective was never to prove that Security completed a workflow.
+</p>
+
+
+
+<p>
+It was to prove that consequential exposure was reduced.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+References &amp; Further Reading
+</h2>
+
+
+
+<p>
+[1] ProjectDiscovery. (2026). AI Coding Impact Report. Industry survey of 200 practitioners. <a href="https://www.prnewswire.com/news-releases/projectdiscoverys-2026-ai-coding-impact-report-reveals-ai-generated-code-is-outpacing-security-teams-ability-to-keep-up-302749706.html?trk=article-ssr-frontend-pulse_little-text-block">https://www.prnewswire.com/news-releases/projectdiscoverys-2026-ai-coding-impact-report-reveals-ai-generated-code-is-outpacing-security-teams-ability-to-keep-up-302749706.html</a>
+</p>
+
+
+
+<p>
+[2] Malkawi, M., &amp; Alhajj, R. (2026). “AI-Powered Vulnerability Detection and Patch Management in Cybersecurity: A Systematic Review of Techniques, Challenges, and Emerging Trends.” Machine Learning and Knowledge Extraction, 8(1), 19. <a href="https://doi.org/10.3390/make8010019?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.3390/make8010019</a>
+</p>
+
+
+
+<p>
+[3] Kholoosi, M. M., Le, T. H. M., &amp; Babar, M. A. (2025/2026). “Software Vulnerability Management in the Era of Artificial Intelligence: An Industry Perspective.” Accepted for ICSE 2026; arXiv:2512.18261. <a href="https://arxiv.org/abs/2512.18261?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2512.18261</a>
+</p>
+
+
+
+<p>
+[4] Verizon / Qualys. (2026). 2026 Data Breach Investigations Report — Vulnerability Remediation Analysis. <a href="https://blog.qualys.com/vulnerabilities-threat-research/2026/05/19/inside-the-2026-verizon-dbir-what-one-billion-records-revealed-about-vulnerability-remediation/?trk=article-ssr-frontend-pulse_little-text-block">https://blog.qualys.com/vulnerabilities-threat-research/2026/05/19/inside-the-2026-verizon-dbir-what-one-billion-records-revealed-about-vulnerability-remediation/</a>
+</p>
+
+
+
+<p>
+[5] Veracode. (2026). State of Software Security 2026, 16th annual edition. Analysis covering approximately 1.6 million applications; report announcement via Business Wire. <a href="https://www.businesswire.com/news/home/20260224526703/en/?trk=article-ssr-frontend-pulse_little-text-block">https://www.businesswire.com/news/home/20260224526703/en/</a>
+</p>
+
+
+
+<p>
+[6] Sajadi, A., Damevski, K., &amp; Chatterjee, P. (2025). “How Safe Are AI-Generated Patches? A Large-Scale Study on Security Risks in LLM and Agentic Automated Program Repair on SWE-bench.” arXiv:2507.02976. <a href="https://arxiv.org/abs/2507.02976?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2507.02976</a>
+</p>
+
+
+
+<p>
+[7] Wang, Y., Pradel, M., &amp; Liu, Z. (2025). “Are ‘Solved Issues’ in SWE-bench Really Solved Correctly? An Empirical Study.” arXiv:2503.15223. <a href="https://arxiv.org/abs/2503.15223?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2503.15223</a>
+</p>
+
+
+
+<p>
+[8] Kincl, J., Adam, M. T. P., &amp; Pavleska, T. (2026). “Human-AI Integration in Cybersecurity: An Industry-Aligned Perspective on Incident Management.” International Journal of Information Security. <a href="https://doi.org/10.1007/s10207-026-01259-5?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.1007/s10207-026-01259-5</a>
+</p>
+
+
+
+<p>
+[9] Lazer, S. J., Aryal, K., Gupta, M., &amp; Bertino, E. (2026). “A Survey of Agentic AI and Cybersecurity: Challenges, Opportunities and Use-Case Prototypes.” arXiv:2601.05293. <a href="https://arxiv.org/abs/2601.05293?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2601.05293</a>
+</p>
+
+
+
+<p>
+[10] Addis, R., Porter, K., Ryan, J., Stull, M., Xu, S., et al. (2026). “LLM-Based Intelligent Agents for Cybersecurity: A Tutorial and Survey of Automated Vulnerability Discovery.” IEEE. <a href="https://ieeexplore.ieee.org/abstract/document/11580353/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11580353/</a>
+</p>
+
+
+
+<p>
+[11] Siewruk, G., &amp; Berej, M. (2026). “Transformation of Vulnerability Management through Artificial Intelligence: An Overview of Generative and Learning Models.” IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11393471/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11393471/</a>
+</p>
+
+
+
+<p>
+[12] Tukur, M., Adeyemo, H. B., Chen, T., Ali, N., Zarrad, A., Kazman, R., Agus, M., &amp; Bahsoon, R. (2026). “On AI Safety and Security Technical Debt in Engineering AI-Enabled Systems.” arXiv:2607.23365. <a href="https://arxiv.org/abs/2607.23365?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2607.23365</a>
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+ </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../remediation-economics/">← Previous: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../closed-does-not-mean-reduced/">Next: Closed Does Not Mean Reduced →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>

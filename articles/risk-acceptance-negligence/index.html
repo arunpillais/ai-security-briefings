@@ -1,0 +1,2568 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>When Does Risk Acceptance Become Negligence? | Arun Pillai</title><meta name="description" content="How temporary exceptions become permanent exposure — and the governance test I would use before approving another renewal. A quick clarification before this one starts. The word “negligence” is doing deliberate work in the headline because it creates"><link rel="canonical" href="https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf"><meta property="og:title" content="When Does Risk Acceptance Become Negligence?"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"When Does Risk Acceptance Become Negligence?","datePublished":"2026-08-22T08:28:15.000+00:00","dateModified":"2026-08-22T08:28:51.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>When Does Risk Acceptance Become Negligence?</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-22">2026-08-22</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../security-team-vulnerability-ownership/">← Previous: The Security Team Does Not Own Your Vulnerabilities</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../what-board-should-see/">Next: What the Board Should Actually See →</a></nav><article class="article-body">
+
+
+<h3>How temporary exceptions become permanent exposure — and the governance test I would use before approving another renewal.</h3>
+
+
+
+<p>
+A quick clarification before this one starts.
+</p>
+
+
+
+<p>
+The word “negligence” is doing deliberate work in the headline because it creates the right tension.
+</p>
+
+
+
+<p>
+But I am not using it here as a legal conclusion.
+</p>
+
+
+
+<p>
+This article is about governance failure, stale assumptions, and unreasonable risk handling — whether a decision remains defensible as circumstances change.
+</p>
+
+
+
+<p>
+That is a different question from legal negligence.
+</p>
+
+
+
+<p>
+And it is one security leaders should be asking long before lawyers ever need to.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The scenario every security leader has seen some version of
+</h2>
+
+
+
+<p>
+A Critical vulnerability cannot be remediated before the next major release.
+</p>
+
+
+
+<p>
+Security documents the exposure.
+</p>
+
+
+
+<p>
+Engineering validates a compensating control.
+</p>
+
+
+
+<p>
+The business owner accepts the residual risk for 30 days.
+</p>
+
+
+
+<p>
+That can be a perfectly rational decision.
+</p>
+
+
+
+<p>
+Thirty days later, the exception is renewed.
+</p>
+
+
+
+<p>
+Then renewed again.
+</p>
+
+
+
+<p>
+Six months later:
+</p>
+
+
+
+<p>
+the service is now internet-facing,
+</p>
+
+
+
+<p>
+the original business owner has moved roles,
+</p>
+
+
+
+<p>
+exploitation activity has increased,
+</p>
+
+
+
+<p>
+and the exception still contains the same sentence:
+</p>
+
+
+
+<blockquote class="w-auto">“Risk accepted.”</blockquote>
+
+
+
+<p>
+At what point did a temporary decision become unmanaged exposure?
+</p>
+
+
+
+<p>
+That question matters because most risk exceptions do not become dangerous on the day they are created.
+</p>
+
+
+
+<p>
+They become dangerous gradually.
+</p>
+
+
+
+<p>
+The environment changes.
+</p>
+
+
+
+<p>
+The threat changes.
+</p>
+
+
+
+<p>
+The business changes.
+</p>
+
+
+
+<p>
+The controls change.
+</p>
+
+
+
+<p>
+The people change.
+</p>
+
+
+
+<p>
+But the acceptance decision remains frozen in time.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Risk acceptance is legitimate
+</h2>
+
+
+
+<p>
+I want to say this plainly because an article like this can easily be misread as:
+</p>
+
+
+
+<blockquote class="w-auto">“Risk acceptance is bad.”</blockquote>
+
+
+
+<p>
+It is not.
+</p>
+
+
+
+<p>
+No enterprise has infinite remediation capacity.
+</p>
+
+
+
+<p>
+Some vulnerabilities cannot be fixed immediately.
+</p>
+
+
+
+<p>
+Some changes carry unacceptable operational consequences.
+</p>
+
+
+
+<p>
+Some technologies depend on vendors.
+</p>
+
+
+
+<p>
+Some platforms need architectural work before remediation becomes possible.
+</p>
+
+
+
+<p>
+Risk treatment frameworks recognize that organizations may choose among different responses to risk, including acceptance, based on organizational objectives, constraints, and risk tolerance. NIST SP 800-39 places risk response within an organization-wide risk-management process rather than treating it as a purely technical security activity. [1]
+</p>
+
+
+
+<p>
+NIST SP 800-30 similarly emphasizes that risk decisions should be informed by threat, vulnerability, likelihood, impact, and organizational context. [2]
+</p>
+
+
+
+<p>
+So the problem is not that acceptance exists.
+</p>
+
+
+
+<p>
+The problem is when acceptance stops being treated as an active decision.
+</p>
+
+
+
+<p>
+My definition is:
+</p>
+
+
+
+<blockquote class="w-auto">Risk acceptance is an explicit, time-bound decision to carry known residual exposure under defined assumptions.</blockquote>
+
+
+
+<p>
+If any part of that sentence disappears — explicit, time-bound, residual exposure, defined assumptions — the quality of the decision starts degrading.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What is actually being accepted?
+</h2>
+
+
+
+<p>
+Executives sometimes say:
+</p>
+
+
+
+<blockquote class="w-auto">“The business accepted the vulnerability.”</blockquote>
+
+
+
+<p>
+I think that language creates confusion.
+</p>
+
+
+
+<p>
+The business is not accepting a CVE as a technical object.
+</p>
+
+
+
+<p>
+What it is really accepting is:
+</p>
+
+
+
+<blockquote class="w-auto">the residual enterprise consequence of leaving a known condition unresolved for a defined period, given the controls and assumptions currently in place.</blockquote>
+
+
+
+<p>
+That is a much more demanding statement.
+</p>
+
+
+
+<p>
+It forces us to ask:
+</p>
+
+
+
+<p>
+What exactly remains exposed?
+</p>
+
+
+
+<p>
+What could happen?
+</p>
+
+
+
+<p>
+What assumptions make this tolerable?
+</p>
+
+
+
+<p>
+What controls are we relying on?
+</p>
+
+
+
+<p>
+For how long?
+</p>
+
+
+
+<p>
+Who has authority to make that call?
+</p>
+
+
+
+<p>
+A better risk-acceptance statement sounds like:
+</p>
+
+
+
+<blockquote class="w-auto">We are accepting the residual exposure created by leaving this condition unresolved until a defined date, given these controls, this architecture, this threat context, and these business assumptions.</blockquote>
+
+
+
+<p>
+That is not just better wording.
+</p>
+
+
+
+<p>
+It changes the quality of the decision.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Acceptance Contract
+</h2>
+
+
+
+<p>
+If residual exposure is what is really being accepted, then every defensible acceptance should contain seven elements.
+</p>
+
+
+
+<h3>1. Exposure</h3>
+
+
+
+<p>
+What exactly remains unresolved?
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<blockquote class="w-auto">“Critical vulnerability.”</blockquote>
+
+
+
+<p>
+But:
+</p>
+
+
+
+<blockquote class="w-auto">“An externally reachable authentication weakness remains unpatched on Service X.”</blockquote>
+
+
+
+<p>
+Specificity matters.
+</p>
+
+
+
+<h3>2. Consequence</h3>
+
+
+
+<p>
+What happens if exploitation succeeds?
+</p>
+
+
+
+<p>
+Customer impact?
+</p>
+
+
+
+<p>
+Operational disruption?
+</p>
+
+
+
+<p>
+Data exposure?
+</p>
+
+
+
+<p>
+Privilege escalation?
+</p>
+
+
+
+<p>
+Regulatory consequence?
+</p>
+
+
+
+<p>
+Revenue impact?
+</p>
+
+
+
+<p>
+Without consequence, the organization is not accepting risk.
+</p>
+
+
+
+<p>
+It is accepting a technical finding.
+</p>
+
+
+
+<h3>3. Assumptions</h3>
+
+
+
+<p>
+What must remain true for the decision to stay valid?
+</p>
+
+
+
+<p>
+For example:
+</p>
+
+
+
+<p>
+the service remains internal,
+</p>
+
+
+
+<p>
+no exploitation is observed,
+</p>
+
+
+
+<p>
+a compensating control remains effective,
+</p>
+
+
+
+<p>
+the user population remains limited,
+</p>
+
+
+
+<p>
+a vulnerable feature stays disabled,
+</p>
+
+
+
+<p>
+the system is retired on schedule.
+</p>
+
+
+
+<p>
+These assumptions are the foundation of the decision.
+</p>
+
+
+
+<h3>4. Verified controls</h3>
+
+
+
+<p>
+What are we relying on to reduce exposure?
+</p>
+
+
+
+<p>
+Segmentation?
+</p>
+
+
+
+<p>
+WAF rules?
+</p>
+
+
+
+<p>
+EDR?
+</p>
+
+
+
+<p>
+Authentication?
+</p>
+
+
+
+<p>
+Isolation?
+</p>
+
+
+
+<p>
+Feature disablement?
+</p>
+
+
+
+<p>
+Restricted privilege?
+</p>
+
+
+
+<p>
+And just as importantly:
+</p>
+
+
+
+<blockquote class="w-auto">How do we know those controls actually work?</blockquote>
+
+
+
+<p>
+A control named in a spreadsheet is not the same as a control that has been validated against the relevant attack scenario.
+</p>
+
+
+
+<h3>5. Named risk owner</h3>
+
+
+
+<p>
+Who has authority to carry the residual business consequence?
+</p>
+
+
+
+<p>
+A person.
+</p>
+
+
+
+<p>
+A role.
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<p>
+“Security.”
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<p>
+“the application team.”
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<p>
+“the business.”
+</p>
+
+
+
+<p>
+Someone who actually has the authority to make the decision.
+</p>
+
+
+
+<h3>6. Expiry</h3>
+
+
+
+<p>
+When does the acceptance end?
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<blockquote class="w-auto">“Review annually.”</blockquote>
+
+
+
+<p>
+A real date.
+</p>
+
+
+
+<h3>7. Exit</h3>
+
+
+
+<p>
+What permanent action removes the need for the exception?
+</p>
+
+
+
+<p>
+Patch?
+</p>
+
+
+
+<p>
+Upgrade?
+</p>
+
+
+
+<p>
+Architecture change?
+</p>
+
+
+
+<p>
+Platform replacement?
+</p>
+
+
+
+<p>
+Retirement?
+</p>
+
+
+
+<p>
+Vendor remediation?
+</p>
+
+
+
+<p>
+Funding?
+</p>
+
+
+
+<p>
+If there is no answer to that question, I would challenge whether the exception is actually temporary.
+</p>
+
+
+
+<blockquote class="w-auto">An exception without an exit plan is not temporary. It is a new operating model.</blockquote>
+
+
+
+<p>
+ 
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/risk-acceptance-negligence-0.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 1 — The Anatomy of a Defensible Risk Acceptance
+</figcaption>
+</figure>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<blockquote class="w-auto">If one of these materially changes, the decision should be reassessed.</blockquote>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Risk-Acceptance Half-Life
+</h2>
+
+
+
+<p>
+Article 3 introduced this idea briefly.
+</p>
+
+
+
+<p>
+It deserves a proper definition here.
+</p>
+
+
+
+<p>
+I use Risk-Acceptance Half-Life as a proposed governance lens.
+</p>
+
+
+
+<p>
+It is not an industry standard.
+</p>
+
+
+
+<p>
+It is not a mathematical formula.
+</p>
+
+
+
+<p>
+It does not mean:
+</p>
+
+
+
+<blockquote class="w-auto">“Every 30 days, confidence falls by 50%.”</blockquote>
+
+
+
+<p>
+The idea is simpler:
+</p>
+
+
+
+<blockquote class="w-auto">The older a risk-acceptance decision becomes, the more evidence leadership should require that the assumptions supporting it are still true.</blockquote>
+
+
+
+<p>
+Why?
+</p>
+
+
+
+<p>
+Because enterprises change.
+</p>
+
+
+
+<p>
+Threat actors change.
+</p>
+
+
+
+<p>
+Architecture changes.
+</p>
+
+
+
+<p>
+Business criticality changes.
+</p>
+
+
+
+<p>
+Controls degrade.
+</p>
+
+
+
+<p>
+Ownership changes.
+</p>
+
+
+
+<p>
+Remediation options improve.
+</p>
+
+
+
+<p>
+A decision that was rational three months ago may no longer describe today's risk.
+</p>
+
+
+
+<p>
+That means confidence in the original decision should decline unless it is actively revalidated.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What should invalidate an acceptance?
+</h2>
+
+
+
+<p>
+Not every exception needs to wait for its expiry date.
+</p>
+
+
+
+<p>
+Some events should force immediate reassessment.
+</p>
+
+
+
+<p>
+For example:
+</p>
+
+
+
+<p>
+the vulnerability enters CISA's Known Exploited Vulnerabilities catalog; [8]
+</p>
+
+
+
+<p>
+EPSS changes materially, indicating a different exploitation likelihood; [7]
+</p>
+
+
+
+<p>
+the asset becomes internet-facing;
+</p>
+
+
+
+<p>
+business criticality increases;
+</p>
+
+
+
+<p>
+a merger or acquisition changes dependencies;
+</p>
+
+
+
+<p>
+the service begins handling more sensitive data;
+</p>
+
+
+
+<p>
+system ownership changes;
+</p>
+
+
+
+<p>
+a compensating control fails;
+</p>
+
+
+
+<p>
+the architecture changes;
+</p>
+
+
+
+<p>
+new attack paths become available;
+</p>
+
+
+
+<p>
+a patch or other remediation becomes available;
+</p>
+
+
+
+<p>
+the system's role changes;
+</p>
+
+
+
+<p>
+or the original expiry date passes.
+</p>
+
+
+
+<p>
+CVSS v4.0 itself reflects the broader principle that threat and environmental context affect vulnerability assessment beyond a static Base score. [6]
+</p>
+
+
+
+<p>
+Shimizu and Hashimoto's vulnerability-management chaining work similarly reinforces the value of combining multiple vulnerability and exploitation signals rather than relying on a single static indicator. [9]
+</p>
+
+
+
+<p>
+The governance implication is straightforward:
+</p>
+
+
+
+<blockquote class="w-auto">When the assumptions expire but the acceptance does not, the enterprise is carrying a new risk under an old decision.</blockquote>
+
+
+
+<p>
+That is where temporary acceptance starts becoming dangerous.
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/risk-acceptance-negligence-1.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 2 - Risk Acceptance Half-life
+</figcaption>
+</figure>
+
+
+
+<blockquote class="w-auto">Time does not make accepted risk safer. It makes old assumptions less trustworthy.</blockquote>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Renewal is not reassessment
+</h2>
+
+
+
+<p>
+This may be the most important distinction in the article.
+</p>
+
+
+
+<p>
+A typical workflow looks like:
+</p>
+
+
+
+<p>
+Expiry approaching
+</p>
+
+
+
+<p>
+→
+</p>
+
+
+
+<p>
+Owner clicks Renew
+</p>
+
+
+
+<p>
+→
+</p>
+
+
+
+<p>
+New date generated
+</p>
+
+
+
+<p>
+→
+</p>
+
+
+
+<p>
+Exception remains open
+</p>
+
+
+
+<p>
+That is administration.
+</p>
+
+
+
+<p>
+It is not governance.
+</p>
+
+
+
+<p>
+Reassessment means asking the original questions again.
+</p>
+
+
+
+<p>
+Has threat activity changed?
+</p>
+
+
+
+<p>
+Has reachability changed?
+</p>
+
+
+
+<p>
+Are the controls still effective?
+</p>
+
+
+
+<p>
+Has business consequence changed?
+</p>
+
+
+
+<p>
+Is the system more critical now?
+</p>
+
+
+
+<p>
+Is remediation available?
+</p>
+
+
+
+<p>
+Has the owner changed?
+</p>
+
+
+
+<p>
+Is the exposure still within organizational risk appetite?
+</p>
+
+
+
+<p>
+NIST CSF 2.0's GOVERN function reinforces the broader idea that cybersecurity risk management should be tied to organizational context, risk strategy, roles, responsibilities, and ongoing oversight rather than treated as a static technical workflow. [3]
+</p>
+
+
+
+<p>
+So:
+</p>
+
+
+
+<blockquote class="w-auto">Changing the expiry date is not reassessment. Revalidating the assumptions is.</blockquote>
+
+
+
+<p>
+That sentence alone would improve a lot of exception programs.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Who is actually allowed to accept the risk?
+</h2>
+
+
+
+<p>
+This is where ownership gets uncomfortable.
+</p>
+
+
+
+<p>
+Four roles contribute different information.
+</p>
+
+
+
+<h3>Security</h3>
+
+
+
+<p>
+Identifies and explains the exposure.
+</p>
+
+
+
+<h3>Engineering / Technology</h3>
+
+
+
+<p>
+Explains remediation feasibility and technical controls.
+</p>
+
+
+
+<h3>Business / Service Owner</h3>
+
+
+
+<p>
+Understands customer, operational, financial, and service consequence.
+</p>
+
+
+
+<h3>Authorized Risk Owner</h3>
+
+
+
+<p>
+Decides whether the residual exposure is acceptable.
+</p>
+
+
+
+<p>
+Those are not necessarily the same person.
+</p>
+
+
+
+<p>
+And they should not be confused.
+</p>
+
+
+
+<p>
+NIST SP 800-39 explicitly places risk management across organizational, mission/business, and information-system levels. [1]
+</p>
+
+
+
+<p>
+NIST SP 800-53 also embeds security and privacy control responsibility inside broader organizational governance and accountability structures. [4]
+</p>
+
+
+
+<p>
+The practical implication is:
+</p>
+
+
+
+<blockquote class="w-auto">The team that discovers the risk should not automatically be the team with authority to accept it.</blockquote>
+
+
+
+<p>
+Security can recommend.
+</p>
+
+
+
+<p>
+Security can escalate.
+</p>
+
+
+
+<p>
+Security can disagree.
+</p>
+
+
+
+<p>
+Security can document.
+</p>
+
+
+
+<p>
+But if Security becomes the default approver simply because nobody else wants the decision, something has gone wrong.
+</p>
+
+
+
+<p>
+The business consequence belongs with whoever actually has authority to carry it.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+“Risk accepted by business” is not enough
+</h2>
+
+
+
+<p>
+I see this phrase often:
+</p>
+
+
+
+<blockquote class="w-auto">“Business accepted.”</blockquote>
+
+
+
+<p>
+Which business?
+</p>
+
+
+
+<p>
+Who?
+</p>
+
+
+
+<p>
+With what authority?
+</p>
+
+
+
+<p>
+What consequence did they accept?
+</p>
+
+
+
+<p>
+For how long?
+</p>
+
+
+
+<p>
+Under what assumptions?
+</p>
+
+
+
+<p>
+What evidence did they review?
+</p>
+
+
+
+<p>
+A name in a workflow does not automatically create accountability.
+</p>
+
+
+
+<p>
+Acceptance authority should be explicit.
+</p>
+
+
+
+<p>
+For material cyber exposure, leadership should know:
+</p>
+
+
+
+<p>
+who can accept it,
+</p>
+
+
+
+<p>
+at what level,
+</p>
+
+
+
+<p>
+for what magnitude,
+</p>
+
+
+
+<p>
+for how long,
+</p>
+
+
+
+<p>
+and when escalation is mandatory.
+</p>
+
+
+
+<p>
+That is risk governance.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Five signs your exception has stopped being a decision
+</h2>
+
+
+
+<p>
+There are several warning signs I would look for.
+</p>
+
+
+
+<h3>1. Nobody can name the current risk owner</h3>
+
+
+
+<p>
+The person who approved it left.
+</p>
+
+
+
+<p>
+Or changed roles.
+</p>
+
+
+
+<p>
+Or was never actually the owner.
+</p>
+
+
+
+<p>
+The exception remains.
+</p>
+
+
+
+<h3>2. The exception has been repeatedly renewed without revalidating the assumptions</h3>
+
+
+
+<p>
+New date.
+</p>
+
+
+
+<p>
+Same rationale.
+</p>
+
+
+
+<p>
+No new evidence.
+</p>
+
+
+
+<h3>3. The compensating control has never actually been tested</h3>
+
+
+
+<p>
+Someone wrote:
+</p>
+
+
+
+<blockquote class="w-auto">“Segmented.”</blockquote>
+
+
+
+<p>
+Nobody verified the relevant path.
+</p>
+
+
+
+<h3>4. No funded or scheduled exit exists</h3>
+
+
+
+<p>
+The remediation plan says:
+</p>
+
+
+
+<blockquote class="w-auto">“Upgrade in future roadmap.”</blockquote>
+
+
+
+<p>
+That is not an exit plan.
+</p>
+
+
+
+<p>
+That is hope.
+</p>
+
+
+
+<h3>5. The threat or business context changed, but the acceptance did not</h3>
+
+
+
+<p>
+Internet exposure changed.
+</p>
+
+
+
+<p>
+Threat activity changed.
+</p>
+
+
+
+<p>
+Business criticality changed.
+</p>
+
+
+
+<p>
+Architecture changed.
+</p>
+
+
+
+<p>
+Risk decision did not.
+</p>
+
+
+
+<p>
+I would avoid turning this into a formula like:
+</p>
+
+
+
+<blockquote class="w-auto">“Three of five = negligence.”</blockquote>
+
+
+
+<p>
+That would create false precision.
+</p>
+
+
+
+<p>
+The better governance rule is:
+</p>
+
+
+
+<blockquote class="w-auto">When several of these conditions appear together, escalate the exposure rather than treating renewal as routine.</blockquote>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Accepted risk can accumulate into exposure debt
+</h2>
+
+
+
+<p>
+One exception may be reasonable.
+</p>
+
+
+
+<p>
+Two hundred individually reasonable exceptions can create something leadership never consciously chose.
+</p>
+
+
+
+<p>
+That is another reason exception governance matters.
+</p>
+
+
+
+<p>
+Risk accumulates.
+</p>
+
+
+
+<p>
+Especially when several accepted exposures affect:
+</p>
+
+
+
+<p>
+the same product,
+</p>
+
+
+
+<p>
+the same identity tier,
+</p>
+
+
+
+<p>
+the same legacy platform,
+</p>
+
+
+
+<p>
+the same acquired business,
+</p>
+
+
+
+<p>
+the same critical dependency,
+</p>
+
+
+
+<p>
+or the same attack path.
+</p>
+
+
+
+<p>
+Individually:
+</p>
+
+
+
+<p>
+manageable.
+</p>
+
+
+
+<p>
+Collectively:
+</p>
+
+
+
+<p>
+material.
+</p>
+
+
+
+<p>
+This is where the vulnerability program should stop asking:
+</p>
+
+
+
+<blockquote class="w-auto">“Is each exception valid?”</blockquote>
+
+
+
+<p>
+and start asking:
+</p>
+
+
+
+<blockquote class="w-auto">“What portfolio of accepted exposure have we allowed to accumulate?”</blockquote>
+
+
+
+<p>
+That is a board-level question.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What I would measure instead of counting exceptions
+</h2>
+
+
+
+<p>
+A dashboard saying:
+</p>
+
+
+
+<blockquote class="w-auto">274 open risk exceptions</blockquote>
+
+
+
+<p>
+tells me almost nothing.
+</p>
+
+
+
+<p>
+I would rather see:
+</p>
+
+
+
+<h3>Exception Age</h3>
+
+
+
+<p>
+How long has accepted exposure existed?
+</p>
+
+
+
+<h3>Renewal Rate</h3>
+
+
+
+<p>
+What percentage of exceptions are being repeatedly extended?
+</p>
+
+
+
+<p>
+One renewal may be understandable.
+</p>
+
+
+
+<p>
+Four renewals often indicate something structural.
+</p>
+
+
+
+<h3>Exceptions Without an Exit</h3>
+
+
+
+<p>
+How many accepted exposures have no funded, scheduled, or technically credible permanent treatment?
+</p>
+
+
+
+<h3>Changed-Assumption Exceptions</h3>
+
+
+
+<p>
+How many approvals are still active even though one of the original assumptions is no longer true?
+</p>
+
+
+
+<h3>Concentrated Accepted Exposure</h3>
+
+
+
+<p>
+Where are multiple exceptions accumulating around the same:
+</p>
+
+
+
+<p>
+business service,
+</p>
+
+
+
+<p>
+technology platform,
+</p>
+
+
+
+<p>
+identity layer,
+</p>
+
+
+
+<p>
+architecture boundary,
+</p>
+
+
+
+<p>
+vendor,
+</p>
+
+
+
+<p>
+or business unit?
+</p>
+
+
+
+<p>
+And I would add a qualitative status:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Acceptance Confidence
+</h2>
+
+
+
+<h3>CURRENT</h3>
+
+
+
+<p>
+Assumptions recently validated.
+</p>
+
+
+
+<h3>AGING</h3>
+
+
+
+<p>
+Approaching expiry; reassessment required.
+</p>
+
+
+
+<h3>STALE</h3>
+
+
+
+<p>
+Material assumptions changed or supporting evidence is outdated.
+</p>
+
+
+
+<h3>INVALID</h3>
+
+
+
+<p>
+The conditions that justified acceptance no longer hold.
+</p>
+
+
+
+<p>
+This is not meant as another magic score.
+</p>
+
+
+
+<p>
+It is a governance signal.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What the board should actually see
+</h2>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<blockquote class="w-auto">274 risk exceptions open.</blockquote>
+
+
+
+<p>
+Instead:
+</p>
+
+
+
+<p>
+How many material exposures are consciously accepted?
+</p>
+
+
+
+<p>
+How old are those decisions?
+</p>
+
+
+
+<p>
+How many have been renewed more than once?
+</p>
+
+
+
+<p>
+Which have no funded exit?
+</p>
+
+
+
+<p>
+Which assumptions have changed?
+</p>
+
+
+
+<p>
+Which accepted exposures are above stated risk appetite?
+</p>
+
+
+
+<p>
+Which business units are carrying concentrated accepted risk?
+</p>
+
+
+
+<p>
+What percentage of material accepted exposure is scheduled to exit this quarter?
+</p>
+
+
+
+<p>
+The board question becomes:
+</p>
+
+
+
+<blockquote class="w-auto">How much of our cyber risk is deliberately accepted, how old is that decision, and what is preventing us from exiting it?</blockquote>
+
+
+
+<p>
+That is much more useful than a count.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Monday-morning exercise
+</h2>
+
+
+
+<p>
+Pull your ten oldest material risk exceptions.
+</p>
+
+
+
+<p>
+For each one, ask:
+</p>
+
+
+
+<h3>Who is the current risk owner?</h3>
+
+
+
+<p>
+Not the original approver.
+</p>
+
+
+
+<p>
+The current owner.
+</p>
+
+
+
+<h3>What assumptions justified the original decision?</h3>
+
+
+
+<p>
+Can anyone state them?
+</p>
+
+
+
+<h3>Have those assumptions been revalidated?</h3>
+
+
+
+<p>
+Or was only the date changed?
+</p>
+
+
+
+<h3>What has changed since approval?</h3>
+
+
+
+<p>
+Threat?
+</p>
+
+
+
+<p>
+Reachability?
+</p>
+
+
+
+<p>
+Architecture?
+</p>
+
+
+
+<p>
+Business criticality?
+</p>
+
+
+
+<p>
+Ownership?
+</p>
+
+
+
+<p>
+Controls?
+</p>
+
+
+
+<h3>Is there a funded and scheduled exit?</h3>
+
+
+
+<p>
+Or simply another renewal?
+</p>
+
+
+
+<p>
+If most of those questions cannot be answered cleanly:
+</p>
+
+
+
+<blockquote class="w-auto">you do not have a risk-acceptance program.</blockquote>
+
+
+
+<p>
+You have a queue of decisions nobody is actually re-making.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Where standards help — and where leadership still has to decide
+</h2>
+
+
+
+<p>
+NIST gives us strong foundations.
+</p>
+
+
+
+<p>
+SP 800-39 gives the organizational risk-governance model. [1]
+</p>
+
+
+
+<p>
+SP 800-30 gives the risk-assessment discipline. [2]
+</p>
+
+
+
+<p>
+CSF 2.0 makes governance explicit through the GOVERN function. [3]
+</p>
+
+
+
+<p>
+SP 800-53 embeds control accountability and continuous assessment into broader security governance. [4]
+</p>
+
+
+
+<p>
+SP 800-40 reinforces that vulnerability and patch management are forms of preventive maintenance requiring planning and prioritization. [5]
+</p>
+
+
+
+<p>
+FIRST CVSS and EPSS, together with CISA KEV, provide useful technical and threat signals that can change the relevance of an old risk decision. [6][7][8]
+</p>
+
+
+
+<p>
+Recent research continues to explore context-aware vulnerability prioritization and risk-management integration. [9][10]
+</p>
+
+
+
+<p>
+But no framework can answer the hardest enterprise question for you:
+</p>
+
+
+
+<blockquote class="w-auto">Is this residual exposure still worth carrying today?</blockquote>
+
+
+
+<p>
+That decision belongs to the organization.
+</p>
+
+
+
+<p>
+And it has to be remade when the facts change.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+My position
+</h2>
+
+
+
+<p>
+A temporary exception is a decision.
+</p>
+
+
+
+<p>
+A stale exception is unmanaged debt wearing the paperwork of a decision.
+</p>
+
+
+
+<p>
+The difference is not how the exception started.
+</p>
+
+
+
+<p>
+Most of them start reasonably.
+</p>
+
+
+
+<p>
+The difference is whether anyone is still checking that the reasons remain true.
+</p>
+
+
+
+<blockquote class="w-auto">Time does not make accepted risk safer. It makes old assumptions less trustworthy.</blockquote>
+
+
+
+<p>
+The Security team can explain the exposure.
+</p>
+
+
+
+<p>
+It should not automatically have — or quietly inherit — the authority to accept the business consequence on behalf of the enterprise.
+</p>
+
+
+
+<p>
+And the test I would use before approving another renewal is not:
+</p>
+
+
+
+<blockquote class="w-auto">“Has this been open too long?”</blockquote>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<blockquote class="w-auto">“Do we still know why we said yes — and is it still true?”</blockquote>
+
+
+
+<p>
+If the answer is unclear, the correct action is not:
+</p>
+
+
+
+<p>
+renew.
+</p>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+reassess.
+</h2>
+
+
+
+<p>
+Because:
+</p>
+
+
+
+<blockquote class="w-auto">When the assumptions expire but the acceptance does not, the enterprise is carrying a new risk under an old decision.</blockquote>
+
+
+
+<p>
+That is the point where temporary acceptance stops looking like governance.
+</p>
+
+
+
+<p>
+And starts looking like unmanaged exposure.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Monday-morning takeaway
+</h2>
+
+
+
+<p>
+Take the ten oldest material exceptions in your environment.
+</p>
+
+
+
+<p>
+Do three things.
+</p>
+
+
+
+<h3>Reconstruct the original decision</h3>
+
+
+
+<p>
+What exposure was accepted?
+</p>
+
+
+
+<p>
+What assumptions supported it?
+</p>
+
+
+
+<p>
+Who accepted it?
+</p>
+
+
+
+<h3>Compare that decision with today</h3>
+
+
+
+<p>
+What has changed?
+</p>
+
+
+
+<p>
+Threat?
+</p>
+
+
+
+<p>
+Architecture?
+</p>
+
+
+
+<p>
+Controls?
+</p>
+
+
+
+<p>
+Business consequence?
+</p>
+
+
+
+<p>
+Ownership?
+</p>
+
+
+
+<h3>Demand an exit</h3>
+
+
+
+<p>
+Patch.
+</p>
+
+
+
+<p>
+Upgrade.
+</p>
+
+
+
+<p>
+Mitigate.
+</p>
+
+
+
+<p>
+Replace.
+</p>
+
+
+
+<p>
+Retire.
+</p>
+
+
+
+<p>
+Or explicitly reaccept the residual exposure under new evidence and a new decision.
+</p>
+
+
+
+<p>
+Do not let:
+</p>
+
+
+
+<blockquote class="w-auto">“Renewed for another 30 days”</blockquote>
+
+
+
+<p>
+become the organization's substitute for risk management.
+</p>
+
+
+
+<h3>Next in the series</h3>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Security Team Does Not Own Your Vulnerabilities
+</h2>
+
+
+
+<p>
+Security discovers the exposure.
+</p>
+
+
+
+<p>
+Engineering controls the fix.
+</p>
+
+
+
+<p>
+Product controls the roadmap.
+</p>
+
+
+
+<p>
+Operations controls the change window.
+</p>
+
+
+
+<p>
+The business carries the consequence.
+</p>
+
+
+
+<p>
+So who actually owns the vulnerability?
+</p>
+
+
+
+<p>
+The next article will examine why vulnerability management breaks when responsibility is distributed but accountability is not.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+References
+</h2>
+
+
+
+<p>
+[1] Joint Task Force Transformation Initiative. (2011). Managing Information Security Risk: Organization, Mission, and Information System View. NIST Special Publication 800-39. <a href="https://csrc.nist.gov/pubs/sp/800/39/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/39/final</a>
+</p>
+
+
+
+<p>
+[2] National Institute of Standards and Technology. (2012). Guide for Conducting Risk Assessments. NIST Special Publication 800-30 Rev. 1. <a href="https://csrc.nist.gov/pubs/sp/800/30/r1/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/30/r1/final</a>
+</p>
+
+
+
+<p>
+[3] National Institute of Standards and Technology. (2024). The NIST Cybersecurity Framework (CSF) 2.0. <a href="https://www.nist.gov/cyberframework?trk=article-ssr-frontend-pulse_little-text-block">https://www.nist.gov/cyberframework</a>
+</p>
+
+
+
+<p>
+[4] Joint Task Force. (2020). Security and Privacy Controls for Information Systems and Organizations. NIST Special Publication 800-53 Rev. 5. <a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final</a>
+</p>
+
+
+
+<p>
+[5] Souppaya, M., &amp; Scarfone, K. (2022). Guide to Enterprise Patch Management Planning: Preventive Maintenance for Technology. NIST Special Publication 800-40 Rev. 4. <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf?trk=article-ssr-frontend-pulse_little-text-block">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf</a>
+</p>
+
+
+
+<p>
+[6] FIRST. Common Vulnerability Scoring System Version 4.0. <a href="https://www.first.org/cvss/v4.0/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/cvss/v4.0/</a>
+</p>
+
+
+
+<p>
+[7] FIRST. Exploit Prediction Scoring System (EPSS). <a href="https://www.first.org/epss/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/epss/</a>
+</p>
+
+
+
+<p>
+[8] Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/known-exploited-vulnerabilities-catalog</a>
+</p>
+
+
+
+<p>
+[9] Shimizu, N., &amp; Hashimoto, M. (2026). “Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization.” IEEE Access, 14, 31407–31424.
+</p>
+
+
+
+<p>
+[10] Lubis, M., Luthfi, M. I., Saedudin, R. R., Muttaqin, A. N., &amp; Lubis, A. R. (2026). “The Integration of ISO 27005 and NIST SP 800-30 for Security Operation Center Framework Effectiveness in the Non-Bank Financial Industry.” Computers, 15(1), 60. <a href="https://doi.org/10.3390/computers15010060?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.3390/computers15010060</a>
+</p>
+
+ </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../security-team-vulnerability-ownership/">← Previous: The Security Team Does Not Own Your Vulnerabilities</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../what-board-should-see/">Next: What the Board Should Actually See →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>

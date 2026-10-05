@@ -1,0 +1,2490 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Closed Does Not Mean Reduced | Arun Pillai</title><meta name="description" content="Why vulnerability management is incomplete until we can defend the claim that the attacker actually lost an opportunity. The patch was deployed on Friday evening. The change completed successfully. The application remained healthy. The scanner ran ag"><link rel="canonical" href="https://www.linkedin.com/pulse/closed-does-mean-reduced-arun-pillai-dba-cissp-crisc-cdp-togaf-ctnif"><meta property="og:title" content="Closed Does Not Mean Reduced"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Closed Does Not Mean Reduced","datePublished":"2026-09-05T13:32:33.000+00:00","dateModified":"2026-09-05T13:36:37.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/closed-does-mean-reduced-arun-pillai-dba-cissp-crisc-cdp-togaf-ctnif"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Closed Does Not Mean Reduced</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-09-05">2026-09-05</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/closed-does-mean-reduced-arun-pillai-dba-cissp-crisc-cdp-togaf-ctnif" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../ai-exposure-remediation-gap/">← Previous: When AI Finds Exposure Faster Than Organizations Can Retire It</a><a href="../#vulnerability-risk">All articles in this collection</a></nav><img class="article-cover" alt="Closed Does Not Mean Reduced" loading="lazy" src="../../assets/articles/closed-does-not-mean-reduced-0.webp"/><article class="article-body">
+
+
+<h3>Why vulnerability management is incomplete until we can defend the claim that the attacker actually lost an opportunity.</h3>
+
+
+
+<p>
+The patch was deployed on Friday evening.
+</p>
+
+
+
+<p>
+The change completed successfully.
+</p>
+
+
+
+<p>
+The application remained healthy.
+</p>
+
+
+
+<p>
+The scanner ran again.
+</p>
+
+
+
+<p>
+The finding disappeared.
+</p>
+
+
+
+<p>
+The ticket moved to:
+</p>
+
+
+
+<p>
+Closed.
+</p>
+
+
+
+<p>
+There was nothing obviously wrong with the process.
+</p>
+
+
+
+<p>
+Security had found the vulnerability.
+</p>
+
+
+
+<p>
+Engineering had implemented the remediation.
+</p>
+
+
+
+<p>
+Change controls had been followed.
+</p>
+
+
+
+<p>
+The scanner confirmed that the original vulnerable condition was gone.
+</p>
+
+
+
+<p>
+Then, during a later security test, someone approached the system differently.
+</p>
+
+
+
+<p>
+The patched interface was no longer exploitable.
+</p>
+
+
+
+<p>
+But the same privileged destination could still be reached through another route.
+</p>
+
+
+
+<p>
+The patch had worked.
+</p>
+
+
+
+<p>
+Engineering had done what was asked.
+</p>
+
+
+
+<p>
+The scanner was correct.
+</p>
+
+
+
+<p>
+The ticket had been closed correctly.
+</p>
+
+
+
+<p>
+And yet:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+the consequential exposure had not disappeared.
+</h2>
+
+
+
+<p>
+That distinction is where I want to end this series.
+</p>
+
+
+
+<p>
+Because after years of improving vulnerability discovery, prioritization, remediation and reporting, I think cybersecurity still has a surprisingly basic problem:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+We do not always have a rigorous definition of “done.”
+</h2>
+
+
+
+<h3>We are good at proving that work happened</h3>
+
+
+
+<p>
+Most vulnerability-management processes are very good at tracking activity.
+</p>
+
+
+
+<p>
+Open.
+</p>
+
+
+
+<p>
+Assigned.
+</p>
+
+
+
+<p>
+In progress.
+</p>
+
+
+
+<p>
+Remediated.
+</p>
+
+
+
+<p>
+Closed.
+</p>
+
+
+
+<p>
+Each state tells us something useful.
+</p>
+
+
+
+<p>
+A ticket tells us somebody accepted work.
+</p>
+
+
+
+<p>
+A deployment platform tells us software reached production.
+</p>
+
+
+
+<p>
+A patch-management platform tells us a package changed.
+</p>
+
+
+
+<p>
+A configuration platform tells us a setting changed.
+</p>
+
+
+
+<p>
+A scanner tells us it no longer observes the original condition.
+</p>
+
+
+
+<p>
+Those are legitimate pieces of evidence.
+</p>
+
+
+
+<p>
+But they answer variations of:
+</p>
+
+
+
+<blockquote class="w-auto">Did we perform the action?</blockquote>
+
+
+
+<p>
+The risk question is different:
+</p>
+
+
+
+<blockquote class="w-auto">Did the action change the attacker’s opportunity?</blockquote>
+
+
+
+<p>
+For many routine vulnerabilities, those two events occur almost simultaneously.
+</p>
+
+
+
+<p>
+Upgrade the affected package.
+</p>
+
+
+
+<p>
+The vulnerable version disappears.
+</p>
+
+
+
+<p>
+The detection disappears.
+</p>
+
+
+
+<p>
+The exposure disappears.
+</p>
+
+
+
+<p>
+Excellent.
+</p>
+
+
+
+<p>
+But material exposure is often more complicated.
+</p>
+
+
+
+<p>
+It can depend on:
+</p>
+
+
+
+<p>
+identity,
+</p>
+
+
+
+<p>
+reachability,
+</p>
+
+
+
+<p>
+privilege,
+</p>
+
+
+
+<p>
+architecture,
+</p>
+
+
+
+<p>
+trust relationships,
+</p>
+
+
+
+<p>
+dependencies,
+</p>
+
+
+
+<p>
+compensating controls,
+</p>
+
+
+
+<p>
+customer workflows,
+</p>
+
+
+
+<p>
+and business consequence.
+</p>
+
+
+
+<p>
+That is where a green ticket can create more confidence than the evidence actually supports.
+</p>
+
+
+
+<p>
+An open vulnerability continues to demand attention.
+</p>
+
+
+
+<p>
+A closed one usually disappears from it.
+</p>
+
+
+
+<p>
+That is why this distinction matters.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Closed is a workflow state. Reduced is a risk outcome.
+</h2>
+
+
+
+<h3>Every remediation makes a claim</h3>
+
+
+
+<p>
+There is a different way to think about remediation that I have found useful.
+</p>
+
+
+
+<p>
+A remediation action is not just work.
+</p>
+
+
+
+<p>
+It makes an implicit security claim.
+</p>
+
+
+
+<p>
+A patch says:
+</p>
+
+
+
+<blockquote class="w-auto">Removing this vulnerable condition will remove the relevant attacker opportunity.</blockquote>
+
+
+
+<p>
+A network-control change says:
+</p>
+
+
+
+<blockquote class="w-auto">The weakness may remain, but an attacker can no longer reach it from the position that matters.</blockquote>
+
+
+
+<p>
+A privilege reduction says:
+</p>
+
+
+
+<blockquote class="w-auto">This identity can no longer perform the consequential action.</blockquote>
+
+
+
+<p>
+Segmentation says:
+</p>
+
+
+
+<blockquote class="w-auto">The path has been broken.</blockquote>
+
+
+
+<p>
+A WAF rule says:
+</p>
+
+
+
+<blockquote class="w-auto">The vulnerable behavior remains, but exploitation is sufficiently blocked.</blockquote>
+
+
+
+<p>
+MFA says:
+</p>
+
+
+
+<blockquote class="w-auto">The attacker can no longer complete the relevant authentication path.</blockquote>
+
+
+
+<p>
+A compensating control says:
+</p>
+
+
+
+<blockquote class="w-auto">We are not removing the underlying weakness yet, but this control reduces the residual exposure enough for us to carry it temporarily.</blockquote>
+
+
+
+<p>
+Those are all claims.
+</p>
+
+
+
+<p>
+And a claim should invite a question:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What evidence would prove it?
+</h2>
+
+
+
+<p>
+That is the difference between remediation and verification.
+</p>
+
+
+
+<blockquote class="w-auto">Remediation is the intervention. Verification is the evidence that the intervention produced the intended security outcome.</blockquote>
+
+
+
+<p>
+NIST's control-assessment guidance makes a related distinction at the control level: having a control described or implemented is not the same thing as assessing whether it is operating as intended and achieving the intended outcome. [1]
+</p>
+
+
+
+<p>
+Vulnerability management should apply the same discipline.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The patch worked. The path survived.
+</h2>
+
+
+
+<p>
+Return to the opening example.
+</p>
+
+
+
+<p>
+Suppose the original scanner finding concerned a vulnerable administrative service.
+</p>
+
+
+
+<p>
+Engineering patches it.
+</p>
+
+
+
+<p>
+The vulnerable software is gone.
+</p>
+
+
+
+<p>
+A rescan confirms it.
+</p>
+
+
+
+<p>
+What exactly have we proven?
+</p>
+
+
+
+<p>
+We have proven that the original vulnerable condition changed.
+</p>
+
+
+
+<p>
+That may be sufficient.
+</p>
+
+
+
+<p>
+But suppose the business reason we cared about the vulnerability was actually:
+</p>
+
+
+
+<blockquote class="w-auto">An attacker could use this weakness to reach a privileged administrative capability.</blockquote>
+
+
+
+<p>
+Now the unit of concern is larger than the component.
+</p>
+
+
+
+<p>
+What if another interface reaches the same capability?
+</p>
+
+
+
+<p>
+What if another trust relationship bypasses the route we fixed?
+</p>
+
+
+
+<p>
+What if the same privilege can be reached through an adjacent service?
+</p>
+
+
+
+<p>
+The remediation may still be correct.
+</p>
+
+
+
+<p>
+But the original security claim may be incomplete.
+</p>
+
+
+
+<p>
+This is why attack-path and system-level thinking matter.
+</p>
+
+
+
+<p>
+Research on threat-model-driven penetration testing, service-centric attack graphs and context-aware vulnerability management increasingly reinforces the same general principle: technical weaknesses gain their significance from the architecture, connectivity, dependencies and operational context around them. [3][9][10]
+</p>
+
+
+
+<p>
+A scanner sees a vulnerable component.
+</p>
+
+
+
+<p>
+An architect sees:
+</p>
+
+
+
+<p>
+what trusts it,
+</p>
+
+
+
+<p>
+what reaches it,
+</p>
+
+
+
+<p>
+what it reaches,
+</p>
+
+
+
+<p>
+which identities can use it,
+</p>
+
+
+
+<p>
+and what happens after compromise.
+</p>
+
+
+
+<p>
+So for material exposure, I would ask one question after the patch:
+</p>
+
+
+
+<blockquote class="w-auto">Did we remove the vulnerable condition, or did we remove the attacker’s useful opportunity?</blockquote>
+
+
+
+<p>
+Sometimes the answer is both.
+</p>
+
+
+
+<p>
+Sometimes it is not.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The control existed. The assumption survived untested.
+</h2>
+
+
+
+<p>
+There is another place where the distinction becomes even more important.
+</p>
+
+
+
+<p>
+The organization cannot immediately patch a vulnerability.
+</p>
+
+
+
+<p>
+That may be entirely reasonable.
+</p>
+
+
+
+<p>
+Perhaps the platform is fragile.
+</p>
+
+
+
+<p>
+Perhaps the upgrade requires a major regression cycle.
+</p>
+
+
+
+<p>
+Perhaps a vendor dependency blocks the change.
+</p>
+
+
+
+<p>
+Perhaps a business-critical release is already underway.
+</p>
+
+
+
+<p>
+So leadership relies on a compensating control.
+</p>
+
+
+
+<p>
+The exception says:
+</p>
+
+
+
+<p>
+Protected by WAF.
+</p>
+
+
+
+<p>
+Restricted by segmentation.
+</p>
+
+
+
+<p>
+MFA enforced.
+</p>
+
+
+
+<p>
+Monitored by EDR.
+</p>
+
+
+
+<p>
+Accessible only internally.
+</p>
+
+
+
+<p>
+Privileged access restricted.
+</p>
+
+
+
+<p>
+The problem is not those controls.
+</p>
+
+
+
+<p>
+The problem is confusing:
+</p>
+
+
+
+<blockquote class="w-auto">the control exists</blockquote>
+
+
+
+<p>
+with:
+</p>
+
+
+
+<blockquote class="w-auto">the control produces the security effect we are depending on.</blockquote>
+
+
+
+<p>
+A firewall rule exists.
+</p>
+
+
+
+<p>
+Can another path reach the service?
+</p>
+
+
+
+<p>
+MFA is enabled.
+</p>
+
+
+
+<p>
+Does an alternate authentication mechanism bypass it?
+</p>
+
+
+
+<p>
+EDR is deployed.
+</p>
+
+
+
+<p>
+Would the relevant exploitation behavior actually be detected?
+</p>
+
+
+
+<p>
+A WAF rule blocks the obvious payload.
+</p>
+
+
+
+<p>
+Can the vulnerable function still be reached through another request?
+</p>
+
+
+
+<p>
+Network segmentation exists.
+</p>
+
+
+
+<p>
+Can identity or application trust cross the boundary anyway?
+</p>
+
+
+
+<p>
+This is why I have argued throughout the series:
+</p>
+
+
+
+<blockquote class="w-auto">A compensating control is not a sentence in a risk exception. It is a security hypothesis that should be verified.</blockquote>
+
+
+
+<p>
+In fact, where the underlying weakness remains deliberately unfixed, I would want stronger confidence in the compensating control.
+</p>
+
+
+
+<p>
+Because the organization is now depending on it.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The fix worked. Then the system brought the exposure back.
+</h2>
+
+
+
+<p>
+Engineering leaders will recognize another version of this problem immediately.
+</p>
+
+
+
+<p>
+A production server has an insecure configuration.
+</p>
+
+
+
+<p>
+Someone corrects it manually.
+</p>
+
+
+
+<p>
+The scanner goes green.
+</p>
+
+
+
+<p>
+The issue closes.
+</p>
+
+
+
+<p>
+Then Infrastructure-as-Code runs.
+</p>
+
+
+
+<p>
+The insecure state returns.
+</p>
+
+
+
+<p>
+A vulnerable container is replaced.
+</p>
+
+
+
+<p>
+The next deployment pulls the old base image again.
+</p>
+
+
+
+<p>
+An excessive IAM permission is removed.
+</p>
+
+
+
+<p>
+The provisioning workflow grants it back.
+</p>
+
+
+
+<p>
+A firewall rule is corrected.
+</p>
+
+
+
+<p>
+The canonical template recreates the previous rule during the next deployment.
+</p>
+
+
+
+<p>
+The remediation was successful.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+It just was not durable.
+</h2>
+
+
+
+<p>
+This is one of the places where vulnerability management and engineering reality can diverge.
+</p>
+
+
+
+<p>
+Security may be validating the current instance.
+</p>
+
+
+
+<p>
+Engineering knows the system may really be defined somewhere else:
+</p>
+
+
+
+<p>
+Terraform.
+</p>
+
+
+
+<p>
+A Helm chart.
+</p>
+
+
+
+<p>
+A golden image.
+</p>
+
+
+
+<p>
+A container definition.
+</p>
+
+
+
+<p>
+A package manifest.
+</p>
+
+
+
+<p>
+A CI/CD template.
+</p>
+
+
+
+<p>
+An identity-provisioning workflow.
+</p>
+
+
+
+<p>
+A platform policy.
+</p>
+
+
+
+<p>
+A shared service configuration.
+</p>
+
+
+
+<p>
+If that source still contains the insecure state, the vulnerability has not been permanently retired.
+</p>
+
+
+
+<p>
+It has been temporarily overwritten.
+</p>
+
+
+
+<p>
+Recent research on lifecycle-oriented cybersecurity testing and monitoring makes the broader point that assurance needs to span testing, runtime conditions, updates and ongoing system change rather than being reduced to a one-time validation event. [4][7]
+</p>
+
+
+
+<p>
+So I would add a question that vulnerability workflows do not ask often enough:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Will the fix survive the next normal engineering event?
+</h2>
+
+
+
+<p>
+The next rebuild.
+</p>
+
+
+
+<p>
+The next deployment.
+</p>
+
+
+
+<p>
+The next scale-out.
+</p>
+
+
+
+<p>
+The next failover.
+</p>
+
+
+
+<p>
+The next configuration sync.
+</p>
+
+
+
+<p>
+The next account creation.
+</p>
+
+
+
+<p>
+The next release.
+</p>
+
+
+
+<p>
+Because:
+</p>
+
+
+
+<blockquote class="w-auto">A fix that does not survive redeployment is not a durable remediation.</blockquote>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The evidence should match the consequence
+</h2>
+
+
+
+<p>
+None of this means every vulnerability needs a penetration test.
+</p>
+
+
+
+<p>
+That would be wasteful and impossible to scale.
+</p>
+
+
+
+<p>
+Verification should be proportional.
+</p>
+
+
+
+<p>
+A routine package update on a low-consequence workload may require nothing more than:
+</p>
+
+
+
+<p>
+an automated package-state check,
+</p>
+
+
+
+<p>
+a successful rescan,
+</p>
+
+
+
+<p>
+and normal regression tests.
+</p>
+
+
+
+<p>
+That may provide more than enough confidence.
+</p>
+
+
+
+<p>
+A material authentication change may justify targeted testing of:
+</p>
+
+
+
+<p>
+authentication paths,
+</p>
+
+
+
+<p>
+authorization behavior,
+</p>
+
+
+
+<p>
+session handling,
+</p>
+
+
+
+<p>
+or alternate login mechanisms.
+</p>
+
+
+
+<p>
+A major segmentation change protecting a high-consequence environment may warrant:
+</p>
+
+
+
+<p>
+reachability testing,
+</p>
+
+
+
+<p>
+attack-path validation,
+</p>
+
+
+
+<p>
+independent technical validation,
+</p>
+
+
+
+<p>
+or carefully scoped adversarial testing.
+</p>
+
+
+
+<p>
+A compensating control supporting a material risk acceptance should be tested against the assumption leadership is relying on.
+</p>
+
+
+
+<p>
+The principle is not complicated:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The consequence of being wrong should determine the strength of evidence required.
+</h2>
+
+
+
+<p>
+That is different from demanding the same verification process for every CVE.
+</p>
+
+
+
+<p>
+And it avoids turning verification into another compliance exercise.
+</p>
+
+
+
+<p>
+The objective is confidence proportional to consequence.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+“The scanner is clean” may be exactly the right answer
+</h2>
+
+
+
+<p>
+There is an important balance here.
+</p>
+
+
+
+<p>
+I do not want this argument misunderstood as:
+</p>
+
+
+
+<blockquote class="w-auto">Scanners cannot verify remediation.</blockquote>
+
+
+
+<p>
+They absolutely can.
+</p>
+
+
+
+<p>
+For a large class of vulnerabilities, a high-quality rescan is exactly the right verification mechanism.
+</p>
+
+
+
+<p>
+If Scanner A found:
+</p>
+
+
+
+<p>
+a vulnerable version,
+</p>
+
+
+
+<p>
+a missing patch,
+</p>
+
+
+
+<p>
+or a specific configuration,
+</p>
+
+
+
+<p>
+and after treatment that condition is demonstrably gone, the scanner provides strong evidence.
+</p>
+
+
+
+<p>
+The mistake is not trusting scanners.
+</p>
+
+
+
+<p>
+The mistake is asking them to prove things they were never designed to prove.
+</p>
+
+
+
+<p>
+A scanner may be able to establish:
+</p>
+
+
+
+<blockquote class="w-auto">The original technical condition disappeared.</blockquote>
+
+
+
+<p>
+It may not establish:
+</p>
+
+
+
+<blockquote class="w-auto">Every consequential path depending on that condition disappeared.</blockquote>
+
+
+
+<p>
+Those are different claims.
+</p>
+
+
+
+<p>
+Good verification starts by deciding which claim we are actually trying to prove.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI makes that distinction more important, not different
+</h2>
+
+
+
+<p>
+Article 9 explored what happens when AI accelerates vulnerability discovery and remediation faster than organizations can safely absorb and verify.
+</p>
+
+
+
+<p>
+I do not want to repeat that argument here.
+</p>
+
+
+
+<p>
+But one implication belongs in this finale.
+</p>
+
+
+
+<p>
+As AI makes remediation actions cheaper to generate, producing the statement:
+</p>
+
+
+
+<blockquote class="w-auto">“A fix has been applied.”</blockquote>
+
+
+
+<p>
+will become increasingly easy.
+</p>
+
+
+
+<p>
+That makes the evidence behind:
+</p>
+
+
+
+<blockquote class="w-auto">“The exposure has been reduced.”</blockquote>
+
+
+
+<p>
+more valuable.
+</p>
+
+
+
+<p>
+Research on AI-generated patches has already shown why this distinction matters. Automated repairs can appear plausible or satisfy available tests while still introducing vulnerabilities or behaving differently from intended human repairs. [5][6]
+</p>
+
+
+
+<p>
+That is not an argument against AI remediation.
+</p>
+
+
+
+<p>
+It is an argument for precision about what each automated check proves.
+</p>
+
+
+
+<p>
+AI may accelerate the intervention.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+It does not remove the need to establish the outcome.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+I would change one thing in the workflow
+</h2>
+
+
+
+<p>
+For material exposure, I would stop asking the word Closed to represent two different events.
+</p>
+
+
+
+<p>
+Instead of:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+OPEN → CLOSED
+</h2>
+
+
+
+<p>
+I would distinguish:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+OPEN → TREATED → VERIFIED REDUCED
+</h2>
+
+
+
+<p>
+Not as another elaborate framework.
+</p>
+
+
+
+<p>
+Simply as more honest language.
+</p>
+
+
+
+<p>
+TREATED means:
+</p>
+
+
+
+<p>
+The selected intervention was implemented.
+</p>
+
+
+
+<p>
+The patch reached production.
+</p>
+
+
+
+<p>
+The configuration changed.
+</p>
+
+
+
+<p>
+The control was deployed.
+</p>
+
+
+
+<p>
+The engineering work was completed.
+</p>
+
+
+
+<p>
+That deserves recognition.
+</p>
+
+
+
+<p>
+But VERIFIED REDUCED makes a stronger statement:
+</p>
+
+
+
+<blockquote class="w-auto">We have sufficient evidence, appropriate to the consequence, to defend the claim that the relevant exposure actually changed.</blockquote>
+
+
+
+<p>
+Those two events may happen seconds apart for a routine vulnerability.
+</p>
+
+
+
+<p>
+For something complex, they may not.
+</p>
+
+
+
+<p>
+And that is useful information.
+</p>
+
+
+
+<p>
+Because today the word Closed often collapses:
+</p>
+
+
+
+<blockquote class="w-auto">We did something.</blockquote>
+
+
+
+<p>
+and
+</p>
+
+
+
+<blockquote class="w-auto">We established that it worked.</blockquote>
+
+
+
+<p>
+into the same green box.
+</p>
+
+
+
+<p>
+I think leadership deserves to know the difference.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What “done” should mean for material exposure
+</h2>
+
+
+
+<p>
+For the vulnerabilities and exposures that genuinely matter, I would want a team to be able to defend four statements.
+</p>
+
+
+
+<h3>The condition changed.</h3>
+
+
+
+<p>
+The vulnerable version, configuration, code path, excessive privilege or insecure service state changed as intended.
+</p>
+
+
+
+<h3>The consequential opportunity changed.</h3>
+
+
+
+<p>
+The attacker can no longer reach, exploit, traverse or exercise the capability that made the exposure important.
+</p>
+
+
+
+<h3>The system still works safely.</h3>
+
+
+
+<p>
+The security intervention did not create unacceptable availability, integrity, performance, customer or operational problems.
+</p>
+
+
+
+<h3>The reduction will persist.</h3>
+
+
+
+<p>
+The fix exists in the systems and sources that will survive rebuild, redeployment, configuration synchronization and ordinary engineering change.
+</p>
+
+
+
+<p>
+And behind those statements:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+evidence.
+</h2>
+
+
+
+<p>
+Not necessarily a hundred-page report.
+</p>
+
+
+
+<p>
+Not necessarily a manual test.
+</p>
+
+
+
+<p>
+Just evidence strong enough for the consequence involved.
+</p>
+
+
+
+<p>
+That is what I would call a security definition of done.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+This is not Security inspecting Engineering’s homework
+</h2>
+
+
+
+<p>
+That framing would be counterproductive.
+</p>
+
+
+
+<p>
+Engineering benefits from this discipline too.
+</p>
+
+
+
+<p>
+Poorly verified security changes can create:
+</p>
+
+
+
+<p>
+regressions,
+</p>
+
+
+
+<p>
+hidden dependencies,
+</p>
+
+
+
+<p>
+emergency rollback,
+</p>
+
+
+
+<p>
+support incidents,
+</p>
+
+
+
+<p>
+configuration drift,
+</p>
+
+
+
+<p>
+or the same remediation work returning next quarter.
+</p>
+
+
+
+<p>
+Security wants to know:
+</p>
+
+
+
+<blockquote class="w-auto">Did we actually reduce exposure?</blockquote>
+
+
+
+<p>
+Engineering wants to know:
+</p>
+
+
+
+<blockquote class="w-auto">Did we change the system safely and durably?</blockquote>
+
+
+
+<p>
+Those questions are compatible.
+</p>
+
+
+
+<p>
+They should often be answered by the same evidence.
+</p>
+
+
+
+<p>
+This is why mature verification belongs inside:
+</p>
+
+
+
+<p>
+engineering pipelines,
+</p>
+
+
+
+<p>
+platform automation,
+</p>
+
+
+
+<p>
+architecture,
+</p>
+
+
+
+<p>
+deployment testing,
+</p>
+
+
+
+<p>
+and operational telemetry.
+</p>
+
+
+
+<p>
+Not in a separate Security queue where someone manually inspects every patch after Engineering finishes.
+</p>
+
+
+
+<p>
+The strongest verification is often built into the way the system changes.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Architects have a special role here
+</h2>
+
+
+
+<p>
+Some verification is local.
+</p>
+
+
+
+<p>
+Did the package change?
+</p>
+
+
+
+<p>
+Did the service restart?
+</p>
+
+
+
+<p>
+Did the configuration update?
+</p>
+
+
+
+<p>
+Did the vulnerable endpoint disappear?
+</p>
+
+
+
+<p>
+Automation answers those questions very well.
+</p>
+
+
+
+<p>
+But some consequential exposures are relational.
+</p>
+
+
+
+<p>
+What trusts what?
+</p>
+
+
+
+<p>
+What can reach what?
+</p>
+
+
+
+<p>
+Which identity can assume which privilege?
+</p>
+
+
+
+<p>
+What happens after compromise?
+</p>
+
+
+
+<p>
+Which dependency creates the bridge?
+</p>
+
+
+
+<p>
+Can another route still reach the same destination?
+</p>
+
+
+
+<p>
+Will failover recreate the original trust relationship?
+</p>
+
+
+
+<p>
+Those are architecture questions.
+</p>
+
+
+
+<p>
+This is why architecture belongs in the final stage of exposure management.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+A scanner can tell us whether a component changed. Architecture helps tell us whether the system changed.
+</h2>
+
+
+
+<p>
+The vulnerability may exist in a component.
+</p>
+
+
+
+<p>
+The exposure often exists in the relationships around it.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+One uncomfortable question
+</h2>
+
+
+
+<p>
+Take the material vulnerabilities your organization closed last quarter.
+</p>
+
+
+
+<p>
+Not all of them.
+</p>
+
+
+
+<p>
+Just the ones you would least enjoy explaining during an incident review.
+</p>
+
+
+
+<p>
+Now imagine somebody asks:
+</p>
+
+
+
+<blockquote class="w-auto">Show me why we believe the attacker lost the opportunity.</blockquote>
+
+
+
+<p>
+Perhaps the answer is simple.
+</p>
+
+
+
+<p>
+Here is the patch.
+</p>
+
+
+
+<p>
+Here is the rescan.
+</p>
+
+
+
+<p>
+Here are the regression results.
+</p>
+
+
+
+<p>
+Good.
+</p>
+
+
+
+<p>
+Perhaps it involved segmentation.
+</p>
+
+
+
+<p>
+Then show that the relevant route no longer exists.
+</p>
+
+
+
+<p>
+Perhaps the organization relied on MFA.
+</p>
+
+
+
+<p>
+Show that the alternate authentication paths cannot bypass it.
+</p>
+
+
+
+<p>
+Perhaps a compensating control justified temporary acceptance.
+</p>
+
+
+
+<p>
+Show the control behaving as assumed.
+</p>
+
+
+
+<p>
+Perhaps the problem came from an infrastructure template.
+</p>
+
+
+
+<p>
+Show that the source was corrected and a redeployment does not recreate the exposure.
+</p>
+
+
+
+<p>
+The point is not to reopen every old ticket.
+</p>
+
+
+
+<p>
+The point is to recognize that:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+evidence of activity and evidence of effect are not always the same thing.
+</h2>
+
+
+
+<p>
+That distinction is where mature vulnerability management starts to look like exposure management.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+And even good verification has a boundary
+</h2>
+
+
+
+<p>
+There is one important caveat.
+</p>
+
+
+
+<p>
+Verification is still evidence at a point in time.
+</p>
+
+
+
+<p>
+The enterprise keeps changing.
+</p>
+
+
+
+<p>
+Architecture changes.
+</p>
+
+
+
+<p>
+Privilege changes.
+</p>
+
+
+
+<p>
+Reachability changes.
+</p>
+
+
+
+<p>
+Products evolve.
+</p>
+
+
+
+<p>
+Controls change.
+</p>
+
+
+
+<p>
+New integrations appear.
+</p>
+
+
+
+<p>
+AI agents receive new authority.
+</p>
+
+
+
+<p>
+A reduction that was genuinely verified today can become relevant again because tomorrow's system is different.
+</p>
+
+
+
+<p>
+That is a different problem.
+</p>
+
+
+
+<p>
+And one worth exploring separately.
+</p>
+
+
+
+<p>
+But before solving that problem, we should become disciplined about this one:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+earning the right to say the exposure was reduced in the first place.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Closing the loop
+</h2>
+
+
+
+<p>
+In the first article of this series, I asked:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+We’re getting better at finding vulnerabilities. Why aren’t we getting better at removing risk?
+</h2>
+
+
+
+<p>
+The answer turned out to have surprisingly little to do with finding alone.
+</p>
+
+
+
+<p>
+The operating logic we have explored is:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+FIND → OWN → DECIDE → ACT → VERIFY
+</h2>
+
+
+
+<p>
+FIND establishes what we know.
+</p>
+
+
+
+<p>
+OWN establishes accountability.
+</p>
+
+
+
+<p>
+DECIDE determines what matters and what treatment is defensible.
+</p>
+
+
+
+<p>
+ACT changes the environment.
+</p>
+
+
+
+<p>
+And VERIFY answers the question the entire process was meant to answer:
+</p>
+
+
+
+<blockquote class="w-auto">Did the exposure actually change?</blockquote>
+
+
+
+<p>
+Without VERIFY, the process ends with:
+</p>
+
+
+
+<blockquote class="w-auto">We did something.</blockquote>
+
+
+
+<p>
+With VERIFY, it can end with:
+</p>
+
+
+
+<blockquote class="w-auto">We can show what changed.</blockquote>
+
+
+
+<p>
+That is the distinction I want to leave with.
+</p>
+
+
+
+<p>
+A vulnerability is a technical condition.
+</p>
+
+
+
+<p>
+A remediation is an intervention.
+</p>
+
+
+
+<p>
+A closed ticket is a workflow state.
+</p>
+
+
+
+<p>
+A compensating control is a hypothesis.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Verified reduction is the outcome.
+</h2>
+
+
+
+<p>
+The purpose was never to prove that Security was busy.
+</p>
+
+
+
+<p>
+It was never to maximize the number of green tickets.
+</p>
+
+
+
+<p>
+And it was never to patch the largest possible number of CVEs.
+</p>
+
+
+
+<p>
+The purpose was to make the enterprise harder to attack—and to be able to defend that claim with evidence.
+</p>
+
+
+
+<p>
+Which brings the series back to where it began:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The job is not to manage vulnerabilities.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The job is to manage exploitable business exposure.
+</h2>
+
+
+
+<p>
+And the work is not finished when the ticket says:
+</p>
+
+
+
+<h3>Closed.</h3>
+
+
+
+<p>
+It is finished when the evidence supports:
+</p>
+
+
+
+<h3>Reduced.</h3>
+
+
+
+<h3>References &amp; Further Reading</h3>
+
+
+
+<p>
+[1] National Institute of Standards and Technology. (2022). Assessing Security and Privacy Controls in Information Systems and Organizations — NIST SP 800-53A Rev. 5. <a href="https://csrc.nist.gov/pubs/sp/800/53/a/r5/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/53/a/r5/final</a>
+</p>
+
+
+
+<p>
+[2] National Institute of Standards and Technology. (2022). Guide to Enterprise Patch Management Planning: Preventive Maintenance for an Organization’s Technology — NIST SP 800-40 Rev. 4. <a href="https://csrc.nist.gov/pubs/sp/800/40/r4/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/40/r4/final</a>
+</p>
+
+
+
+<p>
+[3] Khalil, S. M., Bahsi, H., &amp; Korõtko, T. (2026). “Bridging Industrial Control Systems Design and Testing Through Threat Modeling-Driven Penetration Testing — A Microgrid Case Study.” Computers &amp; Security. <a href="https://www.sciencedirect.com/science/article/pii/S0167404826000829?trk=article-ssr-frontend-pulse_little-text-block">https://www.sciencedirect.com/science/article/pii/S0167404826000829</a>
+</p>
+
+
+
+<p>
+[4] Taylor, S., Jaatun, M. G., Omerovic, A., Borgaonkar, R., et al. (2026). “Toward Cybersecurity Testing and Monitoring of IoT Ecosystems.” SN Computer Science. <a href="https://link.springer.com/article/10.1007/s42979-026-05048-8?trk=article-ssr-frontend-pulse_little-text-block">https://link.springer.com/article/10.1007/s42979-026-05048-8</a>
+</p>
+
+
+
+<p>
+[5] Sajadi, A., Damevski, K., &amp; Chatterjee, P. (2025). “How Safe Are AI-Generated Patches? A Large-Scale Study on Security Risks in LLM and Agentic Automated Program Repair on SWE-bench.” arXiv:2507.02976. <a href="https://arxiv.org/abs/2507.02976?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2507.02976</a>
+</p>
+
+
+
+<p>
+[6] Wang, Y., Pradel, M., &amp; Liu, Z. (2025). “Are ‘Solved Issues’ in SWE-bench Really Solved Correctly? An Empirical Study.” arXiv:2503.15223. <a href="https://arxiv.org/abs/2503.15223?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2503.15223</a>
+</p>
+
+
+
+<p>
+[7] Khera, V., Sunil, R., Mer, P., Kointarangkul, N., &amp; Diwan, A. (2026). “Towards Adaptive and Continuous Offensive Security: A Comprehensive Survey of AI-Driven Threat Validation Techniques.” Array. <a href="https://www.sciencedirect.com/science/article/pii/S2590005626001669?trk=article-ssr-frontend-pulse_little-text-block">https://www.sciencedirect.com/science/article/pii/S2590005626001669</a>
+</p>
+
+
+
+<p>
+[8] Malkawi, M., &amp; Alhajj, R. (2026). “AI-Powered Vulnerability Detection and Patch Management in Cybersecurity: A Systematic Review of Techniques, Challenges, and Emerging Trends.” Machine Learning and Knowledge Extraction, 8(1), 19. <a href="https://doi.org/10.3390/make8010019?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.3390/make8010019</a>
+</p>
+
+
+
+<p>
+[9] Lopes, R., Moura, J., &amp; Marinheiro, R. N. (2026). “Orchestrated Vulnerability Management for Heterogeneous Networks: Adaptive Two-Stage Vulnerability Assessment, Context-Aware Risk Prioritization, and Automated Mitigation.” arXiv:2608.08162. <a href="https://arxiv.org/abs/2608.08162?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2608.08162</a>
+</p>
+
+
+
+<p>
+[10] Herttuainen, J., Kuikka, V., &amp; Kaski, K. K. (2026). “Integrating Network and Attack Graphs for Service-Centric Impact Analysis.” IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11535040/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11535040/</a>
+</p>
+
+
+
+<p>
+[11] Shimizu, N., &amp; Hashimoto, M. (2026). “Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization.” IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11397608/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11397608/</a>
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+ </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../ai-exposure-remediation-gap/">← Previous: When AI Finds Exposure Faster Than Organizations Can Retire It</a><a href="../#vulnerability-risk">All articles in this collection</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>

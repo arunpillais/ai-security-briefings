@@ -1,0 +1,2842 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CVSS 10 ≠ Business Risk 10 | Arun Pillai</title><meta name="description" content="Severity describes the weakness. Context establishes the exposure. Leadership sets the priority. Your vulnerability team walks into the Monday review with two findings. There is one engineering team available today. Vulnerability A CVSS 10.0 Internal"><link rel="canonical" href="https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf"><meta property="og:title" content="CVSS 10 ≠ Business Risk 10"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CVSS 10 ≠ Business Risk 10","datePublished":"2026-08-20T09:09:23.000+00:00","dateModified":"2026-08-20T09:14:55.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>CVSS 10 ≠ Business Risk 10</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-20">2026-08-20</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../finding-vulnerabilities-reducing-risk/">← Previous: We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../patch-everything-security-strategy/">Next: Patch Everything Is Not a Security Strategy →</a></nav><img class="article-cover" alt="CVSS 10 ≠ Business Risk 10" loading="lazy" src="../../assets/articles/cvss-10-business-risk-0.webp"/><article class="article-body">
+
+
+<h3>Severity describes the weakness. Context establishes the exposure. Leadership sets the priority.</h3>
+
+
+
+<p>
+Your vulnerability team walks into the Monday review with two findings.
+</p>
+
+
+
+<p>
+There is one engineering team available today.
+</p>
+
+
+
+<h3>Vulnerability A</h3>
+
+
+
+<p>
+CVSS 10.0
+</p>
+
+
+
+<p>
+Internal system. Segmented. Authentication required. No evidence, in this hypothetical scenario, of active exploitation.
+</p>
+
+
+
+<h3>Vulnerability B</h3>
+
+
+
+<p>
+CVSS 7.x
+</p>
+
+
+
+<p>
+Internet-facing. Part of customer authentication. Credible evidence of exploitation in the wild. And if exploitation succeeds, the attacker gains a useful foothold toward systems the business considers important.
+</p>
+
+
+
+<p>
+Which one goes first?
+</p>
+
+
+
+<p>
+If the answer is automatically:
+</p>
+
+
+
+<p>
+“10.0. Obviously.”
+</p>
+
+
+
+<p>
+then I think we have exposed one of the most persistent problems in vulnerability management.
+</p>
+
+
+
+<p>
+We have confused severity with priority.
+</p>
+
+
+
+<p>
+They are related.
+</p>
+
+
+
+<p>
+They are not the same thing.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+CVSS is not the problem
+</h2>
+
+
+
+<p>
+I want to be careful here, because criticizing CVSS has become fashionable.
+</p>
+
+
+
+<p>
+That is not my argument.
+</p>
+
+
+
+<p>
+The Common Vulnerability Scoring System gives the industry a standardized way to communicate characteristics associated with vulnerability severity.
+</p>
+
+
+
+<p>
+That is genuinely useful.
+</p>
+
+
+
+<p>
+Without a common language, scanners, vendors and organizations could describe the same technical weakness differently.
+</p>
+
+
+
+<p>
+The operational problem begins when a useful technical signal quietly becomes a work queue.
+</p>
+
+
+
+<p>
+10.0?
+</p>
+
+
+
+<p>
+Emergency.
+</p>
+
+
+
+<p>
+9.8?
+</p>
+
+
+
+<p>
+Critical.
+</p>
+
+
+
+<p>
+7.5?
+</p>
+
+
+
+<p>
+Later.
+</p>
+
+
+
+<p>
+5.3?
+</p>
+
+
+
+<p>
+Much later.
+</p>
+
+
+
+<p>
+Eventually we start asking one number to answer a much larger question:
+</p>
+
+
+
+<p>
+How much does this vulnerability matter to my enterprise right now?
+</p>
+
+
+
+<p>
+That is not the same question.
+</p>
+
+
+
+<p>
+And CVSS itself has evolved in this direction.
+</p>
+
+
+
+<p>
+FIRST’s CVSS v4.0 separates Base, Threat, Environmental and Supplemental metric concepts rather than pretending that a single Base score contains all relevant context.
+</p>
+
+
+
+<p>
+So the lesson is not:
+</p>
+
+
+
+<p>
+Stop using CVSS.
+</p>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<p>
+Stop expecting CVSS alone to make an enterprise risk decision.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Different signals answer different questions
+</h2>
+
+
+
+<p>
+This distinction matters because vulnerability teams now have several useful signals available to them.
+</p>
+
+
+
+<h3>CVSS</h3>
+
+
+
+<p>
+How severe are the technical characteristics of the vulnerability under the scoring framework?
+</p>
+
+
+
+<h3>EPSS</h3>
+
+
+
+<p>
+What is the estimated probability that the published vulnerability will be exploited in the wild over the model’s prediction period?
+</p>
+
+
+
+<h3>CISA KEV</h3>
+
+
+
+<p>
+Is there evidence that this vulnerability has actually been exploited in the wild?
+</p>
+
+
+
+<h3>Asset context</h3>
+
+
+
+<p>
+What does the affected system mean to us?
+</p>
+
+
+
+<h3>Reachability</h3>
+
+
+
+<p>
+Can an attacker actually reach the vulnerable condition in our implementation?
+</p>
+
+
+
+<h3>Attack path</h3>
+
+
+
+<p>
+If exploitation succeeds, what does it enable next?
+</p>
+
+
+
+<h3>Business consequence</h3>
+
+
+
+<p>
+What happens to customers, revenue, operations, data, safety or regulatory obligations if the attack succeeds?
+</p>
+
+
+
+<p>
+None of these replaces the others.
+</p>
+
+
+
+<p>
+That is precisely the point.
+</p>
+
+
+
+<p>
+Severity is a property of the vulnerability. Priority is a decision made by the enterprise.
+</p>
+
+
+
+<p>
+I would put that sentence above every vulnerability dashboard.
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/cvss-10-business-risk-1.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 1 - Severity Is Not Priority
+</figcaption>
+</figure>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Why severity-based SLAs remain popular
+</h2>
+
+
+
+<p>
+A lot of programs still run something like:
+</p>
+
+
+
+<p>
+Critical → 15 days
+</p>
+
+
+
+<p>
+High → 30 days
+</p>
+
+
+
+<p>
+Medium → 60 or 90 days
+</p>
+
+
+
+<p>
+There is a reason.
+</p>
+
+
+
+<p>
+It is simple.
+</p>
+
+
+
+<p>
+Everyone understands it.
+</p>
+
+
+
+<p>
+It creates an enforceable baseline.
+</p>
+
+
+
+<p>
+And for an organization with relatively low vulnerability-management maturity, basic severity-led discipline may be significantly better than no discipline at all.
+</p>
+
+
+
+<p>
+I would not dismiss that.
+</p>
+
+
+
+<p>
+The model starts struggling when scale and context arrive.
+</p>
+
+
+
+<p>
+Because it implicitly assumes that vulnerabilities inside the same severity band deserve roughly the same urgency.
+</p>
+
+
+
+<p>
+Real environments are rarely that tidy.
+</p>
+
+
+
+<p>
+A CVSS 9.8 vulnerability on an isolated test service and a CVSS 7.5 vulnerability actively exploited against an internet-facing authentication path are not necessarily competing for remediation on equal terms.
+</p>
+
+
+
+<p>
+The score starts the conversation.
+</p>
+
+
+
+<p>
+Context determines the decision.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+But context is not only about the affected asset
+</h2>
+
+
+
+<p>
+This is where a comment on <a href="https://www.linkedin.com/posts/dr-arun-pillai-7537866_cybersecurity-ciso-vulnerabilitymanagement-ugcPost-7495711967698100224-4bo4/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAEuqK8BfFDDZ84bSZIGrABR4hCr7hFtc_o&amp;trk=article-ssr-frontend-pulse_little-text-block">Article 1</a> sharpened the discussion for me.
+</p>
+
+
+
+<p>
+We often analyze vulnerabilities one at a time.
+</p>
+
+
+
+<p>
+Attackers do not necessarily operate that way.
+</p>
+
+
+
+<p>
+A vulnerability that looks moderate in isolation can become far more consequential when it enables the next step in a chain:
+</p>
+
+
+
+<p>
+initial access,
+</p>
+
+
+
+<p>
+credential theft,
+</p>
+
+
+
+<p>
+privilege escalation,
+</p>
+
+
+
+<p>
+lateral movement,
+</p>
+
+
+
+<p>
+access to a management plane,
+</p>
+
+
+
+<p>
+or a path toward a high-value application.
+</p>
+
+
+
+<p>
+So the question is not only:
+</p>
+
+
+
+<p>
+“How severe is this vulnerability?”
+</p>
+
+
+
+<p>
+It is also:
+</p>
+
+
+
+<p>
+“What does this enable?”
+</p>
+
+
+
+<p>
+And sometimes:
+</p>
+
+
+
+<p>
+“How many meaningful attack paths depend on this condition?”
+</p>
+
+
+
+<p>
+This is where vulnerability management starts to merge with architecture.
+</p>
+
+
+
+<p>
+Imagine five possible attack paths toward a critical business service.
+</p>
+
+
+
+<p>
+All five pass through the same identity tier.
+</p>
+
+
+
+<p>
+Or the same remote-management interface.
+</p>
+
+
+
+<p>
+Or the same highly privileged service account.
+</p>
+
+
+
+<p>
+Or the same network boundary.
+</p>
+
+
+
+<p>
+That node may be a far more valuable remediation target than several individually higher-scoring vulnerabilities elsewhere.
+</p>
+
+
+
+<p>
+Which raises a question I think this series will return to repeatedly:
+</p>
+
+
+
+<p>
+If I can only make five security changes this quarter, which five eliminate the greatest number of consequential attack paths?
+</p>
+
+
+
+<p>
+That is a genuinely different way to allocate remediation capacity.
+</p>
+
+
+
+<p>
+It is why I increasingly distinguish between:
+</p>
+
+
+
+<p>
+vulnerability reduction
+</p>
+
+
+
+<p>
+and
+</p>
+
+
+
+<p>
+attack-path destruction.
+</p>
+
+
+
+<p>
+Reducing vulnerability count is useful.
+</p>
+
+
+
+<p>
+Breaking the paths an attacker actually needs may be more useful still.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Research has been pointing in this direction for years
+</h2>
+
+
+
+<p>
+This is not simply an exposure-management marketing argument.
+</p>
+
+
+
+<p>
+Allodi and Massacci compared vulnerability severity with evidence of real-world exploitation and challenged the assumption that severity alone maps neatly to attacker behaviour.
+</p>
+
+
+
+<p>
+Bozorgi and colleagues explored exploit prediction using signals beyond static severity.
+</p>
+
+
+
+<p>
+Sabottke, Suciu and Dumitraș examined external information for predicting exploitation.
+</p>
+
+
+
+<p>
+EPSS later operationalized exploit prediction at scale.
+</p>
+
+
+
+<p>
+Research on attack graphs and vulnerability chains goes a step further by examining how weaknesses and system relationships combine into attack paths.
+</p>
+
+
+
+<p>
+Recent work continues in that direction.
+</p>
+
+
+
+<p>
+Shimizu and Hashimoto’s vulnerability-management chaining framework combines multiple vulnerability signals instead of treating one score as sufficient.
+</p>
+
+
+
+<p>
+Baiardi, Sammartino and Ruggieri go further by examining the position of vulnerability severity along attack paths. Their analysis shows that adversary success can change depending not merely on which vulnerability scores exist, but on where those scores appear along the path.
+</p>
+
+
+
+<p>
+That is an important distinction.
+</p>
+
+
+
+<p>
+A vulnerability’s position in the architecture can matter as much as the score attached to the individual node.
+</p>
+
+
+
+<p>
+None of this says CVSS is useless.
+</p>
+
+
+
+<p>
+It says almost the opposite:
+</p>
+
+
+
+<p>
+CVSS becomes more useful when we stop asking it to do everyone else’s job.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The CISO’s real problem is portfolio allocation
+</h2>
+
+
+
+<p>
+A CISO does not have infinite remediation capacity.
+</p>
+
+
+
+<p>
+Neither does engineering.
+</p>
+
+
+
+<p>
+Production has change windows.
+</p>
+
+
+
+<p>
+Products have roadmaps.
+</p>
+
+
+
+<p>
+Platforms have dependencies.
+</p>
+
+
+
+<p>
+Some fixes are straightforward.
+</p>
+
+
+
+<p>
+Others introduce real availability risk.
+</p>
+
+
+
+<p>
+Some require version upgrades.
+</p>
+
+
+
+<p>
+Some require architecture changes.
+</p>
+
+
+
+<p>
+Some require replacing technology altogether.
+</p>
+
+
+
+<p>
+So vulnerability prioritization is ultimately a form of portfolio allocation.
+</p>
+
+
+
+<p>
+You are deciding where limited organizational capacity will produce the greatest reduction in consequential exposure.
+</p>
+
+
+
+<p>
+That reframes the question.
+</p>
+
+
+
+<p>
+Instead of:
+</p>
+
+
+
+<p>
+Which vulnerability has the highest score?
+</p>
+
+
+
+<p>
+ask:
+</p>
+
+
+
+<p>
+Which available intervention gives us the greatest meaningful risk reduction now?
+</p>
+
+
+
+<p>
+And once attack paths enter the picture:
+</p>
+
+
+
+<p>
+Which intervention removes the most consequential exposure—or breaks the most dangerous paths—for the effort and operational risk involved?
+</p>
+
+
+
+<p>
+That is much closer to the decision executives actually need to make.
+</p>
+
+
+<hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
+
+
+<h2 data-test-id="pulse-publishing-h1">
+SCOPE: how the DECIDE step gets done
+</h2>
+
+
+
+<p>
+<a href="https://www.linkedin.com/posts/dr-arun-pillai-7537866_cybersecurity-ciso-vulnerabilitymanagement-ugcPost-7495711967698100224-4bo4/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAEuqK8BfFDDZ84bSZIGrABR4hCr7hFtc_o&amp;trk=article-ssr-frontend-pulse_little-text-block">Article 1</a> introduced:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+FIND → OWN → DECIDE → ACT → VERIFY
+</h2>
+
+
+
+<p>
+SCOPE sits inside DECIDE.
+</p>
+
+
+
+<p>
+It is not another vulnerability-scoring system.
+</p>
+
+
+
+<p>
+It is a forcing function.
+</p>
+
+
+
+<p>
+A way to stop the conversation from ending with:
+</p>
+
+
+
+<p>
+“What’s the CVSS?”
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+S — Severity
+</h2>
+
+
+
+<h3>What can the technical weakness do?</h3>
+
+
+
+<p>
+Look at:
+</p>
+
+
+
+<p>
+·       attack vector;
+</p>
+
+
+
+<p>
+·       exploitation complexity;
+</p>
+
+
+
+<p>
+·       privileges required;
+</p>
+
+
+
+<p>
+·       confidentiality impact;
+</p>
+
+
+
+<p>
+·       integrity impact;
+</p>
+
+
+
+<p>
+·       availability impact.
+</p>
+
+
+
+<p>
+Severity still matters.
+</p>
+
+
+
+<p>
+We are not replacing it.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+C — Current Threat
+</h2>
+
+
+
+<h3>What is happening outside our environment?</h3>
+
+
+
+<p>
+Ask:
+</p>
+
+
+
+<p>
+·       Is exploitation known?
+</p>
+
+
+
+<p>
+·       Is the vulnerability in KEV (known exploit vulnerability catalog)?
+</p>
+
+
+
+<p>
+·       What does EPSS indicate?
+</p>
+
+
+
+<p>
+·       Is reliable exploit code available?
+</p>
+
+
+
+<p>
+·       Are threat actors relevant to us using it?
+</p>
+
+
+
+<p>
+·       Has the threat picture materially changed?
+</p>
+
+
+
+<p>
+A vulnerability can become far more urgent while its CVSS score remains exactly the same.
+</p>
+
+
+
+<p>
+The vulnerability did not change.
+</p>
+
+
+
+<p>
+The threat environment did.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+O — Organizational Consequence
+</h2>
+
+
+
+<h3>What happens to us if exploitation succeeds?</h3>
+
+
+
+<p>
+Ask:
+</p>
+
+
+
+<p>
+·       Which business capability depends on this?
+</p>
+
+
+
+<p>
+·       Which customers are affected?
+</p>
+
+
+
+<p>
+·       What data is accessible?
+</p>
+
+
+
+<p>
+·       What revenue or operational capability is involved?
+</p>
+
+
+
+<p>
+·       What regulatory or contractual obligations matter?
+</p>
+
+
+
+<p>
+·       Is this Tier-0 or Tier-1 technology?
+</p>
+
+
+
+<p>
+·       Could the outcome affect safety, trust or material operations?
+</p>
+
+
+
+<p>
+Two companies can run the same vulnerable software and face completely different consequences.
+</p>
+
+
+
+<p>
+Sometimes two deployments inside the same company can too.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+P — Path &amp; Reachability
+</h2>
+
+
+
+<h3>Can an attacker reach it—and what does it enable next?</h3>
+
+
+
+<p>
+Ask:
+</p>
+
+
+
+<p>
+·       Is the system internet-facing?
+</p>
+
+
+
+<p>
+·       Is the vulnerable code path reachable?
+</p>
+
+
+
+<p>
+·       What authentication is required?
+</p>
+
+
+
+<p>
+·       What privilege does exploitation provide?
+</p>
+
+
+
+<p>
+·       What network or identity boundaries follow?
+</p>
+
+
+
+<p>
+·       Can the weakness be chained with another vulnerability?
+</p>
+
+
+
+<p>
+·       Does it lead toward a critical asset?
+</p>
+
+
+
+<p>
+·       Does it sit at a choke point shared by several attack paths?
+</p>
+
+
+
+<p>
+This is where the question changes from:
+</p>
+
+
+
+<p>
+“Is this CVE dangerous?”
+</p>
+
+
+
+<p>
+to:
+</p>
+
+
+
+<p>
+“What role does this weakness play in the architecture an attacker would actually traverse?”
+</p>
+
+
+
+<p>
+A Medium vulnerability at a strategically important point in a chain may deserve more attention than an isolated Critical vulnerability with little onward path.
+</p>
+
+
+
+<p>
+Not always.
+</p>
+
+
+
+<p>
+But often enough that we should ask.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+E — Existing Controls
+</h2>
+
+
+
+<h3>What genuinely reduces exposure today?</h3>
+
+
+
+<p>
+Consider:
+</p>
+
+
+
+<p>
+·       segmentation;
+</p>
+
+
+
+<p>
+·       authentication;
+</p>
+
+
+
+<p>
+·       WAF or filtering;
+</p>
+
+
+
+<p>
+·       privilege boundaries;
+</p>
+
+
+
+<p>
+·       EDR;
+</p>
+
+
+
+<p>
+·       sandboxing;
+</p>
+
+
+
+<p>
+·       application isolation;
+</p>
+
+
+
+<p>
+·       monitoring;
+</p>
+
+
+
+<p>
+·       feature disablement;
+</p>
+
+
+
+<p>
+·       egress restrictions.
+</p>
+
+
+
+<p>
+And then ask the more important question:
+</p>
+
+
+
+<p>
+Do we have evidence the control actually works against the relevant attack path?
+</p>
+
+
+
+<p>
+A compensating control should be evidence.
+</p>
+
+
+
+<p>
+Not optimism.
+</p>
+
+
+
+<h3><br/></h3>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/cvss-10-business-risk-2.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 2- Priority Scoping
+</figcaption>
+</figure>
+
+
+
+<h3><br/></h3>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Do not turn SCOPE into another magic number
+</h2>
+
+
+
+<p>
+This is important.
+</p>
+
+
+
+<p>
+The natural instinct is to score each letter.
+</p>
+
+
+
+<p>
+Severity = 9
+</p>
+
+
+
+<p>
+Threat = 8
+</p>
+
+
+
+<p>
+Consequence = 10
+</p>
+
+
+
+<p>
+Path = 7
+</p>
+
+
+
+<p>
+Controls = 4
+</p>
+
+
+
+<p>
+Then multiply.
+</p>
+
+
+
+<p>
+Divide by something.
+</p>
+
+
+
+<p>
+Produce:
+</p>
+
+
+
+<p>
+Risk = 7.43
+</p>
+
+
+
+<p>
+Now we have a number with two decimal places.
+</p>
+
+
+
+<p>
+We do not necessarily have better truth.
+</p>
+
+
+
+<p>
+Quantification can be useful when the underlying assumptions and data justify it.
+</p>
+
+
+
+<p>
+But uncertain judgments do not automatically become reliable simply because the output looks precise.
+</p>
+
+
+
+<p>
+For many organizations, a decision matrix is a better starting point.
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/cvss-10-business-risk-3.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 3 - Decision Matrix
+</figcaption>
+</figure>
+
+
+
+<p>
+This is deliberately simplified.
+</p>
+
+
+
+<p>
+Real decisions require more context.
+</p>
+
+
+
+<p>
+But notice what happened.
+</p>
+
+
+
+<p>
+CVSS did not disappear.
+</p>
+
+
+
+<p>
+It became one input into the decision.
+</p>
+
+
+
+<p>
+Exactly where it belongs.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Four outcomes—not one patch queue
+</h2>
+
+
+
+<p>
+I would want vulnerability reviews to end in one of four explicit outcomes.
+</p>
+
+
+
+<h3>1. REMEDIATE NOW</h3>
+
+
+
+<p>
+Use when the combination of threat, reachability, path and consequence justifies immediate engineering action.
+</p>
+
+
+
+<p>
+For example:
+</p>
+
+
+
+<p>
+active exploitation,
+</p>
+
+
+
+<p>
+external exposure,
+</p>
+
+
+
+<p>
+meaningful business consequence,
+</p>
+
+
+
+<p>
+or controls that do not hold up.
+</p>
+
+
+
+<h3>2. MITIGATE NOW, REMEDIATE NEXT</h3>
+
+
+
+<p>
+This option deserves far more attention.
+</p>
+
+
+
+<p>
+Sometimes permanent remediation cannot happen safely today.
+</p>
+
+
+
+<p>
+That does not mean exposure has to remain unchanged.
+</p>
+
+
+
+<p>
+Possible actions include:
+</p>
+
+
+
+<p>
+restricting access,
+</p>
+
+
+
+<p>
+disabling vulnerable functionality,
+</p>
+
+
+
+<p>
+isolating a service,
+</p>
+
+
+
+<p>
+reducing privilege,
+</p>
+
+
+
+<p>
+breaking a network path,
+</p>
+
+
+
+<p>
+tightening an identity boundary,
+</p>
+
+
+
+<p>
+adding temporary controls,
+</p>
+
+
+
+<p>
+or increasing detection while permanent remediation is prepared.
+</p>
+
+
+
+<p>
+This closes the false choice between:
+</p>
+
+
+
+<p>
+Patch immediately
+</p>
+
+
+
+<p>
+and
+</p>
+
+
+
+<p>
+Accept the risk.
+</p>
+
+
+
+<h3>3. BREAK THE PATH</h3>
+
+
+
+<p>
+This is the architectural option.
+</p>
+
+
+
+<p>
+Sometimes the highest-value intervention is not the vulnerability itself.
+</p>
+
+
+
+<p>
+It may be:
+</p>
+
+
+
+<p>
+removing a trust relationship,
+</p>
+
+
+
+<p>
+segmenting a management interface,
+</p>
+
+
+
+<p>
+changing privilege,
+</p>
+
+
+
+<p>
+isolating a tier,
+</p>
+
+
+
+<p>
+removing a shared credential,
+</p>
+
+
+
+<p>
+or controlling a choke point that several attack paths depend on.
+</p>
+
+
+
+<p>
+One architectural change can sometimes reduce the usefulness of several vulnerabilities at once.
+</p>
+
+
+
+<p>
+That is why vulnerability management should not operate separately from architecture.
+</p>
+
+
+
+<h3>4. PLANNED REMEDIATION / EXPLICIT TEMPORARY ACCEPTANCE</h3>
+
+
+
+<p>
+For genuinely constrained or lower-consequence exposure, immediate disruption may not be rational.
+</p>
+
+
+
+<p>
+But this still needs:
+</p>
+
+
+
+<p>
+an owner,
+</p>
+
+
+
+<p>
+a rationale,
+</p>
+
+
+
+<p>
+a target date,
+</p>
+
+
+
+<p>
+monitoring,
+</p>
+
+
+
+<p>
+and a trigger for reassessment.
+</p>
+
+
+
+<p>
+If exploitation becomes known?
+</p>
+
+
+
+<p>
+Reassess.
+</p>
+
+
+
+<p>
+If reachability changes?
+</p>
+
+
+
+<p>
+Reassess.
+</p>
+
+
+
+<p>
+If the system becomes business critical?
+</p>
+
+
+
+<p>
+Reassess.
+</p>
+
+
+
+<p>
+Risk acceptance should not be a permanent status.
+</p>
+
+
+
+<p>
+It should be a conditional decision.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+And one name should sit behind every decision
+</h2>
+
+
+
+<p>
+SCOPE helps determine which response fits.
+</p>
+
+
+
+<p>
+It does not tell us who is authorized to make the call.
+</p>
+
+
+
+<p>
+That comes from <a href="https://www.linkedin.com/posts/dr-arun-pillai-7537866_cybersecurity-ciso-vulnerabilitymanagement-ugcPost-7495711967698100224-4bo4/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAEuqK8BfFDDZ84bSZIGrABR4hCr7hFtc_o&amp;trk=article-ssr-frontend-pulse_little-text-block">Article 1</a>:
+</p>
+
+
+
+<p>
+technical ownership,
+</p>
+
+
+
+<p>
+business-service ownership,
+</p>
+
+
+
+<p>
+and residual-risk ownership.
+</p>
+
+
+
+<p>
+If the decision is:
+</p>
+
+
+
+<p>
+Temporarily accept.
+</p>
+
+
+
+<p>
+I want to know who accepted it.
+</p>
+
+
+
+<p>
+If the decision is:
+</p>
+
+
+
+<p>
+Patch now despite the outage risk.
+</p>
+
+
+
+<p>
+I want to know who accepted the operational consequence.
+</p>
+
+
+
+<p>
+If the decision is:
+</p>
+
+
+
+<p>
+Break this network path instead.
+</p>
+
+
+
+<p>
+I want to know who owns implementation and verification.
+</p>
+
+
+
+<p>
+A well-prioritized vulnerability without accountable ownership is still only a well-organized opinion.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Priority is not assigned once
+</h2>
+
+
+
+<p>
+Most programs set urgency when a finding is created.
+</p>
+
+
+
+<p>
+Then the clock starts.
+</p>
+
+
+
+<p>
+But context keeps moving.
+</p>
+
+
+
+<p>
+Day 1:
+</p>
+
+
+
+<p>
+No exploitation.
+</p>
+
+
+
+<p>
+Day 4:
+</p>
+
+
+
+<p>
+A proof of concept appears.
+</p>
+
+
+
+<p>
+Day 8:
+</p>
+
+
+
+<p>
+Threat activity increases.
+</p>
+
+
+
+<p>
+Day 12:
+</p>
+
+
+
+<p>
+The vulnerability enters KEV.
+</p>
+
+
+
+<p>
+Or the opposite happens.
+</p>
+
+
+
+<p>
+The service moves behind a new boundary.
+</p>
+
+
+
+<p>
+A vulnerable feature is disabled.
+</p>
+
+
+
+<p>
+A compensating control is validated.
+</p>
+
+
+
+<p>
+The application is scheduled for retirement.
+</p>
+
+
+
+<p>
+The CVSS score may not change.
+</p>
+
+
+
+<p>
+The enterprise priority can.
+</p>
+
+
+
+<p>
+Prioritization should therefore not be a one-time classification event.
+</p>
+
+
+
+<p>
+It should change when material evidence changes.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Static SLAs become uncomfortable in both directions
+</h2>
+
+
+
+<p>
+Policy says:
+</p>
+
+
+
+<p>
+Critical = 30 days.
+</p>
+
+
+
+<p>
+A Critical vulnerability becomes actively exploited on Day 3.
+</p>
+
+
+
+<p>
+Should the team still have another 27 days simply because the SLA allows it?
+</p>
+
+
+
+<p>
+Clearly not.
+</p>
+
+
+
+<p>
+Now reverse the situation.
+</p>
+
+
+
+<p>
+A Critical vulnerability sits on a tightly constrained system due to be retired in six weeks.
+</p>
+
+
+
+<p>
+Permanent remediation requires a risky production change.
+</p>
+
+
+
+<p>
+A validated control blocks the relevant attack path.
+</p>
+
+
+
+<p>
+Should leadership force the change on Day 30 purely to preserve the metric?
+</p>
+
+
+
+<p>
+Maybe.
+</p>
+
+
+
+<p>
+Maybe not.
+</p>
+
+
+
+<p>
+The point is not that SLAs are bad.
+</p>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<p>
+Decision first. Metric second.
+</p>
+
+
+
+<p>
+We will come back to that separately.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What I would ask my vulnerability team
+</h2>
+
+
+
+<p>
+If a dashboard shows me 1,000 Critical findings, my first question is not:
+</p>
+
+
+
+<p>
+“Why haven’t you fixed all 1,000?”
+</p>
+
+
+
+<p>
+I would ask:
+</p>
+
+
+
+<p>
+How many are known to be exploited?
+</p>
+
+
+
+<p>
+How many are externally reachable?
+</p>
+
+
+
+<p>
+How many affect critical business services?
+</p>
+
+
+
+<p>
+How many sit on viable attack paths toward high-value assets?
+</p>
+
+
+
+<p>
+Which systems are choke points shared by multiple paths?
+</p>
+
+
+
+<p>
+How many are constrained by controls we have actually tested?
+</p>
+
+
+
+<p>
+How many remain open because nobody owns them?
+</p>
+
+
+
+<p>
+How many cannot move without real operational impact?
+</p>
+
+
+
+<p>
+Now we have a management problem we can actually solve.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The Monday-morning exercise
+</h2>
+
+
+
+<p>
+Take your 20 highest-severity open findings.
+</p>
+
+
+
+<p>
+Do not change their CVSS scores.
+</p>
+
+
+
+<p>
+Add these columns:
+</p>
+
+
+
+<p>
+Current threat
+</p>
+
+
+
+<p>
+Business consequence
+</p>
+
+
+
+<p>
+Reachability
+</p>
+
+
+
+<p>
+Attack-path role
+</p>
+
+
+
+<p>
+Existing controls
+</p>
+
+
+
+<p>
+Owner
+</p>
+
+
+
+<p>
+Then re-rank them.
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/cvss-10-business-risk-4.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 4 - An illustrative result:
+</figcaption>
+</figure>
+
+
+
+<p>
+These are intentionally hypothetical examples.
+</p>
+
+
+
+<p>
+The point is the ordering.
+</p>
+
+
+
+<p>
+If your real ranking changes materially once threat, path and consequence are added, the organization has learned something important:
+</p>
+
+
+
+<p>
+Your vulnerability queue and your risk queue were never the same queue.
+</p>
+
+
+
+<p>
+The scanner was not wrong.
+</p>
+
+
+
+<p>
+It was answering a different question.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+AI will make this distinction non-optional
+</h2>
+
+
+
+<p>
+<a href="https://www.linkedin.com/posts/dr-arun-pillai-7537866_cybersecurity-ciso-vulnerabilitymanagement-ugcPost-7495711967698100224-4bo4/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAEuqK8BfFDDZ84bSZIGrABR4hCr7hFtc_o&amp;trk=article-ssr-frontend-pulse_little-text-block">Article 1</a> asked:
+</p>
+
+
+
+<p>
+What happens when AI finds vulnerabilities faster than organizations can fix them?
+</p>
+
+
+
+<p>
+Article 2 adds the second half:
+</p>
+
+
+
+<p>
+What happens when AI increases the number of credible findings?
+</p>
+
+
+
+<p>
+An enterprise facing:
+</p>
+
+
+
+<p>
+traditional scanner findings,
+</p>
+
+
+
+<p>
+SAST and SCA,
+</p>
+
+
+
+<p>
+cloud misconfiguration,
+</p>
+
+
+
+<p>
+attack-surface changes,
+</p>
+
+
+
+<p>
+new dependencies,
+</p>
+
+
+
+<p>
+AI-assisted code findings,
+</p>
+
+
+
+<p>
+and continuously changing threat intelligence
+</p>
+
+
+
+<p>
+cannot scale severity-only prioritization indefinitely.
+</p>
+
+
+
+<p>
+The vulnerability platform of the near future needs to become less like:
+</p>
+
+
+
+<p>
+a sorted inventory of weaknesses
+</p>
+
+
+
+<p>
+and more like:
+</p>
+
+
+
+<p>
+a continuously updated decision system.
+</p>
+
+
+
+<p>
+The harder AI problem may eventually stop being:
+</p>
+
+
+
+<p>
+“Can you find another vulnerability?”
+</p>
+
+
+
+<p>
+and become:
+</p>
+
+
+
+<p>
+“Can you explain why this vulnerability matters to this enterprise now, what it enables in the attack path, and which intervention is actually defensible?”
+</p>
+
+
+
+<p>
+Harder question.
+</p>
+
+
+
+<p>
+Much more valuable one.
+</p>
+
+
+<hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Five questions before I would approve the priority list
+</h2>
+
+
+
+<h3>1.</h3>
+
+
+
+<p>
+Are we ranking vulnerability severity—or enterprise exposure?
+</p>
+
+
+
+<h3>2.</h3>
+
+
+
+<p>
+Which findings have evidence of active or probable exploitation?
+</p>
+
+
+
+<h3>3.</h3>
+
+
+
+<p>
+Which are actually reachable in our architecture?
+</p>
+
+
+
+<h3>4.</h3>
+
+
+
+<p>
+Which sit on consequential attack paths or critical choke points?
+</p>
+
+
+
+<h3>5.</h3>
+
+
+
+<p>
+Which available intervention removes the most consequential exposure for the engineering effort and operational risk involved?
+</p>
+
+
+
+<p>
+That last question is where vulnerability management turns into leadership.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+My position
+</h2>
+
+
+
+<p>
+CVSS is valuable.
+</p>
+
+
+
+<p>
+So are EPSS, KEV, threat intelligence, reachability analysis, attack-path analysis and business context.
+</p>
+
+
+
+<p>
+The mistake is looking for any one of them to become the answer.
+</p>
+
+
+
+<p>
+There is no universal number that tells every company what to fix first.
+</p>
+
+
+
+<p>
+The enterprise still has to decide.
+</p>
+
+
+
+<p>
+So the objective is not to replace CVSS.
+</p>
+
+
+
+<p>
+It is to put CVSS back into its proper role:
+</p>
+
+
+
+<p>
+an important input into prioritization—not a substitute for prioritization.
+</p>
+
+
+
+<p>
+I would summarize Article 2 this way:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Severity describes the weakness.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Threat tells us whether adversaries care.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Architecture tells us what the weakness enables.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Business context tells us what success would cost us.
+</h2>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Leadership decides what happens next.
+</h2>
+
+
+
+<p>
+That is the distinction vulnerability management needs.
+</p>
+
+
+
+<h3>Monday-morning takeaway</h3>
+
+
+
+<p>
+Take your twenty highest-severity findings.
+</p>
+
+
+
+<p>
+Run them through:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+SCOPE
+</h2>
+
+
+
+<p>
+Severity
+</p>
+
+
+
+<p>
+Current Threat
+</p>
+
+
+
+<p>
+Organizational Consequence
+</p>
+
+
+
+<p>
+Path &amp; Reachability
+</p>
+
+
+
+<p>
+Existing Controls
+</p>
+
+
+
+<p>
+Then add one final question:
+</p>
+
+
+
+<p>
+Does this weakness sit on—or help create—a consequential attack path?
+</p>
+
+
+
+<p>
+Reorder the queue.
+</p>
+
+
+
+<p>
+Wherever the order changes, that is where your real vulnerability-management conversation should begin.
+</p>
+
+
+
+<h3>Next in the series</h3>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Patch Everything Is Not a Security Strategy
+</h2>
+
+
+
+<p>
+When should a CISO:
+</p>
+
+
+
+<p>
+patch,
+</p>
+
+
+
+<p>
+mitigate,
+</p>
+
+
+
+<p>
+break the attack path,
+</p>
+
+
+
+<p>
+isolate,
+</p>
+
+
+
+<p>
+replace,
+</p>
+
+
+
+<p>
+or consciously wait?
+</p>
+
+
+
+<p>
+And how do you create those options without turning risk acceptance into a loophole for permanent exposure?
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+References &amp; further reading
+</h2>
+
+
+
+<p>
+FIRST. Common Vulnerability Scoring System Version 4.0. <a href="https://www.first.org/cvss/v4.0/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/cvss/v4.0/</a>
+</p>
+
+
+
+<p>
+Jacobs, J., Romanosky, S., Edwards, B., Adjerid, I., &amp; Baker, W. (2021). Exploit Prediction Scoring System (EPSS). Digital Threats: Research and Practice, 2(3). <a href="https://doi.org/10.1145/3436242?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.1145/3436242</a>
+</p>
+
+
+
+<p>
+FIRST. Exploit Prediction Scoring System (EPSS). <a href="https://www.first.org/epss/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/epss/</a>
+</p>
+
+
+
+<p>
+Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/known-exploited-vulnerabilities-catalog</a>
+</p>
+
+
+
+<p>
+Allodi, L., &amp; Massacci, F. (2014). Comparing Vulnerability Severity and Exploits Using Case-Control Studies. ACM Transactions on Information and System Security, 17(1). <a href="https://doi.org/10.1145/2630069?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.1145/2630069</a>
+</p>
+
+
+
+<p>
+Bozorgi, M., Saul, L. K., Savage, S., &amp; Voelker, G. M. (2010). Beyond Heuristics: Learning to Classify Vulnerabilities and Predict Exploits. ACM SIGKDD. <a href="https://dl.acm.org/doi/10.1145/1835804.1835821?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/10.1145/1835804.1835821</a>
+</p>
+
+
+
+<p>
+Sabottke, C., Suciu, O., &amp; Dumitraș, T. (2015). Vulnerability Disclosure in the Age of Social Media: Exploiting Twitter for Predicting Real-World Exploits. USENIX Security Symposium. <a href="https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/sabottke?trk=article-ssr-frontend-pulse_little-text-block">https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/sabottke</a>
+</p>
+
+
+
+<p>
+Howland, H. (2023). CVSS: Ubiquitous and Broken. Digital Threats: Research and Practice. <a href="https://doi.org/10.1145/3491263?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.1145/3491263</a>
+</p>
+
+
+
+<p>
+Souppaya, M., &amp; Scarfone, K. (2022). Guide to Enterprise Patch Management Planning. NIST SP 800-40 Rev. 4. <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf?trk=article-ssr-frontend-pulse_little-text-block">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf</a>
+</p>
+
+
+
+<p>
+Shimizu, N., &amp; Hashimoto, M. (2026). Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization. IEEE Access, 14, 31407–31424.
+</p>
+
+
+
+<p>
+Baiardi, F. E. E., Sammartino, V., &amp; Ruggieri, S. (2026). Quantifying the Impact of CVSS Score Ordering on Attack Paths. <a href="https://arpi.unipi.it/handle/11568/1349767?trk=article-ssr-frontend-pulse_little-text-block">https://arpi.unipi.it/handle/11568/1349767</a>
+</p>
+
+ </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../finding-vulnerabilities-reducing-risk/">← Previous: We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../patch-everything-security-strategy/">Next: Patch Everything Is Not a Security Strategy →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>

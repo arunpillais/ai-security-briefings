@@ -1,0 +1,2605 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk? | Arun Pillai</title><meta name="description" content="The next vulnerability-management problem may not be discovery. It may be everything that happens after discovery. A few months ago, I thought I was going to write a research paper about AI-powered vulnerability discovery. I started looking backward "><link rel="canonical" href="https://www.linkedin.com/pulse/were-getting-better-finding-vulnerabilities-why-arent-dr-arun-pillai-qyjff"><meta property="og:title" content="We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?","datePublished":"2026-08-19T05:23:18.000+00:00","dateModified":"2026-08-20T09:35:48.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/were-getting-better-finding-vulnerabilities-why-arent-dr-arun-pillai-qyjff"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-19">2026-08-19</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/were-getting-better-finding-vulnerabilities-why-arent-dr-arun-pillai-qyjff" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../cvss-10-business-risk/">Next: CVSS 10 ≠ Business Risk 10 →</a></nav><article class="article-body">
+
+
+<h3>The next vulnerability-management problem may not be discovery. It may be everything that happens after discovery.</h3>
+
+
+
+<p>
+A few months ago, I thought I was going to write a research paper about AI-powered vulnerability discovery.
+</p>
+
+
+
+<p>
+I started looking backward before looking forward.
+</p>
+
+
+
+<p>
+How did we get from traditional vulnerability assessment and fuzzing to symbolic execution, machine-learning-assisted analysis, LLMs, and now security agents capable of using tools, reasoning about code, generating hypotheses, and attempting to validate what they find?
+</p>
+
+
+
+<p>
+The technology is fascinating.
+</p>
+
+
+
+<p>
+But while following that evolution, I found myself becoming more interested in a different question:
+</p>
+
+
+
+<p>
+What happens if we become dramatically better at finding vulnerabilities—but remain just as slow at fixing them?
+</p>
+
+
+
+<p>
+That question has stayed with me.
+</p>
+
+
+
+<p>
+Because most mature enterprises today do not suffer from a lack of ways to generate security findings.
+</p>
+
+
+
+<p>
+We have vulnerability scanners.
+</p>
+
+
+
+<p>
+SAST.
+</p>
+
+
+
+<p>
+DAST.
+</p>
+
+
+
+<p>
+Software composition analysis.
+</p>
+
+
+
+<p>
+Container scanning.
+</p>
+
+
+
+<p>
+Cloud-security platforms.
+</p>
+
+
+
+<p>
+Penetration testing.
+</p>
+
+
+
+<p>
+Bug bounty programs.
+</p>
+
+
+
+<p>
+External attack-surface management.
+</p>
+
+
+
+<p>
+Threat intelligence.
+</p>
+
+
+
+<p>
+And increasingly, AI-assisted security analysis.
+</p>
+
+
+
+<p>
+A 2026 IEEE survey of LLM-based cybersecurity agents describes research spanning source-code auditing, fuzzing, penetration testing, vulnerability hypothesis formation and verification.[1]
+</p>
+
+
+
+<p>
+Another recent review specifically examines how generative and learning models are beginning to influence vulnerability-management workflows.[2]
+</p>
+
+
+
+<p>
+So the direction of travel is fairly clear:
+</p>
+
+
+
+<p>
+our capacity to discover weakness is expanding.
+</p>
+
+
+
+<p>
+Yet one sentence remains remarkably familiar inside large organizations:
+</p>
+
+
+
+<p>
+“We found this months ago. Why is it still open?”
+</p>
+
+
+
+<p>
+That, to me, is where the more interesting vulnerability-management problem begins.
+</p>
+
+
+
+<h3>We may have misunderstood the bottleneck</h3>
+
+
+
+<p>
+There is an assumption buried inside many security programs:
+</p>
+
+
+
+<p>
+better discovery = better security.
+</p>
+
+
+
+<p>
+Not necessarily.
+</p>
+
+
+
+<p>
+Better discovery gives us better knowledge of weakness.
+</p>
+
+
+
+<p>
+Something else has to convert that knowledge into actual risk reduction.
+</p>
+
+
+
+<p>
+That “something else” includes:
+</p>
+
+
+
+<p>
+·       ownership;
+</p>
+
+
+
+<p>
+·       prioritization;
+</p>
+
+
+
+<p>
+·       engineering capacity;
+</p>
+
+
+
+<p>
+·       architecture;
+</p>
+
+
+
+<p>
+·       incentives;
+</p>
+
+
+
+<p>
+·       change windows;
+</p>
+
+
+
+<p>
+·       business criticality;
+</p>
+
+
+
+<p>
+·       governance;
+</p>
+
+
+
+<p>
+·       and executive decisions.
+</p>
+
+
+
+<p>
+The scanner can tell you that a condition exists.
+</p>
+
+
+
+<p>
+It cannot make the organization care.
+</p>
+
+
+
+<p>
+It cannot assign business ownership.
+</p>
+
+
+
+<p>
+It cannot create an engineering window.
+</p>
+
+
+
+<p>
+It cannot decide whether taking a system offline is safer than leaving the vulnerability temporarily exposed.
+</p>
+
+
+
+<p>
+It cannot decide whether an exception is reasonable.
+</p>
+
+
+
+<p>
+Those are organizational decisions.
+</p>
+
+
+
+<p>
+And increasingly, I think this distinction matters more than the sophistication of the scanner.
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/finding-vulnerabilities-reducing-risk-0.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 1 - The Exposure Gap
+</figcaption>
+</figure>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+The stack changed. Did vulnerability management?
+</h2>
+
+
+
+<p>
+The modern product stack is not simply “our code running on our servers.”
+</p>
+
+
+
+<p>
+A product might include:
+</p>
+
+
+
+<p>
+proprietary code,
+</p>
+
+
+
+<p>
+open-source packages,
+</p>
+
+
+
+<p>
+commercial libraries,
+</p>
+
+
+
+<p>
+container images,
+</p>
+
+
+
+<p>
+cloud services,
+</p>
+
+
+
+<p>
+managed databases,
+</p>
+
+
+
+<p>
+third-party APIs,
+</p>
+
+
+
+<p>
+infrastructure-as-code,
+</p>
+
+
+
+<p>
+identity platforms,
+</p>
+
+
+
+<p>
+and components maintained by different engineering teams.
+</p>
+
+
+
+<p>
+Then companies acquire other companies.
+</p>
+
+
+
+<p>
+Now vulnerability management gets even more interesting.
+</p>
+
+
+
+<p>
+An acquisition does not merely inherit revenue, people and technology.
+</p>
+
+
+
+<p>
+It can inherit:
+</p>
+
+
+
+<p>
+·       architectural decisions;
+</p>
+
+
+
+<p>
+·       technical debt;
+</p>
+
+
+
+<p>
+·       unsupported components;
+</p>
+
+
+
+<p>
+·       open-source dependencies;
+</p>
+
+
+
+<p>
+·       release practices;
+</p>
+
+
+
+<p>
+·       legacy platforms;
+</p>
+
+
+
+<p>
+·       engineering culture;
+</p>
+
+
+
+<p>
+·       security maturity;
+</p>
+
+
+
+<p>
+·       and a completely different philosophy about acceptable technology risk.
+</p>
+
+
+
+<p>
+This is something I have seen in practice.
+</p>
+
+
+
+<p>
+You can place the same vulnerability-management platform across two organizations.
+</p>
+
+
+
+<p>
+Apply the same severity categories.
+</p>
+
+
+
+<p>
+The same policy.
+</p>
+
+
+
+<p>
+The same remediation expectations.
+</p>
+
+
+
+<p>
+And get completely different outcomes.
+</p>
+
+
+
+<p>
+One team considers a security defect part of normal engineering quality.
+</p>
+
+
+
+<p>
+Another sees it as a ticket created by the security team.
+</p>
+
+
+
+<p>
+One releases continuously.
+</p>
+
+
+
+<p>
+Another needs multiple approvals before touching production.
+</p>
+
+
+
+<p>
+One has clear application ownership.
+</p>
+
+
+
+<p>
+Another has technology that survived several organizational changes while ownership quietly disappeared.
+</p>
+
+
+
+<p>
+The scanner sees the same vulnerability.
+</p>
+
+
+
+<p>
+The organization does not experience the same remediation problem.
+</p>
+
+
+
+<p>
+That leads me to one of the principles behind this series:
+</p>
+
+
+
+<p>
+The finding can be standardized. The ability to act on it cannot be assumed.
+</p>
+
+
+
+<p>
+And therefore:
+</p>
+
+
+
+<p>
+Standardizing vulnerability discovery is considerably easier than standardizing accountability and action.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+A scanner cannot create ownership
+</h2>
+
+
+
+<p>
+Consider a scenario that will be familiar to many security leaders.
+</p>
+
+
+
+<p>
+Security identifies an important vulnerability.
+</p>
+
+
+
+<p>
+It is validated.
+</p>
+
+
+
+<p>
+A ticket is created.
+</p>
+
+
+
+<p>
+The application team says the component belongs to the platform team.
+</p>
+
+
+
+<p>
+The platform team says it came from a vendor.
+</p>
+
+
+
+<p>
+The vendor says remediation requires an upgrade.
+</p>
+
+
+
+<p>
+Operations says the upgrade needs downtime.
+</p>
+
+
+
+<p>
+The business says downtime is not acceptable this quarter.
+</p>
+
+
+
+<p>
+Someone eventually creates a risk exception.
+</p>
+
+
+
+<p>
+Three months later, the vulnerability remains.
+</p>
+
+
+
+<p>
+Look carefully at what happened.
+</p>
+
+
+
+<p>
+The scanner worked.
+</p>
+
+
+
+<p>
+The ticketing integration worked.
+</p>
+
+
+
+<p>
+The SLA measured the issue.
+</p>
+
+
+
+<p>
+The dashboard reported it.
+</p>
+
+
+
+<p>
+The process may even show the correct status.
+</p>
+
+
+
+<p>
+Yet the exposure remains.
+</p>
+
+
+
+<p>
+That is not primarily a vulnerability-detection failure.
+</p>
+
+
+
+<p>
+It is an operating-model failure.
+</p>
+
+
+
+<p>
+Which leads me to another principle:
+</p>
+
+
+
+<p>
+A vulnerability without an accountable owner is not being managed. It is being observed.
+</p>
+
+
+
+<p>
+And “owner” needs more precision than we sometimes give it.
+</p>
+
+
+
+<p>
+For a consequential exposure, I want to know:
+</p>
+
+
+
+<h3>Who owns the technology?</h3>
+
+
+
+<p>
+Who understands the system and can change it?
+</p>
+
+
+
+<h3>Who can execute the remediation?</h3>
+
+
+
+<p>
+That may be a platform, engineering or vendor team.
+</p>
+
+
+
+<h3>Who owns the affected business service?</h3>
+
+
+
+<p>
+Because remediation itself may create business consequences.
+</p>
+
+
+
+<h3>Who has authority to accept the residual risk?</h3>
+
+
+
+<p>
+Because security should not silently inherit ownership of every risk it discovers.
+</p>
+
+
+
+<p>
+Those might be four different people.
+</p>
+
+
+
+<p>
+That is not necessarily a problem.
+</p>
+
+
+
+<p>
+The problem is when nobody can name them.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Executive attention changes behaviour
+</h2>
+
+
+
+<p>
+Almost every organization already has a policy telling people to fix vulnerabilities.
+</p>
+
+
+
+<p>
+So why do serious findings remain open?
+</p>
+
+
+
+<p>
+Because vulnerability remediation competes against other objectives.
+</p>
+
+
+
+<p>
+Engineering is measured on delivery.
+</p>
+
+
+
+<p>
+Operations is measured on availability.
+</p>
+
+
+
+<p>
+Product is measured on roadmap.
+</p>
+
+
+
+<p>
+Commercial teams are measured on growth.
+</p>
+
+
+
+<p>
+Then security arrives asking for another priority.
+</p>
+
+
+
+<p>
+What wins?
+</p>
+
+
+
+<p>
+Usually, what the organization has made important.
+</p>
+
+
+
+<p>
+Compare these two statements:
+</p>
+
+
+
+<p>
+“Policy requires Critical vulnerabilities to be remediated within 30 days.”
+</p>
+
+
+
+<p>
+and:
+</p>
+
+
+
+<p>
+“Reducing material cyber exposure is an enterprise objective. Leaders responsible for systems creating material exposure are accountable for reducing it, and unresolved material risk is reviewed through normal management governance.”
+</p>
+
+
+
+<p>
+They may address the same vulnerabilities.
+</p>
+
+
+
+<p>
+But they create very different management conversations.
+</p>
+
+
+
+<p>
+This does not mean tying executive compensation directly to raw vulnerability counts.
+</p>
+
+
+
+<p>
+I would avoid doing that.
+</p>
+
+
+
+<p>
+It creates obvious incentives to optimize the number instead of the risk:
+</p>
+
+
+
+<p>
+close easy findings;
+</p>
+
+
+
+<p>
+argue classifications;
+</p>
+
+
+
+<p>
+exclude difficult assets;
+</p>
+
+
+
+<p>
+rush unsafe changes;
+</p>
+
+
+
+<p>
+or spend scarce engineering capacity on issues that improve the metric but barely change exposure.
+</p>
+
+
+
+<p>
+The better leadership question is:
+</p>
+
+
+
+<p>
+Have we made the people who control the risk outcome accountable for the outcome—not merely informed about it?
+</p>
+
+
+
+<p>
+Accountability without authority does not work.
+</p>
+
+
+
+<p>
+Authority without accountability is equally dangerous.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+“Fix every Critical” sounds good. It still isn’t a strategy.
+</h2>
+
+
+
+<p>
+This is usually where someone says:
+</p>
+
+
+
+<p>
+“Enough complexity. Fix all Critical vulnerabilities.”
+</p>
+
+
+
+<p>
+I understand the instinct.
+</p>
+
+
+
+<p>
+It is simple.
+</p>
+
+
+
+<p>
+It is measurable.
+</p>
+
+
+
+<p>
+And sometimes it is exactly the right instruction.
+</p>
+
+
+
+<p>
+But as an enterprise operating model, it is incomplete.
+</p>
+
+
+
+<p>
+CVSS provides a standardized way to communicate characteristics associated with vulnerability severity.
+</p>
+
+
+
+<p>
+Importantly, FIRST’s CVSS v4.0 guidance explicitly reinforces that CVSS should not be reduced to the Base score alone.[3]
+</p>
+
+
+
+<p>
+That is worth paying attention to.
+</p>
+
+
+
+<p>
+Exploit likelihood is a different question.
+</p>
+
+
+
+<p>
+EPSS was developed to estimate the probability that a published vulnerability will be exploited in the wild.[4]
+</p>
+
+
+
+<p>
+Known exploitation is different again.
+</p>
+
+
+
+<p>
+CISA’s Known Exploited Vulnerabilities catalog identifies vulnerabilities for which there is evidence of exploitation and is intended to support prioritization.[5]
+</p>
+
+
+
+<p>
+Research predating both today’s AI systems and many modern exposure products also demonstrated that vulnerability severity and observed exploitation should not simply be treated as the same thing.[6]
+</p>
+
+
+
+<p>
+And none of those signals, by themselves, can tell you everything about your organization.
+</p>
+
+
+
+<p>
+They do not completely answer:
+</p>
+
+
+
+<p>
+Is the vulnerable condition reachable in our deployment?
+</p>
+
+
+
+<p>
+Is the asset externally exposed?
+</p>
+
+
+
+<p>
+What authentication is required?
+</p>
+
+
+
+<p>
+What privilege could exploitation provide?
+</p>
+
+
+
+<p>
+What other weaknesses could it be chained with?
+</p>
+
+
+
+<p>
+What business process depends on this service?
+</p>
+
+
+
+<p>
+What compensating controls exist?
+</p>
+
+
+
+<p>
+What happens if we patch it tomorrow and break production?
+</p>
+
+
+
+<p>
+Those are enterprise-context questions.
+</p>
+
+
+
+<p>
+So I find this distinction useful:
+</p>
+
+
+
+<p>
+Severity is not threat.
+</p>
+
+
+
+<p>
+Threat is not exposure.
+</p>
+
+
+
+<p>
+Exposure is not business impact.
+</p>
+
+
+
+<p>
+And therefore:
+</p>
+
+
+
+<p>
+Vulnerability priority should not be treated as a synonym for vulnerability severity.
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/finding-vulnerabilities-reducing-risk-1.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 2 - No single score substitutes for enterprise context and accountable judgment.
+</figcaption>
+</figure>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Vulnerability management as a decision system
+</h2>
+
+
+
+<p>
+NIST’s enterprise patch-management guidance describes patching as a lifecycle that includes identifying, prioritizing, acquiring, installing and verifying patches and updates.[7]
+</p>
+
+
+
+<p>
+For the broader vulnerability-management problem, I use an intentionally simple model:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+FIND → OWN → DECIDE → ACT → VERIFY
+</h2>
+
+
+
+<p>
+I expect to use this model repeatedly throughout this series.
+</p>
+
+
+
+<p>
+Not because cybersecurity needs another acronym.
+</p>
+
+
+
+<p>
+Because each stage exposes a different kind of organizational failure.
+</p>
+
+
+
+<h3>FIND</h3>
+
+
+
+<p>
+Can we reliably identify the relevant weakness?
+</p>
+
+
+
+<p>
+Infrastructure.
+</p>
+
+
+
+<p>
+Applications.
+</p>
+
+
+
+<p>
+Open-source dependencies.
+</p>
+
+
+
+<p>
+Containers.
+</p>
+
+
+
+<p>
+Cloud.
+</p>
+
+
+
+<p>
+APIs.
+</p>
+
+
+
+<p>
+External services.
+</p>
+
+
+
+<p>
+And increasingly, weaknesses surfaced through AI-assisted analysis.
+</p>
+
+
+
+<p>
+Discovery remains essential.
+</p>
+
+
+
+<p>
+But discovery is only admission into the process.
+</p>
+
+
+
+<h3>OWN</h3>
+
+
+
+<p>
+Who is accountable for what happens next?
+</p>
+
+
+
+<p>
+Not a queue.
+</p>
+
+
+
+<p>
+Not a mailbox.
+</p>
+
+
+
+<p>
+Not “Technology.”
+</p>
+
+
+
+<p>
+Not “Engineering.”
+</p>
+
+
+
+<p>
+An accountable role.
+</p>
+
+
+
+<p>
+A materially important asset with no meaningful owner already represents a governance problem—even before we discuss its vulnerabilities.
+</p>
+
+
+
+<h3>DECIDE</h3>
+
+
+
+<p>
+What should actually happen?
+</p>
+
+
+
+<p>
+This requires context.
+</p>
+
+
+
+<p>
+At minimum, I want to understand:
+</p>
+
+
+
+<p>
+·       severity;
+</p>
+
+
+
+<p>
+·       exploitation evidence;
+</p>
+
+
+
+<p>
+·       likelihood;
+</p>
+
+
+
+<p>
+·       reachability;
+</p>
+
+
+
+<p>
+·       business criticality;
+</p>
+
+
+
+<p>
+·       attack-path context;
+</p>
+
+
+
+<p>
+·       compensating controls;
+</p>
+
+
+
+<p>
+·       remediation complexity;
+</p>
+
+
+
+<p>
+·       and operational consequence.
+</p>
+
+
+
+<p>
+Recent vulnerability-management research continues to examine ways of combining contextual signals instead of relying on static severity alone.[8]
+</p>
+
+
+
+<h3>ACT</h3>
+
+
+
+<p>
+Patching is one intervention.
+</p>
+
+
+
+<p>
+It is not the entire remediation vocabulary.
+</p>
+
+
+
+<p>
+Depending on the situation, an organization may:
+</p>
+
+
+
+<p>
+patch;
+</p>
+
+
+
+<p>
+upgrade;
+</p>
+
+
+
+<p>
+reconfigure;
+</p>
+
+
+
+<p>
+disable functionality;
+</p>
+
+
+
+<p>
+restrict network access;
+</p>
+
+
+
+<p>
+reduce privilege;
+</p>
+
+
+
+<p>
+segment or isolate;
+</p>
+
+
+
+<p>
+replace the technology;
+</p>
+
+
+
+<p>
+apply a compensating control;
+</p>
+
+
+
+<p>
+or, in defined circumstances,
+</p>
+
+
+
+<p>
+temporarily accept the residual risk.
+</p>
+
+
+
+<p>
+The important word is temporarily.
+</p>
+
+
+
+<p>
+Risk acceptance should be a decision.
+</p>
+
+
+
+<p>
+Not simply the final resting place of an old vulnerability ticket.
+</p>
+
+
+
+<h3>VERIFY</h3>
+
+
+
+<p>
+This is where administrative success and security success can diverge.
+</p>
+
+
+
+<p>
+A ticket marked:
+</p>
+
+
+
+<p>
+CLOSED
+</p>
+
+
+
+<p>
+proves that the workflow changed state.
+</p>
+
+
+
+<p>
+It does not necessarily prove that the exposure disappeared.
+</p>
+
+
+
+<p>
+Did the patch actually reach production?
+</p>
+
+
+
+<p>
+Did the vulnerable component disappear?
+</p>
+
+
+
+<p>
+Was the container rebuilt from the same vulnerable image next week?
+</p>
+
+
+
+<p>
+Did configuration drift restore the condition?
+</p>
+
+
+
+<p>
+Did a compensating control actually break the attack path?
+</p>
+
+
+
+<p>
+Did we fix one server while leaving the flawed deployment pipeline untouched?
+</p>
+
+
+
+<p>
+This is why:
+</p>
+
+
+
+<p>
+Ticket closure is not the outcome. Verified exposure reduction is the outcome.
+</p>
+
+
+
+<p>
+<br/>
+</p>
+
+
+
+<figure>
+<img alt="Article content" loading="lazy" src="../../assets/articles/finding-vulnerabilities-reducing-risk-2.webp"/>
+<figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
+Figure 3 - Vulnerability Decision Management
+</figcaption>
+</figure>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+When remediation stalls, diagnose the bottleneck before buying another tool
+</h2>
+
+
+
+<p>
+One of the reasons vulnerability-management programs become expensive is that organizations apply the same response to very different problems.
+</p>
+
+
+
+<p>
+A more useful diagnostic looks like this.
+</p>
+
+
+
+<h3>Nothing is moving because nobody owns it</h3>
+
+
+
+<p>
+You have an ownership problem.
+</p>
+
+
+
+<p>
+Response: establish accountable technical, service and residual-risk ownership.
+</p>
+
+
+
+<h3>Everyone agrees—but nothing happens</h3>
+
+
+
+<p>
+You probably have a priority or incentive problem.
+</p>
+
+
+
+<p>
+Response: move material exposure into normal technology and business governance instead of managing it only inside the security function.
+</p>
+
+
+
+<h3>Everything is Critical</h3>
+
+
+
+<p>
+You have a prioritization problem.
+</p>
+
+
+
+<p>
+Response: bring in exploitation evidence, reachability, architecture and business consequence.
+</p>
+
+
+
+<h3>Engineering says the patch is too risky</h3>
+
+
+
+<p>
+You have an operational or architectural problem.
+</p>
+
+
+
+<p>
+Response: compare patching honestly against isolation, restriction, mitigation, upgrade or replacement.
+</p>
+
+
+
+<p>
+The answer may still be “patch immediately.”
+</p>
+
+
+
+<p>
+But now it is a decision rather than a reflex.
+</p>
+
+
+
+<h3>An acquired company cannot meet the parent company’s process</h3>
+
+
+
+<p>
+You may have an integration problem, not simply a compliance problem.
+</p>
+
+
+
+<p>
+Response: establish minimum security outcomes first.
+</p>
+
+
+
+<p>
+Know the critical assets.
+</p>
+
+
+
+<p>
+Know the exposure.
+</p>
+
+
+
+<p>
+Know ownership.
+</p>
+
+
+
+<p>
+Know escalation authority.
+</p>
+
+
+
+<p>
+Know what risk cannot be accepted locally.
+</p>
+
+
+
+<p>
+Then mature implementation.
+</p>
+
+
+
+<p>
+Trying to force identical processes across completely different technology cultures can produce compliance theatre without equivalent risk reduction.
+</p>
+
+
+
+<h3>The same vulnerabilities keep returning</h3>
+
+
+
+<p>
+You have a root-cause problem.
+</p>
+
+
+
+<p>
+Response: stop fixing individual manifestations.
+</p>
+
+
+
+<p>
+Fix the base image.
+</p>
+
+
+
+<p>
+The dependency.
+</p>
+
+
+
+<p>
+The deployment pipeline.
+</p>
+
+
+
+<p>
+The golden image.
+</p>
+
+
+
+<p>
+The platform configuration.
+</p>
+
+
+
+<p>
+The engineering pattern.
+</p>
+
+
+
+<p>
+This is where vulnerability management starts becoming architecture.
+</p>
+
+
+
+<h3>Exceptions never disappear</h3>
+
+
+
+<p>
+You have a risk-governance problem.
+</p>
+
+
+
+<p>
+Response: every material exception should have:
+</p>
+
+
+
+<p>
+an owner,
+</p>
+
+
+
+<p>
+an expiry,
+</p>
+
+
+
+<p>
+a rationale,
+</p>
+
+
+
+<p>
+a compensating-control expectation,
+</p>
+
+
+
+<p>
+and conditions that force reassessment.
+</p>
+
+
+
+<p>
+I increasingly think of this as a risk-acceptance half-life:
+</p>
+
+
+
+<p>
+the older the exception becomes, the less comfortable we should be assuming that its original threat, architecture and business assumptions are still valid.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+What should a CISO measure instead?
+</h2>
+
+
+
+<p>
+I would not stop measuring vulnerability counts.
+</p>
+
+
+
+<p>
+They remain useful operational information.
+</p>
+
+
+
+<p>
+But I would stop pretending the count alone tells me whether the organization is becoming safer.
+</p>
+
+
+
+<p>
+I would want to see at least these questions answered.
+</p>
+
+
+
+<h3>1. What are our materially consequential exposures?</h3>
+
+
+
+<p>
+Not merely the highest scanner scores.
+</p>
+
+
+
+<h3>2. How many have accountable owners?</h3>
+
+
+
+<p>
+Technical owner.
+</p>
+
+
+
+<p>
+Service owner.
+</p>
+
+
+
+<p>
+Residual-risk owner.
+</p>
+
+
+
+<h3>3. How quickly do we reach a decision?</h3>
+
+
+
+<p>
+There is a meaningful difference between:
+</p>
+
+
+
+<p>
+“It took us 60 days to decide what to do.”
+</p>
+
+
+
+<p>
+and:
+</p>
+
+
+
+<p>
+“We decided on Day 2, implemented a mitigation on Day 3, and scheduled the permanent change for Day 60 because of validated operational constraints.”
+</p>
+
+
+
+<p>
+The ticket age may look similar.
+</p>
+
+
+
+<p>
+The risk-management maturity is not.
+</p>
+
+
+
+<h3>4. How long does material exposure remain present?</h3>
+
+
+
+<p>
+I care about exposure age, not simply ticket age.
+</p>
+
+
+
+<h3>5. Where do exceptions concentrate?</h3>
+
+
+
+<p>
+If one technology, product, platform or business unit creates repeated exceptions, the dashboard may be telling us something architectural.
+</p>
+
+
+
+<h3>6. What keeps recurring?</h3>
+
+
+
+<p>
+If a vulnerability class repeatedly returns, the organization may be treating symptoms.
+</p>
+
+
+
+<h3>7. Are we removing consequential exposure faster than we create it?</h3>
+
+
+
+<p>
+This is a leadership concept I want to explore further in this series.
+</p>
+
+
+
+<p>
+I call it:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Exposure Velocity
+</h2>
+
+
+
+<p>
+It is not an established industry metric.
+</p>
+
+
+
+<p>
+It is a proposed management lens.
+</p>
+
+
+
+<p>
+Conceptually:
+</p>
+
+
+
+<p>
+Exposure Removal Velocity &gt; Exposure Creation Velocity
+</p>
+
+
+
+<p>
+If that is not true over time, a program may close thousands of findings while its underlying risk position continues to deteriorate.
+</p>
+
+
+
+<p>
+That is a conversation worth having with executives.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+And this brings me back to AI
+</h2>
+
+
+
+<p>
+This was the research question that started everything.
+</p>
+
+
+
+<p>
+Where is AI taking vulnerability discovery?
+</p>
+
+
+
+<p>
+Current research does not justify claiming that autonomous AI has “solved” vulnerability discovery.
+</p>
+
+
+
+<p>
+Far from it.
+</p>
+
+
+
+<p>
+Recent surveys still identify issues including hallucination, context limitations, cost, evaluation quality and the need for verification.[1]
+</p>
+
+
+
+<p>
+Earlier machine-learning research also demonstrated how vulnerability-detection results can be distorted by dataset design and experimental methodology.[9]
+</p>
+
+
+
+<p>
+So this deserves healthy skepticism.
+</p>
+
+
+
+<p>
+But the trajectory is important.
+</p>
+
+
+
+<p>
+AI systems are becoming more capable of:
+</p>
+
+
+
+<p>
+reading large amounts of code;
+</p>
+
+
+
+<p>
+using security tools;
+</p>
+
+
+
+<p>
+generating test cases;
+</p>
+
+
+
+<p>
+reasoning across execution feedback;
+</p>
+
+
+
+<p>
+forming vulnerability hypotheses;
+</p>
+
+
+
+<p>
+and helping verify findings.
+</p>
+
+
+
+<p>
+Even if those capabilities improve gradually rather than exponentially, the management implication is still important.
+</p>
+
+
+
+<p>
+Imagine discovery capacity doubles.
+</p>
+
+
+
+<p>
+Now imagine remediation capacity does not.
+</p>
+
+
+
+<p>
+Ownership stays unclear.
+</p>
+
+
+
+<p>
+Engineering capacity stays constrained.
+</p>
+
+
+
+<p>
+Prioritization remains primarily severity-driven.
+</p>
+
+
+
+<p>
+Exceptions remain permanent.
+</p>
+
+
+
+<p>
+And leadership continues measuring ticket closure.
+</p>
+
+
+
+<p>
+We have not solved vulnerability management.
+</p>
+
+
+
+<p>
+We have simply created a more efficient mechanism for discovering the size of the problem.
+</p>
+
+
+
+<p>
+Which leads me to the hypothesis behind this series:
+</p>
+
+
+
+<p>
+The scarce resource in vulnerability management may increasingly shift from discovery capability to organizational capacity to make and execute good risk decisions.
+</p>
+
+
+
+<p>
+That is not primarily a scanner problem.
+</p>
+
+
+
+<p>
+It is a leadership problem.
+</p>
+
+
+
+<p>
+And increasingly, an architecture problem.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Five questions I would ask Monday morning
+</h2>
+
+
+
+<p>
+If I were reviewing a vulnerability-management program tomorrow, I would not begin with:
+</p>
+
+
+
+<p>
+“How many Critical vulnerabilities do we have?”
+</p>
+
+
+
+<p>
+I would ask:
+</p>
+
+
+
+<h3>1. Show me the ten exposures that could create the greatest plausible business consequence—not simply the ten highest CVSS scores.</h3>
+
+
+
+<h3>2. For each one, show me the technical owner, service owner and person authorized to own the residual risk.</h3>
+
+
+
+<h3>3.For every one that remains unresolved, tell me exactly why. No owner?No patch? No capacity? Vendor dependency? Architecture? Operational consequence? Business decision?</h3>
+
+
+
+<p>
+Each answer implies a different intervention.
+</p>
+
+
+
+<h3>4. If we cannot patch it tomorrow, what are our real alternatives? Can we isolate? Restrict? Reconfigure? Reduce privilege? Disable functionality? Upgrade?Replace?</h3>
+
+
+
+<h3>5.Show me evidence—not a workflow status—that the exposures reported as remediated are actually gone.</h3>
+
+
+
+<p>
+Those five answers would tell me more about the maturity of a vulnerability-management program than another dashboard filled with red, amber and green numbers.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+Why I am writing this series
+</h2>
+
+
+
+<p>
+I don’t want to produce another sequence of:
+</p>
+
+
+
+<p>
+“10 Vulnerability-Management Best Practices.”
+</p>
+
+
+
+<p>
+There are enough of those.
+</p>
+
+
+
+<p>
+I want to work through the decisions security and technology leaders actually face when the textbook answer meets enterprise reality.
+</p>
+
+
+
+<p>
+When should a Critical vulnerability not be first in the queue?
+</p>
+
+
+
+<p>
+Who really owns vulnerability risk when five teams touch the same system?
+</p>
+
+
+
+<p>
+Should remediation influence executive performance objectives?
+</p>
+
+
+
+<p>
+How do we do that without creating destructive incentives?
+</p>
+
+
+
+<p>
+What happens when the acquired company’s technology and culture cannot meet the parent company’s standard?
+</p>
+
+
+
+<p>
+When does a temporary exception become permanent unmanaged debt?
+</p>
+
+
+
+<p>
+Should attack paths matter more than vulnerability counts?
+</p>
+
+
+
+<p>
+When is a compensating control genuinely good enough?
+</p>
+
+
+
+<p>
+What should the board see on one slide?
+</p>
+
+
+
+<p>
+What should the CISO stop measuring?
+</p>
+
+
+
+<p>
+And eventually:
+</p>
+
+
+
+<p>
+What happens when machines can discover weaknesses faster than organizations can decide what to do with them?
+</p>
+
+
+
+<p>
+A product company in India, a SaaS provider in the United States, a digital enterprise in the UAE and a global industrial organization will not answer every one of those questions identically.
+</p>
+
+
+
+<p>
+They should not.
+</p>
+
+
+
+<p>
+Their architecture differs.
+</p>
+
+
+
+<p>
+Their regulatory environment differs.
+</p>
+
+
+
+<p>
+Their operational constraints differ.
+</p>
+
+
+
+<p>
+Their business consequences differ.
+</p>
+
+
+
+<p>
+What should remain consistent is the quality of the decision.
+</p>
+
+
+
+<p>
+The standard I want this series to hold is therefore not:
+</p>
+
+
+
+<p>
+“Did we follow the vulnerability-management process?”
+</p>
+
+
+
+<p>
+It is:
+</p>
+
+
+
+<p>
+“Given what we knew about the threat, architecture, business consequence, existing controls and available options, did we make a defensible decision—and can we demonstrate that it actually reduced risk?”
+</p>
+
+
+
+<p>
+That is where I believe vulnerability management needs to go.
+</p>
+
+
+
+<p>
+Not:
+</p>
+
+
+
+<p>
+more findings → more tickets.
+</p>
+
+
+
+<p>
+But:
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+FIND → OWN → DECIDE → ACT → VERIFY
+</h2>
+
+
+
+<p>
+From vulnerability discovery to accountable, verified risk reduction.
+</p>
+
+
+
+<p>
+That is where this series begins.
+</p>
+
+
+
+<h3>Next in the series</h3>
+
+
+
+<h3>CVSS 10 ≠ Business Risk 10</h3>
+
+
+
+<p>
+Why severity, exploitability, reachability and business consequence are different questions—and the prioritization framework I would actually put in front of a CISO.
+</p>
+
+
+
+<h2 data-test-id="pulse-publishing-h1">
+References and evidence base
+</h2>
+
+
+
+<p>
+[1] Addis, R., Porter, K., Ryan, J., Stull, M., Xu, S., et al. (2026). LLM-Based Intelligent Agents for Cybersecurity: A Tutorial and Survey of Automated Vulnerability Discovery. IEEE. <a href="https://ieeexplore.ieee.org/abstract/document/11580353/?trk=article-ssr-frontend-pulse_little-text-block">IEEE Xplore</a>
+</p>
+
+
+
+<p>
+[2] Siewruk, G., &amp; Berej, M. (2026). Transformation of Vulnerability Management through Artificial Intelligence: An Overview of Generative and Learning Models. IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11393471/?trk=article-ssr-frontend-pulse_little-text-block">IEEE Xplore</a>
+</p>
+
+
+
+<p>
+[3] FIRST. Common Vulnerability Scoring System Version 4.0. FIRST explicitly notes that CVSS should not be considered only through its Base score. <a href="https://www.first.org/cvss/v4.0/?trk=article-ssr-frontend-pulse_little-text-block">FIRST CVSS v4.0</a>
+</p>
+
+
+
+<p>
+[4] Jacobs, J., Romanosky, S., Edwards, B., Adjerid, I., &amp; Baker, W. (2021). Exploit Prediction Scoring System (EPSS). Digital Threats: Research and Practice, 2(3). <a href="https://doi.org/10.1145/3436242?trk=article-ssr-frontend-pulse_little-text-block">DOI</a>
+</p>
+
+
+
+<p>
+[5] Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">CISA KEV</a>
+</p>
+
+
+
+<p>
+[6] Allodi, L., &amp; Massacci, F. (2014). Comparing Vulnerability Severity and Exploits Using Case-Control Studies. ACM Transactions on Information and System Security, 17(1). <a href="https://doi.org/10.1145/2630069?trk=article-ssr-frontend-pulse_little-text-block">DOI</a>
+</p>
+
+
+
+<p>
+[7] Souppaya, M., &amp; Scarfone, K. (2022). Guide to Enterprise Patch Management Planning: Preventive Maintenance for Technology. NIST Special Publication 800-40 Revision 4. <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf?trk=article-ssr-frontend-pulse_little-text-block">NIST</a>
+</p>
+
+
+
+<p>
+[8] Shimizu, N., &amp; Hashimoto, M. (2026). Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization. IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11397608/?trk=article-ssr-frontend-pulse_little-text-block">IEEE Xplore</a>
+</p>
+
+
+
+<p>
+[9] Chakraborty, S., Krishna, R., Ding, Y., &amp; Ray, B. (2021). Deep Learning Based Vulnerability Detection: Are We There Yet? IEEE Transactions on Software Engineering. <a href="https://ieeexplore.ieee.org/document/9448435?trk=article-ssr-frontend-pulse_little-text-block">IEEE Xplore</a>
+</p>
+
+
+
+<p>
+Additional critical perspective: Howland, H. (2023). CVSS: Ubiquitous and Broken. Digital Threats: Research and Practice. <a href="https://doi.org/10.1145/3491263?trk=article-ssr-frontend-pulse_little-text-block">DOI</a>
+</p>
+
+ </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../cvss-10-business-risk/">Next: CVSS 10 ≠ Business Risk 10 →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
