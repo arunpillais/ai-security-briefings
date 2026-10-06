@@ -22,7 +22,8 @@ function editionCard(brief, compact = false) {
  card.append(details); return card;
 }
 async function start() {
- document.querySelector('#year').textContent = new Date().getFullYear();
+ const year = document.querySelector('#year');
+ if (year) year.textContent = new Date().getFullYear();
  const response = await fetch(briefingDataURL, {cache:'no-cache'});
  if (!response.ok) throw new Error('Briefing data could not be loaded.');
  const data = await response.json();
