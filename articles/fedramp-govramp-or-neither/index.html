@@ -1,2535 +1,1232 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FedRAMP, GovRAMP—or Neither? | Arun Pillai</title><meta name="description" content="The most expensive government-compliance mistake may happen before the assessment begins A single sentence in an RFP can change the temperature of a room. In this case, the message was effectively: We could not bid without committing to FedRAMP. Arou"><link rel="canonical" href="https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf"><meta property="og:title" content="FedRAMP, GovRAMP—or Neither?"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"FedRAMP, GovRAMP—or Neither?","datePublished":"2026-08-13T09:06:16.000+00:00","dateModified":"2026-08-13T09:06:45.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">GOVERNMENT ASSURANCE &amp; MARKET ACCESS</p><h1>FedRAMP, GovRAMP—or Neither?</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-13">2026-08-13</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Government assurance articles"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a aria-current="page" href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><img alt="FedRAMP, GovRAMP—or Neither?" loading="lazy" src="../../assets/articles/fedramp-govramp-or-neither-0.webp"/><article class="article-body">
+<!doctype html>
 
 
-<h3>The most expensive government-compliance mistake may happen before the assessment begins</h3>
-
-
-
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>FedRAMP, GovRAMP—or Neither? | Arun Pillai</title><meta content="The most expensive government-compliance mistake may happen before the assessment begins A single sentence in an RFP can change the temperature of a room. In this case, the message was effectively: We could not bid without committing to FedRAMP. Arou" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="FedRAMP, GovRAMP—or Neither? | Arun Pillai" property="og:title"/><meta content="The most expensive government-compliance mistake may happen before the assessment begins A single sentence in an RFP can change the temperature of a room. In this case, the message was effectively: We could not bid without committing to FedRAMP. Arou" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/fedramp-govramp-or-neither-0.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="FedRAMP, GovRAMP—or Neither? | Arun Pillai" name="twitter:title"/><meta content="The most expensive government-compliance mistake may happen before the assessment begins A single sentence in an RFP can change the temperature of a room. In this case, the message was effectively: We could not bid without committing to FedRAMP. Arou" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/fedramp-govramp-or-neither-0.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/#article", "headline": "FedRAMP, GovRAMP—or Neither?", "description": "Evaluate authorization pathways against the market and customers you intend to serve.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-13T09:06:16.000+00:00", "dateModified": "2026-08-13T09:06:45.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/articles/fedramp-govramp-or-neither-0.webp", "isBasedOn": "https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf", "articleSection": "Government Assurance & Market Access"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "FedRAMP, GovRAMP—or Neither?", "item": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-govramp-or-neither/", "name": "FedRAMP, GovRAMP—or Neither? | Arun Pillai", "description": "The most expensive government-compliance mistake may happen before the assessment begins A single sentence in an RFP can change the temperature of a room. In this case, the message was effectively: We could not bid without committing to FedRAMP. Arou", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/government-assurance/">Government Assurance &amp; Market Access</a></p><p class="eyebrow">GOVERNMENT ASSURANCE &amp; MARKET ACCESS</p><h1>FedRAMP, GovRAMP—or Neither?</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-13">2026-08-13</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Government assurance articles" class="series-nav"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a aria-current="page" href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><img alt="FedRAMP, GovRAMP—or Neither?" class="article-cover" loading="eager" src="../../assets/articles/fedramp-govramp-or-neither-0.webp"/><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>Evaluate authorization pathways against the market and customers you intend to serve.</p><p>16 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><details class="article-toc"><summary>In this article</summary><ol><li><a href="#section-1">The most expensive government-compliance mistake may happen before the assessment begins</a></li><li><a href="#section-2">The requirement is real. The interpretation may not be.</a></li><li><a href="#section-3">1. Procurement eligibility</a></li><li><a href="#section-4">2. Programme applicability</a></li><li><a href="#section-5">3. Assurance evidence</a></li><li><a href="#section-6">Question One: What is the procurement team really asking for?</a></li><li><a href="#section-7">Question Two: Does FedRAMP actually apply?</a></li><li><a href="#section-8">“Public-facing” is not the scope test</a></li><li><a href="#section-9">And then there is GovRAMP</a></li><li><a href="#section-10">This gave me a second decision model</a></li><li><a href="#section-11">The distinction between “FedRAMP” and an agency ATO matters</a></li><li><a href="#section-12">So are SOC 2 and ISO 27001 “enough”?</a></li><li><a href="#section-13">SOC 2 Type II</a></li><li><a href="#section-14">ISO/IEC 27001</a></li><li><a href="#section-15">And NIST SP 800-53 is not a certification either</a></li><li><a href="#section-16">Secure-software attestation answers yet another question</a></li><li><a href="#section-17">The cloud-provider inheritance question</a></li><li><a href="#section-18">AI makes the boundary question harder</a></li><li><a href="#section-19">Now apply the model to LearnSphere</a></li><li><a href="#section-20">Opportunity A — Federal research agency</a></li><li><a href="#section-21">Likely decision path</a></li><li><a href="#section-22">Opportunity B — State Department of Education</a></li><li><a href="#section-23">Decision path</a></li><li><a href="#section-24">Opportunity C — Fortune 500 enterprise</a></li><li><a href="#section-25">Decision path</a></li><li><a href="#section-26">This leads to one of my strongest conclusions</a></li><li><a href="#section-27">Seven questions Sales should capture before escalating to Security</a></li><li><a href="#section-28">1. Who is the contracting entity?</a></li><li><a href="#section-29">2. What exactly does the procurement document say?</a></li><li><a href="#section-30">3. Is it a bid gate, contract condition or production requirement?</a></li><li><a href="#section-31">4. Which product/service/SKU is the customer buying?</a></li><li><a href="#section-32">5. What information will the service process?</a></li><li><a href="#section-33">6. What assurance evidence is accepted?</a></li><li><a href="#section-34">7. When does the requirement have to be satisfied?</a></li><li><a href="#section-35">What Security should determine before asking Engineering to change anything</a></li><li><a href="#section-36">Customer</a></li><li><a href="#section-37">Use case</a></li><li><a href="#section-38">Information</a></li><li><a href="#section-39">Procurement requirement</a></li><li><a href="#section-40">Regulatory/programme applicability</a></li><li><a href="#section-41">Existing assurance</a></li><li><a href="#section-42">Proposed product boundary</a></li><li><a href="#section-43">Assurance gap</a></li><li><a href="#section-44">Commercial decision</a></li><li><a href="#section-45">One more 2026 trap: Class A, B and C do not mean Low, Moderate and High</a></li><li><a href="#section-46">And 20x changes the path conversation</a></li><li><a href="#section-47">What does this mean for each leadership group?</a></li><li><a href="#section-48">CEO / Business Leader</a></li><li><a href="#section-49">CRO / Sales</a></li><li><a href="#section-50">CTO / Architecture</a></li><li><a href="#section-51">CISO</a></li><li><a href="#section-52">GRC</a></li><li><a href="#section-53">Product</a></li><li><a href="#section-54">Engineering / Platform</a></li><li><a href="#section-55">My five-question executive go/no-go test</a></li><li><a href="#section-56">1. Is the opportunity real?</a></li><li><a href="#section-57">2. Is the requirement clear?</a></li><li><a href="#section-58">3. Is applicability understood?</a></li><li><a href="#section-59">4. Do we understand our starting point?</a></li><li><a href="#section-60">5. Can we sustain the outcome?</a></li><li><a href="#section-61">What that RFP taught me</a></li><li><a href="#section-62">Next in the series</a></li><li><a href="#section-63">The FedRAMP Enclave Myth</a></li><li><a href="#section-64">References</a></li></ol></details><article class="article-body">
+<h3 id="section-1">The most expensive government-compliance mistake may happen before the assessment begins</h3>
 <p>
 A single sentence in an RFP can change the temperature of a room.
 </p>
-
-
-
 <p>
 In this case, the message was effectively:
 </p>
-
-
-
 <p>
 We could not bid without committing to FedRAMP.
 </p>
-
-
-
 <p>
 Around the same period, another public-sector conversation was asking about government-grade assurance, but the language was less precise: “FedRAMP compliance or equivalent verification.”
 </p>
-
-
-
 <p>
 No certification class.
 </p>
-
-
-
 <p>
 No clear statement of what “equivalent” meant.
 </p>
-
-
-
 <p>
 No simple answer to what part of the product was expected to be covered.
 </p>
-
-
-
 <p>
 Then came the perfectly reasonable question from Sales:
 </p>
-
-
-
 <p>
 “We already have SOC 2 Type II and ISO/IEC 27001. Isn’t that enough?”
 </p>
-
-
-
 <p>
 And from another education-sector conversation:
 </p>
-
-
-
 <p>
 “What about GovRAMP?”
 </p>
-
-
-
 <p>
 Those questions look like compliance questions.
 </p>
-
-
-
 <p>
 I think they are actually market qualification, product architecture and risk-decision questions.
 </p>
-
-
-
 <p>
 And this is where I believe many government-assurance programmes can go wrong before the first assessor has even been engaged.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-2">
 The requirement is real. The interpretation may not be.
 </h2>
-
-
-
 <p>
 If an RFP says that a FedRAMP commitment is necessary to bid, the commercial consequence is very real.
 </p>
-
-
-
 <p>
 You cannot respond to a procurement gate by telling Sales:
 </p>
-
-
-
 <p>
 “Technically, the wording could have been better.”
 </p>
-
-
-
 <p>
 But that does not mean Security should immediately launch a FedRAMP programme.
 </p>
-
-
-
 <p>
 There are actually three different questions hiding inside that one RFP sentence:
 </p>
-
-
-
-<h3>1. Procurement eligibility</h3>
-
-
-
+<h3 id="section-3">1. Procurement eligibility</h3>
 <p>
 What must we promise or already possess to remain eligible for the opportunity?
 </p>
-
-
-
-<h3>2. Programme applicability</h3>
-
-
-
+<h3 id="section-4">2. Programme applicability</h3>
 <p>
 Does the proposed customer use of our cloud service actually fall within FedRAMP’s scope?
 </p>
-
-
-
-<h3>3. Assurance evidence</h3>
-
-
-
+<h3 id="section-5">3. Assurance evidence</h3>
 <p>
 Which existing certifications, assessments and security capabilities can be reused—and what additional work remains?
 </p>
-
-
-
 <p>
 Those three questions are related.
 </p>
-
-
-
 <p>
 They are not interchangeable.
 </p>
-
-
-
 <p>
 That distinction has become one of the most useful lessons for me from examining government-assurance requirements.
 </p>
-
-
-
-<h3>Question One: What is the procurement team really asking for?</h3>
-
-
-
+<h3 id="section-6">Question One: What is the procurement team really asking for?</h3>
 <p>
 Imagine the RFP says:
 </p>
-
-
-
 <p>
 “FedRAMP compliance or equivalent required.”
 </p>
-
-
-
 <p>
 Before anybody opens NIST SP 800-53, I would want Sales and Security to clarify:
 </p>
-
-
-
 <p>
 ·       Is FedRAMP mandatory to submit the bid, or required before production use?
 </p>
-
-
-
 <p>
 ·       Does the customer expect an existing FedRAMP Certification?
 </p>
-
-
-
 <p>
 ·       Is a formal commitment or roadmap sufficient?
 </p>
-
-
-
 <p>
 ·       Does the customer recognise an “In Process” or other Marketplace status?
 </p>
-
-
-
 <p>
 ·       What does the buyer mean by “equivalent”?
 </p>
-
-
-
 <p>
 ·       Would GovRAMP be recognised?
 </p>
-
-
-
 <p>
 ·       Would SOC 2 Type II be accepted for the procurement stage?
 </p>
-
-
-
 <p>
 ·       Does ISO/IEC 27001 have evidentiary value?
 </p>
-
-
-
 <p>
 ·       Which exact product or SKU is being purchased?
 </p>
-
-
-
 <p>
 ·       What information will the customer put into it?
 </p>
-
-
-
 <p>
 ·       What deadline applies?
 </p>
-
-
-
 <p>
 This sounds administrative.
 </p>
-
-
-
 <p>
 It isn’t.
 </p>
-
-
-
 <p>
 A statement such as:
 </p>
-
-
-
 <p>
 “FedRAMP required.”
 </p>
-
-
-
 <p>
 could imply very different levels of investment depending on the answer.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-7">
 Question Two: Does FedRAMP actually apply?
 </h2>
-
-
-
 <p>
 This is where an important misconception appears.
 </p>
-
-
-
 <p>
 Not every product sold to a federal agency automatically requires FedRAMP.
 </p>
-
-
-
 <p>
 The current FedRAMP scope covers cloud computing products and services—including SaaS, PaaS and IaaS—that create, collect, process, store or maintain federal information on behalf of a federal agency, unless an identified exclusion applies. [1]
 </p>
-
-
-
 <p>
 And the 2026 guidance makes another point that product companies should pay close attention to:
 </p>
-
-
-
 <p>
 The specific agency use case determines scope—not simply the existence of the cloud product.
 </p>
-
-
-
 <p>
 FedRAMP states that only the federal agency can ultimately determine whether its use of a cloud service falls within FedRAMP scope. The same service could potentially be in scope for one agency use case and outside scope for another. [1]
 </p>
-
-
-
 <p>
 That immediately changes the conversation.
 </p>
-
-
-
-<h3>“Public-facing” is not the scope test</h3>
-
-
-
+<h3 id="section-8">“Public-facing” is not the scope test</h3>
 <p>
 When government opportunities first arise, a conservative internal instinct can be:
 </p>
-
-
-
 <p>
 “Let’s treat every public-facing, customer-purchased, revenue-generating application as potentially in scope.”
 </p>
-
-
-
 <p>
 That may be a useful portfolio triage mechanism.
 </p>
-
-
-
 <p>
 But it is not the FedRAMP test.
 </p>
-
-
-
 <p>
 Revenue does not determine FedRAMP scope.
 </p>
-
-
-
 <p>
 Internet exposure does not determine FedRAMP scope.
 </p>
-
-
-
 <p>
 Even the fact that a federal agency uses the service does not, by itself, answer the question.
 </p>
-
-
-
 <p>
 The questions are closer to:
 </p>
-
-
-
 <p>
 What is the agency doing with the service?
 </p>
-
-
-
 <p>
 What federal information is involved?
 </p>
-
-
-
 <p>
 What responsibility does the provider assume?
 </p>
-
-
-
 <p>
 What shared-responsibility model exists?
 </p>
-
-
-
 <p>
 Does one of the defined exclusions apply?
 </p>
-
-
-
 <p>
 FedRAMP’s 2026 scope guidance even provides examples where similar kinds of services can move in or out of scope depending upon how the agency uses them. [1]
 </p>
-
-
-
 <p>
 That is why applicability must precede implementation.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-9">
 And then there is GovRAMP
 </h2>
-
-
-
 <p>
 This becomes especially relevant for EdTech companies.
 </p>
-
-
-
 <p>
 A federal research agency and a state Department of Education may both be “government customers.”
 </p>
-
-
-
 <p>
 They do not automatically present the same assurance problem.
 </p>
-
-
-
 <p>
 GovRAMP was developed specifically around the needs of state, local, tribal and education—SLTE—government organisations and provides a standardised public-sector approach to cloud security evaluation based on NIST-oriented security practices. [2]
 </p>
-
-
-
 <p>
 That does not mean:
 </p>
-
-
-
 <p>
 Federal = FedRAMP
 </p>
-
-
-
 <p>
 and
 </p>
-
-
-
 <p>
 State = GovRAMP
 </p>
-
-
-
 <p>
 in every procurement situation.
 </p>
-
-
-
 <p>
 Customers can establish their own procurement requirements.
 </p>
-
-
-
 <p>
 A state buyer may reference FedRAMP.
 </p>
-
-
-
 <p>
 A school system may require a different framework.
 </p>
-
-
-
 <p>
 A procurement may permit equivalent evidence.
 </p>
-
-
-
 <p>
 A provider with existing federal assurance may be able to reuse some of that investment through GovRAMP mechanisms such as Fast Track. [2]
 </p>
-
-
-
 <p>
 The CISO’s job is therefore not to select a framework based on the word government.
 </p>
-
-
-
 <p>
 The job is to understand the buyer, use case, contract and information.
 </p>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-10">
 This gave me a second decision model
 </h2>
-
-
-
 <p>
 In Article 1, I described the Government-Ready Product Security Flywheel.
 </p>
-
-
-
 <p>
 Article 2 begins with the second stage:
 </p>
-
-
-
 <p>
 Applicability.
 </p>
-
-
-
 <p>
 I now think about it through the following decision tree
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-govramp-or-neither-1.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 1 — Start with the customer use case and procurement requirement, not the compliance framework.
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-11">
 The distinction between “FedRAMP” and an agency ATO matters
 </h2>
-
-
-
 <p>
 There is another terminology change worth knowing in 2026.
 </p>
-
-
-
 <p>
 FedRAMP is now using FedRAMP Certification to distinguish the reusable FedRAMP assessment of the cloud service from an individual agency’s Authorization to Operate (ATO). [3]
 </p>
-
-
-
 <p>
 A FedRAMP Certification does not make the risk decision on behalf of every agency.
 </p>
-
-
-
 <p>
 Federal agencies must still authorize the information systems through which they use FedRAMP Certified cloud offerings. [4]
 </p>
-
-
-
 <p>
 Think of it this way:
 </p>
-
-
-
 <p>
 FedRAMP gives the agency reusable assurance about the cloud service.
 </p>
-
-
-
 <p>
 The agency still decides whether using that service, in that configuration, for that mission and information, is acceptable.
 </p>
-
-
-
 <p>
 That distinction becomes particularly important when Sales hears:
 </p>
-
-
-
 <p>
 “They want an ATO.”
 </p>
-
-
-
 <p>
 The right follow-up is:
 </p>
-
-
-
 <p>
 Whose ATO, for which system, using what FedRAMP Certified service?
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-12">
 So are SOC 2 and ISO 27001 “enough”?
 </h2>
-
-
-
 <p>
 This question came up naturally.
 </p>
-
-
-
 <p>
 And the answer is more nuanced in 2026 than:
 </p>
-
-
-
 <p>
 “No. FedRAMP is different.”
 </p>
-
-
-
 <p>
 That answer is technically safe but strategically incomplete.
 </p>
-
-
-
-<h3>SOC 2 Type II</h3>
-
-
-
+<h3 id="section-13">SOC 2 Type II</h3>
 <p>
 SOC 2 examines a service organisation’s controls relevant to Trust Services Criteria such as security, availability, processing integrity, confidentiality and privacy. A Type II engagement assesses operation over a defined period; it is not simply a point-in-time certificate. [5]
 </p>
-
-
-
 <p>
 And here is the interesting 2026 development:
 </p>
-
-
-
 <p>
 For FedRAMP 20x Class A, the current rules explicitly recognise SOC 2 Type II, GovRAMP and certain existing FedRAMP processes as approved alternative security frameworks that can serve as an entry condition, provided the applicable requirements are met and the assessment is sufficiently current. [6]
 </p>
-
-
-
 <p>
 That is important.
 </p>
-
-
-
 <p>
 It means existing assurance maturity may now have formal reuse value.
 </p>
-
-
-
 <p>
 But it does not mean:
 </p>
-
-
-
 <p>
 SOC 2 Type II = FedRAMP.
 </p>
-
-
-
 <p>
 A provider pursuing Class A still has FedRAMP-specific requirements to satisfy.
 </p>
-
-
-
 <p>
 And higher classes have different independent-assessment and assurance obligations. [6]
 </p>
-
-
-
-<h3>ISO/IEC 27001</h3>
-
-
-
+<h3 id="section-14">ISO/IEC 27001</h3>
 <p>
 ISO/IEC 27001 establishes requirements for an Information Security Management System—an ISMS—and demonstrates that an organisation has implemented a systematic approach to managing information-security risk. [7]
 </p>
-
-
-
 <p>
 That is valuable.
 </p>
-
-
-
 <p>
 It can demonstrate organisational maturity.
 </p>
-
-
-
 <p>
 It can give Security a substantial starting point for policies, governance, risk treatment, access control, supplier management, incident processes and other security practices.
 </p>
-
-
-
 <p>
 Mappings can also help teams understand overlap between ISO controls and NIST security controls.
 </p>
-
-
-
 <p>
 But under the current FedRAMP 2026 Class A rules, ISO/IEC 27001 is not listed as one of the approved alternative security frameworks in the same way that SOC 2 Type II and GovRAMP are. [6]
 </p>
-
-
-
 <p>
 So the answer to Sales should not be:
 </p>
-
-
-
 <p>
 “ISO doesn’t matter.”
 </p>
-
-
-
 <p>
 Nor should it be:
 </p>
-
-
-
 <p>
 “ISO means we’re FedRAMP ready.”
 </p>
-
-
-
 <p>
 A better answer is:
 </p>
-
-
-
 <p>
 “Our ISO/IEC 27001 programme demonstrates useful security maturity and may reduce the amount of foundational work we need to create from scratch, but we still need to establish exactly which FedRAMP requirements and evidence remain.”
 </p>
-
-
-
 <p>
 That is both commercially useful and technically defensible.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-15">
 And NIST SP 800-53 is not a certification either
 </h2>
-
-
-
 <p>
 This is another distinction worth making.
 </p>
-
-
-
 <p>
 NIST SP 800-53 is a catalogue of security and privacy controls for information systems and organisations. [8]
 </p>
-
-
-
 <p>
 It is enormously important to federal risk management.
 </p>
-
-
-
 <p>
 But saying:
 </p>
-
-
-
 <p>
 “We are aligned with NIST 800-53”
 </p>
-
-
-
 <p>
 is not the same thing as:
 </p>
-
-
-
 <p>
 “We have a FedRAMP Certification.”
 </p>
-
-
-
 <p>
 A framework can define what good controls look like.
 </p>
-
-
-
 <p>
 A certification or authorization process answers a different question:
 </p>
-
-
-
 <p>
 What has actually been implemented, assessed, evidenced and accepted for this particular context?
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-16">
 Secure-software attestation answers yet another question
 </h2>
-
-
-
 <p>
 CISA’s Secure Software Development Attestation Form allows software producers supplying software to the federal government to attest to specified secure software-development practices. [9]
 </p>
-
-
-
 <p>
 That matters enormously to product security.
 </p>
-
-
-
 <p>
 But it is not a replacement for cloud-service assurance.
 </p>
-
-
-
 <p>
 One is largely asking:
 </p>
-
-
-
 <p>
 How was the software produced?
 </p>
-
-
-
 <p>
 FedRAMP is asking a much broader question:
 </p>
-
-
-
 <p>
 How does this cloud service protect federal information and continuously demonstrate the required assurance?
 </p>
-
-
-
 <p>
 Related?
 </p>
-
-
-
 <p>
 Absolutely.
 </p>
-
-
-
 <p>
 Equivalent?
 </p>
-
-
-
 <p>
 No.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-govramp-or-neither-2.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 2 — Security frameworks, attestations, certifications and authorization decisions may overlap, but they solve different assurance problems.
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-17">
 The cloud-provider inheritance question
 </h2>
-
-
-
 <p>
 Then comes the architecture conversation.
 </p>
-
-
-
 <p>
 If AWS, Azure or another infrastructure provider already has the required FedRAMP status, does that solve the problem?
 </p>
-
-
-
 <p>
 It helps enormously.
 </p>
-
-
-
 <p>
 But inheritance is not magic.
 </p>
-
-
-
 <p>
 FedRAMP certification packages explicitly distinguish:
 </p>
-
-
-
 <p>
 ·       provider responsibilities,
 </p>
-
-
-
 <p>
 ·       inherited controls,
 </p>
-
-
-
 <p>
 ·       customer responsibilities,
 </p>
-
-
-
 <p>
 ·       information flows,
 </p>
-
-
-
 <p>
 ·       third-party resources,
 </p>
-
-
-
 <p>
 ·       configuration expectations,
 </p>
-
-
-
 <p>
 ·       and integrations. [10]
 </p>
-
-
-
 <p>
 The exact responsibility depends on the service model and architecture.
 </p>
-
-
-
 <p>
 For a SaaS company, using a FedRAMP Certified infrastructure provider may allow substantial infrastructure capabilities to be inherited.
 </p>
-
-
-
 <p>
 But the SaaS provider may still need to explain and evidence areas such as:
 </p>
-
-
-
 <p>
 identity,
 </p>
-
-
-
 <p>
 application security,
 </p>
-
-
-
 <p>
 tenant isolation,
 </p>
-
-
-
 <p>
 data flows,
 </p>
-
-
-
 <p>
 configuration,
 </p>
-
-
-
 <p>
 software development,
 </p>
-
-
-
 <p>
 vulnerability management,
 </p>
-
-
-
 <p>
 logging,
 </p>
-
-
-
 <p>
 incident handling,
 </p>
-
-
-
 <p>
 third-party services,
 </p>
-
-
-
 <p>
 and secure operation of the application.
 </p>
-
-
-
 <p>
 So rather than asking:
 </p>
-
-
-
 <p>
 “Is AWS FedRAMP?”
 </p>
-
-
-
 <p>
 the architecture question should become:
 </p>
-
-
-
 <p>
 “Exactly which security capabilities do we inherit, which do we configure, which do we implement ourselves, and which remain shared?”
 </p>
-
-
-
 <p>
 That is the question that belongs on the architecture diagram.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-18">
 AI makes the boundary question harder
 </h2>
-
-
-
 <p>
 Now add an LLM.
 </p>
-
-
-
 <p>
 Imagine our fictional EdTech provider, LearnSphere, introduces an AI capability.
 </p>
-
-
-
 <p>
 The main application may be inside the intended government boundary.
 </p>
-
-
-
 <p>
 But the prompt is sent to an external model API.
 </p>
-
-
-
 <p>
 Perhaps telemetry is sent to another platform.
 </p>
-
-
-
 <p>
 Maybe moderation is provided by a third service.
 </p>
-
-
-
 <p>
 Maybe support logs include model interactions.
 </p>
-
-
-
 <p>
 At that point, saying:
 </p>
-
-
-
 <p>
 “The AI feature is only an integration.”
 </p>
-
-
-
 <p>
 doesn’t answer the risk question.
 </p>
-
-
-
 <p>
 FedRAMP packages are expected to explain information flows, third-party information resources, inherited responsibilities and the service boundary. [10]
 </p>
-
-
-
 <p>
 So the CISO and architect need to ask:
 </p>
-
-
-
 <p>
 Does the third party handle relevant information?
 </p>
-
-
-
 <p>
 Can it materially affect the confidentiality, integrity or availability of the service?
 </p>
-
-
-
 <p>
 What information crosses the boundary?
 </p>
-
-
-
 <p>
 What assurance exists for that dependency?
 </p>
-
-
-
 <p>
 Can the feature be disabled for a government tenant?
 </p>
-
-
-
 <p>
 The AI discussion therefore becomes another boundary discussion.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-19">
 Now apply the model to LearnSphere
 </h2>
-
-
-
 <p>
 Consider the same fictional EdTech company from Article 1.
 </p>
-
-
-
 <p>
 It has three new opportunities.
 </p>
-
-
-
-<h3>Opportunity A — Federal research agency</h3>
-
-
-
+<h3 id="section-20">Opportunity A — Federal research agency</h3>
 <p>
 The agency wants LearnSphere’s SaaS service for a programme that will place federal information inside the platform.
 </p>
-
-
-
 <p>
 The procurement says FedRAMP is mandatory.
 </p>
-
-
-
-<h3>Likely decision path</h3>
-
-
-
+<h3 id="section-21">Likely decision path</h3>
 <p>
 FedRAMP applicability must be evaluated with the agency.
 </p>
-
-
-
 <p>
 If the agency determines that the use case falls within FedRAMP scope, the organisation must evaluate the appropriate FedRAMP Certification route and assurance level.
 </p>
-
-
-
 <p>
 At that point, the fact that LearnSphere already has SOC 2 or ISO 27001 matters as readiness and potentially reusable evidence.
 </p>
-
-
-
 <p>
 It does not eliminate the FedRAMP decision.
 </p>
-
-
-
-<h3>Opportunity B — State Department of Education</h3>
-
-
-
+<h3 id="section-22">Opportunity B — State Department of Education</h3>
 <p>
 The customer wants the same platform.
 </p>
-
-
-
 <p>
 The security questionnaire references both GovRAMP and federal security expectations.
 </p>
-
-
-
-<h3>Decision path</h3>
-
-
-
+<h3 id="section-23">Decision path</h3>
 <p>
 This is not automatically a federal FedRAMP applicability question.
 </p>
-
-
-
 <p>
 It is first a procurement-requirements question.
 </p>
-
-
-
 <p>
 What does this state recognise?
 </p>
-
-
-
 <p>
 Is GovRAMP required?
 </p>
-
-
-
 <p>
 Will it accept a FedRAMP status?
 </p>
-
-
-
 <p>
 Is another verification sufficient?
 </p>
-
-
-
 <p>
 Does the customer impose additional education/privacy requirements?
 </p>
-
-
-
 <p>
 GovRAMP is designed around this state/local/tribal/education market, but the actual contract remains the source of truth for the opportunity. [2]
 </p>
-
-
-
-<h3>Opportunity C — Fortune 500 enterprise</h3>
-
-
-
+<h3 id="section-24">Opportunity C — Fortune 500 enterprise</h3>
 <p>
 The customer’s vendor-security team says:
 </p>
-
-
-
 <p>
 “We expect FedRAMP-level security.”
 </p>
-
-
-
 <p>
 They are not a government entity.
 </p>
-
-
-
 <p>
 There is no federal use case.
 </p>
-
-
-
-<h3>Decision path</h3>
-
-
-
+<h3 id="section-25">Decision path</h3>
 <p>
 Potentially:
 </p>
-
-
-
 <p>
 Neither FedRAMP nor GovRAMP.
 </p>
-
-
-
 <p>
 Instead, Security should ask what “FedRAMP-level” actually means.
 </p>
-
-
-
 <p>
 Do they require:
 </p>
-
-
-
 <p>
 ·       NIST 800-53 alignment?
 </p>
-
-
-
 <p>
 ·       stronger vulnerability SLAs?
 </p>
-
-
-
 <p>
 ·       specific encryption?
 </p>
-
-
-
 <p>
 ·       software-supply-chain controls?
 </p>
-
-
-
 <p>
 ·       incident-notification commitments?
 </p>
-
-
-
 <p>
 ·       architecture evidence?
 </p>
-
-
-
 <p>
 ·       continuous-monitoring data?
 </p>
-
-
-
 <p>
 ·       an actual FedRAMP Certified offering?
 </p>
-
-
-
 <p>
 Do not spend millions solving an undefined adjective.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-26">
 This leads to one of my strongest conclusions
 </h2>
-
-
-
 <p>
 Customer language is not automatically a compliance determination.
 </p>
-
-
-
 <p>
 When a customer says:
 </p>
-
-
-
 <p>
 “FedRAMP.”
 </p>
-
-
-
 <p>
 the security organisation should not immediately answer:
 </p>
-
-
-
 <p>
 “Yes” or “No.”
 </p>
-
-
-
 <p>
 It should answer with better questions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-27">
 Seven questions Sales should capture before escalating to Security
 </h2>
-
-
-
 <p>
 I would create a standard intake:
 </p>
-
-
-
-<h3>1. Who is the contracting entity?</h3>
-
-
-
+<h3 id="section-28">1. Who is the contracting entity?</h3>
 <p>
 Federal agency?
 </p>
-
-
-
 <p>
 State?
 </p>
-
-
-
 <p>
 School district?
 </p>
-
-
-
 <p>
 University?
 </p>
-
-
-
 <p>
 Prime contractor?
 </p>
-
-
-
 <p>
 Commercial business?
 </p>
-
-
-
-<h3>2. What exactly does the procurement document say?</h3>
-
-
-
+<h3 id="section-29">2. What exactly does the procurement document say?</h3>
 <p>
 Copy the requirement verbatim.
 </p>
-
-
-
 <p>
 Do not translate it into:
 </p>
-
-
-
 <p>
 “Customer needs FedRAMP.”
 </p>
-
-
-
-<h3>3. Is it a bid gate, contract condition or production requirement?</h3>
-
-
-
+<h3 id="section-30">3. Is it a bid gate, contract condition or production requirement?</h3>
 <p>
 Those are materially different.
 </p>
-
-
-
-<h3>4. Which product/service/SKU is the customer buying?</h3>
-
-
-
+<h3 id="section-31">4. Which product/service/SKU is the customer buying?</h3>
 <p>
 Do not scope the whole company when the buyer is purchasing one offering.
 </p>
-
-
-
-<h3>5. What information will the service process?</h3>
-
-
-
+<h3 id="section-32">5. What information will the service process?</h3>
 <p>
 This is central to applicability and security categorisation.
 </p>
-
-
-
-<h3>6. What assurance evidence is accepted?</h3>
-
-
-
+<h3 id="section-33">6. What assurance evidence is accepted?</h3>
 <p>
 FedRAMP Certification?
 </p>
-
-
-
 <p>
 GovRAMP?
 </p>
-
-
-
 <p>
 SOC 2?
 </p>
-
-
-
 <p>
 ISO?
 </p>
-
-
-
 <p>
 “Equivalent”?
 </p>
-
-
-
 <p>
 If equivalent—equivalent to what?
 </p>
-
-
-
-<h3>7. When does the requirement have to be satisfied?</h3>
-
-
-
+<h3 id="section-34">7. When does the requirement have to be satisfied?</h3>
 <p>
 At proposal?
 </p>
-
-
-
 <p>
 At award?
 </p>
-
-
-
 <p>
 Before production?
 </p>
-
-
-
 <p>
 Within 12 months?
 </p>
-
-
-
 <p>
 This intake can prevent weeks of unnecessary security and engineering activity.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-35">
 What Security should determine before asking Engineering to change anything
 </h2>
-
-
-
 <p>
 Before anyone says:
 </p>
-
-
-
 <p>
 “We need a new cloud environment.”
 </p>
-
-
-
 <p>
 Security should produce a short Applicability Decision Record containing:
 </p>
-
-
-
-<h3>Customer</h3>
-
-
-
+<h3 id="section-36">Customer</h3>
 <p>
 Who is buying?
 </p>
-
-
-
-<h3>Use case</h3>
-
-
-
+<h3 id="section-37">Use case</h3>
 <p>
 What will they actually do with the product?
 </p>
-
-
-
-<h3>Information</h3>
-
-
-
+<h3 id="section-38">Information</h3>
 <p>
 What information enters, leaves and persists?
 </p>
-
-
-
-<h3>Procurement requirement</h3>
-
-
-
+<h3 id="section-39">Procurement requirement</h3>
 <p>
 Exact contractual/RFP language.
 </p>
-
-
-
-<h3>Regulatory/programme applicability</h3>
-
-
-
+<h3 id="section-40">Regulatory/programme applicability</h3>
 <p>
 FedRAMP, GovRAMP, buyer-specific—or neither.
 </p>
-
-
-
-<h3>Existing assurance</h3>
-
-
-
+<h3 id="section-41">Existing assurance</h3>
 <p>
 SOC 2, ISO, NIST mappings, secure-development evidence, current assessments.
 </p>
-
-
-
-<h3>Proposed product boundary</h3>
-
-
-
+<h3 id="section-42">Proposed product boundary</h3>
 <p>
 Applications, shared platforms, identity, CI/CD, telemetry, third parties, AI and support systems.
 </p>
-
-
-
-<h3>Assurance gap</h3>
-
-
-
+<h3 id="section-43">Assurance gap</h3>
 <p>
 What cannot currently be demonstrated?
 </p>
-
-
-
-<h3>Commercial decision</h3>
-
-
-
+<h3 id="section-44">Commercial decision</h3>
 <p>
 Bid / clarify / conditionally proceed / do not pursue.
 </p>
-
-
-
 <p>
 Only after that should Engineering receive a significant architecture request.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-govramp-or-neither-3.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 3 — Do not turn a procurement phrase into an engineering programme before qualification and applicability are understood.
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-45">
 One more 2026 trap: Class A, B and C do not mean Low, Moderate and High
 </h2>
-
-
-
 <p>
 This is important enough to call out separately.
 </p>
-
-
-
 <p>
 FedRAMP’s new Certification Classes describe the level of assurance information the provider commits to supplying.
 </p>
-
-
-
 <p>
 They are not direct replacements for FIPS Low, Moderate and High impact categorisation. [11]
 </p>
-
-
-
 <p>
 FedRAMP itself explicitly warns agencies against treating them as one-for-one equivalents.
 </p>
-
-
-
 <p>
 The agency information system still has to be categorised based on potential impact to confidentiality, integrity and availability.
 </p>
-
-
-
 <p>
 The provider’s Certification Class answers a different question:
 </p>
-
-
-
 <p>
 How much assurance information is the provider willing and required to make available?
 </p>
-
-
-
 <p>
 That is a subtle distinction.
 </p>
-
-
-
 <p>
 But for executives planning a FedRAMP investment, it can materially change the operating commitment.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-46">
 And 20x changes the path conversation
 </h2>
-
-
-
 <p>
 Under the current 2026 model, FedRAMP 20x Classes A, B and C use the Program Certification path rather than requiring the traditional agency-sponsorship model. [12]
 </p>
-
-
-
 <p>
 Class D is expected later.
 </p>
-
-
-
 <p>
 Rev5 remains temporarily available through specific legacy paths, but FedRAMP plans to stop accepting new Rev5 certification applications on June 11, 2027. [12]
 </p>
-
-
-
 <p>
 As of August 2026:
 </p>
-
-
-
 <p>
 ·       Class A submissions have opened.
 </p>
-
-
-
 <p>
 ·       Class B and Class C pipelines are scheduled to open on August 31, 2026. [13]
 </p>
-
-
-
 <p>
 This matters because an executive discussion based on:
 </p>
-
-
-
 <p>
 “First we need an agency sponsor.”
 </p>
-
-
-
 <p>
 may already be based on an older operating assumption.
 </p>
-
-
-
 <p>
 The programme is moving.
 </p>
-
-
-
 <p>
 Your strategy needs to use the programme that exists now, not the FedRAMP people remember from three years ago.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-47">
 What does this mean for each leadership group?
 </h2>
-
-
-
-<h3>CEO / Business Leader</h3>
-
-
-
+<h3 id="section-48">CEO / Business Leader</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 Is this requirement attached to sufficient qualified revenue to justify the investment?
 </p>
-
-
-
 <p>
 Do not fund government readiness based only on theoretical TAM.
 </p>
-
-
-
-<h3>CRO / Sales</h3>
-
-
-
+<h3 id="section-49">CRO / Sales</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 What exactly is preventing us from bidding or winning?
 </p>
-
-
-
 <p>
 Bring the actual RFP language to Security.
 </p>
-
-
-
 <p>
 Not a paraphrase.
 </p>
-
-
-
-<h3>CTO / Architecture</h3>
-
-
-
+<h3 id="section-50">CTO / Architecture</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 What architecture change is required by the risk—and what change are we merely assuming is required by the framework?
 </p>
-
-
-
 <p>
 Do not build a government fork before applicability and boundary analysis.
 </p>
-
-
-
-<h3>CISO</h3>
-
-
-
+<h3 id="section-51">CISO</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 Which assurance question are we trying to answer: regulatory applicability, contractual qualification, product security—or all three?
 </p>
-
-
-
 <p>
 Security should become the translator between them.
 </p>
-
-
-
-<h3>GRC</h3>
-
-
-
+<h3 id="section-52">GRC</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 Which existing evidence is reusable, and where does a genuine assurance gap remain?
 </p>
-
-
-
 <p>
 Do not throw away SOC 2 and ISO work.
 </p>
-
-
-
 <p>
 Do not oversell it either.
 </p>
-
-
-
-<h3>Product</h3>
-
-
-
+<h3 id="section-53">Product</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 Is government readiness a feature of this product, a separate SKU, or a new product operating model?
 </p>
-
-
-
 <p>
 That decision affects roadmap, pricing and support long after certification.
 </p>
-
-
-
-<h3>Engineering / Platform</h3>
-
-
-
+<h3 id="section-54">Engineering / Platform</h3>
 <p>
 Ask:
 </p>
-
-
-
 <p>
 Please show us the verified boundary and gap before asking us to redesign the platform.
 </p>
-
-
-
 <p>
 That may be the most important sentence in the article.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-55">
 My five-question executive go/no-go test
 </h2>
-
-
-
 <p>
 Before approving a government-assurance programme, I would want five questions answered.
 </p>
-
-
-
-<h3>1. Is the opportunity real?</h3>
-
-
-
+<h3 id="section-56">1. Is the opportunity real?</h3>
 <p>
 Named customer, procurement stage, potential contract value.
 </p>
-
-
-
-<h3>2. Is the requirement clear?</h3>
-
-
-
+<h3 id="section-57">2. Is the requirement clear?</h3>
 <p>
 Actual language, expected status, deadline and accepted alternatives.
 </p>
-
-
-
-<h3>3. Is applicability understood?</h3>
-
-
-
+<h3 id="section-58">3. Is applicability understood?</h3>
 <p>
 Buyer, cloud use case, information, programme and boundary.
 </p>
-
-
-
-<h3>4. Do we understand our starting point?</h3>
-
-
-
+<h3 id="section-59">4. Do we understand our starting point?</h3>
 <p>
 Existing certifications, evidence, architecture and operational maturity.
 </p>
-
-
-
-<h3>5. Can we sustain the outcome?</h3>
-
-
-
+<h3 id="section-60">5. Can we sustain the outcome?</h3>
 <p>
 Not simply achieve certification.
 </p>
-
-
-
 <p>
 Operate it.
 </p>
-
-
-
 <p>
 Maintain evidence.
 </p>
-
-
-
 <p>
 Manage changes.
 </p>
-
-
-
 <p>
 Support customers.
 </p>
-
-
-
 <p>
 Respond to incidents.
 </p>
-
-
-
 <p>
 Pay for it year after year.
 </p>
-
-
-
 <p>
 If leadership cannot answer those five questions, I would hesitate before turning the requirement into an engineering programme.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-61">
 What that RFP taught me
 </h2>
-
-
-
 <p>
 When I first saw:
 </p>
-
-
-
 <p>
 “FedRAMP required.”
 </p>
-
-
-
 <p>
 the natural question was:
 </p>
-
-
-
 <p>
 “What do we need to implement?”
 </p>
-
-
-
 <p>
 I now believe there are several questions that should come first:
 </p>
-
-
-
 <p>
 What exactly is the customer requiring?
 </p>
-
-
-
 <p>
 Which programme actually applies?
 </p>
-
-
-
 <p>
 What is the customer trying to protect?
 </p>
-
-
-
 <p>
 Which evidence do we already possess?
 </p>
-
-
-
 <p>
 And what business opportunity justifies closing the remaining gap?
 </p>
-
-
-
 <p>
 That changes the role of Security.
 </p>
-
-
-
 <p>
 Security is no longer the organisation that receives an RFP, searches for a framework and produces a compliance backlog.
 </p>
-
-
-
 <p>
 It becomes the function that helps the company decide:
 </p>
-
-
-
 <p>
 what it is committing to,
 </p>
-
-
-
 <p>
 why,
 </p>
-
-
-
 <p>
 for which customer,
 </p>
-
-
-
 <p>
 for which product,
 </p>
-
-
-
 <p>
 at what cost,
 </p>
-
-
-
 <p>
 and ultimately—
 </p>
-
-
-
 <p>
 whether that commitment creates enough trust and market value to be worth sustaining.
 </p>
-
-
-
 <p>
 That, to me, is what a Field CISO should bring to the government-market conversation.
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <p>
 “Here are the controls.”
 </p>
-
-
-
 <p>
 But:
 </p>
-
-
-
 <p>
 “Here is the decision we are actually making.”
 </p>
-
-
-
-<h3>Next in the series</h3>
-
-
-
-<h3>The FedRAMP Enclave Myth</h3>
-
-
-
+<h3 id="section-62">Next in the series</h3>
+<h3 id="section-63">The FedRAMP Enclave Myth</h3>
 <p>
 Can a lean SaaS or EdTech company isolate its government customers—or do identity, CI/CD, AI, support, logging and third-party dependencies follow the product into the boundary?
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-64">
 References
 </h2>
-
-
-
 <p>
 [1] FedRAMP — Scope of FedRAMP, Consolidated Rules for 2026. <a href="https://www.fedramp.gov/2026/scope/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/scope/</a>
 </p>
-
-
-
 <p>
 [2] GovRAMP — GovRAMP for Service Providers. <a href="https://govramp.org/service-providers?trk=article-ssr-frontend-pulse_little-text-block">https://govramp.org/service-providers</a>
 </p>
-
-
-
 <p>
 [3] FedRAMP — What’s Changing in 2026. <a href="https://www.fedramp.gov/2026/providers/updating/changes/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/providers/updating/changes/</a>
 </p>
-
-
-
 <p>
 [4] FedRAMP — Agency Use of FedRAMP Certified Cloud Services. <a href="https://www.fedramp.gov/2026/reference/agency-use/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/reference/agency-use/</a>
 </p>
-
-
-
 <p>
 [5] AICPA &amp; CIMA — System and Organization Controls / SOC 2. <a href="https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services?trk=article-ssr-frontend-pulse_little-text-block">https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services</a>
 </p>
-
-
-
 <p>
 [6] FedRAMP — FedRAMP Certification Rules, including Class A Approved Alternative Security Frameworks. <a href="https://www.fedramp.gov/2026/reference/fedramp-certification/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/reference/fedramp-certification/</a>
 </p>
-
-
-
 <p>
 [7] ISO — ISO/IEC 27001:2022, Information Security Management Systems. <a href="https://www.iso.org/standard/27001?trk=article-ssr-frontend-pulse_little-text-block">https://www.iso.org/standard/27001</a>
 </p>
-
-
-
 <p>
 [8] NIST — SP 800-53 Rev. 5, Security and Privacy Controls for Information Systems and Organizations. <a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final</a>
 </p>
-
-
-
 <p>
 [9] CISA — Secure Software Development Attestation Form. <a href="https://www.cisa.gov/secure-software-attestation-form?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/secure-software-attestation-form</a>
 </p>
-
-
-
 <p>
 [10] FedRAMP — Using FedRAMP Rev5 Certification Packages. <a href="https://www.fedramp.gov/2026/agencies/use/packages/rev5/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/agencies/use/packages/rev5/</a>
 </p>
-
-
-
 <p>
 [11] FedRAMP — FedRAMP Certification Classes. <a href="https://www.fedramp.gov/2026/agencies/use/classes/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/agencies/use/classes/</a>
 </p>
-
-
-
 <p>
 [12] FedRAMP — Choosing a Certification Path. <a href="https://www.fedramp.gov/2026/providers/start/path/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026/providers/start/path/</a>
 </p>
-
-
-
 <p>
 [13] FedRAMP — “Propelling Change: FedRAMP Launches Consolidated Rules for 2026,” June 25, 2026. <a href="https://www.fedramp.gov/2026-06-25-propelling-change-fedramp-launches-consolidated-rules-for-2026/?trk=article-ssr-frontend-pulse_little-text-block">https://www.fedramp.gov/2026-06-25-propelling-change-fedramp-launches-consolidated-rules-for-2026/</a>
 </p>
-
-
-
 <p>
 References verified August 13, 2026. FedRAMP is actively transitioning to the Consolidated Rules for 2026; organisations making certification or procurement decisions should verify current rules and effective dates directly with FedRAMP and the relevant government customer.
 </p>
-
-
-
 <p>
 Views are personal. This article is intended for education and strategic discussion and does not constitute legal, procurement or certification advice.
 </p>
-
- </article><nav class="series-nav" aria-label="Government assurance articles"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a aria-current="page" href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/government-buying-your-compliance-certificate/">The Government Is Not Buying Your Compliance Certificate</a></li><li><a href="/ai-security-briefings/articles/fedramp-enclave-myth/">The FedRAMP Enclave Myth</a></li><li><a href="/ai-security-briefings/articles/before-you-fund-fedramp/">Before You Fund FedRAMP</a></li></ul></section><nav aria-label="Government assurance articles" class="series-nav"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a aria-current="page" href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>

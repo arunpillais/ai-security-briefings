@@ -1,4 +1,5 @@
 /* Friday editions are inserted into data/briefings.json. Render text safely. */
+const briefingDataURL = new URL('../data/briefings.json', document.currentScript.src);
 const el = (tag, text, cls) => { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (cls) n.className = cls; return n; };
 const formatDate = value => new Date(value + 'T12:00:00Z').toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric', timeZone:'UTC'});
 function safeURL(value) { try { const u = new URL(value); return ['https:', 'http:'].includes(u.protocol) ? u.href : null; } catch { return null; } }
@@ -22,7 +23,7 @@ function editionCard(brief, compact = false) {
 }
 async function start() {
  document.querySelector('#year').textContent = new Date().getFullYear();
- const response = await fetch('data/briefings.json', {cache:'no-cache'});
+ const response = await fetch(briefingDataURL, {cache:'no-cache'});
  if (!response.ok) throw new Error('Briefing data could not be loaded.');
  const data = await response.json();
  const editions = data.briefings.filter(b => b.status === 'published').sort((a,b) => b.date.localeCompare(a.date));

@@ -1,0 +1,2 @@
+const search=document.querySelector('#insight-search');
+if(search){search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();let count=0;document.querySelectorAll('.library-section').forEach(section=>{let visible=0;section.querySelectorAll('.insight-card').forEach(card=>{card.hidden=!card.textContent.toLowerCase().includes(q);if(!card.hidden)visible++});section.hidden=visible===0;count+=visible});document.querySelector('#insight-count').textContent=count+' article'+(count===1?'':'s')+' match your search.'})}

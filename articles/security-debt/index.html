@@ -1,2960 +1,1486 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Security Debt Is Not Just Technical Debt | Arun Pillai</title><meta name="description" content="How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&amp;A, resilience, and executive choices. A business separation needs to happen quickly. There is no time to build the per"><link rel="canonical" href="https://www.linkedin.com/pulse/security-debt-just-technical-pillai-dba-cissp-crisc-cdp-togaf-tjacf"><meta property="og:title" content="Security Debt Is Not Just Technical Debt"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Security Debt Is Not Just Technical Debt","datePublished":"2026-08-29T11:05:17.000+00:00","dateModified":"2026-08-29T11:05:48.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/security-debt-just-technical-pillai-dba-cissp-crisc-cdp-togaf-tjacf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Security Debt Is Not Just Technical Debt</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-29">2026-08-29</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/security-debt-just-technical-pillai-dba-cissp-crisc-cdp-togaf-tjacf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../what-board-should-see/">← Previous: What the Board Should Actually See</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../remediation-economics/">Next: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal →</a></nav><img class="article-cover" alt="Security Debt Is Not Just Technical Debt" loading="lazy" src="../../assets/articles/security-debt-0.webp"/><article class="article-body">
+<!doctype html>
 
 
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Security Debt Is Not Just Technical Debt | Arun Pillai</title><meta content="How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&amp;A, resilience, and executive choices. A business separation needs to happen quickly. There is no time to build the per" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/security-debt/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Security Debt Is Not Just Technical Debt | Arun Pillai" property="og:title"/><meta content="How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&amp;A, resilience, and executive choices. A business separation needs to happen quickly. There is no time to build the per" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/security-debt/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/security-debt-0.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Security Debt Is Not Just Technical Debt | Arun Pillai" name="twitter:title"/><meta content="How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&amp;A, resilience, and executive choices. A business separation needs to happen quickly. There is no time to build the per" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/security-debt-0.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/#article", "headline": "Security Debt Is Not Just Technical Debt", "description": "Consider security debt as an organizational issue alongside a technical one.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-29T11:05:17.000+00:00", "dateModified": "2026-08-29T11:05:48.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/articles/security-debt-0.webp", "isBasedOn": "https://www.linkedin.com/pulse/security-debt-just-technical-pillai-dba-cissp-crisc-cdp-togaf-tjacf", "articleSection": "Vulnerability Management & Risk Reduction"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "Security Debt Is Not Just Technical Debt", "item": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/security-debt/", "name": "Security Debt Is Not Just Technical Debt | Arun Pillai", "description": "How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&A, resilience, and executive choices. A business separation needs to happen quickly. There is no time to build the per", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/risk-operations/">Vulnerability Management &amp; Risk Reduction</a></p><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Security Debt Is Not Just Technical Debt</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-29">2026-08-29</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/security-debt-just-technical-pillai-dba-cissp-crisc-cdp-togaf-tjacf" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../what-board-should-see/" rel="prev">← Previous: What the Board Should Actually See</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../remediation-economics/" rel="next">Next: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal →</a></nav><img alt="Security Debt Is Not Just Technical Debt" class="article-cover" loading="eager" src="../../assets/articles/security-debt-0.webp"/><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>Consider security debt as an organizational issue alongside a technical one.</p><p>17 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><article class="article-body">
 <p>
 How deferred security decisions accumulate into Exposure Debt — and why the cost eventually shows up in architecture, operations, M&amp;A, resilience, and executive choices.
 </p>
-
-
-
 <p>
 A business separation needs to happen quickly.
 </p>
-
-
-
 <p>
 There is no time to build the perfect target-state identity architecture.
 </p>
-
-
-
 <p>
 So the team creates a temporary Active Directory forest to keep the divested environment running.
 </p>
-
-
-
 <p>
 Six months, everyone agrees.
 </p>
-
-
-
 <p>
 Long enough to separate the businesses, stabilize operations, and build the permanent solution.
 </p>
-
-
-
 <p>
 Some legacy supply-chain applications still depend on old authentication behaviour. Modernizing them immediately would delay the transaction and create operational risk.
 </p>
-
-
-
 <p>
 So compromises are made.
 </p>
-
-
-
 <p>
 Aging Windows Server instances stay alive.
 </p>
-
-
-
 <p>
 Legacy authentication remains available.
 </p>
-
-
-
 <p>
 Compensating controls are added.
 </p>
-
-
-
 <p>
 The decision is documented.
 </p>
-
-
-
 <p>
 And, on the day it is made, the decision may be entirely rational.
 </p>
-
-
-
 <p>
 Six months pass.
 </p>
-
-
-
 <p>
 The temporary forest is still there.
 </p>
-
-
-
 <p>
 Then twelve months.
 </p>
-
-
-
 <p>
 Then a new cloud service needs access to an old application, so somebody builds a bridge.
 </p>
-
-
-
 <p>
 Another project does the same.
 </p>
-
-
-
 <p>
 The bridge becomes a pattern.
 </p>
-
-
-
 <p>
 Eventually nobody describes the environment as temporary anymore.
 </p>
-
-
-
 <p>
 Three years later, a narrow compromise made under transaction pressure has become part of the identity foundation for systems that did not even exist when the original exception was approved.
 </p>
-
-
-
 <p>
 The people now operating the environment may never have met the people who made the initial decision.
 </p>
-
-
-
 <p>
 The original risk acceptance may still exist somewhere.
 </p>
-
-
-
 <p>
 The architecture certainly does.
 </p>
-
-
-
 <p>
 I have seen versions of this pattern often enough that I think we need a better name for what is happening.
 </p>
-
-
-
 <p>
 The original decision was not necessarily wrong.
 </p>
-
-
-
 <p>
 The problem is that:
 </p>
-
-
-
 <p>
 temporary decisions can outlive the conditions that made them sensible.
 </p>
-
-
-
 <p>
 And once enough technology, process, and business dependency grows around them, the enterprise is no longer carrying a temporary exception.
 </p>
-
-
-
 <p>
 It is carrying debt.
 </p>
-
-
-
 <p>
 Technical debt, security debt, and Exposure Debt are not quite the same thing
 </p>
-
-
-
 <p>
 The idea of technical debt has been around for decades.
 </p>
-
-
-
 <p>
 The metaphor is useful because it describes a familiar trade-off:
 </p>
-
-
-
 <p>
 we take a shortcut today to create speed or value, knowing that we may have to pay for that decision later.
 </p>
-
-
-
 <p>
 The problem is not always taking the shortcut.
 </p>
-
-
-
 <p>
 Sometimes speed genuinely matters.
 </p>
-
-
-
 <p>
 The problem is forgetting that we borrowed anything.
 </p>
-
-
-
 <p>
 Recent research increasingly treats technical debt as more than a code-maintainability issue. Thibodeau, for example, reframes technical debt as a broader organizational, security, safety, and sociotechnical risk. [1]
 </p>
-
-
-
 <p>
 Research on Enterprise Architecture Debt goes further still, examining how accumulated architectural compromises can constrain modernization, agility, and resilience. [2]
 </p>
-
-
-
 <p>
 That feels much closer to what I see in security.
 </p>
-
-
-
 <p>
 But I want to distinguish another category.
 </p>
-
-
-
 <p>
 I will call it:
 </p>
-
-
-
 <p>
 Exposure Debt
 </p>
-
-
-
 <p>
 I am proposing Exposure Debt as a leadership lens for this series, not as an established industry metric.
 </p>
-
-
-
 <p>
 My working definition is:
 </p>
-
-
-
 <p>
 Exposure Debt is the accumulated residual cyber exposure created when known security treatment is deferred, weakened, repeatedly accepted, or embedded into architecture faster than it is retired.
 </p>
-
-
-
 <p>
 Technical debt often asks:
 </p>
-
-
-
 <p>
 How much harder have we made this system to maintain or change?
 </p>
-
-
-
 <p>
 Exposure Debt asks:
 </p>
-
-
-
 <p>
 How much harder have we made this risk to remove?
 </p>
-
-
-
 <p>
 The distinction matters.
 </p>
-
-
-
 <p>
 An old authentication protocol may begin as technical debt.
 </p>
-
-
-
 <p>
 But when:
 </p>
-
-
-
 <p>
 new applications depend on it,
 </p>
-
-
-
 <p>
 exceptions are repeatedly renewed,
 </p>
-
-
-
 <p>
 attack paths accumulate around it,
 </p>
-
-
-
 <p>
 business processes depend on it,
 </p>
-
-
-
 <p>
 and removing it now threatens production availability,
 </p>
-
-
-
 <p>
 the organization is carrying more than a maintenance problem.
 </p>
-
-
-
 <p>
 It is carrying exposure created by previous decisions.
 </p>
-
-
-
 <p>
 Exposure Debt rarely arrives dramatically
 </p>
-
-
-
 <p>
 That is part of what makes it dangerous.
 </p>
-
-
-
 <p>
 Nobody normally walks into an architecture meeting and says:
 </p>
-
-
-
 <p>
 “Today we are going to create a strategic cyber liability that will constrain us for the next five years.”
 </p>
-
-
-
 <p>
 The accumulation is much quieter.
 </p>
-
-
-
 <p>
 I tend to see five stages.
 </p>
-
-
-
 <p>
 DEFER → COMPENSATE → NORMALIZE → INHERIT → CONCENTRATE
 </p>
-
-
-
 <p>
 1. Defer
 </p>
-
-
-
 <p>
 There is a real fix.
 </p>
-
-
-
 <p>
 Just not now.
 </p>
-
-
-
 <p>
 The release is too important.
 </p>
-
-
-
 <p>
 The acquisition timeline is fixed.
 </p>
-
-
-
 <p>
 The vendor has not delivered an upgrade.
 </p>
-
-
-
 <p>
 The business cannot tolerate the outage.
 </p>
-
-
-
 <p>
 The replacement program is next year.
 </p>
-
-
-
 <p>
 The decision can be perfectly defensible.
 </p>
-
-
-
 <p>
 Debt begins when “not now” stops having a credible path to “later.”
 </p>
-
-
-
 <p>
 2. Compensate
 </p>
-
-
-
 <p>
 Security adds something to make the delay safer.
 </p>
-
-
-
 <p>
 Segmentation.
 </p>
-
-
-
 <p>
 Additional monitoring.
 </p>
-
-
-
 <p>
 A WAF rule.
 </p>
-
-
-
 <p>
 A privileged-access control.
 </p>
-
-
-
 <p>
 Restricted network access.
 </p>
-
-
-
 <p>
 An EDR policy.
 </p>
-
-
-
 <p>
 Manual review.
 </p>
-
-
-
 <p>
 These controls can be very effective.
 </p>
-
-
-
 <p>
 But something subtle can happen.
 </p>
-
-
-
 <p>
 The compensating control stops being a bridge to permanent treatment and becomes the reason permanent treatment keeps being postponed.
 </p>
-
-
-
 <p>
 Instead of:
 </p>
-
-
-
 <p>
 “This control protects us while we remove the problem.”
 </p>
-
-
-
 <p>
 the conversation becomes:
 </p>
-
-
-
 <p>
 “Why remove the problem? We already have the control.”
 </p>
-
-
-
 <p>
 Those are not the same risk decision.
 </p>
-
-
-
 <p>
 3. Normalize
 </p>
-
-
-
 <p>
 Time changes language.
 </p>
-
-
-
 <p>
 The “temporary environment” becomes:
 </p>
-
-
-
 <p>
 the legacy environment.
 </p>
-
-
-
 <p>
 Then:
 </p>
-
-
-
 <p>
 the shared environment.
 </p>
-
-
-
 <p>
 Eventually:
 </p>
-
-
-
 <p>
 the environment.
 </p>
-
-
-
 <p>
 The exception stops appearing in architecture conversations because everyone assumes it is simply how things work.
 </p>
-
-
-
 <p>
 This is the stage that worries me most.
 </p>
-
-
-
 <p>
 A known risk is at least visible.
 </p>
-
-
-
 <p>
 A normalized risk starts disappearing into the architecture.
 </p>
-
-
-
 <p>
 4. Inherit
 </p>
-
-
-
 <p>
 Then people change.
 </p>
-
-
-
 <p>
 Teams reorganize.
 </p>
-
-
-
 <p>
 Businesses merge.
 </p>
-
-
-
 <p>
 Platforms move.
 </p>
-
-
-
 <p>
 An acquisition happens.
 </p>
-
-
-
 <p>
 A service gets transferred to a new owner.
 </p>
-
-
-
 <p>
 The new team inherits the technology.
 </p>
-
-
-
 <p>
 It may not inherit the original reasoning.
 </p>
-
-
-
 <p>
 This matters because risk acceptance is contextual.
 </p>
-
-
-
 <p>
 The new owner may know what exists without knowing:
 </p>
-
-
-
 <p>
 why it was accepted,
 </p>
-
-
-
 <p>
 what assumptions supported the decision,
 </p>
-
-
-
 <p>
 what controls were considered essential,
 </p>
-
-
-
 <p>
 or:
 </p>
-
-
-
 <p>
 when it was supposed to end.
 </p>
-
-
-
 <p>
 The organization inherits the exposure but loses the memory.
 </p>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
 <p>
 5. Concentrate
 </p>
-
-
-
 <p>
 Finally, individually tolerable exceptions begin intersecting.
 </p>
-
-
-
 <p>
 Multiple systems depend on the same legacy identity service.
 </p>
-
-
-
 <p>
 Several acquisitions rely on the same old database.
 </p>
-
-
-
 <p>
 Temporary administrative access becomes common across multiple platforms.
 </p>
-
-
-
 <p>
 Modern cloud workloads depend on one unsupported middleware component.
 </p>
-
-
-
 <p>
 At that point, ten individually reasonable risk decisions can become one systemic exposure.
 </p>
-
-
-
 <p>
 Nobody explicitly chose the concentration.
 </p>
-
-
-
 <p>
 It emerged.
 </p>
-
-
-
 <p>
 And this is where Exposure Debt becomes an executive problem rather than simply a security backlog.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/security-debt-1.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 1 — The Exposure Debt Accumulation Cycle
 </figcaption>
 </figure>
-
-
-
 <p>
 Debt accumulates interest even when nobody touches it
 </p>
-
-
-
 <p>
 One of the uncomfortable things about security debt is that doing nothing is not neutral.
 </p>
-
-
-
 <p>
 A deferred exposure does not sit frozen in time.
 </p>
-
-
-
 <p>
 The world around it changes.
 </p>
-
-
-
 <p>
 Threat techniques improve.
 </p>
-
-
-
 <p>
 Public exploit knowledge changes.
 </p>
-
-
-
 <p>
 The architecture grows.
 </p>
-
-
-
 <p>
 Business dependency increases.
 </p>
-
-
-
 <p>
 Controls age.
 </p>
-
-
-
 <p>
 Staff change.
 </p>
-
-
-
 <p>
 Documentation becomes less reliable.
 </p>
-
-
-
 <p>
 The vendor changes strategy.
 </p>
-
-
-
 <p>
 The original owner leaves.
 </p>
-
-
-
 <p>
 And remediation usually becomes harder because more systems now depend on the thing that needs to change.
 </p>
-
-
-
 <p>
 Research on technical debt shows similar dynamics.
 </p>
-
-
-
 <p>
 Levén, Broman, Besker, and Torkar found empirical support for the “broken windows” effect in technical debt: unmanaged debt can influence environments in ways that encourage further accumulation rather than remaining isolated. [3]
 </p>
-
-
-
 <p>
 Besker, Martini, and Bosch have also examined how organizations triage technical debt against competing delivery pressures — exactly the tension security teams face when remediation competes with customer value and roadmap delivery. [4]
 </p>
-
-
-
 <p>
 More recent empirical work treats technical-debt decisions as socio-technical decisions shaped not simply by engineering logic, but by stakeholder relationships, urgency, organizational incentives, and institutional pressures. [5]
 </p>
-
-
-
 <p>
 Related work by Herath, Ahmad, and Gustavsson examines the Product Guardian role in large-scale agile environments — a specialized role designed to bridge technical and product perspectives and proactively address socio-technical debt. [11]
 </p>
-
-
-
 <p>
 That finding resonates with something I argued in Article 5: when risk and debt cross technology, product, and organizational boundaries, progress often depends on making ownership explicit rather than assuming the normal team structure will somehow absorb it.
 </p>
-
-
-
 <p>
 That resonates with me.
 </p>
-
-
-
 <p>
 Because many of the worst security debts I have seen did not start with bad engineering.
 </p>
-
-
-
 <p>
 They started with a perfectly understandable business sentence:
 </p>
-
-
-
 <blockquote class="w-auto">“We just need to get through this quarter.”</blockquote>
-
-
-
 <p>
 The problem was that nobody came back the next quarter.
 </p>
-
-
-
 <p>
 Exposure Debt creates two costs executives eventually feel
 </p>
-
-
-
 <p>
 There are many consequences, but two repeatedly reach the executive table.
 </p>
-
-
-
 <p>
 Slower change
 </p>
-
-
-
 <p>
 Imagine that old identity bridge again.
 </p>
-
-
-
 <p>
 Every modernization program now has to account for it.
 </p>
-
-
-
 <p>
 A cloud migration needs an exception.
 </p>
-
-
-
 <p>
 A new SaaS platform needs a compatibility layer.
 </p>
-
-
-
 <p>
 A Zero Trust initiative cannot assume modern authentication everywhere.
 </p>
-
-
-
 <p>
 An acquisition integration needs another temporary bridge.
 </p>
-
-
-
 <p>
 The old decision is now charging a tax against every new decision.
 </p>
-
-
-
 <p>
 No single project necessarily carries the whole cost.
 </p>
-
-
-
 <p>
 That is precisely why it survives.
 </p>
-
-
-
 <p>
 The cost is distributed.
 </p>
-
-
-
 <p>
 One engineering team loses two weeks.
 </p>
-
-
-
 <p>
 Another builds a workaround.
 </p>
-
-
-
 <p>
 Another delays decommissioning.
 </p>
-
-
-
 <p>
 Another adds monitoring.
 </p>
-
-
-
 <p>
 Nobody sees an invoice called:
 </p>
-
-
-
 <p>
 “Interest payment on 2023 identity decision.”
 </p>
-
-
-
 <p>
 But the business is paying it anyway.
 </p>
-
-
-
 <p>
 Expanding attackability
 </p>
-
-
-
 <p>
 The second cost is more direct.
 </p>
-
-
-
 <p>
 The attack surface can grow around the original weakness.
 </p>
-
-
-
 <p>
 What started as:
 </p>
-
-
-
 <p>
 one isolated legacy service
 </p>
-
-
-
 <p>
 becomes:
 </p>
-
-
-
 <p>
 a dependency.
 </p>
-
-
-
 <p>
 Then:
 </p>
-
-
-
 <p>
 a bridge.
 </p>
-
-
-
 <p>
 Then:
 </p>
-
-
-
 <p>
 an identity path.
 </p>
-
-
-
 <p>
 Then:
 </p>
-
-
-
 <p>
 a route into systems that were never part of the original risk decision.
 </p>
-
-
-
 <p>
 The vulnerability may not have changed.
 </p>
-
-
-
 <p>
 The exposure has.
 </p>
-
-
-
 <p>
 That distinction is fundamental.
 </p>
-
-
-
 <p>
 Exposure Debt compounds not because the CVE gets older, but because the enterprise keeps changing around it.
 </p>
-
-
-
 <p>
 This changes how I think about risk acceptance
 </p>
-
-
-
 <p>
 There is one sentence in vulnerability meetings that always gets my attention:
 </p>
-
-
-
 <p>
 “That risk has already been accepted.”
 </p>
-
-
-
 <p>
 Maybe.
 </p>
-
-
-
 <p>
 But accepted when?
 </p>
-
-
-
 <p>
 By whom?
 </p>
-
-
-
 <p>
 For what architecture?
 </p>
-
-
-
 <p>
 Under what threat conditions?
 </p>
-
-
-
 <p>
 With which compensating controls?
 </p>
-
-
-
 <p>
 For how long?
 </p>
-
-
-
 <p>
 And for which business consequence?
 </p>
-
-
-
 <p>
 Article 4 introduced Risk-Acceptance Half-Life as a governance lens.
 </p>
-
-
-
 <p>
 The older a risk acceptance gets, the more evidence I want that the assumptions behind it still hold.
 </p>
-
-
-
 <p>
 Exposure Debt is what happens when that discipline fails repeatedly.
 </p>
-
-
-
 <p>
 I increasingly think of risk acceptance as a loan.
 </p>
-
-
-
 <p>
 Risk acceptance is a short-term loan, not a permanent waiver.
 </p>
-
-
-
 <p>
 A loan can be entirely sensible.
 </p>
-
-
-
 <p>
 But it has terms.
 </p>
-
-
-
 <p>
 And it has a cost.
 </p>
-
-
-
 <p>
 When we repeatedly extend the loan without revisiting the underlying conditions, we may no longer be managing temporary risk.
 </p>
-
-
-
 <p>
 We may be financing permanent architecture.
 </p>
-
-
-
 <p>
 Which leads to a line I would put in front of any technology leadership team:
 </p>
-
-
-
 <p>
 If the same exception is renewed three times, it may no longer be an exception. It may be your architecture.
 </p>
-
-
-
 <p>
 M&amp;A makes Exposure Debt visible very quickly
 </p>
-
-
-
 <p>
 Acquisitions are especially revealing.
 </p>
-
-
-
 <p>
 You do not just acquire:
 </p>
-
-
-
 <p>
 applications,
 </p>
-
-
-
 <p>
 users,
 </p>
-
-
-
 <p>
 infrastructure,
 </p>
-
-
-
 <p>
 customers,
 </p>
-
-
-
 <p>
 and revenue.
 </p>
-
-
-
 <p>
 You acquire decisions.
 </p>
-
-
-
 <p>
 Five-year-old vendor dependencies.
 </p>
-
-
-
 <p>
 Temporary firewall rules.
 </p>
-
-
-
 <p>
 Legacy identity models.
 </p>
-
-
-
 <p>
 Unsupported databases.
 </p>
-
-
-
 <p>
 Deferred upgrades.
 </p>
-
-
-
 <p>
 Risk acceptances.
 </p>
-
-
-
 <p>
 Compensating controls.
 </p>
-
-
-
 <p>
 And sometimes entire platforms where nobody can reconstruct why a security trade-off was originally made.
 </p>
-
-
-
 <p>
 The vulnerability scanner sees the technology.
 </p>
-
-
-
 <p>
 It does not see the history.
 </p>
-
-
-
 <p>
 It can tell me:
 </p>
-
-
-
 <p>
 “This server has 37 Critical vulnerabilities.”
 </p>
-
-
-
 <p>
 It cannot tell me:
 </p>
-
-
-
 <p>
 why the server still exists,
 </p>
-
-
-
 <p>
 why the business depends on it,
 </p>
-
-
-
 <p>
 what replacement failed three years earlier,
 </p>
-
-
-
 <p>
 why network isolation was considered sufficient,
 </p>
-
-
-
 <p>
 who accepted the exposure,
 </p>
-
-
-
 <p>
 or whether the assumptions survived the acquisition.
 </p>
-
-
-
 <p>
 That is why I would not begin an integration conversation with:
 </p>
-
-
-
 <p>
 “How many Critical vulnerabilities did we inherit?”
 </p>
-
-
-
 <p>
 I would also ask:
 </p>
-
-
-
 <p>
 “How much Exposure Debt did we inherit — and where is it concentrated?”
 </p>
-
-
-
 <p>
 That question leads to a very different integration plan.
 </p>
-
-
-
 <p>
 EdTech is an interesting place to see this pattern
 </p>
-
-
-
 <p>
 I want to be careful here.
 </p>
-
-
-
 <p>
 This is not an argument that EdTech is unregulated.
 </p>
-
-
-
 <p>
 It is not.
 </p>
-
-
-
 <p>
 And it is certainly not an argument that finance or healthcare are secure simply because they operate in heavily regulated environments.
 </p>
-
-
-
 <p>
 They are not.
 </p>
-
-
-
 <p>
 But the incentives can be different.
 </p>
-
-
-
 <p>
 Financial services, healthcare, and payment environments frequently operate with highly visible regulatory, audit, or sector-control expectations.
 </p>
-
-
-
 <p>
 That often creates a forcing function.
 </p>
-
-
-
 <p>
 A control gap becomes:
 </p>
-
-
-
 <p>
 an audit finding,
 </p>
-
-
-
 <p>
 a regulatory concern,
 </p>
-
-
-
 <p>
 a payment-compliance issue,
 </p>
-
-
-
 <p>
 or:
 </p>
-
-
-
 <p>
 a board-level remediation commitment.
 </p>
-
-
-
 <p>
 Funding conversations tend to happen.
 </p>
-
-
-
 <p>
 EdTech can have a more fragmented picture.
 </p>
-
-
-
 <p>
 Privacy obligations such as COPPA, FERPA, GDPR, state laws, contractual commitments, and other jurisdiction-specific requirements can be significant.
 </p>
-
-
-
 <p>
 But much of that regulatory conversation is naturally centered on:
 </p>
-
-
-
 <p>
 student information,
 </p>
-
-
-
 <p>
 privacy,
 </p>
-
-
-
 <p>
 consent,
 </p>
-
-
-
 <p>
 processing,
 </p>
-
-
-
 <p>
 retention,
 </p>
-
-
-
 <p>
 and appropriate use of data.
 </p>
-
-
-
 <p>
 Meanwhile the underlying infrastructure may still be dealing with:
 </p>
-
-
-
 <p>
 legacy identity,
 </p>
-
-
-
 <p>
 old open-source dependencies,
 </p>
-
-
-
 <p>
 acquired platforms,
 </p>
-
-
-
 <p>
 rapid product releases,
 </p>
-
-
-
 <p>
 shared services,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <p>
 very strong pressure to keep the student and teacher experience frictionless.
 </p>
-
-
-
 <p>
 That creates an interesting tension.
 </p>
-
-
-
 <p>
 Security may know the platform needs deeper modernization.
 </p>
-
-
-
 <p>
 Product may know that adding friction risks adoption.
 </p>
-
-
-
 <p>
 Engineering may know a rewrite would consume two roadmap cycles.
 </p>
-
-
-
 <p>
 The business may know customers are asking for new capabilities now.
 </p>
-
-
-
 <p>
 Nobody is acting irrationally.
 </p>
-
-
-
 <p>
 Yet the debt accumulates.
 </p>
-
-
-
 <p>
 That is precisely why I think Exposure Debt is useful as a leadership concept.
 </p>
-
-
-
 <p>
 It gives the organization a way to discuss a risk that may be:
 </p>
-
-
-
 <p>
 technically visible,
 </p>
-
-
-
 <p>
 operationally tolerated,
 </p>
-
-
-
 <p>
 financially deferred,
 </p>
-
-
-
 <p>
 and strategically important
 </p>
-
-
-
 <p>
 at the same time.
 </p>
-
-
-
 <p>
 I would measure Exposure Debt differently from vulnerability backlog
 </p>
-
-
-
 <p>
 I would not try to invent one magic “Exposure Debt Score.”
 </p>
-
-
-
 <p>
 We have enough scores.
 </p>
-
-
-
 <p>
 Instead, I would look for several indicators.
 </p>
-
-
-
 <p>
 Exposure Debt Age
 </p>
-
-
-
 <p>
 How long has the underlying exposure existed since management first decided to defer durable treatment?
 </p>
-
-
-
 <p>
 This is different from vulnerability age.
 </p>
-
-
-
 <p>
 The important clock is often the age of the decision.
 </p>
-
-
-
 <p>
 Repeat Exception Rate
 </p>
-
-
-
 <p>
 How much material exposure has been:
 </p>
-
-
-
 <p>
 accepted,
 </p>
-
-
-
 <p>
 renewed,
 </p>
-
-
-
 <p>
 and renewed again?
 </p>
-
-
-
 <p>
 A high repeat rate tells me that “temporary” treatment may be turning into the operating model.
 </p>
-
-
-
 <p>
 No-Durable-Exit Exposure
 </p>
-
-
-
 <p>
 How many material exposures have:
 </p>
-
-
-
 <p>
 no funded retirement,
 </p>
-
-
-
 <p>
 no replacement program,
 </p>
-
-
-
 <p>
 no committed remediation path,
 </p>
-
-
-
 <p>
 and no architecture decision likely to eliminate them?
 </p>
-
-
-
 <p>
 This number should make leadership uncomfortable.
 </p>
-
-
-
 <p>
 Concentrated Debt
 </p>
-
-
-
 <p>
 Where are multiple deferred exposures accumulating around the same:
 </p>
-
-
-
 <p>
 identity plane,
 </p>
-
-
-
 <p>
 customer platform,
 </p>
-
-
-
 <p>
 data store,
 </p>
-
-
-
 <p>
 business process,
 </p>
-
-
-
 <p>
 supplier,
 </p>
-
-
-
 <p>
 cloud control plane,
 </p>
-
-
-
 <p>
 or privileged access path?
 </p>
-
-
-
 <p>
 This is where individually manageable risk can become systemic.
 </p>
-
-
-
 <p>
 Cost-to-Retire Trend
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <p>
 “What will this cost to fix?”
 </p>
-
-
-
 <p>
 but:
 </p>
-
-
-
 <p>
 “Is the cost of removing this exposure increasing?”
 </p>
-
-
-
 <p>
 If the estimate last year was one quarter of engineering work and this year it requires a multi-year platform transformation, that tells me something important.
 </p>
-
-
-
 <p>
 The debt is charging interest.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/security-debt-2.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 2 — The Exposure Debt Executive View
 </figcaption>
 </figure>
-
-
-
 <p>
 I would not pretend there is a universal multiplier
 </p>
-
-
-
 <p>
 The financial analogy can be tempting.
 </p>
-
-
-
 <p>
 It is easy to say:
 </p>
-
-
-
 <p>
 “This will cost three times as much next year.”
 </p>
-
-
-
 <p>
 Sometimes it might.
 </p>
-
-
-
 <p>
 Sometimes it might not.
 </p>
-
-
-
 <p>
 The technical-debt literature supports the broader idea that delayed remediation can create continuing “interest” through maintenance cost, complexity, slower delivery, and architectural constraints. Research also shows that quantifying technical debt remains difficult and context-dependent. [6][7]
 </p>
-
-
-
 <p>
 So I would resist creating a neat universal multiplier for Exposure Debt.
 </p>
-
-
-
 <p>
 The important question is not whether the cost grew by exactly 3.2x.
 </p>
-
-
-
 <p>
 The important question is:
 </p>
-
-
-
 <p>
 Did keeping the exposure make our future choices more expensive, slower, or narrower?
 </p>
-
-
-
 <p>
 If the answer is yes, debt accumulated.
 </p>
-
-
-
 <p>
 In the identity example, the additional cost might come from:
 </p>
-
-
-
 <p>
 more applications to migrate,
 </p>
-
-
-
 <p>
 more integrations to unwind,
 </p>
-
-
-
 <p>
 more identities to transition,
 </p>
-
-
-
 <p>
 more testing,
 </p>
-
-
-
 <p>
 greater availability requirements,
 </p>
-
-
-
 <p>
 and less tolerance for disruption.
 </p>
-
-
-
 <p>
 That is enough.
 </p>
-
-
-
 <p>
 We do not need invented precision to make the executive point.
 </p>
-
-
-
 <p>
 This is also becoming an AI problem
 </p>
-
-
-
 <p>
 There is another reason I think the debt concept will matter more.
 </p>
-
-
-
 <p>
 AI-enabled systems are generating their own forms of technical, safety, and security debt.
 </p>
-
-
-
 <p>
 Tukur and colleagues argue that deferred safety and security issues in AI-enabled systems can accumulate across lifecycle, organizational, and sociotechnical dimensions. [8]
 </p>
-
-
-
 <p>
 Their follow-on work on agentic systems extends the concern further, describing new forms of debt created by increasingly autonomous and interconnected AI components. [9]
 </p>
-
-
-
 <p>
 Bhatia and colleagues' empirical work on self-admitted technical debt in machine-learning software similarly reinforces that ML systems are not immune to the same pressures that create debt elsewhere. [10]
 </p>
-
-
-
 <p>
 The implication is important.
 </p>
-
-
-
 <p>
 AI may make us much faster at:
 </p>
-
-
-
 <p>
 building,
 </p>
-
-
-
 <p>
 discovering,
 </p>
-
-
-
 <p>
 integrating,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <p>
 automating.
 </p>
-
-
-
 <p>
 But speed does not eliminate debt.
 </p>
-
-
-
 <p>
 Sometimes speed creates more opportunities to defer decisions.
 </p>
-
-
-
 <p>
 Which means the next generation of exposure management may face a very uncomfortable equation:
 </p>
-
-
-
 <p>
 Discovery velocity ↑Development velocity ↑ Architecture dependency ↑ Remediation capacity ≠ infinite
 </p>
-
-
-
 <p>
 If we do not govern the debt, faster technology may simply help us accumulate it faster.
 </p>
-
-
-
 <p>
 What Security can contain — and what leadership has to fund
 </p>
-
-
-
 <p>
 This is where responsibility matters.
 </p>
-
-
-
 <p>
 Security can:
 </p>
-
-
-
 <p>
 identify exposure,
 </p>
-
-
-
 <p>
 challenge assumptions,
 </p>
-
-
-
 <p>
 test compensating controls,
 </p>
-
-
-
 <p>
 monitor threat change,
 </p>
-
-
-
 <p>
 track acceptance age,
 </p>
-
-
-
 <p>
 escalate stale decisions,
 </p>
-
-
-
 <p>
 and verify whether risk is genuinely reduced.
 </p>
-
-
-
 <p>
 Security cannot:
 </p>
-
-
-
 <p>
 fund a platform replacement,
 </p>
-
-
-
 <p>
 rewrite a product,
 </p>
-
-
-
 <p>
 approve a two-year modernization program,
 </p>
-
-
-
 <p>
 retire a revenue-generating service,
 </p>
-
-
-
 <p>
 renegotiate a strategic vendor dependency,
 </p>
-
-
-
 <p>
 or decide that an old platform’s remaining business value no longer justifies its cost.
 </p>
-
-
-
 <p>
 Those are enterprise decisions.
 </p>
-
-
-
 <p>
 Which is why I would not ask:
 </p>
-
-
-
 <p>
 “Why hasn’t Security fixed the identity forest?”
 </p>
-
-
-
 <p>
 I would ask:
 </p>
-
-
-
 <p>
 “What does it cost to retire it today, what is making that cost grow, and who is deciding to continue carrying it?”
 </p>
-
-
-
 <p>
 That is a much more useful executive conversation.
 </p>
-
-
-
 <p>
 And it connects directly back to <a href="https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf/?trk=article-ssr-frontend-pulse_little-text-block">Article 5</a>:
 </p>
-
-
-
 <p>
 Security owns the integrity of the vulnerability-management system. Technology and business owners own the actions and consequences inside that system.
 </p>
-
-
-
 <p>
 Exposure Debt does not disappear because Security documents it more accurately.
 </p>
-
-
-
 <p>
 At some point somebody with budget, architecture authority, product authority, or risk authority has to decide to repay it.
 </p>
-
-
-
 <p>
 A Monday-morning exercise
 </p>
-
-
-
 <p>
 I would try this with the leadership team.
 </p>
-
-
-
 <p>
 Do not start with the newest vulnerabilities.
 </p>
-
-
-
 <p>
 Start with the oldest decisions.
 </p>
-
-
-
 <p>
 Find ten material exposures that have survived more than one governance cycle.
 </p>
-
-
-
 <p>
 Things that were:
 </p>
-
-
-
 <p>
 accepted,
 </p>
-
-
-
 <p>
 renewed,
 </p>
-
-
-
 <p>
 mitigated temporarily,
 </p>
-
-
-
 <p>
 scheduled for replacement,
 </p>
-
-
-
 <p>
 or:
 </p>
-
-
-
 <p>
 supposed to disappear after a project that never quite happened.
 </p>
-
-
-
 <p>
 For each one, ask:
 </p>
-
-
-
 <p>
 What was the original reason for deferral?
 </p>
-
-
-
 <p>
 Would we still make the same decision today?
 </p>
-
-
-
 <p>
 What assumptions supported the decision?
 </p>
-
-
-
 <p>
 Are they still true?
 </p>
-
-
-
 <p>
 What has grown around the exposure?
 </p>
-
-
-
 <p>
 Applications?
 </p>
-
-
-
 <p>
 Users?
 </p>
-
-
-
 <p>
 Cloud integrations?
 </p>
-
-
-
 <p>
 Business dependency?
 </p>
-
-
-
 <p>
 Attack paths?
 </p>
-
-
-
 <p>
 What would it cost to retire today?
 </p>
-
-
-
 <p>
 And do we believe that cost is rising?
 </p>
-
-
-
 <p>
 Is there a funded durable exit?
 </p>
-
-
-
 <p>
 Not an intention.
 </p>
-
-
-
 <p>
 A real exit.
 </p>
-
-
-
 <p>
 Who owns the decision to keep carrying it?
 </p>
-
-
-
 <p>
 A name.
 </p>
-
-
-
 <p>
 If nobody can answer that last question, then we have found Exposure Debt without an accountable owner.
 </p>
-
-
-
 <p>
 And as I argued in <a href="https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf/?trk=article-ssr-frontend-pulse_little-text-block">Article 5</a>:
 </p>
-
-
-
 <p>
 A vulnerability without an accountable owner is not being managed. It is being observed.
 </p>
-
-
-
 <p>
 Exposure Debt without an owner is even worse.
 </p>
-
-
-
 <p>
 It is being financed without anybody admitting they approved the loan.
 </p>
-
-
-
 <p>
 My position
 </p>
-
-
-
 <p>
 Technical debt makes systems harder to change.
 </p>
-
-
-
 <p>
 Exposure Debt makes risk harder to remove.
 </p>
-
-
-
 <p>
 The mechanisms are similar.
 </p>
-
-
-
 <p>
 Short-term decisions narrow future options.
 </p>
-
-
-
 <p>
 Dependencies accumulate.
 </p>
-
-
-
 <p>
 Workarounds become permanent.
 </p>
-
-
-
 <p>
 The organization pays interest in:
 </p>
-
-
-
 <p>
 engineering effort,
 </p>
-
-
-
 <p>
 architecture complexity,
 </p>
-
-
-
 <p>
 operational fragility,
 </p>
-
-
-
 <p>
 security controls,
 </p>
-
-
-
 <p>
 integration cost,
 </p>
-
-
-
 <p>
 slower modernization,
 </p>
-
-
-
 <p>
 and eventually:
 </p>
-
-
-
 <p>
 risk.
 </p>
-
-
-
 <p>
 I do not think every security exception is bad.
 </p>
-
-
-
 <p>
 I do not think every legacy system should be replaced immediately.
 </p>
-
-
-
 <p>
 And I certainly do not think every temporary control represents poor leadership.
 </p>
-
-
-
 <p>
 Sometimes carrying debt is the right decision.
 </p>
-
-
-
 <p>
 Businesses borrow money for the same reason.
 </p>
-
-
-
 <p>
 The discipline is knowing:
 </p>
-
-
-
 <p>
 what you borrowed,
 </p>
-
-
-
 <p>
 why you borrowed it,
 </p>
-
-
-
 <p>
 what the interest looks like,
 </p>
-
-
-
 <p>
 who owns it,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <p>
 how you eventually intend to repay it.
 </p>
-
-
-
 <p>
 That is the difference between using debt strategically and simply accumulating it.
 </p>
-
-
-
 <p>
 Which brings me back to the line I would leave with any executive team:
 </p>
-
-
-
 <p>
 If the same exception is renewed three times, it is no longer an exception. It is your architecture.
 </p>
-
-
-
 <p>
 And architecture has a long memory.
 </p>
-
-
-
 <p>
 Next in this series
 </p>
-
-
-
 <p>
 When AI Finds Exposure Faster Than Organizations Can Retire It
 </p>
-
-
-
 <p>
 AI will continue making vulnerability discovery faster.
 </p>
-
-
-
 <p>
 That is good.
 </p>
-
-
-
 <p>
 But an organization carrying years of accumulated Exposure Debt may discover something uncomfortable:
 </p>
-
-
-
 <p>
 the bottleneck is no longer finding risk.
 </p>
-
-
-
 <p>
 It is deciding which old decisions to unwind first.
 </p>
-
-
-
 <p>
 The next article will return to where this series started — and ask what happens when discovery velocity exceeds organizational risk-reduction capacity.
 </p>
-
-
-
 <p>
 References &amp; Further Reading
 </p>
-
-
-
 <p>
 [1] Thibodeau, S. (2026). “Reconceptualizing Technical Debt as an Organizational Security, Safety, and Sociotechnical Risk.” Safety and Security Advances, 2(1). <a href="https://armgpublishing.com/journals/ssa/volume-2-issue-1/article-3/?trk=article-ssr-frontend-pulse_little-text-block">https://armgpublishing.com/journals/ssa/volume-2-issue-1/article-3/</a>
 </p>
-
-
-
 <p>
 [2] Slupczynski, A., Krauze, B., &amp; Hacks, S. (2026). “Advancing Enterprise Architecture Debt: A Work System Theory Perspective on Modernization and Resilience.” Complex Systems Informatics and Modeling Quarterly, 46. <a href="https://openurl.ebsco.com/contentitem/gcd:193560997?trk=article-ssr-frontend-pulse_little-text-block">https://openurl.ebsco.com/contentitem/gcd:193560997</a>
 </p>
-
-
-
 <p>
 [3] Levén, W., Broman, H., Besker, T., &amp; Torkar, R. (2024). “The Broken Windows Theory Applies to Technical Debt.” Empirical Software Engineering. <a href="https://link.springer.com/article/10.1007/s10664-024-10456-6?trk=article-ssr-frontend-pulse_little-text-block">https://link.springer.com/article/10.1007/s10664-024-10456-6</a>
 </p>
-
-
-
 <p>
 [4] Besker, T., Martini, A., &amp; Bosch, J. (2019). “Technical Debt Triage in Backlog Management.” IEEE/ACM International Conference on Technical Debt. <a href="https://ieeexplore.ieee.org/abstract/document/8786030/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/8786030/</a>
 </p>
-
-
-
 <p>
 [5] Bittencourt, J. P., Spinola, R., &amp; Maciel, R. S. P. “Stakeholder Value Criteria for Technical Debt Acquisition Decisions: An Empirical Analysis.” ACM Transactions on Software Engineering and Methodology. <a href="https://dl.acm.org/doi/abs/10.1145/3808227?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/abs/10.1145/3808227</a>
 </p>
-
-
-
 <p>
 [6] Perera, J., Tempero, E., Tu, Y. C., &amp; Blincoe, K. (2024). “A Systematic Mapping Study Exploring Quantification Approaches to Code, Design, and Architecture Technical Debt.” ACM. <a href="https://dl.acm.org/doi/abs/10.1145/3675393?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/abs/10.1145/3675393</a>
 </p>
-
-
-
 <p>
 [7] Carvalho, L., Biazotto, J. P., Feitosa, D., et al. (2026). “Technical Debt Management in Continuous Software Engineering: State of the Art and Research Agenda.” Journal of Software: Evolution and Process. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/smr.70161?trk=article-ssr-frontend-pulse_little-text-block">https://onlinelibrary.wiley.com/doi/abs/10.1002/smr.70161</a>
 </p>
-
-
-
 <p>
 [8] Tukur, M., Adeyemo, H. B., Chen, T., Ali, N., Zarrad, A., Kazman, R., Agus, M., &amp; Bahsoon, R. (2026). “On AI Safety and Security Technical Debt in Engineering AI-Enabled Systems.” arXiv:2607.23365. <a href="https://arxiv.org/abs/2607.23365?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2607.23365</a>
 </p>
-
-
-
 <p>
 [9] Tukur, M., Adeyemo, H. B., Chen, T., Ali, N., Zarrad, A., Agus, M., Kazman, R., &amp; Bahsoon, R. (2026). “From AI Technical Debt to Agentic Technical Debt: A Systematic Mapping of Root Causes and Manifestations in Agentic AI Systems.” arXiv:2608.01001. <a href="https://arxiv.org/abs/2608.01001?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2608.01001</a>
 </p>
-
-
-
 <p>
 [10] Bhatia, A., Khomh, F., Adams, B., &amp; Hassan, A. E. (2026). “An Empirical Study of Self-Admitted Technical Debt in Machine Learning Software.” ACM Transactions on Software Engineering and Methodology. <a href="https://dl.acm.org/doi/abs/10.1145/3785001?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/abs/10.1145/3785001</a>
 </p>
-
-
-
 <p>
 [11] Herath, P., Ahmad, M. O., &amp; Gustavsson, T. (2025). “Product Guardian Role and Socio-Technical Debt Management in Large-Scale Agile.” ACM/IEEE International Symposium on Empirical Software Engineering and Measurement. <a href="https://dl.acm.org/doi/abs/10.1145/3727967.3756835?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/abs/10.1145/3727967.3756835</a>
 </p>
-
-
-
 <p>
 <br/>
 </p>
-
- </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../what-board-should-see/">← Previous: What the Board Should Actually See</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../remediation-economics/">Next: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/finding-vulnerabilities-reducing-risk/">We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a></li><li><a href="/ai-security-briefings/articles/cvss-10-business-risk/">CVSS 10 ≠ Business Risk 10</a></li><li><a href="/ai-security-briefings/articles/patch-everything-security-strategy/">Patch Everything Is Not a Security Strategy</a></li></ul></section><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../what-board-should-see/" rel="prev">← Previous: What the Board Should Actually See</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../remediation-economics/" rel="next">Next: Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>

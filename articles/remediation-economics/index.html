@@ -1,2532 +1,1230 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal | Arun Pillai</title><meta name="description" content="How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure. Consider a representative quarterly review. Security brings more than 100 findings. Engineering looks at the same qua"><link rel="canonical" href="https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf"><meta property="og:title" content="Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal","datePublished":"2026-08-31T12:53:51.000+00:00","dateModified":"2026-08-31T12:54:22.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-31">2026-08-31</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../security-debt/">← Previous: Security Debt Is Not Just Technical Debt</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../ai-exposure-remediation-gap/">Next: When AI Finds Exposure Faster Than Organizations Can Retire It →</a></nav><img class="article-cover" alt="Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal" loading="lazy" src="../../assets/articles/remediation-economics-0.webp"/><article class="article-body">
+<!doctype html>
 
 
-<h3>How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure.</h3>
-
-
-
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal | Arun Pillai</title><meta content="How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure. Consider a representative quarterly review. Security brings more than 100 findings. Engineering looks at the same qua" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal | Arun Pillai" property="og:title"/><meta content="How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure. Consider a representative quarterly review. Security brings more than 100 findings. Engineering looks at the same qua" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/remediation-economics-0.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal | Arun Pillai" name="twitter:title"/><meta content="How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure. Consider a representative quarterly review. Security brings more than 100 findings. Engineering looks at the same qua" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/remediation-economics-0.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/#article", "headline": "Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal", "description": "Examine why remediation effort should be judged by risk reduction rather than closure volume.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-31T12:53:51.000+00:00", "dateModified": "2026-08-31T12:54:22.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/articles/remediation-economics-0.webp", "isBasedOn": "https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf", "articleSection": "Vulnerability Management & Risk Reduction"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal", "item": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/remediation-economics/", "name": "Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal | Arun Pillai", "description": "How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure. Consider a representative quarterly review. Security brings more than 100 findings. Engineering looks at the same qua", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/risk-operations/">Vulnerability Management &amp; Risk Reduction</a></p><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-31">2026-08-31</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/remediation-economics-why-fix-more-vulnerabilities-arun-rv3wf" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../security-debt/" rel="prev">← Previous: Security Debt Is Not Just Technical Debt</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../ai-exposure-remediation-gap/" rel="next">Next: When AI Finds Exposure Faster Than Organizations Can Retire It →</a></nav><img alt="Remediation Economics: Why “Fix More Vulnerabilities” Is the Wrong Engineering Goal" class="article-cover" loading="eager" src="../../assets/articles/remediation-economics-0.webp"/><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>Examine why remediation effort should be judged by risk reduction rather than closure volume.</p><p>16 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><details class="article-toc"><summary>In this article</summary><ol><li><a href="#section-1">How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure.</a></li><li><a href="#section-2">The vulnerability program can appear to be improving while scarce engineering capacity is being spent on the wrong risk.</a></li><li><a href="#section-3">The scanner counts vulnerabilities. The CTO spends engineering capacity.</a></li><li><a href="#section-4">A vulnerability ticket can hide a quarter of engineering work.</a></li><li><a href="#section-5">The volume outran fixed capacity.</a></li><li><a href="#section-6">AI may make the gap wider, not smaller</a></li><li><a href="#section-7">Remediation Economics is not another score</a></li><li><a href="#section-8">Remediation Economics is choosing the intervention that produces the greatest defensible reduction in consequential exposure for the engineering effort, operational disruption, and time required.</a></li><li><a href="#section-9">A real worked example shows why the treatment matters</a></li><li><a href="#section-10">1,274 engineering hours.</a></li><li><a href="#section-11">127 hours. [4]</a></li><li><a href="#section-12">The remediation strategy changes the economics.</a></li><li><a href="#section-13">Here is the part vulnerability dashboards usually miss: opportunity cost</a></li><li><a href="#section-14">A vulnerability queue tells you what is waiting. It does not tell you what your next unit of engineering capacity should buy.</a></li><li><a href="#section-15">Sometimes the best remediation does not patch the vulnerability</a></li><li><a href="#section-16">Patch is an intervention. Risk reduction is the outcome.</a></li><li><a href="#section-17">Engineering capacity is a security control</a></li><li><a href="#section-18">available engineering capacity.</a></li><li><a href="#section-19">I would treat remediation capacity like capital</a></li><li><a href="#section-20">RESERVE → COMPARE → PROMOTE → VERIFY</a></li><li><a href="#section-21">1. RESERVE</a></li><li><a href="#section-22">2. COMPARE</a></li><li><a href="#section-23">3. PROMOTE</a></li><li><a href="#section-24">Promote it.</a></li><li><a href="#section-25">4. VERIFY</a></li><li><a href="#section-26">Engineering effort is the input. Risk reduction is the return.</a></li><li><a href="#section-27">Three executive rules I would put into governance</a></li><li><a href="#section-28">Rule 1 — If it cannot fit in the vulnerability backlog, promote it.</a></li><li><a href="#section-29">Rule 2 — Repeated roadmap displacement becomes explicit risk acceptance.</a></li><li><a href="#section-30">If protected security work is repeatedly displaced by roadmap work, the organization is accepting cyber risk through scheduling — whether anyone signs a risk-acceptance form or not.</a></li><li><a href="#section-31">Rule 3 — Compare architectural treatment before buying the expensive patch.</a></li><li><a href="#section-32">Two metrics I would put in front of executives</a></li><li><a href="#section-33">Security Capacity Yield</a></li><li><a href="#section-34">Deferred High-Value Exposure</a></li><li><a href="#section-35">what risk reduction it chose not to buy.</a></li><li><a href="#section-36">The product-company strategy is different from the compliance strategy</a></li><li><a href="#section-37">In product companies — including many EdTech environments</a></li><li><a href="#section-38">security work has to compete transparently for engineering capacity, not arrive as an unexplained tax after capacity has already been committed.</a></li><li><a href="#section-39">In regulated industries, the danger can be different</a></li><li><a href="#section-40">compliance can accidentally become the engineering-allocation algorithm.</a></li><li><a href="#section-41">What should Engineering actually be rewarded for?</a></li><li><a href="#section-42">Engineering teams should not be rewarded for producing vulnerability closure. They should be rewarded for producing secure, resilient products — and measurable exposure reduction is part of that engineering outcome.</a></li><li><a href="#section-43">The Monday-morning exercise</a></li><li><a href="#section-44">You have ten engineering weeks.</a></li><li><a href="#section-45">My position</a></li><li><a href="#section-46">Fix more vulnerabilities.</a></li><li><a href="#section-47">Remove more consequential exposure.</a></li><li><a href="#section-48">Engineering capacity is finite. Security findings increasingly are not.</a></li><li><a href="#section-49">A remediation backlog is a capital-allocation problem disguised as a security problem.</a></li><li><a href="#section-50">Did leadership spend scarce engineering capacity on the risk reduction that mattered most?</a></li><li><a href="#section-51">Next in the series</a></li><li><a href="#section-52">When AI Finds Exposure Faster Than Organizations Can Retire It</a></li><li><a href="#section-53">discovery velocity exceeds organizational risk-reduction capacity.</a></li><li><a href="#section-54">References &amp; Further Reading</a></li></ol></details><article class="article-body">
+<h3 id="section-1">How product companies should allocate scarce engineering capacity to the security work that removes the most consequential exposure.</h3>
 <p>
 Consider a representative quarterly review.
 </p>
-
-
-
 <p>
 Security brings more than 100 findings.
 </p>
-
-
-
 <p>
 Engineering looks at the same quarter and says:
 </p>
-
-
-
 <blockquote class="w-auto">“We can realistically take 20 or 30.”</blockquote>
-
-
-
 <p>
 Not because Engineering does not care about security.
 </p>
-
-
-
 <p>
 Because the roadmap is already carrying customer commitments, reliability work, on-call demand, production follow-ups, platform modernization, and release dates the business has already promised.
 </p>
-
-
-
 <p>
 Then somebody opens one of the High-severity tickets.
 </p>
-
-
-
 <p>
 It looks simple:
 </p>
-
-
-
 <p>
 Upgrade vulnerable dependency.
 </p>
-
-
-
 <p>
 The engineer looks closer.
 </p>
-
-
-
 <p>
 The upgrade changes three downstream APIs.
 </p>
-
-
-
 <p>
 Several services consume those APIs.
 </p>
-
-
-
 <p>
 One change requires regression testing across multiple teams.
 </p>
-
-
-
 <p>
 A “quick security patch” has quietly become a multi-sprint engineering effort nobody planned for.
 </p>
-
-
-
 <p>
 Meanwhile, sixty easier findings are sitting beside it.
 </p>
-
-
-
 <p>
 Configuration flags.
 </p>
-
-
-
 <p>
 Minor version bumps.
 </p>
-
-
-
 <p>
 Small dependency updates.
 </p>
-
-
-
 <p>
 Things that can actually fit inside a sprint.
 </p>
-
-
-
 <p>
 So teams do something entirely rational.
 </p>
-
-
-
 <p>
 They close the easy findings.
 </p>
-
-
-
 <p>
 The dashboard gets greener.
 </p>
-
-
-
 <p>
 The closure rate improves.
 </p>
-
-
-
 <p>
 And five difficult, architecturally entangled exposures move into the next quarter.
 </p>
-
-
-
 <p>
 Then the next.
 </p>
-
-
-
 <p>
 There is an uncomfortable possibility here:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-2">
 The vulnerability program can appear to be improving while scarce engineering capacity is being spent on the wrong risk.
 </h2>
-
-
-
 <p>
 That is not primarily a patching problem.
 </p>
-
-
-
 <p>
 It is an allocation problem.
 </p>
-
-
-
 <p>
 And I think product companies need to start treating it as one.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-3">
 The scanner counts vulnerabilities. The CTO spends engineering capacity.
 </h2>
-
-
-
 <p>
 Those are different currencies.
 </p>
-
-
-
 <p>
 Industry data increasingly shows why the distinction matters.
 </p>
-
-
-
 <p>
 Veracode's 2026 State of Software Security report analyzed approximately 1.6 million applications and reported that 82% of organizations carry security debt.
 </p>
-
-
-
 <p>
 Critical security debt increased 20% year over year.
 </p>
-
-
-
 <p>
 And roughly 66% of the most dangerous, longest-lived vulnerabilities were associated with open-source or third-party dependencies. [1]
 </p>
-
-
-
 <p>
 That last number should get the attention of any product engineering leader.
 </p>
-
-
-
 <p>
 Because a third-party vulnerability may appear in the security platform as one finding.
 </p>
-
-
-
 <p>
 To Engineering, it can mean:
 </p>
-
-
-
 <p>
 upgrade the framework,
 </p>
-
-
-
 <p>
 change application code,
 </p>
-
-
-
 <p>
 rebuild a shared base image,
 </p>
-
-
-
 <p>
 test downstream integrations,
 </p>
-
-
-
 <p>
 coordinate with another team,
 </p>
-
-
-
 <p>
 and potentially change an interface a customer depends on.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-4">
 A vulnerability ticket can hide a quarter of engineering work.
 </h2>
-
-
-
 <p>
 The Verizon 2026 DBIR vulnerability-remediation analysis contributed by Qualys tells the capacity story from another angle.
 </p>
-
-
-
 <p>
 Across more than one billion KEV-linked records, KEV-associated vulnerability instances increased approximately 7.7x over four years.
 </p>
-
-
-
 <p>
 But median detection-to-closure remained around nine days.
 </p>
-
-
-
 <p>
 Meanwhile, the number of still-open instances at day 28 expanded from roughly 31 million to 184 million. [2]
 </p>
-
-
-
 <p>
 That distinction matters.
 </p>
-
-
-
 <p>
 The engine did not necessarily get slower.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-5">
 The volume outran fixed capacity.
 </h2>
-
-
-
 <p>
 That requires a different management response.
 </p>
-
-
-
 <p>
 You cannot solve a capacity problem by generating more tickets.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-6">
 AI may make the gap wider, not smaller
 </h2>
-
-
-
 <p>
 There is another force entering this equation.
 </p>
-
-
-
 <p>
 AI.
 </p>
-
-
-
 <p>
 ProjectDiscovery's 2026 AI Coding Impact Report, based on a survey of 200 practitioners, reported that all respondents had seen increased engineering delivery over the previous year, with 49% attributing most of that acceleration to AI-assisted coding.
 </p>
-
-
-
 <p>
 At the same time, 62% of security teams said keeping pace was becoming harder, and the report described security teams spending substantial time validating findings rather than fixing them. [3]
 </p>
-
-
-
 <p>
 This is industry survey evidence, not a universal law.
 </p>
-
-
-
 <p>
 But the direction is important.
 </p>
-
-
-
 <p>
 AI is increasing our ability to:
 </p>
-
-
-
 <p>
 write software,
 </p>
-
-
-
 <p>
 change software,
 </p>
-
-
-
 <p>
 discover weaknesses,
 </p>
-
-
-
 <p>
 produce findings,
 </p>
-
-
-
 <p>
 and eventually recommend fixes.
 </p>
-
-
-
 <p>
 What AI does not automatically manufacture is:
 </p>
-
-
-
 <p>
 more regression-testing capacity,
 </p>
-
-
-
 <p>
 more change windows,
 </p>
-
-
-
 <p>
 more architecture attention,
 </p>
-
-
-
 <p>
 more product capacity,
 </p>
-
-
-
 <p>
 or unlimited engineers.
 </p>
-
-
-
 <p>
 So I think we are approaching an important inversion.
 </p>
-
-
-
 <p>
 For years, the vulnerability-management problem was:
 </p>
-
-
-
 <blockquote class="w-auto">“How do we find more?”</blockquote>
-
-
-
 <p>
 Increasingly, the harder question may be:
 </p>
-
-
-
 <blockquote class="w-auto">“What deserves the next engineering week?”</blockquote>
-
-
-
 <p>
 That is where Remediation Economics enters the conversation.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-7">
 Remediation Economics is not another score
 </h2>
-
-
-
 <p>
 I do not want to create another number to compete with CVSS, EPSS, KEV, or SCOPE.
 </p>
-
-
-
 <p>
 The problem is not that we lack scores.
 </p>
-
-
-
 <p>
 The missing decision comes later.
 </p>
-
-
-
 <p>
 Earlier in this series, SCOPE helped answer:
 </p>
-
-
-
 <blockquote class="w-auto">Which exposures actually matter?</blockquote>
-
-
-
 <p>
 The Intervention Ladder helped answer:
 </p>
-
-
-
 <blockquote class="w-auto">What treatment options do we have?</blockquote>
-
-
-
 <p>
 Remediation Economics addresses the next question:
 </p>
-
-
-
 <blockquote class="w-auto">Which intervention deserves scarce engineering capacity?</blockquote>
-
-
-
 <p>
 My definition is:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-8">
 Remediation Economics is choosing the intervention that produces the greatest defensible reduction in consequential exposure for the engineering effort, operational disruption, and time required.
 </h2>
-
-
-
 <p>
 I think of it as a ratio lens, not a universal mathematical formula.
 </p>
-
-
-
 <p>
 On one side:
 </p>
-
-
-
 <p>
 meaningful exposure reduction.
 </p>
-
-
-
 <p>
 On the other:
 </p>
-
-
-
 <p>
 engineering effort, disruption, time, and durability.
 </p>
-
-
-
 <p>
 The objective is not to manufacture a precise score such as 8.73.
 </p>
-
-
-
 <p>
 It is to make the trade-off visible.
 </p>
-
-
-
 <p>
 Because the most severe vulnerability is not automatically the best use of the next engineering week.
 </p>
-
-
-
 <p>
 And the easiest vulnerability to close certainly is not.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-9">
 A real worked example shows why the treatment matters
 </h2>
-
-
-
 <p>
 A NIST-hosted IoT vulnerability-management case study presented by Asimily gives us a useful concrete example.
 </p>
-
-
-
 <p>
 The worked case considered 91 vulnerability-related problems.
 </p>
-
-
-
 <p>
 Treating each one with the same full remediation approach, estimated at approximately fourteen engineering hours per finding, would require:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-10">
 1,274 engineering hours.
 </h2>
-
-
-
 <p>
 Once the findings were prioritized by risk and matched to more appropriately scoped interventions, the estimated effort for a comparable risk-management objective fell to approximately:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-11">
 127 hours. [4]
 </h2>
-
-
-
 <p>
 That is roughly a 90% reduction in estimated effort in that particular worked example.
 </p>
-
-
-
 <p>
 I would not turn that into a claim that every organization can reduce remediation effort by 90%.
 </p>
-
-
-
 <p>
 It cannot.
 </p>
-
-
-
 <p>
 It is one case study.
 </p>
-
-
-
 <p>
 But it proves a much more useful point:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-12">
 The remediation strategy changes the economics.
 </h2>
-
-
-
 <p>
 The question is not merely whether a vulnerability gets treated.
 </p>
-
-
-
 <p>
 It is whether we chose the right treatment for the risk we were trying to remove.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-13">
 Here is the part vulnerability dashboards usually miss: opportunity cost
 </h2>
-
-
-
 <p>
 Suppose Engineering has ten weeks of capacity available for material security work.
 </p>
-
-
-
 <p>
 You can spend those ten weeks upgrading one deeply embedded framework.
 </p>
-
-
-
 <p>
 Or removing an exposed management path.
 </p>
-
-
-
 <p>
 Or replacing an EOL component.
 </p>
-
-
-
 <p>
 Or fixing thirty independent vulnerabilities.
 </p>
-
-
-
 <p>
 Whichever choice you make, the other options do not disappear.
 </p>
-
-
-
 <p>
 That gives remediation an opportunity cost.
 </p>
-
-
-
 <blockquote class="w-auto">The real cost of remediating Vulnerability A is not only the engineering effort spent on A. It is also the risk reduction we chose not to buy somewhere else with those same engineering hours.</blockquote>
-
-
-
 <p>
 Security programs rarely make that visible.
 </p>
-
-
-
 <p>
 Investment committees do it all the time.
 </p>
-
-
-
 <p>
 If we have $10 million, which programs receive it?
 </p>
-
-
-
 <p>
 If we have twenty engineers, which products receive them?
 </p>
-
-
-
 <p>
 If we have one quarter, which transformation gets funded?
 </p>
-
-
-
 <p>
 But the moment the discussion becomes vulnerability remediation, we often revert to:
 </p>
-
-
-
 <blockquote class="w-auto">Critical first.</blockquote>
-
-
-
 <blockquote class="w-auto">Oldest first.</blockquote>
-
-
-
 <blockquote class="w-auto">SLA breach first.</blockquote>
-
-
-
 <blockquote class="w-auto">Whatever escalated loudest first.</blockquote>
-
-
-
 <p>
 That is not portfolio allocation.
 </p>
-
-
-
 <p>
 That is queue management.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-14">
 A vulnerability queue tells you what is waiting. It does not tell you what your next unit of engineering capacity should buy.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-15">
 Sometimes the best remediation does not patch the vulnerability
 </h2>
-
-
-
 <p>
 Article 3 introduced the idea of breaking the attack path.
 </p>
-
-
-
 <p>
 Here is why that matters economically.
 </p>
-
-
-
 <p>
 Imagine a vulnerable internal management service.
 </p>
-
-
-
 <p>
 Patching it requires a major platform upgrade, regression testing, and a difficult maintenance window.
 </p>
-
-
-
 <p>
 But the service does not actually need to be reachable from the network path an attacker would use.
 </p>
-
-
-
 <p>
 Removing that route may eliminate the exploitable condition far faster than upgrading the application.
 </p>
-
-
-
 <p>
 The CVE still exists.
 </p>
-
-
-
 <p>
 The usable path does not.
 </p>
-
-
-
 <p>
 That does not mean “never patch.”
 </p>
-
-
-
 <p>
 It means:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-16">
 Patch is an intervention. Risk reduction is the outcome.
 </h2>
-
-
-
 <p>
 One architecture change at the right choke point can sometimes eliminate multiple attack opportunities for less engineering effort than repairing every component individually.
 </p>
-
-
-
 <p>
 This is where “100 patches versus one architecture change” stops being rhetoric.
 </p>
-
-
-
 <p>
 It becomes an investment comparison.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-17">
 Engineering capacity is a security control
 </h2>
-
-
-
 <p>
 This may be the most important reframe in the article.
 </p>
-
-
-
 <p>
 We normally describe security controls as things like:
 </p>
-
-
-
 <p>
 MFA,
 </p>
-
-
-
 <p>
 segmentation,
 </p>
-
-
-
 <p>
 EDR,
 </p>
-
-
-
 <p>
 encryption,
 </p>
-
-
-
 <p>
 monitoring,
 </p>
-
-
-
 <p>
 patching,
 </p>
-
-
-
 <p>
 and access controls.
 </p>
-
-
-
 <p>
 But in a product company, another control determines whether known exposure actually gets removed:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-18">
 available engineering capacity.
 </h2>
-
-
-
 <p>
 Security cannot modernize your authentication stack without engineering.
 </p>
-
-
-
 <p>
 Security cannot retire an EOL platform.
 </p>
-
-
-
 <p>
 It cannot rewrite a shared dependency.
 </p>
-
-
-
 <p>
 It cannot redesign a brittle API.
 </p>
-
-
-
 <p>
 It cannot safely replace a component touching twenty production services.
 </p>
-
-
-
 <p>
 Security can identify the exposure.
 </p>
-
-
-
 <p>
 Explain it.
 </p>
-
-
-
 <p>
 Prioritize it.
 </p>
-
-
-
 <p>
 Challenge assumptions.
 </p>
-
-
-
 <p>
 Verify the result.
 </p>
-
-
-
 <p>
 But somebody still has to change the product.
 </p>
-
-
-
 <p>
 So:
 </p>
-
-
-
 <blockquote class="w-auto">A security SLA cannot manufacture engineering capacity.</blockquote>
-
-
-
 <p>
 If leadership consistently allocates 100% of Engineering to features, reliability, and customer commitments and then asks Security why structural vulnerabilities remain open, the operating model is contradicting itself.
 </p>
-
-
-
 <p>
 You cannot claim to prioritize security while refusing to prioritize the engineering capacity required to change the system.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-19">
 I would treat remediation capacity like capital
 </h2>
-
-
-
 <p>
 Product companies already understand portfolio allocation.
 </p>
-
-
-
 <p>
 So I would apply the same discipline to consequential exposure.
 </p>
-
-
-
 <p>
 I propose a simple executive operating model:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-20">
 RESERVE → COMPARE → PROMOTE → VERIFY
 </h2>
-
-
-
 <p>
 Not another security framework for the wall.
 </p>
-
-
-
 <p>
 Four leadership decisions.
 </p>
-
-
-
-<h3>1. RESERVE</h3>
-
-
-
+<h3 id="section-21">1. RESERVE</h3>
 <p>
 Decide before the quarter starts how much engineering capacity will be protected for material exposure reduction.
 </p>
-
-
-
 <p>
 I am deliberately not prescribing 10%, 15%, or 20%.
 </p>
-
-
-
 <p>
 There is no universal right number.
 </p>
-
-
-
 <p>
 But there should be a number.
 </p>
-
-
-
 <p>
 Or an explicit capacity commitment.
 </p>
-
-
-
 <p>
 And it should be agreed by Engineering, Security, and Product before every vulnerability has to fight individually for roadmap space.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
 <blockquote class="w-auto">Security capacity that disappears every time feature pressure rises was never protected capacity.</blockquote>
-
-
-
-<h3>2. COMPARE</h3>
-
-
-
+<h3 id="section-22">2. COMPARE</h3>
 <p>
 For the material exposures that matter, compare the intervention options.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
 How much consequential exposure disappears?
 </p>
-
-
-
 <p>
 How much engineering capacity does this consume?
 </p>
-
-
-
 <p>
 What operational disruption could it create?
 </p>
-
-
-
 <p>
 How long until the exposure actually falls?
 </p>
-
-
-
 <p>
 Is the treatment durable?
 </p>
-
-
-
 <p>
 This is where patch, upgrade, mitigate, break-the-path, isolate, replace, retire, and temporary acceptance can be evaluated against the same outcome.
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <blockquote class="w-auto">Which ticket is easiest to close?</blockquote>
-
-
-
 <p>
 But:
 </p>
-
-
-
 <blockquote class="w-auto">Which intervention buys the strongest defensible reduction in exposure?</blockquote>
-
-
-
-<h3>3. PROMOTE</h3>
-
-
-
+<h3 id="section-23">3. PROMOTE</h3>
 <p>
 Some remediation work does not belong in a vulnerability backlog.
 </p>
-
-
-
 <p>
 This matters enormously.
 </p>
-
-
-
 <p>
 If fixing an exposure requires:
 </p>
-
-
-
 <p>
 three engineering teams,
 </p>
-
-
-
 <p>
 a major identity migration,
 </p>
-
-
-
 <p>
 platform replacement,
 </p>
-
-
-
 <p>
 customer transition,
 </p>
-
-
-
 <p>
 multi-quarter funding,
 </p>
-
-
-
 <p>
 or architecture redesign,
 </p>
-
-
-
 <p>
 stop pretending it is simply an overdue vulnerability.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-24">
 Promote it.
 </h2>
-
-
-
 <p>
 Move it into the technology-investment or architecture portfolio.
 </p>
-
-
-
 <p>
 Give it:
 </p>
-
-
-
 <p>
 an executive sponsor,
 </p>
-
-
-
 <p>
 funding,
 </p>
-
-
-
 <p>
 a roadmap,
 </p>
-
-
-
 <p>
 an exit outcome,
 </p>
-
-
-
 <p>
 and visible residual risk while the transformation occurs.
 </p>
-
-
-
 <p>
 An EOL platform replacement is not a 30-day patch ticket that happens to be late for eighteen months.
 </p>
-
-
-
 <p>
 It is an unfunded modernization decision masquerading as a vulnerability.
 </p>
-
-
-
 <p>
 That distinction changes the conversation completely.
 </p>
-
-
-
-<h3>4. VERIFY</h3>
-
-
-
+<h3 id="section-25">4. VERIFY</h3>
 <p>
 At the end of the quarter, do not ask only:
 </p>
-
-
-
 <blockquote class="w-auto">“How many findings did we close?”</blockquote>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">“What consequential exposure did the engineering capacity we spent actually remove?”</blockquote>
-
-
-
 <p>
 Did attacker reachability disappear?
 </p>
-
-
-
 <p>
 Was a privileged path eliminated?
 </p>
-
-
-
 <p>
 Was an unsupported platform retired?
 </p>
-
-
-
 <p>
 Did the vulnerable dependency actually leave production?
 </p>
-
-
-
 <p>
 Did an architectural intervention eliminate recurrence?
 </p>
-
-
-
 <p>
 Did the compensating control perform as expected?
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-26">
 Engineering effort is the input. Risk reduction is the return.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-27">
 Three executive rules I would put into governance
 </h2>
-
-
-
 <p>
 If I were tightening the operating model tomorrow, I would add three rules.
 </p>
-
-
-
-<h3>Rule 1 — If it cannot fit in the vulnerability backlog, promote it.</h3>
-
-
-
+<h3 id="section-28">Rule 1 — If it cannot fit in the vulnerability backlog, promote it.</h3>
 <p>
 If a remediation needs a quarter, multiple teams, or meaningful capital, stop measuring it as though somebody forgot to update a ticket.
 </p>
-
-
-
 <p>
 Make the investment decision explicit.
 </p>
-
-
-
-<h3>Rule 2 — Repeated roadmap displacement becomes explicit risk acceptance.</h3>
-
-
-
+<h3 id="section-29">Rule 2 — Repeated roadmap displacement becomes explicit risk acceptance.</h3>
 <p>
 If a high-value remediation loses its capacity to feature work once, that may be normal portfolio pressure.
 </p>
-
-
-
 <p>
 If it happens again, I would want the next deferral made by someone with authority to accept the consequence.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-30">
 If protected security work is repeatedly displaced by roadmap work, the organization is accepting cyber risk through scheduling — whether anyone signs a risk-acceptance form or not.
 </h2>
-
-
-
 <p>
 That deserves visibility.
 </p>
-
-
-
-<h3>Rule 3 — Compare architectural treatment before buying the expensive patch.</h3>
-
-
-
+<h3 id="section-31">Rule 3 — Compare architectural treatment before buying the expensive patch.</h3>
 <p>
 If segmentation, privilege reduction, route removal, isolation, retirement, or another architecture change can eliminate the same meaningful attacker opportunity faster and more durably, put that option beside the patch before committing capacity.
 </p>
-
-
-
 <p>
 Not because architecture is always cheaper.
 </p>
-
-
-
 <p>
 It is not.
 </p>
-
-
-
 <p>
 Because it deserves to be compared.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-32">
 Two metrics I would put in front of executives
 </h2>
-
-
-
 <p>
 There are two measures I think can change the conversation.
 </p>
-
-
-
 <p>
 Neither is an industry standard.
 </p>
-
-
-
 <p>
 I am proposing them as management lenses.
 </p>
-
-
-
-<h3>Security Capacity Yield</h3>
-
-
-
+<h3 id="section-33">Security Capacity Yield</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">How much consequential exposure did the engineering capacity reserved for security actually reduce?</blockquote>
-
-
-
 <p>
 I would not pretend that every company can turn that into one perfectly comparable number.
 </p>
-
-
-
 <p>
 Initially, trend it.
 </p>
-
-
-
 <p>
 Compare quarters.
 </p>
-
-
-
 <p>
 Compare intervention categories.
 </p>
-
-
-
 <p>
 Compare teams.
 </p>
-
-
-
 <p>
 Did twenty engineering weeks this quarter remove more consequential exposure than twenty weeks last quarter?
 </p>
-
-
-
 <p>
 If not, why?
 </p>
-
-
-
 <p>
 That is a far more interesting leadership discussion than “we closed 14% more findings.”
 </p>
-
-
-
-<h3>Deferred High-Value Exposure</h3>
-
-
-
+<h3 id="section-34">Deferred High-Value Exposure</h3>
 <p>
 Track material exposure where:
 </p>
-
-
-
 <p>
 a credible high-value intervention exists,
 </p>
-
-
-
 <p>
 the organization understands it,
 </p>
-
-
-
 <p>
 but capacity or funding was deliberately allocated somewhere else.
 </p>
-
-
-
 <p>
 That metric tells leadership:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-35">
 what risk reduction it chose not to buy.
 </h2>
-
-
-
 <p>
 Imagine the executive review saying:
 </p>
-
-
-
 <blockquote class="w-auto">Eleven material exposures remain.</blockquote>
-
-
-
 <blockquote class="w-auto">Seven have active treatment.</blockquote>
-
-
-
 <blockquote class="w-auto">Two are temporarily mitigated.</blockquote>
-
-
-
 <blockquote class="w-auto">Two high-value interventions were deferred because their engineering capacity was reassigned to roadmap commitments.</blockquote>
-
-
-
 <p>
 That is an honest risk conversation.
 </p>
-
-
-
 <p>
 Those two findings are no longer “Security backlog.”
 </p>
-
-
-
 <p>
 They are leadership allocation decisions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-36">
 The product-company strategy is different from the compliance strategy
 </h2>
-
-
-
 <p>
 This distinction matters.
 </p>
-
-
-
-<h3>In product companies — including many EdTech environments</h3>
-
-
-
+<h3 id="section-37">In product companies — including many EdTech environments</h3>
 <p>
 EdTech is not “unregulated.”
 </p>
-
-
-
 <p>
 Student privacy, FERPA, COPPA, GDPR, state requirements, contracts, and other obligations can all matter depending on product and geography.
 </p>
-
-
-
 <p>
 But the forcing function for infrastructure modernization may still be less automatic than in environments where security-control requirements are highly prescriptive.
 </p>
-
-
-
 <p>
 That means security capacity often has to be deliberately manufactured.
 </p>
-
-
-
 <p>
 My strategy would be:
 </p>
-
-
-
 <p>
 Protect capacity before quarterly planning closes. Do not ask for whatever is left after the roadmap is full.
 </p>
-
-
-
 <p>
 Connect exposure reduction to product health. Resilience, enterprise readiness, customer trust, reliability, incident reduction, and supportability are Product concerns too.
 </p>
-
-
-
 <p>
 Use modernization windows aggressively. If Engineering is already changing authentication, containers, APIs, or a platform, that may be the cheapest moment to retire related Exposure Debt.
 </p>
-
-
-
 <p>
 Bring remediation decisions into portfolio planning. Do not keep consequential security work trapped inside a Security-only meeting Product never attends.
 </p>
-
-
-
 <p>
 The essential point is:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-38">
 security work has to compete transparently for engineering capacity, not arrive as an unexplained tax after capacity has already been committed.
 </h2>
-
-
-
-<h3>In regulated industries, the danger can be different</h3>
-
-
-
+<h3 id="section-39">In regulated industries, the danger can be different</h3>
 <p>
 Finance, healthcare, payments, and similar environments often have stronger forcing functions.
 </p>
-
-
-
 <p>
 Audit findings get funded.
 </p>
-
-
-
 <p>
 Regulatory commitments get deadlines.
 </p>
-
-
-
 <p>
 Control gaps receive executive attention.
 </p>
-
-
-
 <p>
 That is valuable.
 </p>
-
-
-
 <p>
 But it creates another danger:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-40">
 compliance can accidentally become the engineering-allocation algorithm.
 </h2>
-
-
-
 <p>
 The organization spends capacity on what must be evidenced for the audit while the architectural intervention that would eliminate more consequential exposure remains unfunded because nobody explicitly required it.
 </p>
-
-
-
 <p>
 So I would ask two questions separately:
 </p>
-
-
-
 <blockquote class="w-auto">What are we required to fix?</blockquote>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <blockquote class="w-auto">What treatment creates the greatest meaningful exposure reduction?</blockquote>
-
-
-
 <p>
 Sometimes they produce the same answer.
 </p>
-
-
-
 <p>
 Sometimes they do not.
 </p>
-
-
-
 <p>
 Compliance is an important floor.
 </p>
-
-
-
 <p>
 It should not automatically become the entire remediation strategy.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-41">
 What should Engineering actually be rewarded for?
 </h2>
-
-
-
 <p>
 This is where I think product companies need to be careful.
 </p>
-
-
-
 <p>
 If Engineering is rewarded for:
 </p>
-
-
-
 <p>
 tickets closed,
 </p>
-
-
-
 <p>
 sprint throughput,
 </p>
-
-
-
 <p>
 release velocity,
 </p>
-
-
-
 <p>
 and SLA compliance,
 </p>
-
-
-
 <p>
 then it should not surprise us when teams optimize for work that improves those numbers.
 </p>
-
-
-
 <p>
 Engineering is not irrational.
 </p>
-
-
-
 <p>
 The incentives are.
 </p>
-
-
-
 <p>
 I would rather see secure engineering treated as a product-quality outcome.
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <blockquote class="w-auto">“Engineering completed Security's vulnerabilities.”</blockquote>
-
-
-
 <p>
 But:
 </p>
-
-
-
 <blockquote class="w-auto">“Engineering produced a more secure and resilient product.”</blockquote>
-
-
-
 <p>
 That means recognizing:
 </p>
-
-
-
 <p>
 durable architectural reduction,
 </p>
-
-
-
 <p>
 retirement of recurring exposure,
 </p>
-
-
-
 <p>
 attack-path elimination,
 </p>
-
-
-
 <p>
 dependency modernization,
 </p>
-
-
-
 <p>
 and measurable reduction in attackability.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-42">
 Engineering teams should not be rewarded for producing vulnerability closure. They should be rewarded for producing secure, resilient products — and measurable exposure reduction is part of that engineering outcome.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-43">
 The Monday-morning exercise
 </h2>
-
-
-
 <p>
 Take the twenty most important items in your current remediation backlog.
 </p>
-
-
-
 <p>
 Not the twenty highest CVSS scores automatically.
 </p>
-
-
-
 <p>
 The twenty exposures you genuinely believe deserve attention.
 </p>
-
-
-
 <p>
 For each, write down:
 </p>
-
-
-
 <p>
 Business consequence
 </p>
-
-
-
 <p>
 Current exploitability or threat
 </p>
-
-
-
 <p>
 Relevant attack path
 </p>
-
-
-
 <p>
 Engineering effort
 </p>
-
-
-
 <p>
 Operational disruption
 </p>
-
-
-
 <p>
 Alternative interventions
 </p>
-
-
-
 <p>
 Time to meaningful reduction
 </p>
-
-
-
 <p>
 Durability
 </p>
-
-
-
 <p>
 Then give the leadership team a constraint:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-44">
 You have ten engineering weeks.
 </h2>
-
-
-
 <p>
 Where do you spend them?
 </p>
-
-
-
 <p>
 Do not allow the answer:
 </p>
-
-
-
 <blockquote class="w-auto">“All twenty are important.”</blockquote>
-
-
-
 <p>
 Of course they are.
 </p>
-
-
-
 <p>
 That is not the exercise.
 </p>
-
-
-
 <p>
 The exercise is allocation.
 </p>
-
-
-
 <p>
 Now compare the result with what Engineering is actually working on.
 </p>
-
-
-
 <p>
 Where the lists diverge, ask why.
 </p>
-
-
-
 <p>
 Maybe you will uncover a genuine customer dependency.
 </p>
-
-
-
 <p>
 A testing constraint.
 </p>
-
-
-
 <p>
 A change-window problem.
 </p>
-
-
-
 <p>
 An architecture dependency.
 </p>
-
-
-
 <p>
 Those are useful discoveries.
 </p>
-
-
-
 <p>
 But you may find something more uncomfortable.
 </p>
-
-
-
 <p>
 Engineering capacity may be going toward the work that makes the vulnerability dashboard improve fastest rather than the work that reduces consequential exposure fastest.
 </p>
-
-
-
 <p>
 That is worth knowing.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-45">
 My position
 </h2>
-
-
-
 <p>
 I do not think the engineering goal should be:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-46">
 Fix more vulnerabilities.
 </h2>
-
-
-
 <p>
 The goal should be:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-47">
 Remove more consequential exposure.
 </h2>
-
-
-
 <p>
 Sometimes that means patching.
 </p>
-
-
-
 <p>
 Sometimes upgrading.
 </p>
-
-
-
 <p>
 Sometimes changing privilege.
 </p>
-
-
-
 <p>
 Sometimes breaking the attack path.
 </p>
-
-
-
 <p>
 Sometimes isolating.
 </p>
-
-
-
 <p>
 Sometimes retiring a platform.
 </p>
-
-
-
 <p>
 And sometimes leadership may consciously carry residual exposure while funding the durable solution.
 </p>
-
-
-
 <p>
 But the decision should expose the trade-off:
 </p>
-
-
-
 <p>
 What risk reduction are we buying?
 </p>
-
-
-
 <p>
 How much engineering capacity does it consume?
 </p>
-
-
-
 <p>
 What could it disrupt?
 </p>
-
-
-
 <p>
 How quickly does it reduce exposure?
 </p>
-
-
-
 <p>
 How durable is the result?
 </p>
-
-
-
 <p>
 And what risk reduction are we giving up by spending that capacity here rather than somewhere else?
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-48">
 Engineering capacity is finite. Security findings increasingly are not.
 </h2>
-
-
-
 <p>
 Once you accept that, the vulnerability backlog stops looking like a queue.
 </p>
-
-
-
 <p>
 It starts looking like an investment portfolio.
 </p>
-
-
-
 <p>
 And that leads to the argument I would put in front of any CISO, CTO, Product leader, or engineering executive:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-49">
 A remediation backlog is a capital-allocation problem disguised as a security problem.
 </h2>
-
-
-
 <p>
 Protect the capacity.
 </p>
-
-
-
 <p>
 Compare the interventions.
 </p>
-
-
-
 <p>
 Promote structural work into the investment portfolio.
 </p>
-
-
-
 <p>
 Verify what exposure actually disappeared.
 </p>
-
-
-
 <p>
 And stop asking Engineering how many vulnerabilities it closed when the real question was always:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-50">
 Did leadership spend scarce engineering capacity on the risk reduction that mattered most?
 </h2>
-
-
-
 <p>
 <br/>
 </p>
-
-
-
-<h3>Next in the series</h3>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h3 id="section-51">Next in the series</h3>
+<h2 data-test-id="pulse-publishing-h1" id="section-52">
 When AI Finds Exposure Faster Than Organizations Can Retire It
 </h2>
-
-
-
 <p>
 This series began with a simple observation:
 </p>
-
-
-
 <p>
 we are getting dramatically better at finding vulnerabilities.
 </p>
-
-
-
 <p>
 Now the other side of the equation is becoming clearer.
 </p>
-
-
-
 <p>
 AI is accelerating software creation.
 </p>
-
-
-
 <p>
 Discovery velocity is increasing.
 </p>
-
-
-
 <p>
 Organizations are carrying accumulated Exposure Debt.
 </p>
-
-
-
 <p>
 Engineering capacity remains finite.
 </p>
-
-
-
 <p>
 The next question is what happens when:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-53">
 discovery velocity exceeds organizational risk-reduction capacity.
 </h2>
-
-
-
 <p>
 Because the next bottleneck may not be finding exposure.
 </p>
-
-
-
 <p>
 It may be deciding what deserves action — and having the organizational capacity to finish the decision.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-54">
 References &amp; Further Reading
 </h2>
-
-
-
 <p>
 [1] Veracode. (2026). State of Software Security 2026, 16th annual edition. Analysis covering approximately 1.6 million applications. Reported via Business Wire. <a href="https://www.businesswire.com/news/home/20260224526703/en/?trk=article-ssr-frontend-pulse_little-text-block">https://www.businesswire.com/news/home/20260224526703/en/</a>
 </p>
-
-
-
 <p>
 [2] Verizon. (2026). 2026 Data Breach Investigations Report; KEV vulnerability-remediation analysis contributed by Qualys. <a href="https://blog.qualys.com/vulnerabilities-threat-research/2026/05/19/inside-the-2026-verizon-dbir-what-one-billion-records-revealed-about-vulnerability-remediation/?trk=article-ssr-frontend-pulse_little-text-block">https://blog.qualys.com/vulnerabilities-threat-research/2026/05/19/inside-the-2026-verizon-dbir-what-one-billion-records-revealed-about-vulnerability-remediation/</a> Supporting coverage: <a href="https://securitybrief.news/story/qualys-data-shows-vulnerability-backlog-widening-sharply?trk=article-ssr-frontend-pulse_little-text-block">https://securitybrief.news/story/qualys-data-shows-vulnerability-backlog-widening-sharply</a>
 </p>
-
-
-
 <p>
 [3] ProjectDiscovery. (2026). AI Coding Impact Report. Industry survey of 200 practitioners. <a href="https://www.prnewswire.com/news-releases/projectdiscoverys-2026-ai-coding-impact-report-reveals-ai-generated-code-is-outpacing-security-teams-ability-to-keep-up-302749706.html?trk=article-ssr-frontend-pulse_little-text-block">https://www.prnewswire.com/news-releases/projectdiscoverys-2026-ai-coding-impact-report-reveals-ai-generated-code-is-outpacing-security-teams-ability-to-keep-up-302749706.html</a>
 </p>
-
-
-
 <p>
 [4] Krishnan, R. (Asimily). IoT Vulnerability Management Challenges. NIST IoT Advisory Board. Worked vulnerability-management prioritization example. <a href="https://www.nist.gov/document/iotab-speaker-rajesh-krishnan?trk=article-ssr-frontend-pulse_little-text-block">https://www.nist.gov/document/iotab-speaker-rajesh-krishnan</a>
 </p>
-
-
-
 <p>
 [5] Vicarius / Help Net Security. (2026). Companies keep getting breached by vulnerabilities they already knew about. Industry survey of 300 IT and security leaders. <a href="https://www.helpnetsecurity.com/2026/07/16/ciso-vulnerability-remediation-gap/?trk=article-ssr-frontend-pulse_little-text-block">https://www.helpnetsecurity.com/2026/07/16/ciso-vulnerability-remediation-gap/</a>
 </p>
-
-
-
 <p>
 [6] Shimizu, N., &amp; Hashimoto, M. (2026). “Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization.” IEEE Access, 14, 31407–31424. <a href="https://ieeexplore.ieee.org/abstract/document/11397608/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11397608/</a>
 </p>
-
-
-
 <p>
 [7] Lopes, R., Moura, J., &amp; Marinheiro, R. N. (2026). “Orchestrated Vulnerability Management for Heterogeneous Networks: Adaptive Two-Stage Vulnerability Assessment, Context-Aware Risk Prioritization, and Automated Mitigation.” arXiv:2608.08162. <a href="https://arxiv.org/abs/2608.08162?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2608.08162</a>
 </p>
-
-
-
 <p>
 [8] Besker, T., Martini, A., &amp; Bosch, J. (2019). “Technical Debt Triage in Backlog Management.” IEEE/ACM International Conference on Technical Debt. <a href="https://ieeexplore.ieee.org/abstract/document/8786030/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/8786030/</a>
 </p>
-
-
-
 <p>
 [9] Levén, W., Broman, H., Besker, T., &amp; Torkar, R. (2024). “The Broken Windows Theory Applies to Technical Debt.” Empirical Software Engineering. <a href="https://link.springer.com/article/10.1007/s10664-024-10456-6?trk=article-ssr-frontend-pulse_little-text-block">https://link.springer.com/article/10.1007/s10664-024-10456-6</a>
 </p>
-
-
-
 <p>
 [10] Perera, J., Tempero, E., Tu, Y. C., &amp; Blincoe, K. (2024). “A Systematic Mapping Study Exploring Quantification Approaches to Code, Design, and Architecture Technical Debt.” ACM. <a href="https://dl.acm.org/doi/abs/10.1145/3675393?trk=article-ssr-frontend-pulse_little-text-block">https://dl.acm.org/doi/abs/10.1145/3675393</a>
 </p>
-
-
-
 <p>
 [11] Carvalho, L., Biazotto, J. P., Feitosa, D., Kazman, R., &amp; Nakagawa, E. Y. (2026). “Technical Debt Management in Continuous Software Engineering: State of the Art and Research Agenda.” Journal of Software: Evolution and Process, 38(8). <a href="https://doi.org/10.1002/smr.7016?trk=article-ssr-frontend-pulse_little-text-block">https://doi.org/10.1002/smr.7016</a>
 </p>
-
-
-
 <p>
 [12] Thibodeau, S. (2026). “Reconceptualizing Technical Debt as an Organizational Security, Safety, and Sociotechnical Risk.” Safety and Security Advances, 2(1). <a href="https://armgpublishing.com/journals/ssa/volume-2-issue-1/article-3/?trk=article-ssr-frontend-pulse_little-text-block">https://armgpublishing.com/journals/ssa/volume-2-issue-1/article-3/</a>
 </p>
-
-
-
 <p>
 [13] FIRST. Exploit Prediction Scoring System (EPSS). <a href="https://www.first.org/epss/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/epss/</a>
 </p>
-
-
-
 <p>
 [14] Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/known-exploited-vulnerabilities-catalog</a>
 </p>
-
-
-
 <p>
 [15] Cybersecurity and Infrastructure Security Agency. Secure by Design. <a href="https://www.cisa.gov/resources-tools/resources/secure-by-design?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/resources-tools/resources/secure-by-design</a>
 </p>
-
- </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../security-debt/">← Previous: Security Debt Is Not Just Technical Debt</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../ai-exposure-remediation-gap/">Next: When AI Finds Exposure Faster Than Organizations Can Retire It →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/finding-vulnerabilities-reducing-risk/">We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a></li><li><a href="/ai-security-briefings/articles/cvss-10-business-risk/">CVSS 10 ≠ Business Risk 10</a></li><li><a href="/ai-security-briefings/articles/patch-everything-security-strategy/">Patch Everything Is Not a Security Strategy</a></li></ul></section><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../security-debt/" rel="prev">← Previous: Security Debt Is Not Just Technical Debt</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../ai-exposure-remediation-gap/" rel="next">Next: When AI Finds Exposure Faster Than Organizations Can Retire It →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>

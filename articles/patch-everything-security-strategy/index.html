@@ -1,3123 +1,1500 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Patch Everything Is Not a Security Strategy | Arun Pillai</title><meta name="description" content="The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome. A Critical vulnerability affects a customer-facing production platform. Exploitation is credible. The service matters. Th"><link rel="canonical" href="https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf"><meta property="og:title" content="Patch Everything Is Not a Security Strategy"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Patch Everything Is Not a Security Strategy","datePublished":"2026-08-21T18:02:37.000+00:00","dateModified":"2026-08-24T19:28:16.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Patch Everything Is Not a Security Strategy</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-21">2026-08-21</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../cvss-10-business-risk/">← Previous: CVSS 10 ≠ Business Risk 10</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../security-team-vulnerability-ownership/">Next: The Security Team Does Not Own Your Vulnerabilities →</a></nav><img class="article-cover" alt="Patch Everything Is Not a Security Strategy" loading="lazy" src="../../assets/articles/patch-everything-security-strategy-0.webp"/><article class="article-body">
+<!doctype html>
 
 
-<h3>The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome.</h3>
-
-
-
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Patch Everything Is Not a Security Strategy | Arun Pillai</title><meta content="The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome. A Critical vulnerability affects a customer-facing production platform. Exploitation is credible. The service matters. Th" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Patch Everything Is Not a Security Strategy | Arun Pillai" property="og:title"/><meta content="The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome. A Critical vulnerability affects a customer-facing production platform. Exploitation is credible. The service matters. Th" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/patch-everything-security-strategy-0.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Patch Everything Is Not a Security Strategy | Arun Pillai" name="twitter:title"/><meta content="The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome. A Critical vulnerability affects a customer-facing production platform. Exploitation is credible. The service matters. Th" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/patch-everything-security-strategy-0.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/#article", "headline": "Patch Everything Is Not a Security Strategy", "description": "How remediation decisions can move beyond indiscriminate patching.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-21T18:02:37.000+00:00", "dateModified": "2026-08-24T19:28:16.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/articles/patch-everything-security-strategy-0.webp", "isBasedOn": "https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf", "articleSection": "Vulnerability Management & Risk Reduction"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "Patch Everything Is Not a Security Strategy", "item": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/patch-everything-security-strategy/", "name": "Patch Everything Is Not a Security Strategy | Arun Pillai", "description": "The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome. A Critical vulnerability affects a customer-facing production platform. Exploitation is credible. The service matters. Th", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/risk-operations/">Vulnerability Management &amp; Risk Reduction</a></p><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>Patch Everything Is Not a Security Strategy</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-21">2026-08-21</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../cvss-10-business-risk/" rel="prev">← Previous: CVSS 10 ≠ Business Risk 10</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../security-team-vulnerability-ownership/" rel="next">Next: The Security Team Does Not Own Your Vulnerabilities →</a></nav><img alt="Patch Everything Is Not a Security Strategy" class="article-cover" loading="eager" src="../../assets/articles/patch-everything-security-strategy-0.webp"/><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>How remediation decisions can move beyond indiscriminate patching.</p><p>17 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><details class="article-toc"><summary>In this article</summary><ol><li><a href="#section-1">The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome.</a></li><li><a href="#section-2">Patching is usually the right destination</a></li><li><a href="#section-3">A patch is also a production change</a></li><li><a href="#section-4">Cyber risk of leaving the weakness exposed</a></li><li><a href="#section-5">Operational risk introduced by the remediation itself</a></li><li><a href="#section-6">Article 2 answered “what should go first?” This one answers “then what?”</a></li><li><a href="#section-7">FIND → OWN → DECIDE → ACT → VERIFY</a></li><li><a href="#section-8">PATCH</a></li><li><a href="#section-9">The Intervention Ladder</a></li><li><a href="#section-10">PATCH / UPGRADE</a></li><li><a href="#section-11">MITIGATE</a></li><li><a href="#section-12">BREAK THE PATH</a></li><li><a href="#section-13">ISOLATE</a></li><li><a href="#section-14">REPLACE / RETIRE</a></li><li><a href="#section-15">TEMPORARILY ACCEPT</a></li><li><a href="#section-16">1. Patch or upgrade</a></li><li><a href="#section-17">2. Mitigate</a></li><li><a href="#section-18">3. Break the attack path</a></li><li><a href="#section-19">4. Isolate</a></li><li><a href="#section-20">5. Replace or retire</a></li><li><a href="#section-21">architecture or lifecycle debt.</a></li><li><a href="#section-22">6. Temporarily accept</a></li><li><a href="#section-23">Version 1</a></li><li><a href="#section-24">Version 2</a></li><li><a href="#section-25">Temporary should mean temporary</a></li><li><a href="#section-26">Risk-Acceptance Half-Life</a></li><li><a href="#section-27">“Compensating control” may be one of the most abused phrases in vulnerability management</a></li><li><a href="#section-28">The decision is not “patch or don’t patch”</a></li><li><a href="#section-29">Option A — Patch tonight</a></li><li><a href="#section-30">Option B — Restrict and isolate tonight, patch during a tested change window</a></li><li><a href="#section-31">Option C — Continue unchanged</a></li><li><a href="#section-32">Option B is the defensible answer.</a></li><li><a href="#section-33">This is remediation economics</a></li><li><a href="#section-34">Remediation Economics</a></li><li><a href="#section-35">Architecture can outperform patch volume</a></li><li><a href="#section-36">The wrong metric can force the wrong decision</a></li><li><a href="#section-37">means</a></li><li><a href="#section-38">outcome.</a></li><li><a href="#section-39">Verified reduction in consequential exposure.</a></li><li><a href="#section-40">What I would require when someone says “we can’t patch”</a></li><li><a href="#section-41">1. Why exactly not?</a></li><li><a href="#section-42">2. For how long?</a></li><li><a href="#section-43">3. What can reduce exposure today?</a></li><li><a href="#section-44">4. What would make permanent remediation possible?</a></li><li><a href="#section-45">5. Who owns the residual risk—and when is the decision revisited?</a></li><li><a href="#section-46">Verification matters even more when you don’t patch</a></li><li><a href="#section-47">A practical decision hierarchy</a></li><li><a href="#section-48">Can we safely remove the vulnerable condition now?</a></li><li><a href="#section-49">Can we materially reduce exploitability now?</a></li><li><a href="#section-50">Can we remove the attacker’s path to the consequence?</a></li><li><a href="#section-51">Can we separate the vulnerable component from the environment?</a></li><li><a href="#section-52">Should this technology still exist?</a></li><li><a href="#section-53">Who is consciously carrying that residual risk, until when, and under what assumptions?</a></li><li><a href="#section-54">The Monday-morning exercise</a></li><li><a href="#section-55">What this means for the board</a></li><li><a href="#section-56">AI will make remediation choice more interesting too</a></li><li><a href="#section-57">Five questions I would ask before approving “patch later”</a></li><li><a href="#section-58">1.</a></li><li><a href="#section-59">2.</a></li><li><a href="#section-60">3.</a></li><li><a href="#section-61">4.</a></li><li><a href="#section-62">5.</a></li><li><a href="#section-63">My position</a></li><li><a href="#section-64">Patch is an intervention. Risk reduction is the outcome.</a></li><li><a href="#section-65">Monday-morning takeaway</a></li><li><a href="#section-66">Which intervention are we using today?</a></li><li><a href="#section-67">Who owns that decision?</a></li><li><a href="#section-68">What moves us toward the durable fix?</a></li><li><a href="#section-69">managed.</a></li><li><a href="#section-70">Next in the series</a></li><li><a href="#section-71">When Does Risk Acceptance Become Negligence?</a></li><li><a href="#section-72">References</a></li></ol></details><article class="article-body">
+<h3 id="section-1">The objective isn’t to deploy the most patches. It’s to reduce consequential exposure without creating a worse business outcome.</h3>
 <p>
 A Critical vulnerability affects a customer-facing production platform.
 </p>
-
-
-
 <p>
 Exploitation is credible. The service matters. The vulnerability deserves action.
 </p>
-
-
-
 <p>
 So far, everyone agrees.
 </p>
-
-
-
 <p>
 Then Engineering explains what “patch it” actually means.
 </p>
-
-
-
 <p>
 The vendor fix requires a major runtime upgrade. That upgrade touches several dependencies. Regression testing normally takes two weeks. The service supports a revenue-generating customer process. And the last emergency upgrade of this component caused a production incident.
 </p>
-
-
-
 <p>
 Security says:
 </p>
-
-
-
 <blockquote class="w-auto">“We can’t leave a Critical vulnerability open.”</blockquote>
-
-
-
 <p>
 Operations says:
 </p>
-
-
-
 <blockquote class="w-auto">“We can’t introduce an uncontrolled outage.”</blockquote>
-
-
-
 <p>
 Engineering says:
 </p>
-
-
-
 <blockquote class="w-auto">“We can patch it — but not safely tonight.”</blockquote>
-
-
-
 <p>
 Who is right?
 </p>
-
-
-
 <p>
 Possibly all three.
 </p>
-
-
-
 <p>
 And this is where vulnerability management stops being a patch-management exercise and becomes a risk decision.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-2">
 Patching is usually the right destination
 </h2>
-
-
-
 <p>
 I want to establish this early because otherwise the argument is easy to misread.
 </p>
-
-
-
 <p>
 Security patches exist for a reason.
 </p>
-
-
-
 <p>
 If a vendor has corrected a vulnerable condition, applying the supported fix is normally the cleanest and most durable way to remove that weakness.
 </p>
-
-
-
 <p>
 NIST describes enterprise patch management as a form of preventive maintenance for technology rather than optional housekeeping. [1]
 </p>
-
-
-
 <p>
 So this article is not arguing:
 </p>
-
-
-
 <blockquote class="w-auto">Don’t patch.</blockquote>
-
-
-
 <p>
 It is arguing something more specific:
 </p>
-
-
-
 <blockquote class="w-auto">Don’t confuse patching with the entire remediation strategy.</blockquote>
-
-
-
 <p>
 Sometimes the permanent fix should happen immediately.
 </p>
-
-
-
 <p>
 Sometimes exposure should be reduced immediately while the permanent fix is engineered safely.
 </p>
-
-
-
 <p>
 Sometimes architecture can remove the attacker’s path before the vulnerable code is touched.
 </p>
-
-
-
 <p>
 Sometimes the platform is old enough that patching is no longer the real answer.
 </p>
-
-
-
 <p>
 And occasionally leadership may consciously carry residual exposure for a defined period.
 </p>
-
-
-
 <p>
 The CISO’s job is knowing which situation the organization is actually in.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-3">
 A patch is also a production change
 </h2>
-
-
-
 <p>
 Security teams naturally focus on the risk of not patching.
 </p>
-
-
-
 <p>
 Good Operations teams also focus on the risk of patching badly.
 </p>
-
-
-
 <p>
 Both risks are real.
 </p>
-
-
-
 <p>
 A security update can require:
 </p>
-
-
-
 <p>
 dependency changes,
 </p>
-
-
-
 <p>
 application restarts,
 </p>
-
-
-
 <p>
 firmware updates,
 </p>
-
-
-
 <p>
 database changes,
 </p>
-
-
-
 <p>
 configuration changes,
 </p>
-
-
-
 <p>
 regression testing,
 </p>
-
-
-
 <p>
 vendor certification,
 </p>
-
-
-
 <p>
 or downtime.
 </p>
-
-
-
 <p>
 In resilient and well-automated enterprise environments, this may be routine.
 </p>
-
-
-
 <p>
 In legacy systems, operational technology, embedded platforms, resource-constrained devices, and other fragile environments, patching and vulnerability assessment can carry additional operational constraints. Recent work on OT and heterogeneous environments continues to highlight those challenges. [5][8]
 </p>
-
-
-
 <p>
 That does not make patch delay safe.
 </p>
-
-
-
 <p>
 It means the decision has two sides:
 </p>
-
-
-
-<h3>Cyber risk of leaving the weakness exposed</h3>
-
-
-
+<h3 id="section-4">Cyber risk of leaving the weakness exposed</h3>
 <p>
 versus
 </p>
-
-
-
-<h3>Operational risk introduced by the remediation itself</h3>
-
-
-
+<h3 id="section-5">Operational risk introduced by the remediation itself</h3>
 <p>
 The leadership mistake is pretending only one of those exists.
 </p>
-
-
-
 <blockquote class="w-auto">The best remediation decision reduces cyber exposure without blindly transferring the risk into availability, safety, customer impact, or operational failure.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-6">
 Article 2 answered “what should go first?” This one answers “then what?”
 </h2>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf/?trk=article-ssr-frontend-pulse_little-text-block">Article 2</a> introduced SCOPE:
 </p>
-
-
-
 <p>
 Severity
 </p>
-
-
-
 <p>
 Current Threat
 </p>
-
-
-
 <p>
 Organizational Consequence
 </p>
-
-
-
 <p>
 Path &amp; Reachability
 </p>
-
-
-
 <p>
 Existing Controls
 </p>
-
-
-
 <p>
 That model was deliberately designed to stop prioritization from ending at a Base CVSS score.
 </p>
-
-
-
 <p>
 CVSS remains an important severity framework, and CVSS v4.0 itself separates Base, Threat, Environmental, and Supplemental metric concepts. [2]
 </p>
-
-
-
 <p>
 Threat evidence also matters. CISA’s Known Exploited Vulnerabilities catalog provides a separate signal: whether exploitation has been observed in the wild. [3]
 </p>
-
-
-
 <p>
 Research such as Shimizu and Hashimoto’s Vulnerability Management Chaining framework similarly demonstrates the value of combining signals such as CVSS, EPSS, and KEV rather than treating any one of them as sufficient for prioritization. [4]
 </p>
-
-
-
 <p>
 SCOPE therefore helps answer:
 </p>
-
-
-
 <blockquote class="w-auto">How urgently does this exposure deserve attention?</blockquote>
-
-
-
 <p>
 But urgency is not an intervention.
 </p>
-
-
-
 <p>
 Once the decision is:
 </p>
-
-
-
 <blockquote class="w-auto">“This matters.”</blockquote>
-
-
-
 <p>
 we still need to decide:
 </p>
-
-
-
 <blockquote class="w-auto">“What do we actually do?”</blockquote>
-
-
-
 <p>
 That is the ACT step in:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-7">
 FIND → OWN → DECIDE → ACT → VERIFY
 </h2>
-
-
-
 <p>
 Too many vulnerability programs collapse ACT into a single word:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-8">
 PATCH
 </h2>
-
-
-
 <p>
 That is too narrow.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-9">
 The Intervention Ladder
 </h2>
-
-
-
 <p>
 For a material vulnerability, I would consider six response classes:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-10">
 PATCH / UPGRADE
 </h2>
-
-
-
 <p>
 ↓
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-11">
 MITIGATE
 </h2>
-
-
-
 <p>
 ↓
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-12">
 BREAK THE PATH
 </h2>
-
-
-
 <p>
 ↓
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-13">
 ISOLATE
 </h2>
-
-
-
 <p>
 ↓
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-14">
 REPLACE / RETIRE
 </h2>
-
-
-
 <p>
 ↓
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-15">
 TEMPORARILY ACCEPT
 </h2>
-
-
-
 <p>
 These are not equally desirable permanent ocomes.
 </p>
-
-
-
 <p>
 They are not excuses for leaving vulnerabilities unresolved.
 </p>
-
-
-
 <p>
 They are explicit risk-treatment choices.
 </p>
-
-
-
 <p>
 Cyber-risk treatment research similarly distinguishes multiple forms of treatment rather than assuming remediation consists of one universal technical action. [6]
 </p>
-
-
-
 <p>
 Patch or upgrade should normally remain the preferred durable destination when it is feasible.
 </p>
-
-
-
 <p>
 The ladder exists because:
 </p>
-
-
-
 <blockquote class="w-auto">“Feasible” and “immediately” are not always the same word.</blockquote>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/patch-everything-security-strategy-1.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 1 — The Intervention Ladder 
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-16">
 1. Patch or upgrade
 </h2>
-
-
-
 <p>
 This is normally the cleanest permanent treatment.
 </p>
-
-
-
 <p>
 Remove the vulnerable condition.
 </p>
-
-
-
 <p>
 Apply the vendor fix.
 </p>
-
-
-
 <p>
 Upgrade the dependency.
 </p>
-
-
-
 <p>
 Replace the vulnerable library.
 </p>
-
-
-
 <p>
 Update firmware.
 </p>
-
-
-
 <p>
 Rebuild the container.
 </p>
-
-
-
 <p>
 Redeploy the workload.
 </p>
-
-
-
 <p>
 If the patch is:
 </p>
-
-
-
 <p>
 supported,
 </p>
-
-
-
 <p>
 tested,
 </p>
-
-
-
 <p>
 operationally safe,
 </p>
-
-
-
 <p>
 and available inside the required risk window,
 </p>
-
-
-
 <p>
 then this should usually be the easy decision.
 </p>
-
-
-
 <p>
 The difficult cases begin when one of those assumptions is false.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-17">
 2. Mitigate
 </h2>
-
-
-
 <p>
 Sometimes the permanent fix cannot land safely today.
 </p>
-
-
-
 <p>
 Exposure may still be reducible today.
 </p>
-
-
-
 <p>
 For example:
 </p>
-
-
-
 <p>
 disable vulnerable functionality,
 </p>
-
-
-
 <p>
 remove an exposed endpoint,
 </p>
-
-
-
 <p>
 restrict administrative access,
 </p>
-
-
-
 <p>
 tighten authentication,
 </p>
-
-
-
 <p>
 reduce privilege,
 </p>
-
-
-
 <p>
 change configuration,
 </p>
-
-
-
 <p>
 block a relevant request pattern,
 </p>
-
-
-
 <p>
 increase monitoring,
 </p>
-
-
-
 <p>
 or deploy a validated temporary control.
 </p>
-
-
-
 <p>
 This is not the same as declaring the vulnerability fixed.
 </p>
-
-
-
 <p>
 It is:
 </p>
-
-
-
 <blockquote class="w-auto">reducing the attack opportunity while permanent remediation is prepared.</blockquote>
-
-
-
 <p>
 That distinction matters.
 </p>
-
-
-
 <p>
 The ticket may remain open.
 </p>
-
-
-
 <p>
 The vulnerability may still technically exist.
 </p>
-
-
-
 <p>
 But the exploitable exposure may have fallen materially.
 </p>
-
-
-
 <p>
 Which is exactly why:
 </p>
-
-
-
 <blockquote class="w-auto">ticket status and security outcome are not the same thing.</blockquote>
-
-
-
 <p>
 Recent work on heterogeneous-network vulnerability management provides a useful practical illustration of this idea: mitigation can include policy enforcement, selective service isolation, and host quarantine rather than waiting for a patch to be the only available action. [8]
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-18">
 3. Break the attack path
 </h2>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf/?trk=article-ssr-frontend-pulse_little-text-block">Article 2</a> introduced a distinction I think matters increasingly:
 </p>
-
-
-
 <p>
 vulnerability reduction
 </p>
-
-
-
 <p>
 versus
 </p>
-
-
-
 <p>
 attack-path destruction.
 </p>
-
-
-
 <p>
 This is where that distinction becomes an intervention.
 </p>
-
-
-
 <p>
 Suppose a vulnerable internal service cannot be upgraded for ten days.
 </p>
-
-
-
 <p>
 But the dangerous scenario depends on an attacker reaching it through a management network.
 </p>
-
-
-
 <p>
 You may be able to:
 </p>
-
-
-
 <p>
 remove that route,
 </p>
-
-
-
 <p>
 restrict access to a hardened jump host,
 </p>
-
-
-
 <p>
 change a trust relationship,
 </p>
-
-
-
 <p>
 remove unnecessary credentials,
 </p>
-
-
-
 <p>
 reduce privilege,
 </p>
-
-
-
 <p>
 segment the service,
 </p>
-
-
-
 <p>
 or disable the identity path enabling lateral movement.
 </p>
-
-
-
 <p>
 The CVE still exists.
 </p>
-
-
-
 <p>
 The attacker’s usable route may not.
 </p>
-
-
-
 <p>
 That is an important difference.
 </p>
-
-
-
 <p>
 Attack-path and vulnerability-chaining research reinforces the broader point that vulnerabilities do not necessarily operate in isolation; their position and relationship to other exploitable conditions can change the practical significance of the exposure. [4]
 </p>
-
-
-
 <blockquote class="w-auto">Sometimes the fastest way to reduce exposure is not changing the vulnerable node. It is changing the architecture around it.</blockquote>
-
-
-
 <p>
 This is why architects belong in vulnerability-management decisions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-19">
 4. Isolate
 </h2>
-
-
-
 <p>
 Isolation is the more aggressive option.
 </p>
-
-
-
 <p>
 If we cannot trust the component, reduce its ability to interact with the rest of the enterprise.
 </p>
-
-
-
 <p>
 That may mean:
 </p>
-
-
-
 <p>
 network quarantine,
 </p>
-
-
-
 <p>
 application isolation,
 </p>
-
-
-
 <p>
 removing internet access,
 </p>
-
-
-
 <p>
 restricting egress,
 </p>
-
-
-
 <p>
 moving the service behind controlled access,
 </p>
-
-
-
 <p>
 taking a replica offline,
 </p>
-
-
-
 <p>
 or temporarily removing functionality.
 </p>
-
-
-
 <p>
 This becomes especially relevant when:
 </p>
-
-
-
 <p>
 exploitation is active,
 </p>
-
-
-
 <p>
 a patch is unavailable,
 </p>
-
-
-
 <p>
 the technology is legacy,
 </p>
-
-
-
 <p>
 or the business can tolerate reduced functionality better than compromise.
 </p>
-
-
-
 <p>
 Research on OT and heterogeneous environments makes this particularly relevant because some systems cannot be treated with the same patch cadence or disruption tolerance as conventional enterprise IT. [5][8]
 </p>
-
-
-
 <p>
 Isolation has a cost.
 </p>
-
-
-
 <p>
 That is the point.
 </p>
-
-
-
 <p>
 Sometimes leadership should consciously choose:
 </p>
-
-
-
 <blockquote class="w-auto">business degradation over uncontrolled cyber exposure.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-20">
 5. Replace or retire
 </h2>
-
-
-
 <p>
 Some vulnerabilities are trying to tell you something larger.
 </p>
-
-
-
 <p>
 The operating system is unsupported.
 </p>
-
-
-
 <p>
 The product is end-of-life.
 </p>
-
-
-
 <p>
 The library cannot be upgraded without rewriting the application.
 </p>
-
-
-
 <p>
 The vendor has disappeared.
 </p>
-
-
-
 <p>
 The platform has accumulated so much dependency debt that every patch becomes a crisis.
 </p>
-
-
-
 <p>
 At that point, continuing to ask:
 </p>
-
-
-
 <blockquote class="w-auto">“Why hasn’t this CVE been patched?”</blockquote>
-
-
-
 <p>
 may be missing the actual issue.
 </p>
-
-
-
 <p>
 The problem is no longer one vulnerability.
 </p>
-
-
-
 <p>
 It is:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-21">
 architecture or lifecycle debt.
 </h2>
-
-
-
 <p>
 The right intervention may be:
 </p>
-
-
-
 <p>
 replace the component,
 </p>
-
-
-
 <p>
 migrate the workload,
 </p>
-
-
-
 <p>
 modernize the application,
 </p>
-
-
-
 <p>
 retire the service,
 </p>
-
-
-
 <p>
 or remove the business dependency entirely.
 </p>
-
-
-
 <p>
 There is an important difference here:
 </p>
-
-
-
 <blockquote class="w-auto">Patching treats the instance. Replacement can eliminate the class of recurring exposure.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-22">
 6. Temporarily accept
 </h2>
-
-
-
 <p>
 There are legitimate situations where leadership may decide not to take immediate permanent remediation action.
 </p>
-
-
-
 <p>
 But I would make this the hardest rung to normalize.
 </p>
-
-
-
 <p>
 Risk acceptance should never mean:
 </p>
-
-
-
 <blockquote class="w-auto">“Security documented it, so we’re done.”</blockquote>
-
-
-
 <p>
 A credible temporary acceptance needs:
 </p>
-
-
-
 <p>
 an accountable risk owner,
 </p>
-
-
-
 <p>
 a documented rationale,
 </p>
-
-
-
 <p>
 the threat assumptions behind the decision,
 </p>
-
-
-
 <p>
 the controls being relied upon,
 </p>
-
-
-
 <p>
 a defined expiration date,
 </p>
-
-
-
 <p>
 a permanent remediation plan,
 </p>
-
-
-
 <p>
 and explicit triggers for reconsideration.
 </p>
-
-
-
 <p>
 Compare these two statements.
 </p>
-
-
-
-<h3>Version 1</h3>
-
-
-
+<h3 id="section-23">Version 1</h3>
 <blockquote class="w-auto">Exception approved.</blockquote>
-
-
-
-<h3>Version 2</h3>
-
-
-
+<h3 id="section-24">Version 2</h3>
 <blockquote class="w-auto">Accepted for 21 days because the affected function is demonstrably unreachable from the relevant attack paths, a validated control is in place, and permanent remediation is scheduled for the next production release. Reassess immediately if exploitation activity or architecture changes.</blockquote>
-
-
-
 <p>
 The first is a status.
 </p>
-
-
-
 <p>
 The second is a decision.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-25">
 Temporary should mean temporary
 </h2>
-
-
-
 <p>
 This is where vulnerability programs accumulate invisible debt.
 </p>
-
-
-
 <p>
 An exception gets approved for 30 days.
 </p>
-
-
-
 <p>
 Then renewed.
 </p>
-
-
-
 <p>
 Then renewed again.
 </p>
-
-
-
 <p>
 The original approver changes roles.
 </p>
-
-
-
 <p>
 The architecture changes.
 </p>
-
-
-
 <p>
 The service becomes internet-facing.
 </p>
-
-
-
 <p>
 The business starts depending on it for something more important.
 </p>
-
-
-
 <p>
 The threat environment changes.
 </p>
-
-
-
 <p>
 Yet the original justification remains attached to the ticket as if time stopped.
 </p>
-
-
-
 <p>
 That is why I think risk acceptance needs something like a:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-26">
 Risk-Acceptance Half-Life
 </h2>
-
-
-
 <p>
 I am not presenting that as an established industry metric.
 </p>
-
-
-
 <p>
 I mean it as a governance principle:
 </p>
-
-
-
 <blockquote class="w-auto">The older an exception becomes, the less confidence leadership should have that the assumptions behind it are still true.</blockquote>
-
-
-
 <p>
 Time should increase scrutiny.
 </p>
-
-
-
 <p>
 It should not normalize the exception.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-27">
 “Compensating control” may be one of the most abused phrases in vulnerability management
 </h2>
-
-
-
 <p>
 It can mean something real.
 </p>
-
-
-
 <p>
 Or it can mean:
 </p>
-
-
-
 <blockquote class="w-auto">“We have a firewall somewhere.”</blockquote>
-
-
-
 <p>
 Those are not the same thing.
 </p>
-
-
-
 <p>
 If a compensating control is the reason we are delaying permanent remediation, I want evidence.
 </p>
-
-
-
 <p>
 Does segmentation actually block the relevant route?
 </p>
-
-
-
 <p>
 Does the WAF stop the exploit technique we care about?
 </p>
-
-
-
 <p>
 Does authentication materially prevent exploitation—or does the attacker already have a plausible credential path?
 </p>
-
-
-
 <p>
 Does EDR detect the relevant post-exploitation behaviour?
 </p>
-
-
-
 <p>
 Was the vulnerable feature really disabled everywhere?
 </p>
-
-
-
 <p>
 Is isolation technically enforced or just documented?
 </p>
-
-
-
 <p>
 A compensating control should reduce a specific part of the attack scenario.
 </p>
-
-
-
 <p>
 And we should be able to test that claim.
 </p>
-
-
-
 <blockquote class="w-auto">A compensating control is not a sentence in a risk exception. It is a security hypothesis that should be verified.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-28">
 The decision is not “patch or don’t patch”
 </h2>
-
-
-
 <p>
 A better executive review presents choices.
 </p>
-
-
-
 <p>
 Consider the opening scenario again.
 </p>
-
-
-
-<h3>Option A — Patch tonight</h3>
-
-
-
+<h3 id="section-29">Option A — Patch tonight</h3>
 <p>
 Cyber benefit: The vulnerable condition is removed.
 </p>
-
-
-
 <p>
 Operational consequence: Emergency production change with meaningful outage probability.
 </p>
-
-
-
-<h3>Option B — Restrict and isolate tonight, patch during a tested change window</h3>
-
-
-
+<h3 id="section-30">Option B — Restrict and isolate tonight, patch during a tested change window</h3>
 <p>
 Cyber benefit: Reachable exposure is materially reduced immediately.
 </p>
-
-
-
 <p>
 Operational consequence: Limited functional impact.
 </p>
-
-
-
 <p>
 Residual risk: The vulnerability remains present for seven days.
 </p>
-
-
-
-<h3>Option C — Continue unchanged</h3>
-
-
-
+<h3 id="section-31">Option C — Continue unchanged</h3>
 <p>
 Cyber benefit: None.
 </p>
-
-
-
 <p>
 Operational consequence: None today.
 </p>
-
-
-
 <p>
 Residual risk: Material exploitable exposure remains.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/patch-everything-security-strategy-2.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 2 — Patch Risk vs. Residual Cyber Risk
 </figcaption>
 </figure>
-
-
-
 <p>
 Now we have an actual decision.
 </p>
-
-
-
 <p>
 And in some situations:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-32">
 Option B is the defensible answer.
 </h2>
-
-
-
 <p>
 Not because patching is unimportant.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
 <blockquote class="w-auto">risk reduction starts today while permanent remediation follows safely.</blockquote>
-
-
-
 <p>
 It is important not to turn this figure into another mechanical decision rule.
 </p>
-
-
-
 <p>
 Option B is not automatically correct.
 </p>
-
-
-
 <p>
 The answer still depends on:
 </p>
-
-
-
 <p>
 threat activity,
 </p>
-
-
-
 <p>
 reachability,
 </p>
-
-
-
 <p>
 business consequence,
 </p>
-
-
-
 <p>
 control effectiveness,
 </p>
-
-
-
 <p>
 and operational change risk.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-33">
 This is remediation economics
 </h2>
-
-
-
 <p>
 Every intervention consumes something.
 </p>
-
-
-
 <p>
 Engineering time.
 </p>
-
-
-
 <p>
 Change capacity.
 </p>
-
-
-
 <p>
 Downtime.
 </p>
-
-
-
 <p>
 Architecture effort.
 </p>
-
-
-
 <p>
 Customer tolerance.
 </p>
-
-
-
 <p>
 Capital.
 </p>
-
-
-
 <p>
 Management attention.
 </p>
-
-
-
 <p>
 The goal is not to minimize those costs.
 </p>
-
-
-
 <p>
 Security costs money.
 </p>
-
-
-
 <p>
 The objective is to make sure the intervention buys meaningful reduction in consequential exposure.
 </p>
-
-
-
 <p>
 A useful leadership question is:
 </p>
-
-
-
 <blockquote class="w-auto">How much meaningful exposure do we remove relative to the engineering effort and operational risk of the intervention?</blockquote>
-
-
-
 <p>
 Not as a magic formula.
 </p>
-
-
-
 <p>
 As a decision discipline.
 </p>
-
-
-
 <p>
 Suppose:
 </p>
-
-
-
 <p>
 Patch A closes 500 scanner findings caused by one vulnerable base image.
 </p>
-
-
-
 <p>
 Architecture Change B removes a privileged path used across several attack scenarios.
 </p>
-
-
-
 <p>
 Upgrade C eliminates an unsupported platform that generates repeated vulnerability exceptions every month.
 </p>
-
-
-
 <p>
 All three consume engineering capacity.
 </p>
-
-
-
 <p>
 Which comes first?
 </p>
-
-
-
 <p>
 The answer may have very little to do with raw CVE count.
 </p>
-
-
-
 <p>
 That is:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-34">
 Remediation Economics
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-35">
 Architecture can outperform patch volume
 </h2>
-
-
-
 <p>
 Imagine 200 vulnerabilities spread across 50 internal servers.
 </p>
-
-
-
 <p>
 A traditional vulnerability program may create 200 remediation tickets.
 </p>
-
-
-
 <p>
 An architect notices something else:
 </p>
-
-
-
 <p>
 40 of those systems share an unnecessary privileged management path from user networks.
 </p>
-
-
-
 <p>
 Removing that path does not eliminate the 200 vulnerabilities.
 </p>
-
-
-
 <p>
 But it may materially reduce the attackability of many of them at once.
 </p>
-
-
-
 <p>
 That does not mean:
 </p>
-
-
-
 <blockquote class="w-auto">“Don’t patch the servers.”</blockquote>
-
-
-
 <p>
 It means:
 </p>
-
-
-
 <blockquote class="w-auto">“Don’t ignore an architectural intervention simply because the vulnerability dashboard only knows how to count patches.”</blockquote>
-
-
-
 <p>
 The patch program and architecture program should reinforce each other.
 </p>
-
-
-
 <p>
 Not compete for the same slide.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-36">
 The wrong metric can force the wrong decision
 </h2>
-
-
-
 <p>
 Suppose leadership measures only:
 </p>
-
-
-
 <blockquote class="w-auto">Percentage of Critical vulnerabilities patched within 30 days</blockquote>
-
-
-
 <p>
 What will the organization optimize?
 </p>
-
-
-
 <p>
 Patch completion.
 </p>
-
-
-
 <p>
 Even when:
 </p>
-
-
-
 <p>
 an emergency change carries unnecessary outage risk,
 </p>
-
-
-
 <p>
 temporary isolation could reduce exposure in hours,
 </p>
-
-
-
 <p>
 an architecture change could eliminate several attack paths at once,
 </p>
-
-
-
 <p>
 or a legacy platform should really be replaced rather than patched again.
 </p>
-
-
-
 <p>
 The metric is not useless.
 </p>
-
-
-
 <p>
 It becomes dangerous when it turns the:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-37">
 means
 </h2>
-
-
-
 <p>
 into the:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-38">
 outcome.
 </h2>
-
-
-
 <p>
 Recent research on enterprise remediation cadence makes a related point: MTTR and SLA compliance can be useful, but they can hide how remediation actually reaches the estate through release trains, maintenance windows, deployment rings, or emergency paths. [7]
 </p>
-
-
-
 <p>
 The actual outcome is:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-39">
 Verified reduction in consequential exposure.
 </h2>
-
-
-
 <p>
 Patching is one of the strongest ways to achieve that.
 </p>
-
-
-
 <p>
 It is not the definition of it.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-40">
 What I would require when someone says “we can’t patch”
 </h2>
-
-
-
 <p>
 That sentence deserves skepticism.
 </p>
-
-
-
 <p>
 Sometimes it genuinely means:
 </p>
-
-
-
 <blockquote class="w-auto">we cannot safely patch this today.</blockquote>
-
-
-
 <p>
 Sometimes it means:
 </p>
-
-
-
 <p>
 the owner does not want to prioritize it,
 </p>
-
-
-
 <p>
 regression testing is weak,
 </p>
-
-
-
 <p>
 the change process is slow,
 </p>
-
-
-
 <p>
 the vendor relationship is poor,
 </p>
-
-
-
 <p>
 the architecture is brittle,
 </p>
-
-
-
 <p>
 or the organization has tolerated technical debt for too long.
 </p>
-
-
-
 <p>
 Those are not the same problem.
 </p>
-
-
-
 <p>
 So when someone tells me:
 </p>
-
-
-
 <blockquote class="w-auto">“We can’t patch this.”</blockquote>
-
-
-
 <p>
 I want five answers.
 </p>
-
-
-
-<h3>1. Why exactly not?</h3>
-
-
-
+<h3 id="section-41">1. Why exactly not?</h3>
 <p>
 Technical impossibility?
 </p>
-
-
-
 <p>
 Vendor dependency?
 </p>
-
-
-
 <p>
 Downtime?
 </p>
-
-
-
 <p>
 Safety?
 </p>
-
-
-
 <p>
 Compatibility?
 </p>
-
-
-
 <p>
 No owner?
 </p>
-
-
-
 <p>
 No capacity?
 </p>
-
-
-
 <p>
 Different blocker.
 </p>
-
-
-
 <p>
 Different intervention.
 </p>
-
-
-
-<h3>2. For how long?</h3>
-
-
-
+<h3 id="section-42">2. For how long?</h3>
 <p>
 Hours?
 </p>
-
-
-
 <p>
 Seven days?
 </p>
-
-
-
 <p>
 Six months?
 </p>
-
-
-
 <p>
 Indefinitely?
 </p>
-
-
-
 <p>
 Those are four very different risk postures wearing the same ticket status.
 </p>
-
-
-
-<h3>3. What can reduce exposure today?</h3>
-
-
-
+<h3 id="section-43">3. What can reduce exposure today?</h3>
 <p>
 Restrict?
 </p>
-
-
-
 <p>
 Disable?
 </p>
-
-
-
 <p>
 Isolate?
 </p>
-
-
-
 <p>
 Reduce privilege?
 </p>
-
-
-
 <p>
 Break the path?
 </p>
-
-
-
 <p>
 A delayed patch should not automatically mean unchanged exposure.
 </p>
-
-
-
-<h3>4. What would make permanent remediation possible?</h3>
-
-
-
+<h3 id="section-44">4. What would make permanent remediation possible?</h3>
 <p>
 Testing capacity?
 </p>
-
-
-
 <p>
 Funding?
 </p>
-
-
-
 <p>
 Vendor escalation?
 </p>
-
-
-
 <p>
 Maintenance window?
 </p>
-
-
-
 <p>
 Architecture work?
 </p>
-
-
-
 <p>
 Replacement?
 </p>
-
-
-
 <p>
 Name the real blocker.
 </p>
-
-
-
-<h3>5. Who owns the residual risk—and when is the decision revisited?</h3>
-
-
-
+<h3 id="section-45">5. Who owns the residual risk—and when is the decision revisited?</h3>
 <p>
 Name.
 </p>
-
-
-
 <p>
 Not department.
 </p>
-
-
-
 <p>
 This brings us directly back to Article 1.
 </p>
-
-
-
 <p>
 A temporary acceptance with no accountable owner and no revisit date is not a controlled risk decision.
 </p>
-
-
-
 <p>
 It is an exception quietly becoming permanent.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-46">
 Verification matters even more when you don’t patch
 </h2>
-
-
-
 <p>
 If the decision is permanent remediation, verification asks:
 </p>
-
-
-
 <blockquote class="w-auto">Is the vulnerable condition gone?</blockquote>
-
-
-
 <p>
 If the decision is mitigation:
 </p>
-
-
-
 <blockquote class="w-auto">Does the mitigation actually block the exploit scenario?</blockquote>
-
-
-
 <p>
 If the decision is attack-path destruction:
 </p>
-
-
-
 <blockquote class="w-auto">Is the path genuinely broken?</blockquote>
-
-
-
 <p>
 If the decision is isolation:
 </p>
-
-
-
 <blockquote class="w-auto">Can the component still communicate through an unexpected route?</blockquote>
-
-
-
 <p>
 If the decision is replacement:
 </p>
-
-
-
 <blockquote class="w-auto">Did we actually remove the old platform—or leave it running quietly somewhere?</blockquote>
-
-
-
 <p>
 If the decision is acceptance:
 </p>
-
-
-
 <blockquote class="w-auto">Are the original assumptions still true?</blockquote>
-
-
-
 <p>
 This is why VERIFY sits after ACT.
 </p>
-
-
-
 <p>
 Not after PATCH.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-47">
 A practical decision hierarchy
 </h2>
-
-
-
 <p>
 For material exposure, I would generally ask in this order.
 </p>
-
-
-
-<h3>Can we safely remove the vulnerable condition now?</h3>
-
-
-
+<h3 id="section-48">Can we safely remove the vulnerable condition now?</h3>
 <p>
 If yes:
 </p>
-
-
-
 <p>
 Patch / upgrade / rebuild.
 </p>
-
-
-
 <p>
 If no:
 </p>
-
-
-
-<h3>Can we materially reduce exploitability now?</h3>
-
-
-
+<h3 id="section-49">Can we materially reduce exploitability now?</h3>
 <p>
 Mitigate.
 </p>
-
-
-
 <p>
 Then:
 </p>
-
-
-
-<h3>Can we remove the attacker’s path to the consequence?</h3>
-
-
-
+<h3 id="section-50">Can we remove the attacker’s path to the consequence?</h3>
 <p>
 Break the path.
 </p>
-
-
-
 <p>
 If necessary:
 </p>
-
-
-
-<h3>Can we separate the vulnerable component from the environment?</h3>
-
-
-
+<h3 id="section-51">Can we separate the vulnerable component from the environment?</h3>
 <p>
 Isolate.
 </p>
-
-
-
 <p>
 If the problem is structural:
 </p>
-
-
-
-<h3>Should this technology still exist?</h3>
-
-
-
+<h3 id="section-52">Should this technology still exist?</h3>
 <p>
 Replace / retire.
 </p>
-
-
-
 <p>
 And if meaningful exposure remains temporarily:
 </p>
-
-
-
-<h3>Who is consciously carrying that residual risk, until when, and under what assumptions?</h3>
-
-
-
+<h3 id="section-53">Who is consciously carrying that residual risk, until when, and under what assumptions?</h3>
 <p>
 Time-bound acceptance.
 </p>
-
-
-
 <p>
 That is the Intervention Ladder.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-54">
 The Monday-morning exercise
 </h2>
-
-
-
 <p>
 Take the ten most consequential exposures already identified through SCOPE.
 </p>
-
-
-
 <p>
 For each one, add:
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/patch-everything-security-strategy-3.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Table 1- Scope Decision Matrix
 </figcaption>
 </figure>
-
-
-
 <p>
 Then ask:
 </p>
-
-
-
 <blockquote class="w-auto">Why are we treating all four as “patch tickets” when they are clearly four different management decisions?</blockquote>
-
-
-
 <p>
 That discussion will tell you a great deal about the maturity of the vulnerability program.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-55">
 What this means for the board
 </h2>
-
-
-
 <p>
 I would not take a board slide that says:
 </p>
-
-
-
 <blockquote class="w-auto">96% of Critical vulnerabilities were patched within SLA</blockquote>
-
-
-
 <p>
 and assume the story is good.
 </p>
-
-
-
 <p>
 I would rather know:
 </p>
-
-
-
 <p>
 How much consequential exposure remains?
 </p>
-
-
-
 <p>
 Which material exposures have no safe immediate patch?
 </p>
-
-
-
 <p>
 Which temporary controls are carrying significant risk?
 </p>
-
-
-
 <p>
 Which recurring exposures require architecture or replacement investment?
 </p>
-
-
-
 <p>
 How much risk has been explicitly accepted?
 </p>
-
-
-
 <p>
 How old are those acceptances?
 </p>
-
-
-
 <p>
 And can management show that its chosen interventions actually reduced attackability?
 </p>
-
-
-
 <p>
 That is a board conversation about risk.
 </p>
-
-
-
 <p>
 Not workflow hygiene.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-56">
 AI will make remediation choice more interesting too
 </h2>
-
-
-
 <p>
 AI is not only changing vulnerability discovery.
 </p>
-
-
-
 <p>
 Research is also increasingly examining context-aware vulnerability management, automated mitigation, and orchestration of response actions.
 </p>
-
-
-
 <p>
 For example, Lopes, Moura and Marinheiro describe a framework that combines context-aware prioritization with automated network-level mitigation such as selective service isolation and quarantine. [8]
 </p>
-
-
-
 <p>
 That direction is important.
 </p>
-
-
-
 <p>
 But it creates another governance question.
 </p>
-
-
-
 <p>
 An automated or AI-generated intervention that reduces a vulnerability but changes system behaviour can still create enterprise risk.
 </p>
-
-
-
 <p>
 So future remediation systems will need to answer more than:
 </p>
-
-
-
 <blockquote class="w-auto">“Did the patch compile?”</blockquote>
-
-
-
 <p>
 They will need to establish:
 </p>
-
-
-
 <p>
 Did the fix remove the vulnerable condition?
 </p>
-
-
-
 <p>
 Did required functionality remain intact?
 </p>
-
-
-
 <p>
 Did the change introduce another weakness?
 </p>
-
-
-
 <p>
 What dependencies changed?
 </p>
-
-
-
 <p>
 What is the rollback path?
 </p>
-
-
-
 <p>
 And is another intervention actually safer?
 </p>
-
-
-
 <p>
 Autonomous remediation may become technically viable in more environments.
 </p>
-
-
-
 <p>
 Enterprise authority to make those changes should still depend on context, guardrails, and accountability.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-57">
 Five questions I would ask before approving “patch later”
 </h2>
-
-
-
-<h3>1.</h3>
-
-
-
+<h3 id="section-58">1.</h3>
 <p>
 What prevents us from safely applying the permanent fix now?
 </p>
-
-
-
-<h3>2.</h3>
-
-
-
+<h3 id="section-59">2.</h3>
 <p>
 What specific exposure remains until we do?
 </p>
-
-
-
-<h3>3.</h3>
-
-
-
+<h3 id="section-60">3.</h3>
 <p>
 What can we change today to reduce exploitability or break the attack path?
 </p>
-
-
-
-<h3>4.</h3>
-
-
-
+<h3 id="section-61">4.</h3>
 <p>
 How have we verified that the temporary control actually works?
 </p>
-
-
-
-<h3>5.</h3>
-
-
-
+<h3 id="section-62">5.</h3>
 <p>
 Who owns the residual risk, and when does this decision expire?
 </p>
-
-
-
 <p>
 If those questions cannot be answered:
 </p>
-
-
-
 <blockquote class="w-auto">“Patch later” is not a strategy. It is a delay.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-63">
 My position
 </h2>
-
-
-
 <p>
 I am not arguing against patching.
 </p>
-
-
-
 <p>
 Quite the opposite.
 </p>
-
-
-
 <p>
 Organizations should become extremely good at routine, automated, low-friction patching wherever their architecture allows it.
 </p>
-
-
-
 <p>
 But good vulnerability management requires something more.
 </p>
-
-
-
 <blockquote class="w-auto">The goal is not to maximize patch activity. The goal is to minimize consequential exposure.</blockquote>
-
-
-
 <p>
 Sometimes those are exactly the same thing.
 </p>
-
-
-
 <p>
 Sometimes the fastest defensible route is:
 </p>
-
-
-
 <p>
 mitigate now,
 </p>
-
-
-
 <p>
 break the path now,
 </p>
-
-
-
 <p>
 isolate now,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <p>
 patch next.
 </p>
-
-
-
 <p>
 Sometimes the vulnerability is evidence that the technology needs to be replaced.
 </p>
-
-
-
 <p>
 And occasionally leadership may consciously carry residual risk for a defined period.
 </p>
-
-
-
 <p>
 But every one of those decisions should have:
 </p>
-
-
-
 <p>
 an owner,
 </p>
-
-
-
 <p>
 a rationale,
 </p>
-
-
-
 <p>
 a deadline,
 </p>
-
-
-
 <p>
 a permanent treatment plan,
 </p>
-
-
-
 <p>
 and evidence that the chosen intervention actually reduced exposure.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-64">
 Patch is an intervention. Risk reduction is the outcome.
 </h2>
-
-
-
 <p>
 That is the distinction I want vulnerability management to make.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-65">
 Monday-morning takeaway
 </h2>
-
-
-
 <p>
 Take one consequential vulnerability currently stuck in your backlog for a reason other than:
 </p>
-
-
-
 <blockquote class="w-auto">“Nobody has gotten to it yet.”</blockquote>
-
-
-
 <p>
 Run it through the Intervention Ladder.
 </p>
-
-
-
 <p>
 Not to justify inaction.
 </p>
-
-
-
 <p>
 To answer three things clearly:
 </p>
-
-
-
-<h3>Which intervention are we using today?</h3>
-
-
-
-<h3>Who owns that decision?</h3>
-
-
-
-<h3>What moves us toward the durable fix?</h3>
-
-
-
+<h3 id="section-66">Which intervention are we using today?</h3>
+<h3 id="section-67">Who owns that decision?</h3>
+<h3 id="section-68">What moves us toward the durable fix?</h3>
 <p>
 And if the honest answer is:
 </p>
-
-
-
 <blockquote class="w-auto">Temporarily accept</blockquote>
-
-
-
 <p>
 make sure the decision has:
 </p>
-
-
-
 <p>
 a named owner,
 </p>
-
-
-
 <p>
 an expiry date,
 </p>
-
-
-
 <p>
 a verified control,
 </p>
-
-
-
 <p>
 and a trigger for immediate reconsideration.
 </p>
-
-
-
 <p>
 Because temporary exposure should be:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-69">
 managed.
 </h2>
-
-
-
 <p>
 Not merely documented.
 </p>
-
-
-
-<h3>Next in the series</h3>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h3 id="section-70">Next in the series</h3>
+<h2 data-test-id="pulse-publishing-h1" id="section-71">
 When Does Risk Acceptance Become Negligence?
 </h2>
-
-
-
 <p>
 A temporary exception can be a rational risk decision.
 </p>
-
-
-
 <p>
 A permanently renewed exception can become something very different.
 </p>
-
-
-
 <p>
 The next article will look at:
 </p>
-
-
-
 <p>
 risk-acceptance half-life,
 </p>
-
-
-
 <p>
 who should have authority to accept cyber risk,
 </p>
-
-
-
 <p>
 when changing threat or architecture invalidates the original decision,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
 <p>
 how to recognize when “temporary” risk has quietly become unmanaged debt.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-72">
 References
 </h2>
-
-
-
 <p>
 [1] Souppaya, M., &amp; Scarfone, K. (2022). Guide to Enterprise Patch Management Planning: Preventive Maintenance for Technology. NIST Special Publication 800-40 Rev. 4. <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf?trk=article-ssr-frontend-pulse_little-text-block">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-40r4.pdf</a>
 </p>
-
-
-
 <p>
 [2] FIRST. Common Vulnerability Scoring System Version 4.0. <a href="https://www.first.org/cvss/v4.0/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/cvss/v4.0/</a>
 </p>
-
-
-
 <p>
 [3] Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/known-exploited-vulnerabilities-catalog</a>
 </p>
-
-
-
 <p>
 [4] Shimizu, N., &amp; Hashimoto, M. (2026). “Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization.” IEEE Access. <a href="https://ieeexplore.ieee.org/abstract/document/11397608/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11397608/</a>
 </p>
-
-
-
 <p>
 [5] Kapoor, S., Kumar, S., Vardhan, H., et al. (2025). “Cyber Security of OT Networks: A Tutorial, Survey of Attacks and Overview of Current State of Defense Tools, Protocols &amp; Challenges.” arXiv:2502.14017. <a href="https://arxiv.org/abs/2502.14017?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2502.14017</a>
 </p>
-
-
-
 <p>
 [6] Sánchez-García, I. D., Feliu, T. S., &amp; Calvo-Manzano, J. A. (2025). “Building a Cyber Risk Treatment Taxonomy.” Cluster Computing. <a href="https://link.springer.com/article/10.1007/s10586-024-04899-1?trk=article-ssr-frontend-pulse_little-text-block">https://link.springer.com/article/10.1007/s10586-024-04899-1</a>
 </p>
-
-
-
 <p>
 [7] Omelchenko, A. (2026). “Mean Time to Remediate Is Not a Fielding Model: A Cadence Audit for Enterprise Vulnerability Management.” arXiv:2607.04511. <a href="https://arxiv.org/abs/2607.04511?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2607.04511</a>
 </p>
-
-
-
 <p>
 [8] Lopes, R., Moura, J., &amp; Marinheiro, R. N. (2026). “Orchestrated Vulnerability Management for Heterogeneous Networks: Adaptive Two-Stage Vulnerability Assessment, Context-Aware Risk Prioritization, and Automated Mitigation.” arXiv:2608.08162. <a href="https://arxiv.org/abs/2608.08162?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2608.08162</a>
 </p>
-
-
-
 <p>
 <br/>
 </p>
-
- </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../cvss-10-business-risk/">← Previous: CVSS 10 ≠ Business Risk 10</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../security-team-vulnerability-ownership/">Next: The Security Team Does Not Own Your Vulnerabilities →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/finding-vulnerabilities-reducing-risk/">We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a></li><li><a href="/ai-security-briefings/articles/cvss-10-business-risk/">CVSS 10 ≠ Business Risk 10</a></li><li><a href="/ai-security-briefings/articles/security-team-vulnerability-ownership/">The Security Team Does Not Own Your Vulnerabilities</a></li></ul></section><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../cvss-10-business-risk/" rel="prev">← Previous: CVSS 10 ≠ Business Risk 10</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../security-team-vulnerability-ownership/" rel="next">Next: The Security Team Does Not Own Your Vulnerabilities →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>

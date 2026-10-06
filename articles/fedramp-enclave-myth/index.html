@@ -1,478 +1,227 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The FedRAMP Enclave Myth | Arun Pillai</title><meta name="description" content="Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary The conversation changes quickly once leadership decides: Yes, the opportunity is real. Yes, government-grade assurance applies. Yes, we wa"><link rel="canonical" href="https://www.linkedin.com/pulse/fedramp-enclave-myth-dr-arun-pillai-rksif"><meta property="og:title" content="The FedRAMP Enclave Myth"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The FedRAMP Enclave Myth","datePublished":"2026-08-14T05:49:49.000+00:00","dateModified":"2026-08-14T05:51:42.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/fedramp-enclave-myth-dr-arun-pillai-rksif"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">GOVERNMENT ASSURANCE &amp; MARKET ACCESS</p><h1>The FedRAMP Enclave Myth</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-14">2026-08-14</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/fedramp-enclave-myth-dr-arun-pillai-rksif" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Government assurance articles"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a aria-current="page" href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><article class="article-body">
+<!doctype html>
 
 
-<h3>Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary</h3>
-
-
-
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>The FedRAMP Enclave Myth | Arun Pillai</title><meta content="Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary The conversation changes quickly once leadership decides: Yes, the opportunity is real. Yes, government-grade assurance applies. Yes, we wa" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="The FedRAMP Enclave Myth | Arun Pillai" property="og:title"/><meta content="Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary The conversation changes quickly once leadership decides: Yes, the opportunity is real. Yes, government-grade assurance applies. Yes, we wa" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="The FedRAMP Enclave Myth | Arun Pillai" name="twitter:title"/><meta content="Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary The conversation changes quickly once leadership decides: Yes, the opportunity is real. Yes, government-grade assurance applies. Yes, we wa" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/#article", "headline": "The FedRAMP Enclave Myth", "description": "Examine service boundaries and the assumptions behind a FedRAMP enclave.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-14T05:49:49.000+00:00", "dateModified": "2026-08-14T05:51:42.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "isBasedOn": "https://www.linkedin.com/pulse/fedramp-enclave-myth-dr-arun-pillai-rksif", "articleSection": "Government Assurance & Market Access"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "The FedRAMP Enclave Myth", "item": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/fedramp-enclave-myth/", "name": "The FedRAMP Enclave Myth | Arun Pillai", "description": "Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary The conversation changes quickly once leadership decides: Yes, the opportunity is real. Yes, government-grade assurance applies. Yes, we wa", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/government-assurance/">Government Assurance &amp; Market Access</a></p><p class="eyebrow">GOVERNMENT ASSURANCE &amp; MARKET ACCESS</p><h1>The FedRAMP Enclave Myth</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-14">2026-08-14</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/fedramp-enclave-myth-dr-arun-pillai-rksif" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Government assurance articles" class="series-nav"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a aria-current="page" href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>Examine service boundaries and the assumptions behind a FedRAMP enclave.</p><p>14 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><details class="article-toc"><summary>In this article</summary><ol><li><a href="#section-1">Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary</a></li><li><a href="#section-2">Hosting location is not the same thing as security scope</a></li><li><a href="#section-3">Consider LearnSphere again</a></li><li><a href="#section-4">Source code</a></li><li><a href="#section-5">CI/CD</a></li><li><a href="#section-6">Identity</a></li><li><a href="#section-7">Secrets</a></li><li><a href="#section-8">Observability</a></li><li><a href="#section-9">Customer support</a></li><li><a href="#section-10">Security operations</a></li><li><a href="#section-11">AI</a></li><li><a href="#section-12">Resilience</a></li><li><a href="#section-13">The eight dimensions I would examine before approving an enclave</a></li><li><a href="#section-14">1 — Data</a></li><li><a href="#section-15">2 — Identity and privileged access</a></li><li><a href="#section-16">3 — Code and software supply chain</a></li><li><a href="#section-17">4 — CI/CD and deployment</a></li><li><a href="#section-18">5 — Observability</a></li><li><a href="#section-19">6 — Third parties and AI: “It's just an API” is not a boundary analysis</a></li><li><a href="#section-20">7 — Operations and incident response</a></li><li><a href="#section-21">8 — Resilience and recovery</a></li><li><a href="#section-22">But there is another side to this argument</a></li><li><a href="#section-23">The hidden economics of product divergence</a></li><li><a href="#section-24">Interestingly, federal policy recognises this tension</a></li><li><a href="#section-25">So which model should you choose?</a></li><li><a href="#section-26">Pattern 1 — Secure shared commercial platform</a></li><li><a href="#section-27">Potential advantages</a></li><li><a href="#section-28">Key challenge</a></li><li><a href="#section-29">Pattern 2 — Dedicated government deployment</a></li><li><a href="#section-30">Potential advantages</a></li><li><a href="#section-31">Key challenge</a></li><li><a href="#section-32">Pattern 3 — Separate government product</a></li><li><a href="#section-33">Potential advantages</a></li><li><a href="#section-34">Key challenge</a></li><li><a href="#section-35"></a></li><li><a href="#section-36">What about control inheritance?</a></li><li><a href="#section-37">And this is where I would challenge the CTO and CISO together</a></li><li><a href="#section-38">1.</a></li><li><a href="#section-39">2.</a></li><li><a href="#section-40">3.</a></li><li><a href="#section-41">4.</a></li><li><a href="#section-42">5.</a></li><li><a href="#section-43">6.</a></li><li><a href="#section-44">7.</a></li><li><a href="#section-45">8.</a></li><li><a href="#section-46">9.</a></li><li><a href="#section-47">10.</a></li><li><a href="#section-48">11.</a></li><li><a href="#section-49">12.</a></li><li><a href="#section-50">One thing I would not do</a></li><li><a href="#section-51">And don't confuse machine-readable assurance with automated architecture approval</a></li><li><a href="#section-52">What does this mean for leadership?</a></li><li><a href="#section-53">CEO / CRO</a></li><li><a href="#section-54">CFO</a></li><li><a href="#section-55">CTO</a></li><li><a href="#section-56">CISO</a></li><li><a href="#section-57">Product</a></li><li><a href="#section-58">Platform / SRE</a></li><li><a href="#section-59">Engineering</a></li><li><a href="#section-60">GRC / Assurance</a></li><li><a href="#section-61">What the enclave question really taught me</a></li><li><a href="#section-62">Next in the series</a></li><li><a href="#section-63">Before You Fund FedRAMP: From Certification Project to Sustainable Operating Model</a></li><li><a href="#section-64">References</a></li></ol></details><article class="article-body">
+<h3 id="section-1">Why moving your SaaS product into a government cloud does not automatically create a smaller security boundary</h3>
 <p>
 The conversation changes quickly once leadership decides:
 </p>
-
-
-
 <p>
 Yes, the opportunity is real.
 </p>
-
-
-
 <p>
 Yes, government-grade assurance applies.
 </p>
-
-
-
 <p>
 Yes, we want to proceed.
 </p>
-
-
-
 <p>
 The next question often sounds deceptively simple:
 </p>
-
-
-
 <blockquote class="w-auto">“Can we just put the government customer into a separate environment and keep the FedRAMP scope small?”</blockquote>
-
-
-
 <p>
 I understand why that idea is attractive.
 </p>
-
-
-
 <p>
 Separate cloud account.
 </p>
-
-
-
 <p>
 Separate database.
 </p>
-
-
-
 <p>
 Perhaps a government-specific region.
 </p>
-
-
-
 <p>
 Draw a neat box around it.
 </p>
-
-
-
 <p>
 Call it the government environment.
 </p>
-
-
-
 <p>
 Problem solved.
 </p>
-
-
-
 <p>
 Except there is one uncomfortable question:
 </p>
-
-
-
 <blockquote class="w-auto">What else does that box depend on?</blockquote>
-
-
-
 <p>
 So I started following the dependencies.
 </p>
-
-
-
 <p>
 Source code.
 </p>
-
-
-
 <p>
 CI/CD.
 </p>
-
-
-
 <p>
 Identity.
 </p>
-
-
-
 <p>
 Secrets.
 </p>
-
-
-
 <p>
 Logging.
 </p>
-
-
-
 <p>
 Support.
 </p>
-
-
-
 <p>
 Third-party SaaS.
 </p>
-
-
-
 <p>
 AI APIs.
 </p>
-
-
-
 <p>
 Backups.
 </p>
-
-
-
 <p>
 Incident response.
 </p>
-
-
-
 <p>
 Suddenly the architecture diagram stopped looking like an isolated box.
 </p>
-
-
-
 <p>
 And that is where I believe an important misconception about government-ready SaaS begins.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-2">
 Hosting location is not the same thing as security scope
 </h2>
-
-
-
 <p>
 FedRAMP's 2026 Minimum Assessment Scope takes a fairly direct approach.
 </p>
-
-
-
 <p>
 A provider must identify the information resources that are likely to:
 </p>
-
-
-
 <p>
-
 <ol>
 <li>handle federal customer data, or</li>
 <li>affect the confidentiality, integrity or availability of that federal customer data. [1]</li>
 </ol>
-
 </p>
-
-
-
 <p>
 Those resources collectively form the cloud service offering being assessed.
 </p>
-
-
-
 <p>
 At the same time, FedRAMP explicitly says the purpose of Minimum Assessment Scope is to avoid unnecessary review of components that do not materially affect the offering's security. [1]
 </p>
-
-
-
 <p>
 That distinction matters.
 </p>
-
-
-
 <p>
 It means neither of these statements is automatically correct:
 </p>
-
-
-
 <blockquote class="w-auto">“Everything in the company becomes FedRAMP scope.”</blockquote>
-
-
-
 <p>
 Nor:
 </p>
-
-
-
 <blockquote class="w-auto">“Only the resources in our government cloud account are FedRAMP scope.”</blockquote>
-
-
-
 <p>
 The more useful question is:
 </p>
-
-
-
 <blockquote class="w-auto">Which resources can actually handle—or materially affect—the federal customer data and service?</blockquote>
-
-
-
 <p>
 That is an architecture question.
 </p>
-
-
-
 <p>
 Not a geography question.
 </p>
-
-
-
 <p>
 Not an account-number question.
 </p>
-
-
-
 <p>
 And certainly not a PowerPoint-box question.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-enclave-myth-0.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
  Figure 1 — A deployment boundary and a security assessment boundary are not necessarily the same thing.
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-3">
 Consider LearnSphere again
 </h2>
-
-
-
 <p>
 In Articles <a href="https://www.linkedin.com/pulse/government-buying-your-compliance-certificate-dr-arun-pillai-85ykc/?trk=article-ssr-frontend-pulse_little-text-block">1</a> and <a href="https://www.linkedin.com/pulse/fedramp-govrampor-neither-dr-arun-pillai-av9rf/?trk=article-ssr-frontend-pulse_little-text-block">2</a>, I used a fictional mid-market EdTech company called LearnSphere.
 </p>
-
-
-
 <p>
 Let's continue the scenario.
 </p>
-
-
-
 <p>
 LearnSphere has decided that a federal opportunity justifies pursuing FedRAMP.
 </p>
-
-
-
 <p>
 The architectural proposal is straightforward:
 </p>
-
-
-
 <blockquote class="w-auto">“Deploy LearnSphere Federal into an isolated government environment.”</blockquote>
-
-
-
 <p>
 The application and database are separated.
 </p>
-
-
-
 <p>
 So far, so good.
 </p>
-
-
-
 <p>
 Then the architecture review begins.
 </p>
-
-
-
-<h3>Source code</h3>
-
-
-
+<h3 id="section-4">Source code</h3>
 <p>
 The government application is built from the same Git repositories as the commercial service.
 </p>
-
-
-
-<h3>CI/CD</h3>
-
-
-
+<h3 id="section-5">CI/CD</h3>
 <p>
 The same deployment platform can publish releases into both environments.
 </p>
-
-
-
-<h3>Identity</h3>
-
-
-
+<h3 id="section-6">Identity</h3>
 <p>
 Administrators authenticate through the corporate identity provider.
 </p>
-
-
-
-<h3>Secrets</h3>
-
-
-
+<h3 id="section-7">Secrets</h3>
 <p>
 Deployment automation consumes a centrally managed secrets platform.
 </p>
-
-
-
-<h3>Observability</h3>
-
-
-
+<h3 id="section-8">Observability</h3>
 <p>
 Operational telemetry feeds into enterprise monitoring.
 </p>
-
-
-
-<h3>Customer support</h3>
-
-
-
+<h3 id="section-9">Customer support</h3>
 <p>
 The same engineering and support organisation troubleshoots both products.
 </p>
-
-
-
-<h3>Security operations</h3>
-
-
-
+<h3 id="section-10">Security operations</h3>
 <p>
 The same incident-response team responds to both environments.
 </p>
-
-
-
-<h3>AI</h3>
-
-
-
+<h3 id="section-11">AI</h3>
 <p>
 One product feature calls an external model API.
 </p>
-
-
-
-<h3>Resilience</h3>
-
-
-
+<h3 id="section-12">Resilience</h3>
 <p>
 Backup and disaster-recovery orchestration depends upon central enterprise services.
 </p>
-
-
-
 <p>
 Now ask the important question:
 </p>
-
-
-
 <blockquote class="w-auto">Did LearnSphere create an isolated security operating model—or merely an isolated runtime?</blockquote>
-
-
-
 <p>
 Those are not the same thing.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-13">
 The eight dimensions I would examine before approving an enclave
 </h2>
-
-
-
 <p>
 I would not start by asking whether the organisation has enough cloud accounts.
 </p>
-
-
-
 <p>
 I would use an 8-Dimension Product Boundary Test.
 </p>
-
-
-
-<h3>1 — Data</h3>
-
-
-
+<h3 id="section-14">1 — Data</h3>
 <p>
 Start with the information itself.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>What federal information enters the product?</li>
 <li>Where is it stored?</li>
@@ -484,45 +233,22 @@ Ask:
 <li>Do AI prompts contain customer information?</li>
 <li>Does metadata itself reveal information about the customer?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 FedRAMP's current rules require providers to clearly identify and explain information flows for resources within the cloud service offering. [1]
 </p>
-
-
-
 <p>
 The first principle is simple:
 </p>
-
-
-
 <blockquote class="w-auto">Follow the data before you follow the infrastructure.</blockquote>
-
-
-
-<h3>2 — Identity and privileged access</h3>
-
-
-
+<h3 id="section-15">2 — Identity and privileged access</h3>
 <p>
 A dedicated government account does little if uncontrolled identities can administer it.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>Which IdP authenticates government users?</li>
 <li>Which IdP authenticates administrators?</li>
@@ -533,41 +259,21 @@ Ask:
 <li>Can support personnel access customer data?</li>
 <li>Can commercial automation identities alter government resources?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 Identity often becomes one of the least visible connections between supposedly separate environments.
 </p>
-
-
-
 <p>
 And from a security perspective, an administrator who can change a service may matter as much as the server on which that service runs.
 </p>
-
-
-
-<h3>3 — Code and software supply chain</h3>
-
-
-
+<h3 id="section-16">3 — Code and software supply chain</h3>
 <p>
 Now follow the build.
 </p>
-
-
-
 <p>
 Does the federal application use:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>the same source repository?</li>
 <li>the same base images?</li>
@@ -577,79 +283,38 @@ Does the federal application use:
 <li>the same signing mechanisms?</li>
 <li>the same vulnerability-management processes?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 Sharing a codebase is not inherently a problem.
 </p>
-
-
-
 <p>
 In fact, maintaining one well-secured product can sometimes be preferable to maintaining two drifting versions.
 </p>
-
-
-
 <p>
 The risk appears when leadership believes:
 </p>
-
-
-
 <blockquote class="w-auto">“The government environment is isolated.”</blockquote>
-
-
-
 <p>
 while a compromise in the shared software-delivery system could still materially affect it.
 </p>
-
-
-
 <p>
 The question is not:
 </p>
-
-
-
 <p>
 “Is the source repository outside the cloud account?”
 </p>
-
-
-
 <p>
 It is:
 </p>
-
-
-
 <blockquote class="w-auto">“What security impact could compromise of this resource have on the government service?”</blockquote>
-
-
-
-<h3>4 — CI/CD and deployment</h3>
-
-
-
+<h3 id="section-17">4 — CI/CD and deployment</h3>
 <p>
 This is where many architecture boundaries become more porous than they appear.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>Which runners build the software?</li>
 <li>Which services deploy it?</li>
@@ -660,59 +325,30 @@ Ask:
 <li>How are releases approved?</li>
 <li>Can an emergency commercial release unintentionally alter the government service?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 A separate runtime may still share the same delivery plane.
 </p>
-
-
-
 <p>
 That does not automatically make the design unacceptable.
 </p>
-
-
-
 <p>
 But the dependency needs to be understood, secured and evidenced.
 </p>
-
-
-
-<h3>5 — Observability</h3>
-
-
-
+<h3 id="section-18">5 — Observability</h3>
 <p>
 Logging is often treated as a security control.
 </p>
-
-
-
 <p>
 It is.
 </p>
-
-
-
 <p>
 But it is also an information flow.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>Where are logs sent?</li>
 <li>What information do they contain?</li>
@@ -722,278 +358,138 @@ Ask:
 <li>Does an external SaaS monitoring provider receive federal customer data or metadata?</li>
 <li>Can the central SIEM affect the availability or confidentiality of the service?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 A team can carefully isolate application data and then accidentally send sensitive context into a commercial observability platform.
 </p>
-
-
-
 <p>
 The boundary discussion therefore has to include telemetry, not just transactions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-19">
 6 — Third parties and AI: “It's just an API” is not a boundary analysis
 </h2>
-
-
-
 <p>
 This is where modern SaaS architecture makes the discussion particularly interesting.
 </p>
-
-
-
 <p>
 Imagine LearnSphere adds an AI teaching assistant.
 </p>
-
-
-
 <p>
 The main SaaS platform is inside its government-ready architecture.
 </p>
-
-
-
 <p>
 But the feature works like this:
 </p>
-
-
-
 <p>
 GOVERNMENT USER
 </p>
-
-
-
 <p>
 ↓
 </p>
-
-
-
 <p>
 LEARNSPHERE
 </p>
-
-
-
 <p>
 ↓
 </p>
-
-
-
 <p>
 EXTERNAL LLM API
 </p>
-
-
-
 <p>
 ↓
 </p>
-
-
-
 <p>
 MODEL PROVIDER
 </p>
-
-
-
 <p>
 At first glance, the model provider appears outside the product.
 </p>
-
-
-
 <p>
 After all:
 </p>
-
-
-
 <blockquote class="w-auto">“We only make an HTTPS API call.”</blockquote>
-
-
-
 <p>
 But what actually travels through that call?
 </p>
-
-
-
 <p>
 A prompt?
 </p>
-
-
-
 <p>
 Student information?
 </p>
-
-
-
 <p>
 Agency information?
 </p>
-
-
-
 <p>
 System instructions?
 </p>
-
-
-
 <p>
 Documents?
 </p>
-
-
-
 <p>
 Metadata?
 </p>
-
-
-
 <p>
 And what happens if that service is unavailable, compromised or behaves unexpectedly?
 </p>
-
-
-
 <p>
 FedRAMP's current Minimum Assessment Scope rules require providers to address applicable third-party information resources when those resources meet the scope criteria. Providers must document their use and configuration, justification, mitigations and compensating controls. [1]
 </p>
-
-
-
 <p>
 Notice what the rule does not say.
 </p>
-
-
-
 <p>
 It does not say:
 </p>
-
-
-
 <blockquote class="w-auto">“Any external API automatically fails FedRAMP.”</blockquote>
-
-
-
 <p>
 Nor does it say:
 </p>
-
-
-
 <blockquote class="w-auto">“If the vendor isn't FedRAMP Certified, your application is automatically rejected.”</blockquote>
-
-
-
 <p>
 The more defensible conclusion is:
 </p>
-
-
-
 <blockquote class="w-auto">An external dependency cannot be dismissed simply because the connection is an API.</blockquote>
-
-
-
 <p>
 Its role must be understood in terms of information and security impact.
 </p>
-
-
-
 <p>
 This is particularly important for AI.
 </p>
-
-
-
 <p>
 A product leader may see:
 </p>
-
-
-
 <p>
 AI feature.
 </p>
-
-
-
 <p>
 A security architect needs to see:
 </p>
-
-
-
 <p>
 information flow + third-party dependency + availability dependency + data-use terms + model behaviour + operational monitoring.
 </p>
-
-
-
 <p>
 That is a much richer risk discussion.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-enclave-myth-1.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 2 — “It's just an API” describes the integration mechanism, not the security impact.
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-20">
 7 — Operations and incident response
 </h2>
-
-
-
 <p>
 Architecture diagrams frequently focus on technology.
 </p>
-
-
-
 <p>
 Incidents introduce humans.
 </p>
-
-
-
 <p>
 Ask:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>Who receives the alert at 2 a.m.?</li>
 <li>Who investigates?</li>
@@ -1005,67 +501,35 @@ Ask:
 <li>How is emergency access audited?</li>
 <li>Can the organisation reconstruct what happened afterward?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 This matters because an environment is not operated by rectangles and arrows.
 </p>
-
-
-
 <p>
 It is operated by people, processes and privileges.
 </p>
-
-
-
 <p>
 A security boundary that ignores its operating model is incomplete.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-21">
 8 — Resilience and recovery
 </h2>
-
-
-
 <p>
 Finally, break the system.
 </p>
-
-
-
 <p>
 Not literally.
 </p>
-
-
-
 <p>
 Architecturally.
 </p>
-
-
-
 <p>
 Assume the primary environment disappears.
 </p>
-
-
-
 <p>
 What happens?
 </p>
-
-
-
 <p>
-
 <ul>
 <li>Where are backups?</li>
 <li>Who controls them?</li>
@@ -1075,383 +539,185 @@ What happens?
 <li>Are external dependencies available during a regional failure?</li>
 <li>Does recovery rely on commercial infrastructure that was never considered during scoping?</li>
 </ul>
-
 </p>
-
-
-
 <p>
 A service that can run independently but cannot recover independently may be less isolated than the original architecture diagram suggests.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-22">
 But there is another side to this argument
 </h2>
-
-
-
 <p>
 At this point, someone may reasonably conclude:
 </p>
-
-
-
 <blockquote class="w-auto">“Fine. Then let's separate everything.”</blockquote>
-
-
-
 <p>
 Separate repositories.
 </p>
-
-
-
 <p>
 Separate pipelines.
 </p>
-
-
-
 <p>
 Separate identity.
 </p>
-
-
-
 <p>
 Separate telemetry.
 </p>
-
-
-
 <p>
 Separate staff.
 </p>
-
-
-
 <p>
 Separate infrastructure.
 </p>
-
-
-
 <p>
 Separate support.
 </p>
-
-
-
 <p>
 Separate DR.
 </p>
-
-
-
 <p>
 That would certainly create a clearer separation.
 </p>
-
-
-
 <p>
 It may also create something else:
 </p>
-
-
-
 <blockquote class="w-auto">a second product company.</blockquote>
-
-
-
 <p>
 And that introduces a different kind of risk.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-23">
 The hidden economics of product divergence
 </h2>
-
-
-
 <p>
 Imagine maintaining:
 </p>
-
-
-
 <p>
 Commercial LearnSphere
 </p>
-
-
-
 <p>
 and
 </p>
-
-
-
 <p>
 LearnSphere Federal.
 </p>
-
-
-
 <p>
 Initially, the difference is infrastructure.
 </p>
-
-
-
 <p>
 Twelve months later, differences begin appearing elsewhere.
 </p>
-
-
-
 <p>
 Different dependency versions.
 </p>
-
-
-
 <p>
 Different release dates.
 </p>
-
-
-
 <p>
 Different features.
 </p>
-
-
-
 <p>
 Different configuration.
 </p>
-
-
-
 <p>
 Different testing.
 </p>
-
-
-
 <p>
 Different vulnerability remediation.
 </p>
-
-
-
 <p>
 Different observability.
 </p>
-
-
-
 <p>
 Different support procedures.
 </p>
-
-
-
 <p>
 Different DR exercises.
 </p>
-
-
-
 <p>
 Different documentation.
 </p>
-
-
-
 <p>
 Eventually, a critical vulnerability appears.
 </p>
-
-
-
 <p>
 Commercial receives the patch immediately.
 </p>
-
-
-
 <p>
 Federal requires additional testing because its release path has drifted.
 </p>
-
-
-
 <p>
 The environment created to make security easier has now created a second security challenge:
 </p>
-
-
-
 <p>
 product divergence.
 </p>
-
-
-
 <p>
 That leads to one of the central principles I would ask an executive team to consider:
 </p>
-
-
-
 <blockquote class="w-auto">The smallest assessment boundary is not necessarily the lowest-risk operating model.</blockquote>
-
-
-
 <p>
 And:
 </p>
-
-
-
 <blockquote class="w-auto">The cleanest architecture diagram is not necessarily the cheapest product to sustain.</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-24">
 Interestingly, federal policy recognises this tension
 </h2>
-
-
-
 <p>
 OMB M-24-15 explicitly says FedRAMP should avoid promoting unnecessary division between commercially focused and government-focused cloud instances.
 </p>
-
-
-
 <p>
 The memorandum says that, in general, federal agencies should use the same infrastructure that providers rely upon for their commercial customer base, supporting both security and agility. [2]
 </p>
-
-
-
 <p>
 That is a significant policy signal.
 </p>
-
-
-
 <p>
 But it is easy to misread.
 </p>
-
-
-
 <p>
 It does not mean:
 </p>
-
-
-
 <blockquote class="w-auto">“Every government customer should share the exact same application tenant as commercial customers.”</blockquote>
-
-
-
 <p>
 It does not eliminate:
 </p>
-
-
-
 <p>
 data isolation,
 </p>
-
-
-
 <p>
 access control,
 </p>
-
-
-
 <p>
 security categorisation,
 </p>
-
-
-
 <p>
 configuration,
 </p>
-
-
-
 <p>
 risk decisions,
 </p>
-
-
-
 <p>
 or customer-specific requirements.
 </p>
-
-
-
 <p>
 Rather, I read the strategic direction as:
 </p>
-
-
-
 <blockquote class="w-auto">Do not create government-specific infrastructure merely because government is involved. Create separation where the risk and customer requirements justify it.</blockquote>
-
-
-
 <p>
 That is a very different architecture philosophy.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-25">
 So which model should you choose?
 </h2>
-
-
-
 <p>
 I see three broad approaches.
 </p>
-
-
-
-<h3>Pattern 1 — Secure shared commercial platform</h3>
-
-
-
+<h3 id="section-26">Pattern 1 — Secure shared commercial platform</h3>
 <p>
 Government and commercial customers use the same core production platform, with appropriate tenant isolation and security controls.
 </p>
-
-
-
-<h3>Potential advantages</h3>
-
-
-
+<h3 id="section-27">Potential advantages</h3>
 <p>
-
 <ul>
 <li>One codebase</li>
 <li>One release train</li>
@@ -1460,481 +726,223 @@ Government and commercial customers use the same core production platform, with 
 <li>Greater evidence reuse</li>
 <li>Lower duplicated engineering effort</li>
 </ul>
-
 </p>
-
-
-
-<h3>Key challenge</h3>
-
-
-
+<h3 id="section-28">Key challenge</h3>
 <p>
 The shared platform must be capable of satisfying the government's required security properties and the agency's risk tolerance.
 </p>
-
-
-
 <p>
 Logical isolation needs to be credible—not merely claimed.
 </p>
-
-
-
-<h3>Pattern 2 — Dedicated government deployment</h3>
-
-
-
+<h3 id="section-29">Pattern 2 — Dedicated government deployment</h3>
 <p>
 The codebase and much of the engineering model remain shared, but the government service is deployed into a dedicated environment or landing zone.
 </p>
-
-
-
-<h3>Potential advantages</h3>
-
-
-
+<h3 id="section-30">Potential advantages</h3>
 <p>
-
 <ul>
 <li>Stronger infrastructure and data separation</li>
 <li>Customer-specific configurations</li>
 <li>Easier separation of certain information flows</li>
 <li>Potentially simpler explanation of some responsibilities</li>
 </ul>
-
 </p>
-
-
-
-<h3>Key challenge</h3>
-
-
-
+<h3 id="section-31">Key challenge</h3>
 <p>
 Teams must identify what remains shared:
 </p>
-
-
-
 <p>
 identity,
 </p>
-
-
-
 <p>
 CI/CD,
 </p>
-
-
-
 <p>
 repositories,
 </p>
-
-
-
 <p>
 security tooling,
 </p>
-
-
-
 <p>
 support,
 </p>
-
-
-
 <p>
 third parties,
 </p>
-
-
-
 <p>
 AI,
 </p>
-
-
-
 <p>
 and operations.
 </p>
-
-
-
 <p>
 This is often the most misunderstood model.
 </p>
-
-
-
-<h3>Pattern 3 — Separate government product</h3>
-
-
-
+<h3 id="section-32">Pattern 3 — Separate government product</h3>
 <p>
 The organisation creates substantial separation across product, infrastructure and operations.
 </p>
-
-
-
-<h3>Potential advantages</h3>
-
-
-
+<h3 id="section-33">Potential advantages</h3>
 <p>
-
 <ul>
 <li>Strong organisational and architectural isolation</li>
 <li>Greater ability to support unique government requirements</li>
 <li>Reduced coupling with some commercial systems</li>
 </ul>
-
 </p>
-
-
-
-<h3>Key challenge</h3>
-
-
-
+<h3 id="section-34">Key challenge</h3>
 <p>
 You are no longer only paying for infrastructure separation.
 </p>
-
-
-
 <p>
 You may be funding:
 </p>
-
-
-
 <p>
 another release train,
 </p>
-
-
-
 <p>
 another operational model,
 </p>
-
-
-
 <p>
 another vulnerability programme,
 </p>
-
-
-
 <p>
 another DR capability,
 </p>
-
-
-
 <p>
 another support model,
 </p>
-
-
-
 <p>
 and eventually another technical-debt portfolio.
 </p>
-
-
-
 <p>
 That can be appropriate.
 </p>
-
-
-
 <p>
 But it should be a deliberate business strategy, not an accidental compliance outcome.
 </p>
-
-
-
-<h3><br/></h3>
-
-
-
+<h3 id="section-35"><br/></h3>
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/fedramp-enclave-myth-2.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 3 - Architecture Strategy Matrix
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-36">
 What about control inheritance?
 </h2>
-
-
-
 <p>
 Another reason the “build everything separately” approach can become inefficient is that FedRAMP is explicitly designed to support reusable assurance.
 </p>
-
-
-
 <p>
 Where the cloud service relies on another FedRAMP Certified service, the provider may be able to inherit the underlying implementation and assessment rather than reassessing the entire underlying service. The Minimum Assessment Scope then focuses on the relevant configuration and usage. [1]
 </p>
-
-
-
 <p>
 That is a powerful architectural idea.
 </p>
-
-
-
 <p>
 Instead of asking:
 </p>
-
-
-
 <blockquote class="w-auto">“How much infrastructure can we own?”</blockquote>
-
-
-
 <p>
 ask:
 </p>
-
-
-
 <blockquote class="w-auto">“Which trustworthy capabilities can we deliberately inherit?”</blockquote>
-
-
-
 <p>
 The shared-responsibility conversation then becomes much clearer:
 </p>
-
-
-
 <p>
 Inherited
 </p>
-
-
-
 <p>
 What does the underlying provider operate and demonstrate?
 </p>
-
-
-
 <p>
 Shared
 </p>
-
-
-
 <p>
 What must we configure or manage correctly?
 </p>
-
-
-
 <p>
 Provider-owned
 </p>
-
-
-
 <p>
 What remains entirely our responsibility at the product and application layer?
 </p>
-
-
-
 <p>
 Good FedRAMP architecture is not necessarily architecture with the fewest dependencies.
 </p>
-
-
-
 <p>
 It is architecture where dependencies are intentional, understood and defensible.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-37">
 And this is where I would challenge the CTO and CISO together
 </h2>
-
-
-
 <p>
 Before approving an enclave, I would ask twelve questions.
 </p>
-
-
-
-<h3>1.</h3>
-
-
-
+<h3 id="section-38">1.</h3>
 <p>
 What information are we actually trying to isolate?
 </p>
-
-
-
-<h3>2.</h3>
-
-
-
+<h3 id="section-39">2.</h3>
 <p>
 Which resources can materially affect that information?
 </p>
-
-
-
-<h3>3.</h3>
-
-
-
+<h3 id="section-40">3.</h3>
 <p>
 What identity systems administer the environment?
 </p>
-
-
-
-<h3>4.</h3>
-
-
-
+<h3 id="section-41">4.</h3>
 <p>
 What pipeline can change production?
 </p>
-
-
-
-<h3>5.</h3>
-
-
-
+<h3 id="section-42">5.</h3>
 <p>
 What source and supply-chain systems create the software?
 </p>
-
-
-
-<h3>6.</h3>
-
-
-
+<h3 id="section-43">6.</h3>
 <p>
 Where do logs and telemetry go?
 </p>
-
-
-
-<h3>7.</h3>
-
-
-
+<h3 id="section-44">7.</h3>
 <p>
 Which third parties process or influence the service?
 </p>
-
-
-
-<h3>8.</h3>
-
-
-
+<h3 id="section-45">8.</h3>
 <p>
 What AI capabilities create additional information flows?
 </p>
-
-
-
-<h3>9.</h3>
-
-
-
+<h3 id="section-46">9.</h3>
 <p>
 Who operates and supports the product?
 </p>
-
-
-
-<h3>10.</h3>
-
-
-
+<h3 id="section-47">10.</h3>
 <p>
 What does recovery depend upon?
 </p>
-
-
-
-<h3>11.</h3>
-
-
-
+<h3 id="section-48">11.</h3>
 <p>
 What controls can we legitimately inherit?
 </p>
-
-
-
-<h3>12.</h3>
-
-
-
+<h3 id="section-49">12.</h3>
 <p>
 What will this architecture cost to maintain three years from now—not simply to assess this year?
 </p>
-
-
-
 <p>
 If those questions cannot be answered, I would hesitate to approve the statement:
 </p>
-
-
-
 <blockquote class="w-auto">“The government environment is isolated.”</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-50">
 One thing I would not do
 </h2>
-
-
-
 <p>
 I would not begin by prescribing a universal technical architecture.
 </p>
-
-
-
 <p>
 For example:
 </p>
-
-
-
 <p>
-
 <ul>
 <li>“Every federal tenant requires its own encryption key.”</li>
 <li>“Every federal workload must use dedicated Kubernetes nodes.”</li>
@@ -1942,397 +950,177 @@ For example:
 <li>“All AI must be self-hosted.”</li>
 <li>“Everything must run in GovCloud.”</li>
 </ul>
-
 </p>
-
-
-
 <p>
 Those may be good solutions in particular architectures.
 </p>
-
-
-
 <p>
 They are not a substitute for risk analysis.
 </p>
-
-
-
 <p>
 Current FedRAMP rules themselves increasingly make room for security decisions, implementation rationale, validation and risk-based use of technologies rather than assuming one implementation pattern for every cloud service. [3]
 </p>
-
-
-
 <p>
 That is precisely why architecture has to follow the customer, data, impact and operating model.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-51">
 And don't confuse machine-readable assurance with automated architecture approval
 </h2>
-
-
-
 <p>
 There is another misconception worth clearing up.
 </p>
-
-
-
 <p>
 FedRAMP 2026 is absolutely moving toward more machine-readable certification information.
 </p>
-
-
-
 <p>
 The current rules require providers to supply JSON documents where FedRAMP publishes an applicable schema, and the Security Decision Record is intended to be maintained in both human-readable and JSON form. [3]
 </p>
-
-
-
 <p>
 But that does not mean a provider can create an OSCAL file, connect it to OPA or Kyverno, and receive an automated FedRAMP verdict.
 </p>
-
-
-
 <p>
 In fact, FedRAMP itself acknowledged that OSCAL adoption had remained limited through 2025, despite the programme's broader machine-readable ambition. [4]
 </p>
-
-
-
 <p>
 Automation is increasingly important.
 </p>
-
-
-
 <p>
 So is human security judgment.
 </p>
-
-
-
 <p>
 The goal is not:
 </p>
-
-
-
 <blockquote class="w-auto">automate the paperwork.</blockquote>
-
-
-
 <p>
 It is:
 </p>
-
-
-
 <blockquote class="w-auto">make important security decisions continuously demonstrable.</blockquote>
-
-
-
 <p>
 That will become increasingly important in the next article.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-52">
 What does this mean for leadership?
 </h2>
-
-
-
-<h3>CEO / CRO</h3>
-
-
-
+<h3 id="section-53">CEO / CRO</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Are we creating a government capability—or accidentally creating a second company to win one contract?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>CFO</h3>
-
-
-
+<h3 id="section-54">CFO</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">What is the recurring operating cost of this architecture after the certification project ends?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>CTO</h3>
-
-
-
+<h3 id="section-55">CTO</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">What does the dedicated environment genuinely isolate, and which engineering dependencies remain shared?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>CISO</h3>
-
-
-
+<h3 id="section-56">CISO</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Can we explain why every security-relevant resource is inside or outside the assessment scope?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>Product</h3>
-
-
-
+<h3 id="section-57">Product</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Which government-specific requirements deserve product capabilities, and which justify a separate offering?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>Platform / SRE</h3>
-
-
-
+<h3 id="section-58">Platform / SRE</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Can we operate, patch, observe and recover the design without creating an orphan environment?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>Engineering</h3>
-
-
-
+<h3 id="section-59">Engineering</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Will government customers run the same secure product—or an increasingly divergent fork?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h3>GRC / Assurance</h3>
-
-
-
+<h3 id="section-60">GRC / Assurance</h3>
 <p>
 Ask:
 </p>
-
-
-
 <blockquote class="w-auto">Can the evidence describe the real operating architecture rather than the architecture we wish we had?</blockquote>
-
-
 <hr class="my-[3.2rem] mx-auto h-[1px] border-0 bg-black-a16" data-test-id="publishing-divider-block"/>
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-61">
 What the enclave question really taught me
 </h2>
-
-
-
 <p>
 At first, the question appeared straightforward:
 </p>
-
-
-
 <blockquote class="w-auto">“How do we keep the FedRAMP boundary small?”</blockquote>
-
-
-
 <p>
 I now think that can be the wrong optimisation target.
 </p>
-
-
-
 <p>
 The better question may be:
 </p>
-
-
-
 <blockquote class="w-auto">“What is the smallest architecture we can defend without creating an operating model we cannot sustainably secure?”</blockquote>
-
-
-
 <p>
 Those are different objectives.
 </p>
-
-
-
 <p>
 One optimises the assessment.
 </p>
-
-
-
 <p>
 The other optimises the product.
 </p>
-
-
-
 <p>
 A strong security architecture has to do both.
 </p>
-
-
-
 <p>
 So before drawing another box labelled:
 </p>
-
-
-
 <p>
 Government Environment
 </p>
-
-
-
 <p>
 I would ask:
 </p>
-
-
-
 <blockquote class="w-auto">If we removed that box from the diagram, could we still explain exactly where federal information travels, what can affect it, who can change it, what dependencies it trusts, and how it recovers?</blockquote>
-
-
-
 <p>
 If the answer is no—
 </p>
-
-
-
 <p>
 we may not yet have an isolated product.
 </p>
-
-
-
 <p>
 We may simply have isolated infrastructure.
 </p>
-
-
-
 <p>
 And that is the FedRAMP Enclave Myth I think technology leaders need to understand.
 </p>
-
-
-
-<h3>Next in the series</h3>
-
-
-
-<h3>Before You Fund FedRAMP: From Certification Project to Sustainable Operating Model</h3>
-
-
-
+<h3 id="section-62">Next in the series</h3>
+<h3 id="section-63">Before You Fund FedRAMP: From Certification Project to Sustainable Operating Model</h3>
 <p>
 What executive sponsorship, engineering capacity, evidence automation, assessment effort and recurring investment does government-grade assurance actually require?
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-64">
 References
 </h2>
-
-
-
 <p>
 [1] FedRAMP — Minimum Assessment Scope, Consolidated Rules for 2026. Defines information resources, information flows and applicable third-party resource treatment.
 </p>
-
-
-
 <p>
 [2] Office of Management and Budget — Memorandum M-24-15, Modernizing the Federal Risk and Authorization Management Program, Section VI: Continuous Monitoring. Addresses cloud agility and avoiding unnecessary government/commercial infrastructure separation.
 </p>
-
-
-
 <p>
 [3] FedRAMP — Security Decision Record and FedRAMP Certification, Consolidated Rules for 2026. Defines the new provider security-decision record and structured machine-readable certification materials.
 </p>
-
-
-
 <p>
 [4] FedRAMP — RFC-0024, Rev5 Machine-Readable Packages. Discusses OSCAL, machine-readable authorization information and historical adoption.
 </p>
-
-
-
 <p>
 References verified August 14, 2026. FedRAMP is actively transitioning to the Consolidated Rules for 2026. Providers should verify applicable rules, certification class, effective dates and agency-specific requirements before making implementation decisions.
 </p>
-
-
-
 <p>
 Views are personal and intended for education and strategic discussion. This article does not constitute legal, procurement or certification advice.
 </p>
-
- </article><nav class="series-nav" aria-label="Government assurance articles"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a aria-current="page" href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/government-buying-your-compliance-certificate/">The Government Is Not Buying Your Compliance Certificate</a></li><li><a href="/ai-security-briefings/articles/fedramp-govramp-or-neither/">FedRAMP, GovRAMP—or Neither?</a></li><li><a href="/ai-security-briefings/articles/before-you-fund-fedramp/">Before You Fund FedRAMP</a></li></ul></section><nav aria-label="Government assurance articles" class="series-nav"><a href="../government-buying-your-compliance-certificate/">1. The Government Is Not Buying Your Compliance Certificate</a><a href="../fedramp-govramp-or-neither/">2. FedRAMP, GovRAMP—or Neither?</a><a aria-current="page" href="../fedramp-enclave-myth/">3. The FedRAMP Enclave Myth</a><a href="../before-you-fund-fedramp/">4. Before You Fund FedRAMP</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>

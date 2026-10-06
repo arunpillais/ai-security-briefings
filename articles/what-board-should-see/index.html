@@ -1,3296 +1,1601 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What the Board Should Actually See | Arun Pillai</title><meta name="description" content="Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages. I have sat through enough security reviews to know the pattern. The s"><link rel="canonical" href="https://www.linkedin.com/pulse/what-board-should-actually-see-pillai-dba-cissp-crisc-cdp-togaf-tkp0f"><meta property="og:title" content="What the Board Should Actually See"><meta property="og:type" content="article"><link rel="stylesheet" href="../../assets/styles.css"><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What the Board Should Actually See","datePublished":"2026-08-27T12:27:47.000+00:00","dateModified":"2026-08-27T12:32:51.000+00:00","author":{"@type":"Person","name":"Arun Pillai","url":"https://arunpillais.github.io/ai-security-briefings/profile/"},"isBasedOn":"https://www.linkedin.com/pulse/what-board-should-actually-see-pillai-dba-cissp-crisc-cdp-togaf-tkp0f"}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../../">AP<span>ARUN PILLAI<small>Security architecture &amp; delivery</small></span></a><nav aria-label="Main navigation"><a href="../../">Briefings</a><a href="../../profile/">Profile</a><a aria-current="page" href="../../articles/">Articles</a><a href="../../projects/">Projects</a></nav></header><main id="main" class="article-page"><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>What the Board Should Actually See</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-27">2026-08-27</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/what-board-should-actually-see-pillai-dba-cissp-crisc-cdp-togaf-tkp0f" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Republished here with the original wording.</p><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../risk-acceptance-negligence/">← Previous: When Does Risk Acceptance Become Negligence?</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../security-debt/">Next: Security Debt Is Not Just Technical Debt →</a></nav><article class="article-body">
+<!doctype html>
 
 
-<h3>Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages.</h3>
-
-
-
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>What the Board Should Actually See | Arun Pillai</title><meta content="Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages. I have sat through enough security reviews to know the pattern. The s" name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="What the Board Should Actually See | Arun Pillai" property="og:title"/><meta content="Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages. I have sat through enough security reviews to know the pattern. The s" property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="What the Board Should Actually See | Arun Pillai" name="twitter:title"/><meta content="Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages. I have sat through enough security reviews to know the pattern. The s" name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/#article", "headline": "What the Board Should Actually See", "description": "Explore what board reporting should reveal about exposure, decisions and outcomes.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-08-27T12:27:47.000+00:00", "dateModified": "2026-08-27T12:32:51.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "isBasedOn": "https://www.linkedin.com/pulse/what-board-should-actually-see-pillai-dba-cissp-crisc-cdp-togaf-tkp0f", "articleSection": "Vulnerability Management & Risk Reduction"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arunpillais.github.io/ai-security-briefings/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 3, "name": "What the Board Should Actually See", "item": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/what-board-should-see/", "name": "What the Board Should Actually See | Arun Pillai", "description": "Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages. I have sat through enough security reviews to know the pattern. The s", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/risk-operations/">Vulnerability Management &amp; Risk Reduction</a></p><p class="eyebrow">VULNERABILITY MANAGEMENT &amp; RISK REDUCTION</p><h1>What the Board Should Actually See</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-08-27">2026-08-27</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/what-board-should-actually-see-pillai-dba-cissp-crisc-cdp-togaf-tkp0f" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../risk-acceptance-negligence/" rel="prev">← Previous: When Does Risk Acceptance Become Negligence?</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../security-debt/" rel="next">Next: Security Debt Is Not Just Technical Debt →</a></nav><section aria-label="Article overview" class="article-tools"><h2>At a glance</h2><p>Explore what board reporting should reveal about exposure, decisions and outcomes.</p><p>18 minute read · By <a href="/ai-security-briefings/profile/">Arun Pillai</a></p></section><details class="article-toc"><summary>In this article</summary><ol><li><a href="#section-1">Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages.</a></li><li><a href="#section-2">Are we actually safer?</a></li><li><a href="#section-3">Boards do not need a better scanner report</a></li><li><a href="#section-4">The problem often starts with what we count</a></li><li><a href="#section-5">Which exposures could materially hurt us?</a></li><li><a href="#section-6">A green SLA can hide red risk</a></li><li><a href="#section-7">Team B.</a></li><li><a href="#section-8">Team A.</a></li><li><a href="#section-9">So what would I actually show the board?</a></li><li><a href="#section-10">1. Material Exposure Remaining</a></li><li><a href="#section-11">2. Ownership Health</a></li><li><a href="#section-12">Time to Assigned Owner</a></li><li><a href="#section-13">3. Accepted Risk</a></li><li><a href="#section-14">4. Remediation Constraints</a></li><li><a href="#section-15">Why are we late?</a></li><li><a href="#section-16">5. Verified Attackability Reduction</a></li><li><a href="#section-17">What did we actually make harder for the attacker?</a></li><li><a href="#section-18">6. Decision Velocity</a></li><li><a href="#section-19">FIND → OWN → DECIDE → ACT → VERIFY</a></li><li><a href="#section-20">Decision Velocity</a></li><li><a href="#section-21">This is where the series comes together for me</a></li><li><a href="#section-22">FIND → OWN → DECIDE → ACT → VERIFY</a></li><li><a href="#section-23">business-risk question downward.</a></li><li><a href="#section-24">Operational metrics still matter</a></li><li><a href="#section-25">Operating Metrics</a></li><li><a href="#section-26">Oversight Metrics</a></li><li><a href="#section-27">I would demote one familiar headline</a></li><li><a href="#section-28">Total vulnerabilities open</a></li><li><a href="#section-29">And then there is concentration</a></li><li><a href="#section-30">What about putting cyber risk into dollars?</a></li><li><a href="#section-31">The point is translation, not monetization</a></li><li><a href="#section-32">What I would actually put on one board slide</a></li><li><a href="#section-33">MATERIAL EXPOSURE</a></li><li><a href="#section-34">OWNERSHIP</a></li><li><a href="#section-35">ACCEPTED RISK</a></li><li><a href="#section-36">CONSTRAINTS</a></li><li><a href="#section-37">VERIFIED REDUCTION</a></li><li><a href="#section-38">DECISION VELOCITY</a></li><li><a href="#section-39">FINANCIAL EXPOSURE</a></li><li><a href="#section-40"></a></li><li><a href="#section-41">What I would keep out of the board pack</a></li><li><a href="#section-42">AI will make this harder, not easier</a></li><li><a href="#section-43">The five-question board test</a></li><li><a href="#section-44">1. What are our most consequential cyber exposures?</a></li><li><a href="#section-45">2. Who owns each one?</a></li><li><a href="#section-46">3. What decision has been made?</a></li><li><a href="#section-47">4. What residual risk are we consciously carrying?</a></li><li><a href="#section-48">5. What evidence tells us the exposure is actually reducing?</a></li><li><a href="#section-49">governance problem.</a></li><li><a href="#section-50">What I would ask the CISO</a></li><li><a href="#section-51">My position</a></li><li><a href="#section-52">vulnerability management</a></li><li><a href="#section-53">exposure governance.</a></li><li><a href="#section-54">A board dashboard that proves Security is busy is not enough. It should prove the enterprise is reducing consequential exposure.</a></li><li><a href="#section-55">Monday-morning takeaway</a></li><li><a href="#section-56">Next in the series</a></li><li><a href="#section-57">Security Debt Is Not Just Technical Debt</a></li><li><a href="#section-58">References</a></li></ol></details><article class="article-body">
+<h3 id="section-1">Why vulnerability reporting should show consequential exposure, ownership, accepted risk, remediation constraints, and verified reduction — not just CVE counts and SLA percentages.</h3>
 <p>
 I have sat through enough security reviews to know the pattern.
 </p>
-
-
-
 <p>
 The slide comes up.
 </p>
-
-
-
 <p>
 18,462 vulnerabilities open.
 </p>
-
-
-
 <p>
 96% of Critical vulnerabilities patched within SLA.
 </p>
-
-
-
 <p>
 42 Critical vulnerabilities overdue.
 </p>
-
-
-
 <p>
 11% improvement month over month.
 </p>
-
-
-
 <p>
 Most of the boxes are green.
 </p>
-
-
-
 <p>
 There is usually one amber indicator somewhere to prove we are not pretending everything is perfect.
 </p>
-
-
-
 <p>
 The numbers may be completely accurate.
 </p>
-
-
-
 <p>
 The team may genuinely have worked hard.
 </p>
-
-
-
 <p>
 And I still find myself wanting to ask one uncomfortable question:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-2">
 Are we actually safer?
 </h2>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <p>
 Did we close more tickets?
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <p>
 Did the SLA improve?
 </p>
-
-
-
 <p>
 Not even:
 </p>
-
-
-
 <p>
 Did the Critical backlog decline?
 </p>
-
-
-
 <p>
 I mean:
 </p>
-
-
-
 <blockquote class="w-auto">Is the enterprise carrying less consequential cyber exposure than it was before?</blockquote>
-
-
-
 <p>
 That is surprisingly difficult to answer from many vulnerability dashboards.
 </p>
-
-
-
 <p>
 We have become very good at reporting what the vulnerability-management machinery is doing.
 </p>
-
-
-
 <p>
 We are less consistent at showing what risk remains after all that machinery has run.
 </p>
-
-
-
 <p>
 And that distinction matters even more once the audience is the board.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-3">
 Boards do not need a better scanner report
 </h2>
-
-
-
 <p>
 I would not expect a board director to understand the nuances between vulnerability scanners.
 </p>
-
-
-
 <p>
 I would not expect them to debate individual CVEs.
 </p>
-
-
-
 <p>
 And I certainly would not want a board meeting turning into a discussion about whether a finding should have been scored 8.8 or 9.1.
 </p>
-
-
-
 <p>
 That is not their job.
 </p>
-
-
-
 <p>
 Their job is oversight.
 </p>
-
-
-
 <p>
 NIST CSF 2.0 makes this explicit through the GOVERN function, tying cybersecurity to organizational context, roles, authorities, risk strategy, policy, and oversight. [1]
 </p>
-
-
-
 <p>
 NIST SP 800-39 makes the same broader point from another direction: information-security risk has to be managed across the organization, mission and business processes, and systems — not left inside a technical function. [2]
 </p>
-
-
-
 <p>
 Board-focused research reaches a similar conclusion. Clinton argues that boards should treat cybersecurity as enterprise risk rather than as an IT problem and should expect management to present risk in forms that support actual governance decisions. [3]
 </p>
-
-
-
 <p>
 That sounds obvious.
 </p>
-
-
-
 <p>
 In practice, it is where many reports still struggle.
 </p>
-
-
-
 <p>
 The board does not need another export from the scanner.
 </p>
-
-
-
 <p>
 It needs enough information to judge whether management:
 </p>
-
-
-
 <p>
 understands the important exposures,
 </p>
-
-
-
 <p>
 knows who owns them,
 </p>
-
-
-
 <p>
 has made deliberate decisions,
 </p>
-
-
-
 <p>
 knows what risk is being carried,
 </p>
-
-
-
 <p>
 and can show whether the situation is improving.
 </p>
-
-
-
 <p>
 That is a very different standard.
 </p>
-
-
-
 <blockquote class="w-auto">The board does not need evidence that Security is busy. It needs evidence that the enterprise is making good exposure decisions.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-4">
 The problem often starts with what we count
 </h2>
-
-
-
 <p>
 Vulnerabilities are wonderfully countable.
 </p>
-
-
-
 <p>
 Exposure is not.
 </p>
-
-
-
 <p>
 That is part of the problem.
 </p>
-
-
-
 <p>
 Imagine one application has 500 vulnerabilities.
 </p>
-
-
-
 <p>
 Another has one.
 </p>
-
-
-
 <p>
 Which worries me more?
 </p>
-
-
-
 <p>
 I cannot answer from those numbers.
 </p>
-
-
-
 <p>
 I need to know:
 </p>
-
-
-
 <p>
 Is it internet-facing?
 </p>
-
-
-
 <p>
 Is exploitation active?
 </p>
-
-
-
 <p>
 What privileges are involved?
 </p>
-
-
-
 <p>
 What can the attacker reach from there?
 </p>
-
-
-
 <p>
 What business service depends on it?
 </p>
-
-
-
 <p>
 What controls stand in the way?
 </p>
-
-
-
 <p>
 What happens if those controls fail?
 </p>
-
-
-
 <p>
 That is why I keep coming back to the same proposition throughout this series:
 </p>
-
-
-
 <blockquote class="w-auto">The job is not to manage vulnerabilities. The job is to manage exploitable business exposure.</blockquote>
-
-
-
 <p>
 CVSS is useful. I use it.
 </p>
-
-
-
 <p>
 But CVSS v4.0 itself distinguishes Base characteristics from Threat and Environmental considerations. [4]
 </p>
-
-
-
 <p>
 EPSS gives us another signal by estimating the probability of exploitation in the wild. [5]
 </p>
-
-
-
 <p>
 CISA's Known Exploited Vulnerabilities catalog gives us something different again: evidence that exploitation has actually occurred. [6]
 </p>
-
-
-
 <p>
 And recent academic work continues to explore how multiple signals can be combined more intelligently.
 </p>
-
-
-
 <p>
 Shimizu and Hashimoto's vulnerability-management chaining work is one example, combining different risk signals rather than treating severity as the whole answer. [7]
 </p>
-
-
-
 <p>
 Lopes, Moura, and Marinheiro approach the problem from context-aware prioritization and automated mitigation in heterogeneous environments. [8]
 </p>
-
-
-
 <p>
 All useful.
 </p>
-
-
-
 <p>
 But I would not put any of those feeds directly in front of the board.
 </p>
-
-
-
 <p>
 The board does not need more signals.
 </p>
-
-
-
 <p>
 Management needs to turn those signals into an answer to a much simpler question:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-5">
 Which exposures could materially hurt us?
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-6">
 A green SLA can hide red risk
 </h2>
-
-
-
 <p>
 Here is a scenario I think many security leaders will recognize.
 </p>
-
-
-
 <p>
 Team A patches 98% of its Critical vulnerabilities inside SLA.
 </p>
-
-
-
 <p>
 Excellent result.
 </p>
-
-
-
 <p>
 The dashboard is green.
 </p>
-
-
-
 <p>
 But the remaining 2% includes:
 </p>
-
-
-
 <p>
 an internet-facing identity service,
 </p>
-
-
-
 <p>
 an unsupported customer platform,
 </p>
-
-
-
 <p>
 and a privileged route toward critical infrastructure.
 </p>
-
-
-
 <p>
 Team B has dozens of Critical and High vulnerabilities outside SLA.
 </p>
-
-
-
 <p>
 That looks worse.
 </p>
-
-
-
 <p>
 But those systems are internal, strongly segmented, not reachable through meaningful attacker paths, and associated with low-consequence services.
 </p>
-
-
-
 <p>
 Which team is actually carrying more risk?
 </p>
-
-
-
 <p>
 The SLA dashboard may tell me:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-7">
 Team B.
 </h2>
-
-
-
 <p>
 The exposure picture may tell me:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-8">
 Team A.
 </h2>
-
-
-
 <p>
 That is not an argument against SLAs.
 </p>
-
-
-
 <p>
 We need them.
 </p>
-
-
-
 <p>
 They create discipline.
 </p>
-
-
-
 <p>
 But I would be very careful about allowing an operational metric to become a proxy for risk.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
 <blockquote class="w-auto">Severity is not threat. Threat is not exposure. Exposure is not business impact.</blockquote>
-
-
-
 <p>
 And a green operational measure can coexist with a very uncomfortable risk picture.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-9">
 So what would I actually show the board?
 </h2>
-
-
-
 <p>
 I would keep it small.
 </p>
-
-
-
 <p>
 Six signals.
 </p>
-
-
-
 <p>
 Not sixty metrics.
 </p>
-
-
-
 <p>
 Not because six is magically correct.
 </p>
-
-
-
 <p>
 Because once the board dashboard starts looking like the vulnerability team’s operations console, we have probably lost the plot.
 </p>
-
-
-
-<h3>1. Material Exposure Remaining</h3>
-
-
-
+<h3 id="section-10">1. Material Exposure Remaining</h3>
 <p>
 This is the number I would put first.
 </p>
-
-
-
 <p>
 Not:
 </p>
-
-
-
 <blockquote class="w-auto">18,462 vulnerabilities open</blockquote>
-
-
-
 <p>
 but:
 </p>
-
-
-
 <blockquote class="w-auto">12 consequential exposures remain unresolved.</blockquote>
-
-
-
 <p>
 Now we have a conversation.
 </p>
-
-
-
 <p>
 What do I mean by consequential?
 </p>
-
-
-
 <p>
 Something that could credibly create meaningful:
 </p>
-
-
-
 <p>
 customer impact,
 </p>
-
-
-
 <p>
 revenue loss,
 </p>
-
-
-
 <p>
 operational disruption,
 </p>
-
-
-
 <p>
 safety consequence,
 </p>
-
-
-
 <p>
 regulatory impact,
 </p>
-
-
-
 <p>
 data compromise,
 </p>
-
-
-
 <p>
 or strategic damage.
 </p>
-
-
-
 <p>
 The shift seems small.
 </p>
-
-
-
 <p>
 It is not.
 </p>
-
-
-
 <p>
 “Why do we still have 18,000 vulnerabilities?” is largely an inventory-management question.
 </p>
-
-
-
 <p>
 “Why do we still have these 12 exposures?” is a management question.
 </p>
-
-
-
-<h3>2. Ownership Health</h3>
-
-
-
+<h3 id="section-11">2. Ownership Health</h3>
 <p>
 Article 5 was really about one frustration I have seen repeatedly:
 </p>
-
-
-
 <p>
 a vulnerability is visible to everybody and owned by nobody.
 </p>
-
-
-
 <p>
 Security knows about it.
 </p>
-
-
-
 <p>
 Engineering knows about it.
 </p>
-
-
-
 <p>
 Product knows about it.
 </p>
-
-
-
 <p>
 Operations knows about it.
 </p>
-
-
-
 <p>
 Three meetings later, everyone is still waiting for someone else to move.
 </p>
-
-
-
 <p>
 That is why I made the point:
 </p>
-
-
-
 <blockquote class="w-auto">A vulnerability without an accountable owner is not being managed. It is being observed.</blockquote>
-
-
-
 <p>
 The board does not need a list of 500 application owners.
 </p>
-
-
-
 <p>
 But it should know whether material exposures actually have accountability.
 </p>
-
-
-
 <p>
 I would show:
 </p>
-
-
-
 <p>
 how many have a named owner,
 </p>
-
-
-
 <p>
 how many have disputed ownership,
 </p>
-
-
-
 <p>
 how many have no valid owner,
 </p>
-
-
-
 <p>
 and:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-12">
 Time to Assigned Owner
 </h2>
-
-
-
 <p>
 Here is why that matters.
 </p>
-
-
-
 <p>
 Suppose a Critical exposure takes 24 days to move into remediation.
 </p>
-
-
-
 <p>
 The dashboard says:
 </p>
-
-
-
 <p>
 24 days open.
 </p>
-
-
-
 <p>
 But then we look closer.
 </p>
-
-
-
 <p>
 Twenty-one of those days were spent trying to decide whose problem it was.
 </p>
-
-
-
 <p>
 That is not primarily a patching problem.
 </p>
-
-
-
 <p>
 That is the organization telling us something about itself.
 </p>
-
-
-
 <p>
 And I want leadership to see it.
 </p>
-
-
-
-<h3>3. Accepted Risk</h3>
-
-
-
+<h3 id="section-13">3. Accepted Risk</h3>
 <p>
 Then there is the category every mature program eventually has to deal with:
 </p>
-
-
-
 <p>
 we know about the exposure.
 </p>
-
-
-
 <p>
 We understand it.
 </p>
-
-
-
 <p>
 And we are consciously choosing not to eliminate it today.
 </p>
-
-
-
 <p>
 That can be legitimate.
 </p>
-
-
-
 <p>
 Maybe the patch creates unacceptable operational risk.
 </p>
-
-
-
 <p>
 Maybe the vendor has not delivered a fix.
 </p>
-
-
-
 <p>
 Maybe we have a strong compensating control.
 </p>
-
-
-
 <p>
 Maybe the platform is already scheduled for retirement.
 </p>
-
-
-
 <p>
 The problem is not risk acceptance.
 </p>
-
-
-
 <p>
 The problem is when nobody remembers why the risk was accepted in the first place.
 </p>
-
-
-
 <p>
 Article 4 introduced what I called Risk-Acceptance Half-Life.
 </p>
-
-
-
 <p>
 I do not mean it as a mathematical formula.
 </p>
-
-
-
 <p>
 It is a governance lens.
 </p>
-
-
-
 <blockquote class="w-auto">The older the acceptance, the more evidence I want that the assumptions behind it are still true.</blockquote>
-
-
-
 <p>
 Because the environment keeps moving.
 </p>
-
-
-
 <p>
 Threat activity changes.
 </p>
-
-
-
 <p>
 Architecture changes.
 </p>
-
-
-
 <p>
 Controls degrade.
 </p>
-
-
-
 <p>
 The business becomes more dependent on the system.
 </p>
-
-
-
 <p>
 Ownership moves.
 </p>
-
-
-
 <p>
 A fix becomes available.
 </p>
-
-
-
 <p>
 So I would never want the board to hear simply:
 </p>
-
-
-
 <blockquote class="w-auto">“Risk accepted.”</blockquote>
-
-
-
 <p>
 I would rather hear:
 </p>
-
-
-
 <blockquote class="w-auto">“We are consciously carrying this exposure until this date, under these assumptions, with these controls, owned by this person, while this permanent treatment is completed.”</blockquote>
-
-
-
 <p>
 Now I know there was an actual decision.
 </p>
-
-
-
-<h3>4. Remediation Constraints</h3>
-
-
-
+<h3 id="section-14">4. Remediation Constraints</h3>
 <p>
 This one matters because “we are late” tells me almost nothing.
 </p>
-
-
-
 <p>
 I want to know:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-15">
 Why are we late?
 </h2>
-
-
-
 <p>
 Is it engineering capacity?
 </p>
-
-
-
 <p>
 A vendor?
 </p>
-
-
-
 <p>
 A change-window restriction?
 </p>
-
-
-
 <p>
 Architecture debt?
 </p>
-
-
-
 <p>
 Unsupported technology?
 </p>
-
-
-
 <p>
 Funding?
 </p>
-
-
-
 <p>
 Product lifecycle?
 </p>
-
-
-
 <p>
 A safety requirement?
 </p>
-
-
-
 <p>
 A dependency we cannot remove yet?
 </p>
-
-
-
 <p>
 Those are not interchangeable explanations.
 </p>
-
-
-
 <p>
 And they do not require the same leadership response.
 </p>
-
-
-
 <p>
 Ten exposures blocked by vendor dependency?
 </p>
-
-
-
 <p>
 That is starting to look like a third-party strategy issue.
 </p>
-
-
-
 <p>
 Ten blocked by unsupported technology?
 </p>
-
-
-
 <p>
 Lifecycle debt.
 </p>
-
-
-
 <p>
 Ten blocked by funding?
 </p>
-
-
-
 <p>
 That is a capital-allocation conversation.
 </p>
-
-
-
 <p>
 Ten blocked by change windows?
 </p>
-
-
-
 <p>
 Now we may be talking about operational resilience.
 </p>
-
-
-
 <p>
 This is one reason I like the line:
 </p>
-
-
-
 <blockquote class="w-auto">A remediation backlog is often an organizational map disguised as a security metric.</blockquote>
-
-
-
 <p>
 Sometimes the backlog tells us more about how the company makes decisions than it tells us about vulnerabilities.
 </p>
-
-
-
-<h3>5. Verified Attackability Reduction</h3>
-
-
-
+<h3 id="section-16">5. Verified Attackability Reduction</h3>
 <p>
 This is the question I wish appeared more often in executive reporting:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-17">
 What did we actually make harder for the attacker?
 </h2>
-
-
-
 <p>
 Did we remove internet reachability?
 </p>
-
-
-
 <p>
 Did we eliminate a privileged attack path?
 </p>
-
-
-
 <p>
 Did we retire an unsupported platform?
 </p>
-
-
-
 <p>
 Did we disable an unnecessary vulnerable service?
 </p>
-
-
-
 <p>
 Did we reduce privilege?
 </p>
-
-
-
 <p>
 Did we segment a critical environment?
 </p>
-
-
-
 <p>
 Did we remove a known exploited condition?
 </p>
-
-
-
 <p>
 Did we actually test the compensating control we are relying on?
 </p>
-
-
-
 <p>
 I care about tickets.
 </p>
-
-
-
 <p>
 But only because tickets should eventually lead to outcomes.
 </p>
-
-
-
 <p>
 Article 3 made this distinction:
 </p>
-
-
-
 <blockquote class="w-auto">Patch is an intervention. Risk reduction is the outcome.</blockquote>
-
-
-
 <p>
 If we patched 2,000 vulnerabilities and a consequential attack path remains viable, I want to know.
 </p>
-
-
-
 <p>
 If we patched only 200 but removed three major paths into critical systems, I want to know that too.
 </p>
-
-
-
 <p>
 The board should see what changed in the attacker’s world.
 </p>
-
-
-
 <p>
 Not just what changed in ServiceNow.
 </p>
-
-
-
-<h3>6. Decision Velocity</h3>
-
-
-
+<h3 id="section-18">6. Decision Velocity</h3>
 <p>
 Most vulnerability programs measure Time to Remediate.
 </p>
-
-
-
 <p>
 Useful.
 </p>
-
-
-
 <p>
 But it compresses several different problems into one number.
 </p>
-
-
-
 <p>
 I would break the journey apart:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-19">
 FIND → OWN → DECIDE → ACT → VERIFY
 </h2>
-
-
-
 <p>
 How long did it take to establish ownership?
 </p>
-
-
-
 <p>
 How long did the owner take to make a treatment decision?
 </p>
-
-
-
 <p>
 How long until the action happened?
 </p>
-
-
-
 <p>
 How long until somebody verified the exposure actually fell?
 </p>
-
-
-
 <p>
 Those are different clocks.
 </p>
-
-
-
 <p>
 And they diagnose different problems.
 </p>
-
-
-
 <p>
 If Time to Owner is high:
 </p>
-
-
-
 <p>
 we probably have an accountability problem.
 </p>
-
-
-
 <p>
 If Time to Decision is high:
 </p>
-
-
-
 <p>
 we may have unclear governance.
 </p>
-
-
-
 <p>
 If Time to Action is high:
 </p>
-
-
-
 <p>
 we may have a capacity or operational problem.
 </p>
-
-
-
 <p>
 If Time to Verification is high:
 </p>
-
-
-
 <p>
 we may be closing work faster than we are validating results.
 </p>
-
-
-
 <p>
 That is what I mean by:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-20">
 Decision Velocity
 </h2>
-
-
-
 <p>
 I am not arguing for speed at any cost.
 </p>
-
-
-
 <p>
 A bad decision made quickly is still a bad decision.
 </p>
-
-
-
 <p>
 But I am very interested in how long material exposure sits in the spaces between decisions.
 </p>
-
-
-
 <p>
 Because that is where risk often quietly ages.
 </p>
-
-
-
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/what-board-should-see-0.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 1 — The Board Exposure View
 </figcaption>
 </figure>
-
-
-
 <blockquote class="w-auto">The board needs evidence of risk reduction — not workflow completion.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-21">
 This is where the series comes together for me
 </h2>
-
-
-
 <p>
 When I started this series, I was not trying to invent another vulnerability-management framework.
 </p>
-
-
-
 <p>
 I was trying to answer a more practical frustration:
 </p>
-
-
-
 <p>
 Why can organizations have excellent tools, hardworking teams, mature processes — and still struggle to remove the exposures that matter most?
 </p>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/were-getting-better-finding-vulnerabilities-why-arent-dr-arun-pillai-qyjff/?trk=article-ssr-frontend-pulse_little-text-block">Article 1</a> introduced:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-22">
 FIND → OWN → DECIDE → ACT → VERIFY
 </h2>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/cvss-10-business-risk-dr-arun-pillai-ih0zf/?trk=article-ssr-frontend-pulse_little-text-block">Article 2</a> asked what deserves priority.
 </p>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/patch-everything-security-strategy-dr-arun-qfcbf/?trk=article-ssr-frontend-pulse_little-text-block">Article 3</a> asked what intervention makes sense.
 </p>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/when-does-risk-acceptance-become-negligence-dr-arun-pscyf/?trk=article-ssr-frontend-pulse_little-text-block">Article 4</a> looked at when temporary risk acceptance becomes stale.
 </p>
-
-
-
 <p>
 <a href="https://www.linkedin.com/pulse/security-team-does-own-your-vulnerabilities-arun-ueojf/?trk=article-ssr-frontend-pulse_little-text-block">Article 5</a> looked at ownership.
 </p>
-
-
-
 <p>
 This article is really the executive test of all five.
 </p>
-
-
-
 <blockquote class="w-auto">Can leadership see whether those decisions are working?</blockquote>
-
-
-
 <p>
 That is why I would not build the board dashboard from the scanner upward.
 </p>
-
-
-
 <p>
 I would build it from the:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-23">
 business-risk question downward.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-24">
 Operational metrics still matter
 </h2>
-
-
-
 <p>
 I want to be clear about this because it is easy to take the argument too far.
 </p>
-
-
-
 <p>
 I am not suggesting we stop measuring:
 </p>
-
-
-
 <p>
 SLA,
 </p>
-
-
-
 <p>
 MTTR,
 </p>
-
-
-
 <p>
 aging,
 </p>
-
-
-
 <p>
 backlog,
 </p>
-
-
-
 <p>
 scanner coverage,
 </p>
-
-
-
 <p>
 patch completion,
 </p>
-
-
-
 <p>
 or vulnerability count.
 </p>
-
-
-
 <p>
 Teams need those metrics.
 </p>
-
-
-
 <p>
 I would expect my vulnerability-management leaders to know them.
 </p>
-
-
-
 <p>
 But there is a difference between:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-25">
 Operating Metrics
 </h2>
-
-
-
 <p>
 and:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-26">
 Oversight Metrics
 </h2>
-
-
-
 <p>
 Operating metrics help teams run the machine.
 </p>
-
-
-
 <p>
 Oversight metrics help executives determine whether the machine is producing the outcome we care about.
 </p>
-
-
-
 <p>
 Those two audiences should not necessarily receive the same dashboard.
 </p>
-
-
-
 <p>
 And as reporting moves upward in the organization, I think it should become more contextual, not merely shorter.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-27">
 I would demote one familiar headline
 </h2>
-
-
-
 <p>
 This one:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-28">
 Total vulnerabilities open
 </h2>
-
-
-
 <p>
 I would still track it.
 </p>
-
-
-
 <p>
 I just would not lead with it.
 </p>
-
-
-
 <p>
 Because vulnerability count can go up for some very good reasons.
 </p>
-
-
-
 <p>
 We acquire a company.
 </p>
-
-
-
 <p>
 Suddenly thousands of previously invisible assets are under management.
 </p>
-
-
-
 <p>
 Cloud coverage improves.
 </p>
-
-
-
 <p>
 Authenticated scanning expands.
 </p>
-
-
-
 <p>
 We introduce better SAST and SCA.
 </p>
-
-
-
 <p>
 AI finds weaknesses we simply could not see before.
 </p>
-
-
-
 <p>
 The count goes up.
 </p>
-
-
-
 <p>
 Did security get worse?
 </p>
-
-
-
 <p>
 Maybe.
 </p>
-
-
-
 <p>
 But maybe visibility improved.
 </p>
-
-
-
 <p>
 The reverse can happen too.
 </p>
-
-
-
 <p>
 The backlog shrinks dramatically.
 </p>
-
-
-
 <p>
 Everybody celebrates.
 </p>
-
-
-
 <p>
 But three highly consequential exposures remain untouched.
 </p>
-
-
-
 <p>
 So:
 </p>
-
-
-
 <blockquote class="w-auto">More findings can mean better discovery. Fewer findings can mean better security. The count alone cannot tell us which happened.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-29">
 And then there is concentration
 </h2>
-
-
-
 <p>
 This is another thing raw counts hide.
 </p>
-
-
-
 <p>
 Imagine ten accepted exposures.
 </p>
-
-
-
 <p>
 Each one looks manageable individually.
 </p>
-
-
-
 <p>
 But all ten touch the same identity platform.
 </p>
-
-
-
 <p>
 Or the same payment environment.
 </p>
-
-
-
 <p>
 Or one acquired business.
 </p>
-
-
-
 <p>
 Or the same privileged management plane.
 </p>
-
-
-
 <p>
 At the ticket level, each decision may appear reasonable.
 </p>
-
-
-
 <p>
 At the portfolio level, we may have just created a concentration problem.
 </p>
-
-
-
 <p>
 That is why I would also want to know:
 </p>
-
-
-
 <blockquote class="w-auto">Where is unresolved or accepted exposure accumulating?</blockquote>
-
-
-
 <p>
 By business unit?
 </p>
-
-
-
 <p>
 Platform?
 </p>
-
-
-
 <p>
 Supplier?
 </p>
-
-
-
 <p>
 Attack path?
 </p>
-
-
-
 <p>
 Critical service?
 </p>
-
-
-
 <p>
 Concentration is where a collection of individually reasonable decisions can become a systemic problem.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-30">
 What about putting cyber risk into dollars?
 </h2>
-
-
-
 <p>
 This is where I think the conversation gets more interesting.
 </p>
-
-
-
 <p>
 There is a well-established school of thought that says boards already make decisions in financial terms, so cyber risk should be translated into the same language.
 </p>
-
-
-
 <p>
 FAIR — Factor Analysis of Information Risk — is probably the best-known example. It models risk using factors such as probable loss-event frequency and loss magnitude, allowing cyber scenarios to be expressed as financial ranges. [9]
 </p>
-
-
-
 <p>
 I understand the attraction.
 </p>
-
-
-
 <p>
 If I am choosing between:
 </p>
-
-
-
 <p>
 a $5 million platform replacement,
 </p>
-
-
-
 <p>
 a $1 million compensating-control program,
 </p>
-
-
-
 <p>
 insurance,
 </p>
-
-
-
 <p>
 or accepting the exposure,
 </p>
-
-
-
 <p>
 financial quantification can make the trade-off much more concrete.
 </p>
-
-
-
 <p>
 I would absolutely use it where the data and decision justify it.
 </p>
-
-
-
 <p>
 But I have one reservation.
 </p>
-
-
-
 <p>
 Not about quantification.
 </p>
-
-
-
 <p>
 About false precision.
 </p>
-
-
-
 <p>
 If we genuinely understand:
 </p>
-
-
-
 <p>
 event frequency,
 </p>
-
-
-
 <p>
 control effectiveness,
 </p>
-
-
-
 <p>
 loss ranges,
 </p>
-
-
-
 <p>
 business dependencies,
 </p>
-
-
-
 <p>
 and uncertainty,
 </p>
-
-
-
 <p>
 then quantification can improve the conversation materially.
 </p>
-
-
-
 <p>
 But if those inputs are fragile, turning them into:
 </p>
-
-
-
 <blockquote class="w-auto">“$4.73 million annualized cyber loss”</blockquote>
-
-
-
 <p>
 does not magically make the uncertainty disappear.
 </p>
-
-
-
 <p>
 It can simply make an uncertain conclusion look more authoritative.
 </p>
-
-
-
 <p>
 So my position is not:
 </p>
-
-
-
 <blockquote class="w-auto">Do not quantify cyber risk.</blockquote>
-
-
-
 <p>
 It is:
 </p>
-
-
-
 <blockquote class="w-auto">Quantify where the evidence supports it — and quantify the uncertainty too.</blockquote>
-
-
-
 <p>
 Research on board cyber governance and cyber-risk assessment is increasingly interested in this broader translation problem: moving from technical risk toward decision-relevant organizational and economic information. [3][10]
 </p>
-
-
-
 <p>
 For me, the best answer is not either/or.
 </p>
-
-
-
 <p>
 A good board conversation might say:
 </p>
-
-
-
 <blockquote class="w-auto">“This exposure affects a revenue-critical identity service, is externally reachable, and our modelling suggests a loss range of X to Y under these assumptions.”</blockquote>
-
-
-
 <p>
 That is useful.
 </p>
-
-
-
 <p>
 It preserves the technical reality.
 </p>
-
-
-
 <p>
 It gives the business consequence.
 </p>
-
-
-
 <p>
 And it does not hide the assumptions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-31">
 The point is translation, not monetization
 </h2>
-
-
-
 <p>
 What I really care about is whether Security can translate technical exposure into information that allows another executive to make a decision.
 </p>
-
-
-
 <p>
 That may involve money.
 </p>
-
-
-
 <p>
 It may involve:
 </p>
-
-
-
 <p>
 customer disruption,
 </p>
-
-
-
 <p>
 operational resilience,
 </p>
-
-
-
 <p>
 safety,
 </p>
-
-
-
 <p>
 regulatory exposure,
 </p>
-
-
-
 <p>
 strategic dependency,
 </p>
-
-
-
 <p>
 or reputation.
 </p>
-
-
-
 <p>
 The board should understand:
 </p>
-
-
-
 <p>
 What could happen?
 </p>
-
-
-
 <p>
 How plausible is it?
 </p>
-
-
-
 <p>
 What part of the business is affected?
 </p>
-
-
-
 <p>
 Who owns it?
 </p>
-
-
-
 <p>
 What have we decided to do?
 </p>
-
-
-
 <p>
 What remains afterward?
 </p>
-
-
-
 <p>
 What could cause us to change that decision?
 </p>
-
-
-
 <p>
 That is the translation layer.
 </p>
-
-
-
 <blockquote class="w-auto">Technical exposure has to become decision information.</blockquote>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-32">
 What I would actually put on one board slide
 </h2>
-
-
-
 <p>
 If I had only one slide, I would want something like this:
 </p>
-
-
-
-<h3>MATERIAL EXPOSURE</h3>
-
-
-
+<h3 id="section-33">MATERIAL EXPOSURE</h3>
 <p>
 12 consequential exposures remain
 </p>
-
-
-
 <p>
 ↑ 2 since last quarter
 </p>
-
-
-
-<h3>OWNERSHIP</h3>
-
-
-
+<h3 id="section-34">OWNERSHIP</h3>
 <p>
 11 of 12 have named accountable owners
 </p>
-
-
-
 <p>
 1 ownership dispute escalated
 </p>
-
-
-
-<h3>ACCEPTED RISK</h3>
-
-
-
+<h3 id="section-35">ACCEPTED RISK</h3>
 <p>
 4 material exposures temporarily accepted
 </p>
-
-
-
 <p>
 1 stale acceptance requires executive review
 </p>
-
-
-
-<h3>CONSTRAINTS</h3>
-
-
-
+<h3 id="section-36">CONSTRAINTS</h3>
 <p>
 3 architecture
 </p>
-
-
-
 <p>
 2 vendor
 </p>
-
-
-
 <p>
 2 funding
 </p>
-
-
-
 <p>
 1 change window
 </p>
-
-
-
-<h3>VERIFIED REDUCTION</h3>
-
-
-
+<h3 id="section-37">VERIFIED REDUCTION</h3>
 <p>
 6 material exposures reduced this quarter
 </p>
-
-
-
 <p>
 2 privileged paths removed
 </p>
-
-
-
 <p>
 1 unsupported platform retired
 </p>
-
-
-
-<h3>DECISION VELOCITY</h3>
-
-
-
+<h3 id="section-38">DECISION VELOCITY</h3>
 <p>
 Median Time to Owner: 1.8 days
 </p>
-
-
-
 <p>
 Median Time to Decision: 4.2 days
 </p>
-
-
-
 <p>
 Median Time to Verified Reduction: 17 days
 </p>
-
-
-
 <p>
 And if our quantification capability is mature enough:
 </p>
-
-
-
-<h3>FINANCIAL EXPOSURE</h3>
-
-
-
+<h3 id="section-39">FINANCIAL EXPOSURE</h3>
 <p>
 Estimated loss ranges for the top material scenarios
 </p>
-
-
-
 <p>
 with the assumptions and confidence level visible.
 </p>
-
-
-
 <p>
 I would rather have that conversation than spend ten minutes debating whether 96% SLA compliance should be green or amber.
 </p>
-
-
-
-<h3><br/></h3>
-
-
-
+<h3 id="section-40"><br/></h3>
 <figure>
 <img alt="Article content" loading="lazy" src="../../assets/articles/what-board-should-see-1.webp"/>
 <figcaption class="mt-[0.8rem] text-center text-sm font-normal text-color-text-low-emphasis" data-test-id="publishing-image-block-caption">
 Figure 2 — Scanner Dashboard vs. Board Exposure View
 </figcaption>
 </figure>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-41">
 What I would keep out of the board pack
 </h2>
-
-
-
 <p>
 I have seen board packs become impressive-looking and less useful at the same time.
 </p>
-
-
-
 <p>
 More heat maps.
 </p>
-
-
-
 <p>
 More red, amber, green.
 </p>
-
-
-
 <p>
 More trend arrows.
 </p>
-
-
-
 <p>
 More metrics.
 </p>
-
-
-
 <p>
 More pages.
 </p>
-
-
-
 <p>
 At some point the board is receiving a security operations review with the word “Board” on the title slide.
 </p>
-
-
-
 <p>
 I would resist that.
 </p>
-
-
-
 <p>
 A director should be able to look at the cyber-risk view and ask:
 </p>
-
-
-
 <blockquote class="w-auto">What are we worried about?</blockquote>
-
-
-
 <blockquote class="w-auto">Who owns it?</blockquote>
-
-
-
 <blockquote class="w-auto">What are we doing about it?</blockquote>
-
-
-
 <blockquote class="w-auto">What are we consciously carrying?</blockquote>
-
-
-
 <blockquote class="w-auto">What is stopping us?</blockquote>
-
-
-
 <blockquote class="w-auto">Is it getting better?</blockquote>
-
-
-
 <p>
 If the dashboard cannot support those questions, I would question what the dashboard is actually for.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-42">
 AI will make this harder, not easier
 </h2>
-
-
-
 <p>
 AI-assisted discovery is likely to increase the number of vulnerabilities we can find.
 </p>
-
-
-
 <p>
 Automation will improve prioritization.
 </p>
-
-
-
 <p>
 Context-aware systems will get better at connecting vulnerabilities with architecture, threat activity, and possible mitigation. [8]
 </p>
-
-
-
 <p>
 That is good.
 </p>
-
-
-
 <p>
 But it creates an uncomfortable paradox.
 </p>
-
-
-
 <p>
 We may become capable of finding vastly more weaknesses while making it harder for leadership to understand what actually matters.
 </p>
-
-
-
 <p>
 So I do not want AI simply creating:
 </p>
-
-
-
 <p>
 more findings,
 </p>
-
-
-
 <p>
 more scores,
 </p>
-
-
-
 <p>
 more charts,
 </p>
-
-
-
 <p>
 and longer reports.
 </p>
-
-
-
 <p>
 I want it helping us answer:
 </p>
-
-
-
 <p>
 What changed materially?
 </p>
-
-
-
 <p>
 Which attack paths became viable?
 </p>
-
-
-
 <p>
 Which exposure increased in consequence?
 </p>
-
-
-
 <p>
 Which accepted-risk assumption became stale?
 </p>
-
-
-
 <p>
 Which intervention removed the most meaningful risk?
 </p>
-
-
-
 <p>
 Where is exposure concentrating?
 </p>
-
-
-
 <p>
 Which important exposures still have no owner?
 </p>
-
-
-
 <p>
 Which blockers require an executive decision?
 </p>
-
-
-
 <p>
 That is where AI starts becoming useful to governance rather than just useful to discovery.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-43">
 The five-question board test
 </h2>
-
-
-
 <p>
 If every vulnerability dashboard disappeared tomorrow, could management still answer these five questions?
 </p>
-
-
-
-<h3>1. What are our most consequential cyber exposures?</h3>
-
-
-
+<h3 id="section-44">1. What are our most consequential cyber exposures?</h3>
 <p>
 Not the highest CVSS scores.
 </p>
-
-
-
 <p>
 The scenarios capable of materially affecting the enterprise.
 </p>
-
-
-
-<h3>2. Who owns each one?</h3>
-
-
-
+<h3 id="section-45">2. Who owns each one?</h3>
 <p>
 A name.
 </p>
-
-
-
 <p>
 Not a queue.
 </p>
-
-
-
-<h3>3. What decision has been made?</h3>
-
-
-
+<h3 id="section-46">3. What decision has been made?</h3>
 <p>
 Patch?
 </p>
-
-
-
 <p>
 Mitigate?
 </p>
-
-
-
 <p>
 Break the path?
 </p>
-
-
-
 <p>
 Isolate?
 </p>
-
-
-
 <p>
 Replace?
 </p>
-
-
-
 <p>
 Temporarily accept?
 </p>
-
-
-
-<h3>4. What residual risk are we consciously carrying?</h3>
-
-
-
+<h3 id="section-47">4. What residual risk are we consciously carrying?</h3>
 <p>
 And for how long?
 </p>
-
-
-
 <p>
 Where appropriate, what is the credible financial range?
 </p>
-
-
-
-<h3>5. What evidence tells us the exposure is actually reducing?</h3>
-
-
-
+<h3 id="section-48">5. What evidence tells us the exposure is actually reducing?</h3>
 <p>
 Not:
 </p>
-
-
-
 <blockquote class="w-auto">“Ticket closed.”</blockquote>
-
-
-
 <p>
 Evidence.
 </p>
-
-
-
 <p>
 If management cannot answer those questions, I do not think the board has a reporting problem.
 </p>
-
-
-
 <p>
 It has a:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-49">
 governance problem.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-50">
 What I would ask the CISO
 </h2>
-
-
-
 <p>
 I would not start with:
 </p>
-
-
-
 <blockquote class="w-auto">“Why are 4% of Critical vulnerabilities outside SLA?”</blockquote>
-
-
-
 <p>
 I would ask:
 </p>
-
-
-
 <p>
 Which of those actually matter?
 </p>
-
-
-
 <p>
 Why are they still exposed?
 </p>
-
-
-
 <p>
 Who owns them?
 </p>
-
-
-
 <p>
 What decision has been made?
 </p>
-
-
-
 <p>
 What are we relying on until permanent remediation?
 </p>
-
-
-
 <p>
 Have those controls actually been tested?
 </p>
-
-
-
 <p>
 What investment would permanently remove the recurring exposure?
 </p>
-
-
-
 <p>
 And the one question I think often reveals more than the dashboard:
 </p>
-
-
-
 <blockquote class="w-auto">Where are we unable to reduce known exposure because authority, accountability, incentives, architecture, or investment are misaligned?</blockquote>
-
-
-
 <p>
 That is the conversation I would want.
 </p>
-
-
-
 <p>
 Because by that point we are no longer discussing scanner performance.
 </p>
-
-
-
 <p>
 We are discussing how the enterprise makes risk decisions.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-51">
 My position
 </h2>
-
-
-
 <p>
 A mature vulnerability-management program should become increasingly boring at the operational level.
 </p>
-
-
-
 <p>
 That is a compliment.
 </p>
-
-
-
 <p>
 Routine vulnerabilities should be discovered, routed, patched, verified, and closed without needing senior-management attention.
 </p>
-
-
-
 <p>
 The difficult conversations should move upward.
 </p>
-
-
-
 <p>
 Toward:
 </p>
-
-
-
 <p>
 material exposure,
 </p>
-
-
-
 <p>
 architecture debt,
 </p>
-
-
-
 <p>
 ownership failures,
 </p>
-
-
-
 <p>
 accepted risk,
 </p>
-
-
-
 <p>
 investment decisions,
 </p>
-
-
-
 <p>
 operational trade-offs,
 </p>
-
-
-
 <p>
 concentration,
 </p>
-
-
-
 <p>
 and evidence that attackability is actually falling.
 </p>
-
-
-
 <p>
 That is the transition from:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-52">
 vulnerability management
 </h2>
-
-
-
 <p>
 to:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-53">
 exposure governance.
 </h2>
-
-
-
 <p>
 The board should not need to ask:
 </p>
-
-
-
 <blockquote class="w-auto">“How many vulnerabilities did Security close?”</blockquote>
-
-
-
 <p>
 I would rather it ask:
 </p>
-
-
-
 <blockquote class="w-auto">“How much consequential exposure remains, why does it remain, who owns it, and what evidence tells us it is reducing?”</blockquote>
-
-
-
 <p>
 Management should be able to answer that clearly.
 </p>
-
-
-
 <p>
 Because:
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-54">
 A board dashboard that proves Security is busy is not enough. It should prove the enterprise is reducing consequential exposure.
 </h2>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-55">
 Monday-morning takeaway
 </h2>
-
-
-
 <p>
 Try this once.
 </p>
-
-
-
 <p>
 Take the ten exposures you believe matter most.
 </p>
-
-
-
 <p>
 For thirty minutes, ignore the scanner dashboard.
 </p>
-
-
-
 <p>
 For each exposure, write down:
 </p>
-
-
-
 <p>
 Exposure
 </p>
-
-
-
 <p>
 Business consequence
 </p>
-
-
-
 <p>
 Owner
 </p>
-
-
-
 <p>
 Decision
 </p>
-
-
-
 <p>
 Residual risk
 </p>
-
-
-
 <p>
 Blocker
 </p>
-
-
-
 <p>
 Verification
 </p>
-
-
-
 <p>
 And, where the evidence supports it:
 </p>
-
-
-
 <p>
 credible financial-loss range
 </p>
-
-
-
 <p>
 Then put those ten rows in front of your leadership team.
 </p>
-
-
-
 <p>
 Ask one question:
 </p>
-
-
-
 <blockquote class="w-auto">Does this tell us more about the risk we are actually carrying than the dashboard we normally review?</blockquote>
-
-
-
 <p>
 If the answer is yes, I would not blame the scanner.
 </p>
-
-
-
 <p>
 The scanner was doing its job.
 </p>
-
-
-
 <p>
 Our reporting model was asking it to answer the wrong question.
 </p>
-
-
-
-<h3>Next in the series</h3>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h3 id="section-56">Next in the series</h3>
+<h2 data-test-id="pulse-publishing-h1" id="section-57">
 Security Debt Is Not Just Technical Debt
 </h2>
-
-
-
 <p>
 Some cyber exposure exists because remediation is genuinely difficult.
 </p>
-
-
-
 <p>
 Some exists because yesterday's decision was deferred.
 </p>
-
-
-
 <p>
 Then deferred again.
 </p>
-
-
-
 <p>
 Unsupported platforms.
 </p>
-
-
-
 <p>
 Repeated exceptions.
 </p>
-
-
-
 <p>
 Temporary controls that quietly became permanent.
 </p>
-
-
-
 <p>
 Inherited architecture.
 </p>
-
-
-
 <p>
 Identity shortcuts.
 </p>
-
-
-
 <p>
 Modernization plans that never quite reached the top of the funding list.
 </p>
-
-
-
 <p>
 The next article will look at Exposure Debt — how unresolved cyber exposure accumulates through yesterday's deferred decisions, and what that debt eventually costs the organization.
 </p>
-
-
-
-<h2 data-test-id="pulse-publishing-h1">
+<h2 data-test-id="pulse-publishing-h1" id="section-58">
 References
 </h2>
-
-
-
 <p>
 [1] National Institute of Standards and Technology. (2024). The NIST Cybersecurity Framework (CSF) 2.0. <a href="https://www.nist.gov/cyberframework?trk=article-ssr-frontend-pulse_little-text-block">https://www.nist.gov/cyberframework</a>
 </p>
-
-
-
 <p>
 [2] Joint Task Force Transformation Initiative. (2011). Managing Information Security Risk: Organization, Mission, and Information System View. NIST Special Publication 800-39. <a href="https://csrc.nist.gov/pubs/sp/800/39/final?trk=article-ssr-frontend-pulse_little-text-block">https://csrc.nist.gov/pubs/sp/800/39/final</a>
 </p>
-
-
-
 <p>
 [3] Clinton, L. (2021). “International Principles for Boards of Directors and Cyber Security.” Cyber Security: A Peer-Reviewed Journal, 4(3). <a href="https://www.ingentaconnect.com/content/hsp/jcs/2021/00000004/00000003/art00006?trk=article-ssr-frontend-pulse_little-text-block">https://www.ingentaconnect.com/content/hsp/jcs/2021/00000004/00000003/art00006</a>
 </p>
-
-
-
 <p>
 [4] FIRST. Common Vulnerability Scoring System Version 4.0. <a href="https://www.first.org/cvss/v4.0/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/cvss/v4.0/</a>
 </p>
-
-
-
 <p>
 [5] FIRST. Exploit Prediction Scoring System (EPSS). <a href="https://www.first.org/epss/?trk=article-ssr-frontend-pulse_little-text-block">https://www.first.org/epss/</a>
 </p>
-
-
-
 <p>
 [6] Cybersecurity and Infrastructure Security Agency. Known Exploited Vulnerabilities Catalog. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?trk=article-ssr-frontend-pulse_little-text-block">https://www.cisa.gov/known-exploited-vulnerabilities-catalog</a>
 </p>
-
-
-
 <p>
 [7] Shimizu, N., &amp; Hashimoto, M. (2026). “Vulnerability Management Chaining: An Integrated Framework for Efficient Cybersecurity Risk Prioritization.” IEEE Access, 14, 31407–31424. <a href="https://ieeexplore.ieee.org/abstract/document/11397608/?trk=article-ssr-frontend-pulse_little-text-block">https://ieeexplore.ieee.org/abstract/document/11397608/</a>
 </p>
-
-
-
 <p>
 [8] Lopes, R., Moura, J., &amp; Marinheiro, R. N. (2026). “Orchestrated Vulnerability Management for Heterogeneous Networks: Adaptive Two-Stage Vulnerability Assessment, Context-Aware Risk Prioritization, and Automated Mitigation.” arXiv:2608.08162. <a href="https://arxiv.org/abs/2608.08162?trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/abs/2608.08162</a>
 </p>
-
-
-
 <p>
 [9] The Open Group. Open FAIR™ Risk Analysis Standard / Factor Analysis of Information Risk. <a href="https://www.opengroup.org/openfair?trk=article-ssr-frontend-pulse_little-text-block">https://www.opengroup.org/openfair</a>
 </p>
-
-
-
 <p>
 [10] Srivastava, P., &amp; Mukhopadhyay, A. (2026). “Cyber-risk assessment and mitigation framework for critical information infrastructure: mixed-methods approach.” Journal of Enterprise Information Management. <a href="https://www.emerald.com/jeim/article-abstract/doi/10.1108/JEIM-04-2026-0618/1391816?trk=article-ssr-frontend-pulse_little-text-block">https://www.emerald.com/jeim/article-abstract/doi/10.1108/JEIM-04-2026-0618/1391816</a>
 </p>
-
-
-
 <p>
 <br/>
 </p>
-
- </article><nav class="series-nav" aria-label="Vulnerability management reading sequence"><a rel="prev" href="../risk-acceptance-negligence/">← Previous: When Does Risk Acceptance Become Negligence?</a><a href="../#vulnerability-risk">All articles in this collection</a><a rel="next" href="../security-debt/">Next: Security Debt Is Not Just Technical Debt →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai</span><span>Independent perspectives on AI security.</span></footer></body></html>
+</article><section class="related-reading"><h2>Continue reading</h2><ul><li><a href="/ai-security-briefings/articles/finding-vulnerabilities-reducing-risk/">We’re Getting Better at Finding Vulnerabilities. Why Aren’t We Getting Better at Removing Risk?</a></li><li><a href="/ai-security-briefings/articles/cvss-10-business-risk/">CVSS 10 ≠ Business Risk 10</a></li><li><a href="/ai-security-briefings/articles/patch-everything-security-strategy/">Patch Everything Is Not a Security Strategy</a></li></ul></section><nav aria-label="Vulnerability management reading sequence" class="series-nav"><a href="../risk-acceptance-negligence/" rel="prev">← Previous: When Does Risk Acceptance Become Negligence?</a><a href="../#vulnerability-risk">All articles in this collection</a><a href="../security-debt/" rel="next">Next: Security Debt Is Not Just Technical Debt →</a></nav><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer></body></html>
