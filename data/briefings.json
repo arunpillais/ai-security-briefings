@@ -46,6 +46,53 @@
           "limitations": "The linked publication is an initial preliminary draft, not a final standard or certification checklist. Framework alignment alone does not demonstrate control effectiveness; validate controls in the actual deployment."
         }
       ]
+    },
+    {
+      "id": "2026-10-09",
+      "date": "2026-10-09",
+      "status": "published",
+      "title": "AI Security: Evidence Before Autonomous Action",
+      "summary": "Three new papers published 2–5 October connect pre-action auditing, design-time security review and agent-aware static analysis. The practical lesson is to make automation accountable to evidence: benchmark missed harm, preserve architecture traceability and reproduce vulnerabilities before acting. These research results support carefully scoped pilots, not claims of production-ready autonomous assurance.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "Efficient Auditing of Adversarial AI Agent Behavior from Agent Traces",
+          "publisher": "Eugene Zhang, Cheng-Yun King Yang and Dongyan Xu — Purdue University / arXiv",
+          "date": "2026-10-05",
+          "url": "https://arxiv.org/html/2610.07256v1",
+          "mustRead": true,
+          "whatChanged": "Selective pre-action auditing cuts benchmark token usage from 47.8k to 14.6k per run, while detection falls from 81.5% to 72.8% compared with auditing every action.",
+          "whyItMatters": "Editorial implication: evaluate audit cost alongside missed harm and false alarms before automating remediation or SOAR actions.",
+          "worthReading": "Sections III–IV for trusted logging and execution gating; VI-A and VII for detection, cost and refusal handling.",
+          "limitations": "Preprint and limited simulations. Traces are assumed tamper-proof. Refusals count as detections; ignoring them lowers reported gated detection to a lower bound of 55.6%. This is not production assurance."
+        },
+        {
+          "title": "From Requirements to Attack Trees: Grounded LLM Agents for Design-Time Security Review",
+          "publisher": "Akash Iyer, Taha Demirkan, Keerthi Koneru and colleagues — Accenture / arXiv",
+          "date": "2026-10-02",
+          "url": "https://arxiv.org/html/2610.03820v1",
+          "mustRead": false,
+          "whatChanged": "A PRD-and-diagram pipeline links misuse cases, attack trees, mitigations and security-team routing. Controlled and case-study evaluations report better grounding than single-shot baselines.",
+          "whyItMatters": "Editorial implication: pilot a traceable design-review accelerator with human architecture approval, rather than measure success by threat-list length.",
+          "worthReading": "Sections 3.2, 5 and 7: artifact processing, comparative evaluation and limitations.",
+          "limitations": "Technical preprint; seeded flaws and one expert evaluator limit generalization. Input artifacts are trusted, and prompt-injection defenses are not implemented. Proposed redesigns are not deployed or approved architectures."
+        },
+        {
+          "title": "Beyond Predefined Sinks: Security-Aware Dependency Analysis for LLM Agents",
+          "publisher": "Hang Cui — arXiv",
+          "date": "2026-10-02",
+          "url": "https://arxiv.org/html/2610.03014v1",
+          "mustRead": false,
+          "whatChanged": "AgentSecGraph adds source dependencies, trust boundaries and guard evidence to sensitive-operation analysis across 67 agent repositories. Its reproduction-backed set distinguishes one confirmed vulnerability from guarded behaviors.",
+          "whyItMatters": "Editorial implication: require provenance and exploitability evidence before converting agent-tool findings into remediation tickets or risk-reduction claims.",
+          "worthReading": "Sections 2.2–3.5 and 4.2–5.3: evidence levels, analysis contract, reproduction and validity limits.",
+          "limitations": "Not peer reviewed. Local static analysis cannot prove reachability, effective guards or deployment privileges. A small reproduction-backed set does not establish broad vulnerability-detection accuracy."
+        }
+      ]
     }
   ]
 }
