@@ -93,6 +93,52 @@
           "limitations": "Not peer reviewed. Local static analysis cannot prove reachability, effective guards or deployment privileges. A small reproduction-backed set does not establish broad vulnerability-detection accuracy."
         }
       ]
+    },
+    {
+      "id": "2026-10-16",
+      "date": "2026-10-16",
+      "status": "published",
+      "title": "AI Security: Secure the Gateway, Test the Agent, Enforce Outside the Model",
+      "summary": "Three reads published 11–13 October connect concrete LLM-gateway vulnerabilities, more realistic prompt-injection evaluation and external agent containment. The delivery priority is to test both application permissions and end-to-end agent behavior. Architecture recommendations below are editorial implications; benchmark results and proposed patterns are not production guarantees.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI"
+      ],
+      "items": [
+        {
+          "title": "When LLM Gateways Go Wrong: Findings from LiteLLM",
+          "publisher": "Check Point Research",
+          "date": "2026-10-13",
+          "url": "https://research.checkpoint.com/2026/when-llm-gateways-go-wrong-findings-from-litellm/",
+          "mustRead": true,
+          "whatChanged": "Researchers demonstrate authorization and routing flaws in LiteLLM v1.77.7, including paths to file access, account takeover, code execution and provider-key extraction. They report fixes as of v1.83.9.",
+          "whyItMatters": "Editorial implication: treat the LLM gateway as a privileged control plane. Test low-privilege configuration access, routing destinations and credential handling in release gates.",
+          "worthReading": "The authorization-bypass analysis, SSRF discussion and Assigned CVEs section.",
+          "limitations": "Researcher-reported reproduction, not evidence that every deployment is exposed. The stated fixed version addresses these findings; it is not a recommendation to stop updating there."
+        },
+        {
+          "title": "BrowseSafe++: Benchmarking Prompt Injection Detection Across Web Contexts, Languages, and Browser Views",
+          "publisher": "Yuetian Chen, Kaiyuan Zhang and colleagues — Perplexity, Purdue and Rutgers / arXiv",
+          "date": "2026-10-12",
+          "url": "https://arxiv.org/html/2610.17457v1",
+          "mustRead": false,
+          "whatChanged": "Introduces 38,675 attack/control page pairs across HTML, Markdown, accessibility trees and screenshots. Tests show that detecting an injection does not guarantee resisting it during a task; adaptive attacks substantially increase success.",
+          "whyItMatters": "Editorial implication: evaluate your agent's actual page representation and downstream actions, alongside detector false positives, before approving browser access.",
+          "worthReading": "Sections 2.2 and 4.1–4.3: dataset construction, detection versus task behavior and adaptive testing.",
+          "limitations": "Preprint. Surrounding page content is rewritten, selection uses existing detectors and model-assisted labels, and benchmark results do not establish deployment-wide resistance."
+        },
+        {
+          "title": "Designing Default-Deny Egress Controls and Inline Policy Inspection for AI Agents",
+          "publisher": "Ajay Kumar Govindaram — HackerNoon",
+          "date": "2026-10-11",
+          "url": "https://hackernoon.com/designing-default-deny-egress-controls-and-inline-policy-inspection-for-ai-agents",
+          "mustRead": false,
+          "whatChanged": "A new architecture analysis combines external egress controls, revocable credentials and an independent stop mechanism with selective semantic inspection.",
+          "whyItMatters": "Editorial implication: define enforcement independently of agent judgment, then measure inspection latency, decision quality and escalation workload before adoption.",
+          "worthReading": "'What the wall looks like in practice', 'The gap a wall leaves' and 'The shape of the answer'.",
+          "limitations": "Practitioner analysis, not a controlled evaluation or official AWS guidance. Proposed inspector economics remain to be tested. Network allowlists alone do not prevent misuse of permitted destinations."
+        }
+      ]
     }
   ]
 }
