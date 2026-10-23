@@ -139,6 +139,53 @@
           "limitations": "Practitioner analysis, not a controlled evaluation or official AWS guidance. Proposed inspector economics remain to be tested. Network allowlists alone do not prevent misuse of permitted destinations."
         }
       ]
+    },
+    {
+      "id": "2026-10-23",
+      "date": "2026-10-23",
+      "status": "published",
+      "title": "AI Security: Enforce Data Flow, Measure Real Outcomes, Verify AI-Found Bugs",
+      "summary": "Three primary sources published 16–21 October sharpen the delivery case for system-level controls, security-and-utility evaluation, and human-verified AI-assisted vulnerability research. The demonstrated evidence is meaningful but bounded: two results are preprints in simulated environments, while the PHP case is researcher-reported field work corroborated by coordinated patching.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "SPIDES: Information-Flow Control for Browser Agents",
+          "publisher": "Egor Zverev, Juhee Kim and colleagues — arXiv",
+          "date": "2026-10-16",
+          "url": "https://arxiv.org/html/2610.24277v1",
+          "mustRead": true,
+          "whatChanged": "The paper moves browser-agent defense below model judgment: element-level confidentiality and integrity labels propagate into browser actions, with policy gates on clicking, typing and navigation. In MicroNet, SPIDES blocked every tested attack across five models under the authors' worst-case adversary model.",
+          "whyItMatters": "Architecture implication: treat provenance and information flow as enforceable runtime state, not prompt guidance. For enterprise agents, define trusted origins, confidential readers and consequential actions, then require approval when a flow violates policy.",
+          "worthReading": "Sections 1 and 4–7, especially the MicroNet threat model, security/autonomy evaluation and limitations.",
+          "limitations": "Preprint and closed 28-site test ecosystem, not an open-web deployment. The result assumes correct operator-supplied DOM labels, an ideal approval user and intact DOM integrity; labeling errors, XSS or supply-chain compromise can undermine guarantees."
+        },
+        {
+          "title": "PHP2Shell: AI uncovers critical RCE vulnerabilities affecting 70% of the Internet",
+          "publisher": "Wiz Research — Sagi Tzadik, Shir Tamari, Nir Ohfeld and Tomer Schwartz",
+          "date": "2026-10-21",
+          "url": "https://www.wiz.io/blog/php2shell-php-rce",
+          "mustRead": false,
+          "whatChanged": "Wiz reports AI-assisted discovery and exploit development for core PHP memory-safety flaws, then demonstrates unauthenticated code execution against WordPress, Drupal and Joomla and cross-request memory disclosure. PHP released coordinated fixes on 21 October.",
+          "whyItMatters": "Delivery implication: AI-assisted vulnerability research needs a controlled chain from candidate finding to human reproduction, upstream validation, patch testing, coordinated disclosure and verified deployment. It also signals that previously uneconomic exploit chains may become practical faster.",
+          "worthReading": "Impact, The AI inflection point, Technical deep dive and Responsible disclosure timeline; pair the research with the linked official PHP update guidance.",
+          "limitations": "Vendor-authored case study, not a controlled comparison of AI versus expert researchers. Claims about time saved and internet-wide exposure are the researchers' estimates; exploitability varies by version and configuration. The demonstrated exploit and coordinated patching are evidence, while broader future attack-economics claims remain projections."
+        },
+        {
+          "title": "Ignored, Not Refused: What Low Prompt-Injection Success Rates Hide in Small Tool-Using Agents",
+          "publisher": "Farhan Zarif, Kazi Shahid Ahmed Galib and colleagues — BRAC University / arXiv",
+          "date": "2026-10-16",
+          "url": "https://arxiv.org/html/2610.23254v1",
+          "mustRead": false,
+          "whatChanged": "An audit of 33,000 trajectories across eleven open-weight agents finds most failed injections were ignored rather than explicitly refused, and 21.7% of AgentDojo episodes stayed safe while failing the user's task. Changing only the system prompt moved InjecAgent attack success from 0.2% to 43%.",
+          "whyItMatters": "Evaluation implication: do not accept attack success rate alone as a release gate. Report failure mode, task completion, invalid actions and deployment configuration together, and test the actual prompt, precision and tool scaffold used in production.",
+          "worthReading": "Sections 3, 4.1–4.3 and 5, especially Table 2, the matched system-prompt experiment and the ATOM security–utility matrix.",
+          "limitations": "Preprint focused on small 2–14B open-weight models and two benchmarks. Labels rely primarily on an LLM judge with a small human validation set; stated reasoning may not reveal internal causes. Results do not establish behavior for frontier production agents."
+        }
+      ]
     }
   ]
 }
