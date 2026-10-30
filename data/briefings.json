@@ -186,6 +186,53 @@
           "limitations": "Preprint focused on small 2–14B open-weight models and two benchmarks. Labels rely primarily on an LLM judge with a small human validation set; stated reasoning may not reveal internal causes. Results do not establish behavior for frontier production agents."
         }
       ]
+    },
+    {
+      "id": "2026-10-30",
+      "date": "2026-10-30",
+      "status": "published",
+      "title": "AI Security: Verify AI-Found Bugs, Defend Coding Context, Screen at Generation Time",
+      "summary": "Three primary sources published 25–27 October show both sides of AI-assisted security engineering: frontier models can assemble verified multi-stage exploits, coding agents can be steered by semantically misleading source identifiers, and contextual probes may make function-level screening fast enough for development loops. The evidence is substantial but bounded by vendor reporting, laboratory attack settings and preliminary benchmark results.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "Discovering and exploiting vulnerabilities in critical, real-world software with Claude",
+          "publisher": "Anthropic Frontier Red Team — Nicholas Carlini, David Dworken and colleagues",
+          "date": "2026-10-27",
+          "url": "https://www.anthropic.com/research/discovering-vulnerabilities-with-claude",
+          "mustRead": true,
+          "whatChanged": "Anthropic reports five AI-developed exploit chains across Chrome, Safari, Android, Windows and Linux. The work includes assigned CVEs and vendor patches; for Chrome, the researchers report 62 critical or high-severity CVEs, including sandbox escapes and renderer compromises.",
+          "whyItMatters": "Security-engineering implication: AI-assisted discovery now needs an operating model, not just a tool trial—parallel scanners with distinct strategies, coverage measurement, human reproduction, proof-of-vulnerability, standardized risk rating, coordinated disclosure and variant analysis. Add PR-time scanning to reduce new vulnerability introduction while backlog discovery accelerates.",
+          "worthReading": "The Chrome and Linux exploit-chain sections, then 'What we learned' for scanner diversity, coverage and verification, and 'What this means for defenders'.",
+          "limitations": "Vendor-authored evidence using an unreleased internal model, without a controlled human or non-agent baseline. Assigned CVEs and patches support the specific findings, but the claimed productivity and broader attacker-economics implications are not independently quantified."
+        },
+        {
+          "title": "NameTrap: Steering AI Coding Agents Toward Security Vulnerabilities via Variable Names",
+          "publisher": "Chieh-Yuan Chang, Guan-Wei Chen and colleagues — National Yang Ming Chiao Tung University / arXiv",
+          "date": "2026-10-25",
+          "url": "https://arxiv.org/html/2610.34253v1",
+          "mustRead": false,
+          "whatChanged": "The study demonstrates inference-time source poisoning that changes only identifiers in third-party Python files. Across six coding agents, ten models and four CWE classes, targeted-vulnerability success ranged from 22.5% to 56.0% overall and reached 75.0% in some configurations; prompt reminders and pre-completion analyzers did not reliably stop it.",
+          "whyItMatters": "Secure-SDLC implication: treat retrieved repositories, examples and dependencies as untrusted context even when they contain no executable malicious behavior or explicit prompt injection. Record context provenance and scan every agent-generated change after the weakness can materialize.",
+          "worthReading": "Sections 3.1 and 4.2–4.9 for the threat model and comparisons, then Section 5 for supply-chain implications and mitigations.",
+          "limitations": "Preprint and controlled laboratory study using incomplete Python files and four CWE categories. It demonstrates possibility and transferability, not prevalence in production repositories. The tested analyzers inspected bait before vulnerable code was generated, so their non-detection is not equivalent to failure on the final generated change."
+        },
+        {
+          "title": "Reva: Real-Time Vulnerability Detection through Contextual Probing of Large Language Models",
+          "publisher": "Amine Lbath and Massih-Reza Amini — Université Grenoble Alpes / CNRS / arXiv",
+          "date": "2026-10-26",
+          "url": "https://arxiv.org/html/2610.35829v1",
+          "mustRead": false,
+          "whatChanged": "Reva combines a precomputed module threat model, static-analysis findings and call-graph context with a trained probe over an LLM's hidden states. On PrimeVul, it reached 60.0% accuracy in about one second per function, matching the reported 59.2% of a much slower agentic baseline on the same model.",
+          "whyItMatters": "Delivery implication: use fast contextual screening as a triage layer, not an autonomous release gate—escalate high-risk functions to deeper agentic analysis and reproducible proof. This architecture could keep security checks near coding-agent generation speed while controlling expensive investigation.",
+          "worthReading": "Sections III and IV, especially Table I on accuracy, false positives, latency and cost; read Section V for the proposed escalation architecture and uncompleted validation work.",
+          "limitations": "Preliminary preprint with roughly 60% accuracy and about 40% false-positive rate. Evaluation is limited to PrimeVul C/C++ function pairs, and test accuracy dropped six points versus cross-validation. Hidden-state access requires self-hosted open models, so the method cannot run behind ordinary model APIs."
+        }
+      ]
     }
   ]
 }
