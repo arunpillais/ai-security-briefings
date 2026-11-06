@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>The Model Isn't Your Biggest AI Security Problem Anymore. | Arun Pillai</title><meta content="Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations." name="description"/><link href="../../assets/styles.css" rel="stylesheet"/><style> .article-page{max-width:860px;padding-top:55px;padding-bottom:60px}.article-page h1{font-size:clamp(36px,5vw,52px)}.article-body{font-size:17px;line-height:1.85;overflow-wrap:anywhere}.article-body h2,.article-body h3{font-size:29px;margin:40px 0 18px}.article-body h4{font-size:23px}.article-body p{margin:18px 0}.article-body img,.article-cover{display:block;max-width:100%;height:auto;margin:28px auto}.article-body blockquote{margin:25px 0;padding:15px 25px;border-left:3px solid var(--green);background:#e9efdf}.article-body pre{white-space:pre-wrap}.article-body li{margin:9px 0}.series-nav{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;margin:25px 0;font-size:13px}.series-nav [aria-current]{font-weight:bold;color:var(--green)}.article-meta{font-size:13px;color:var(--muted)}.article-list{padding-top:55px;padding-bottom:65px}.article-list h1{font-size:48px}.article-list .edition h2{font-size:29px}.article-list .edition{margin-top:22px}.article-list .edition p{max-width:750px}.article-body table{display:block;overflow:auto}</style><link href="/ai-security-briefings/assets/editorial.css" rel="stylesheet"/><link href="https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="The Model Isn't Your Biggest AI Security Problem Anymore. | Arun Pillai" property="og:title"/><meta content="Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations." property="og:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/" property="og:url"/><meta content="article" property="og:type"/><meta content="Arun Pillai — Security Leadership &amp; Insights" property="og:site_name"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/model-isnt-your-biggest-ai-security-problem-anymore-0.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="The Model Isn't Your Biggest AI Security Problem Anymore. | Arun Pillai" name="twitter:title"/><meta content="Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations." name="twitter:description"/><meta content="https://arunpillais.github.io/ai-security-briefings/assets/articles/model-isnt-your-biggest-ai-security-problem-anymore-0.jpg" name="twitter:image"/><link href="https://arunpillais.github.io/ai-security-briefings/feed.xml" rel="alternate" title="Arun Pillai — Insights" type="application/rss+xml"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person", "name": "Arun Pillai", "url": "https://arunpillais.github.io/ai-security-briefings/profile/", "image": "https://arunpillais.github.io/ai-security-briefings/assets/arun-pillai.webp", "sameAs": ["https://www.linkedin.com/in/dr-arunpillai/", "https://github.com/arunpillais"], "description": "Cybersecurity transformation leader in Product Security, DevSecOps, enterprise risk and AI security.", "knowsAbout": ["Product Security", "Application Security", "DevSecOps", "Security Architecture", "Cyber Risk", "Vulnerability Management", "AI Security", "Agentic AI Security", "Secure SDLC"]}, {"@type": "WebSite", "@id": "https://arunpillais.github.io/ai-security-briefings/#website", "url": "https://arunpillais.github.io/ai-security-briefings/", "name": "Arun Pillai — Security Leadership & Insights", "publisher": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}}, {"@type": "Article", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/#article", "headline": "The Model Isn't Your Biggest AI Security Problem Anymore.", "description": "Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations.", "url": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/", "mainEntityOfPage": {"@id": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/#page"}, "author": {"@id": "https://arunpillais.github.io/ai-security-briefings/profile/#person"}, "datePublished": "2026-11-06T09:36:04.000+00:00", "dateModified": "2026-11-06T09:36:05.000+00:00", "image": "https://arunpillais.github.io/ai-security-briefings/assets/articles/model-isnt-your-biggest-ai-security-problem-anymore-0.jpg", "isBasedOn": "https://www.linkedin.com/pulse/model-isnt-your-biggest-ai-security-problem-anymore-arun-mgjtf/", "articleSection": "AI Security Architecture"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Insights", "item": "https://arunpillais.github.io/ai-security-briefings/insights/"}, {"@type": "ListItem", "position": 2, "name": "AI Security Architecture", "item": "https://arunpillais.github.io/ai-security-briefings/insights/ai-security/"}, {"@type": "ListItem", "position": 3, "name": "The Model Isn't Your Biggest AI Security Problem Anymore.", "item": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/"}]}, {"@type": "WebPage", "@id": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/#page", "url": "https://arunpillais.github.io/ai-security-briefings/articles/model-isnt-your-biggest-ai-security-problem-anymore/", "name": "The Model Isn't Your Biggest AI Security Problem Anymore.", "description": "Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations.", "isPartOf": {"@id": "https://arunpillais.github.io/ai-security-briefings/#website"}}]}</script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="/ai-security-briefings/">AP<span>ARUN PILLAI<small>Security leadership · Architecture · AI</small></span></a><nav aria-label="Main navigation"><a href="/ai-security-briefings/">Home</a><a href="/ai-security-briefings/profile/">Profile</a><a aria-current="page" href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/briefings/">Briefings</a><a href="/ai-security-briefings/projects/">Case Studies</a></nav></header><main class="article-page" id="main"><p class="breadcrumbs"><a href="/ai-security-briefings/insights/">Insights</a> / <a href="/ai-security-briefings/insights/ai-security/">AI Security Architecture</a></p><p class="eyebrow">AI SECURITY ARCHITECTURE</p><h1>The Model Isn't Your Biggest AI Security Problem Anymore.</h1><p class="article-meta">By Arun Pillai · <time datetime="2026-11-06">2026-11-06</time></p><p class="article-meta">Originally published on <a href="https://www.linkedin.com/pulse/model-isnt-your-biggest-ai-security-problem-anymore-arun-mgjtf/" rel="noopener noreferrer" target="_blank">LinkedIn</a>. Republished here with the original wording.</p><img alt="The Model Isn't Your Biggest AI Security Problem Anymore." class="article-cover" loading="eager" src="../../assets/articles/model-isnt-your-biggest-ai-security-problem-anymore-0.jpg"/><article class="article-body">
+
+
+<p>
+<em>Autonomous exploits, silently changing APIs, and the privileged software hiding inside developer workstations.</em>
+</p>
+
+
+
+<p>
+<strong>What if your AI passed every safety test, followed every instruction, and still became part of a serious security incident?</strong>
+</p>
+
+
+
+<p>
+Not because someone jailbroke it.
+</p>
+
+
+
+<p>
+Not because a clever prompt convinced it to ignore its rules.
+</p>
+
+
+
+<p>
+But because the software surrounding it did something nobody had adequately controlled.
+</p>
+
+
+
+<p>
+For the past couple of years, much of the AI security conversation has focused on the model.
+</p>
+
+
+
+<p>
+Can it be manipulated? Can it leak sensitive information? Can malicious instructions override its safeguards?
+</p>
+
+
+
+<p>
+These are legitimate questions. We absolutely need to keep asking them.
+</p>
+
+
+
+<p>
+But something has changed.
+</p>
+
+
+
+<p>
+<strong>The chatbot has acquired a terminal.</strong>
+</p>
+
+
+
+<p>
+It can now inspect source code, query databases, invoke APIs, execute scripts, modify files, and, in some environments, initiate actions that affect production systems.
+</p>
+
+
+
+<p>
+The consequences of a mistake are no longer limited to an incorrect answer.
+</p>
+
+
+
+<p>
+And this raises a rather uncomfortable question for CISOs and engineering leaders:
+</p>
+
+
+
+<p>
+<strong>Have we spent too much time securing what AI says, and not enough securing what AI-connected systems can actually do?</strong>
+</p>
+
+
+
+<p>
+That question has been on my mind since reviewing three developments in my <strong>6 November 2026 weekly </strong><strong><a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Farunpillais%2Egithub%2Eio%2Fai-security-briefings%2Fbriefings%2F%23archive&amp;urlhash=eJlK&amp;trk=article-ssr-frontend-pulse_little-text-block">AI Security Briefings</a></strong>, under the theme <em>AI Security: Scale Evidence, Revalidate Tools, Govern the Extension Supply Chain.</em>
+</p>
+
+
+
+<p>
+One came from OpenAI's vulnerability research.
+</p>
+
+
+
+<p>
+Another from academic research into the security of agent tools.
+</p>
+
+
+
+<p>
+The third was a documented software supply-chain attack investigated by Microsoft.
+</p>
+
+
+
+<p>
+Individually, each is important.
+</p>
+
+
+
+<p>
+Together, they suggest that enterprise AI security needs to move beyond model behavior and address a more fundamental problem:
+</p>
+
+
+
+<p>
+<strong>Who controls execution, who verifies the outcome, and what happens when a trusted component changes?</strong>
+</p>
+
+
+
+<h3>1. What Happens When AI Finds Vulnerabilities Faster Than Your Security Team Can Validate Them?</h3>
+
+
+
+<p>
+Imagine walking into your Monday security review.
+</p>
+
+
+
+<p>
+Your AppSec team has been using AI-assisted vulnerability discovery across a portfolio of applications.
+</p>
+
+
+
+<p>
+Over the weekend, the system generated hundreds of new findings.
+</p>
+
+
+
+<p>
+The dashboard looks wonderful.
+</p>
+
+
+
+<p>
+Detection coverage is up. Finding counts are up. Management can see that the new AI investment is doing something.
+</p>
+
+
+
+<p>
+Then the engineering lead asks a perfectly reasonable question.
+</p>
+
+
+
+<p>
+<strong>"Which of these vulnerabilities can actually be exploited in our environment?"</strong>
+</p>
+
+
+
+<p>
+Silence.
+</p>
+
+
+
+<p>
+Some findings require manual reproduction.
+</p>
+
+
+
+<p>
+Some depend on configurations that may not exist in production.
+</p>
+
+
+
+<p>
+Others need engineering analysis before anyone can determine whether a fix is necessary.
+</p>
+
+
+
+<p>
+And your security team was already struggling with last month's vulnerability backlog.
+</p>
+
+
+
+<p>
+Congratulations. You've accelerated detection.
+</p>
+
+
+
+<p>
+You haven't necessarily accelerated security.
+</p>
+
+
+
+<h3>Why OpenAI's November research matters</h3>
+
+
+
+<p>
+On 4 November 2026, OpenAI published <em>A thousand fewer paths to root</em>, describing an autonomous Linux-kernel vulnerability research pipeline. [1]
+</p>
+
+
+
+<p>
+The results were striking.
+</p>
+
+
+
+<p>
+
+<ul>
+<li><strong>2,308</strong> candidate security findings.</li>
+<li><strong>1,724</strong> dynamically reproduced vulnerabilities.</li>
+<li><strong>948</strong> distinct working local privilege-escalation exploits.</li>
+<li>Approximately <strong>$1.21 million</strong> in API credits consumed by the research run.</li>
+</ul>
+
+</p>
+
+
+
+<p>
+These were results from a specialized, controlled research environment, not evidence that every enterprise AI scanner can achieve the same scale.
+</p>
+
+
+
+<p>
+But the operational lesson is hard to ignore.
+</p>
+
+
+
+<p>
+<strong>The ability to discover vulnerabilities is advancing faster than many organizations' ability to validate, prioritize, and remediate them.</strong>
+</p>
+
+
+
+<p>
+One particularly interesting detail deserves attention.
+</p>
+
+
+
+<p>
+During an early phase of the research, some exploits successfully obtained root privileges through a vulnerability other than the one they were supposed to demonstrate.
+</p>
+
+
+
+<p>
+The outcome looked successful.
+</p>
+
+
+
+<p>
+The underlying evidence told a different story.
+</p>
+
+
+
+<p>
+Think about what that means for AI-assisted security engineering.
+</p>
+
+
+
+<p>
+An agent might report that a vulnerability has been fixed.
+</p>
+
+
+
+<p>
+The pipeline might turn green.
+</p>
+
+
+
+<p>
+The ticket might close.
+</p>
+
+
+
+<p>
+But did the patch eliminate the actual root cause? Or did the test simply stop reproducing the original failure?
+</p>
+
+
+
+<p>
+These are not academic questions.
+</p>
+
+
+
+<p>
+They are the difference between <strong>a successful automation run and a verified security improvement</strong>.
+</p>
+
+
+
+<h3>What needs to change?</h3>
+
+
+
+<p>
+I believe vulnerability management needs to evolve from a detection-first model to an <strong>evidence-first operating model</strong>.
+</p>
+
+
+
+<p>
+Before a finding reaches an engineer, the automated pipeline should attempt to establish:
+</p>
+
+
+
+<p>
+
+<ul>
+<li>Can the weakness be reproduced in an authorized, isolated environment?</li>
+<li>What conditions make it exploitable?</li>
+<li>What evidence supports the reported security impact?</li>
+<li>Does the proposed remediation address the root cause?</li>
+<li>Can the fix be verified without introducing unacceptable regressions?</li>
+</ul>
+
+</p>
+
+
+
+<p>
+For suitable workloads, disposable virtualized environments, controlled execution, and kernel telemetry can help generate this evidence at scale.
+</p>
+
+
+
+<p>
+AWS Firecracker microVMs, for example, offer a useful isolation building block. eBPF can contribute execution telemetry. Neither technology, by itself, proves exploitability or guarantees complete isolation.
+</p>
+
+
+
+<p>
+The architecture still needs trustworthy evidence collection, independent checks, and human review of consequential findings.
+</p>
+
+
+
+<p>
+This changes the role of security professionals.
+</p>
+
+
+
+<p>
+Less time trying to reproduce every poorly explained finding.
+</p>
+
+
+
+<p>
+More time assessing business impact, understanding attack paths, validating fixes, and making defensible risk decisions.
+</p>
+
+
+
+<p>
+<strong>The executive question:</strong>
+</p>
+
+
+
+<p>
+Are we investing in AI to create more vulnerability tickets, or to reduce the time between discovering a real weakness and proving it has been fixed?
+</p>
+
+
+
+<p>
+Because those are two very different outcomes.
+</p>
+
+
+
+<h3>2. The Agent Followed Every Rule. The Tool Didn't.</h3>
+
+
+
+<p>
+Picture an enterprise that has deployed an AI agent to help its security operations team.
+</p>
+
+
+
+<p>
+The agent can retrieve logs, query an internal database, enrich alerts, and open incident tickets.
+</p>
+
+
+
+<p>
+The architecture review looks reasonable.
+</p>
+
+
+
+<p>
+Its system prompt prohibits destructive actions.
+</p>
+
+
+
+<p>
+Its approved tools have been tested.
+</p>
+
+
+
+<p>
+Its permissions are documented.
+</p>
+
+
+
+<p>
+Everything works.
+</p>
+
+
+
+<p>
+Then, over the weekend, one supporting tool receives an update.
+</p>
+
+
+
+<p>
+The interface looks the same.
+</p>
+
+
+
+<p>
+The API still accepts the expected parameters.
+</p>
+
+
+
+<p>
+The response format hasn't changed.
+</p>
+
+
+
+<p>
+But the updated executable now performs an additional unauthorized operation.
+</p>
+
+
+
+<p>
+On Monday, the agent calls the tool as usual.
+</p>
+
+
+
+<p>
+The tool completes the legitimate task.
+</p>
+
+
+
+<p>
+It also executes the malicious behavior.
+</p>
+
+
+
+<p>
+<strong>The model hasn't been tricked into anything.</strong>
+</p>
+
+
+
+<p>
+And that is precisely the problem.
+</p>
+
+
+
+<h3>The Tool Update Gap</h3>
+
+
+
+<p>
+A research paper published on 1 November 2026, <em>Beyond Prompt Injection: The Tool Update Gap in LLM Agent Security</em>, examines this failure mode. [2]
+</p>
+
+
+
+<p>
+The researchers introduced ETUDE, a technique that places malicious functionality inside updates to previously trusted tools while preserving their legitimate operation.
+</p>
+
+
+
+<p>
+Across their evaluated workloads and seven agent frameworks, they reported:
+</p>
+
+
+
+<p>
+<strong>97.6% attack success, while legitimate tasks continued to complete successfully in 95.9% of cases.</strong>
+</p>
+
+
+
+<p>
+These are experimental results from a preprint, not measured enterprise compromise rates.
+</p>
+
+
+
+<p>
+But the principle is significant.
+</p>
+
+
+
+<p>
+<strong>The model can follow its instructions perfectly while malicious executable code operates outside its visibility.</strong>
+</p>
+
+
+
+<p>
+This challenges how many organizations are beginning to approach agent security.
+</p>
+
+
+
+<p>
+We review prompts.
+</p>
+
+
+
+<p>
+We test model behavior.
+</p>
+
+
+
+<p>
+We define permitted tools.
+</p>
+
+
+
+<p>
+But do we reassess those tools after their executable implementations change?
+</p>
+
+
+
+<p>
+And do we know what those tools can do independently of the agent?
+</p>
+
+
+
+<h3>An API can look identical and behave differently</h3>
+
+
+
+<p>
+Let's use a simple example.
+</p>
+
+
+
+<p>
+An AI agent calls an internal customer-records service.
+</p>
+
+
+
+<p>
+The API contract allows it to retrieve one customer profile at a time.
+</p>
+
+
+
+<p>
+A new version of that service preserves the same endpoint, request parameters, and response structure.
+</p>
+
+
+
+<p>
+But it introduces an unauthorized side effect.
+</p>
+
+
+
+<p>
+A structural OpenAPI comparison might detect nothing unusual because the interface hasn't changed.
+</p>
+
+
+
+<p>
+The model may receive a perfectly valid response.
+</p>
+
+
+
+<p>
+<strong>A valid API response is not evidence that the execution behind it was safe.</strong>
+</p>
+
+
+
+<p>
+This is where engineering controls must take over.
+</p>
+
+
+
+<p>
+Sensitive agent actions should pass through a deterministic mediation layer that independently enforces authorization.
+</p>
+
+
+
+<p>
+Tool implementations should be version-controlled and verified.
+</p>
+
+
+
+<p>
+Security-relevant updates should trigger behavioral revalidation.
+</p>
+
+
+
+<p>
+And executable tools should run with the minimum filesystem, network, credential, and operating-system permissions required for their purpose.
+</p>
+
+
+
+<p>
+There is another important distinction.
+</p>
+
+
+
+<p>
+A mediation gateway can restrict what actions an agent requests.
+</p>
+
+
+
+<p>
+But if a compromised tool already has powerful credentials or unrestricted network access, it may be able to perform malicious operations without consulting that gateway.
+</p>
+
+
+
+<p>
+<strong>Protect the tool-call boundary, but also protect the tool's runtime.</strong>
+</p>
+
+
+
+<p>
+For an enterprise, this means designing agent security around both authorization and execution containment.
+</p>
+
+
+
+<p>
+The familiar security principles still apply.
+</p>
+
+
+
+<p>
+Least privilege. Strong identity. Software integrity. Isolation. Independent monitoring.
+</p>
+
+
+
+<p>
+The difference is that agentic systems can combine tools and execute actions dynamically, increasing the importance of enforcing those boundaries consistently.
+</p>
+
+
+
+<p>
+<strong>The executive question:</strong>
+</p>
+
+
+
+<p>
+When an agent's tool changes, what forces us to reconsider the trust we granted to the previous version?
+</p>
+
+
+
+<p>
+If the answer is nothing, we have a software supply-chain weakness disguised as an AI integration.
+</p>
+
+
+
+<h3>3. Your Most Overlooked AI Security Risk May Be Sitting Inside a Developer's IDE</h3>
+
+
+
+<p>
+Now consider something closer to everyday engineering.
+</p>
+
+
+
+<p>
+A developer installs an AI coding extension.
+</p>
+
+
+
+<p>
+It improves productivity.
+</p>
+
+
+
+<p>
+The developer uses it to understand unfamiliar code, generate tests, explain functions, and accelerate development.
+</p>
+
+
+
+<p>
+Everyone is pleased.
+</p>
+
+
+
+<p>
+The engineering manager sees productivity benefits.
+</p>
+
+
+
+<p>
+The developer has fewer repetitive tasks.
+</p>
+
+
+
+<p>
+Security may not even know the extension is installed.
+</p>
+
+
+
+<p>
+But the software could be operating inside an environment containing proprietary source code, local configuration, authenticated development sessions, and access to internal services.
+</p>
+
+
+
+<p>
+What happens if the extension itself becomes malicious?
+</p>
+
+
+
+<p>
+This isn't just a hypothetical concern.
+</p>
+
+
+
+<h3>Microsoft's October 2026 investigation</h3>
+
+
+
+<p>
+On 30 October 2026, Microsoft Security Research published an analysis of a malicious Claude Code-branded extension distributed briefly through the Cursor marketplace. [3]
+</p>
+
+
+
+<p>
+Two tampered versions had been made available in that marketplace.
+</p>
+
+
+
+<p>
+Microsoft found injected code designed to attempt host reconnaissance, install SSH authorization material, establish reverse tunneling, and configure persistence.
+</p>
+
+
+
+<p>
+The extension's expected functionality continued operating.
+</p>
+
+
+
+<p>
+That last detail matters.
+</p>
+
+
+
+<p>
+<strong>The software could still appear useful while attempting to establish unauthorized access.</strong>
+</p>
+
+
+
+<p>
+Microsoft carefully distinguished attempted behavior from confirmed outcomes. Successful remote access depended on host configuration and privileges, and the investigation did not establish that every affected installation was compromised.
+</p>
+
+
+
+<p>
+Microsoft also reported that the incident was limited to the Cursor marketplace; the Microsoft Visual Studio Marketplace, the official npm package, and Anthropic systems were not affected.
+</p>
+
+
+
+<p>
+Those distinctions matter if we're going to discuss security incidents responsibly.
+</p>
+
+
+
+<p>
+But the architectural lesson remains.
+</p>
+
+
+
+<p>
+A developer extension is executable third-party software.
+</p>
+
+
+
+<p>
+Depending on its environment and permissions, it can have access to resources far more sensitive than its user-facing functionality might suggest.
+</p>
+
+
+
+<p>
+And traditional application security testing may have little visibility into malicious code running inside the development tools themselves.
+</p>
+
+
+
+<h3>We scrutinize the libraries developers ship. What about the tools they install?</h3>
+
+
+
+<p>
+This is the contradiction I find most interesting.
+</p>
+
+
+
+<p>
+An application dependency might go through vulnerability scanning, license checks, software composition analysis, and release approval.
+</p>
+
+
+
+<p>
+But an extension that operates within the environment producing that application may have much less oversight.
+</p>
+
+
+
+<p>
+Consider a security-product company developing software for major financial institutions.
+</p>
+
+
+
+<p>
+The company might require rigorous security reviews before shipping a new release.
+</p>
+
+
+
+<p>
+Yet an ungoverned coding extension could potentially access parts of the development environment long before those controls apply.
+</p>
+
+
+
+<p>
+That creates a difficult customer-assurance question.
+</p>
+
+
+
+<p>
+<strong>Can we confidently explain the security of our software development lifecycle if we don't understand the executable tools operating inside it?</strong>
+</p>
+
+
+
+<p>
+The answer cannot simply be to ban AI coding assistants.
+</p>
+
+
+
+<p>
+That approach will often produce workarounds rather than meaningful control.
+</p>
+
+
+
+<p>
+Instead, engineering and security leaders should agree on a practical baseline:
+</p>
+
+
+
+<p>
+
+<ul>
+<li>Maintain visibility into installed AI coding extensions, local agents, and MCP integrations.</li>
+<li>Approve publishers, distribution sources, and sensitive permissions—not just product names.</li>
+<li>Control or stage updates for high-risk development environments.</li>
+<li>Restrict unnecessary outbound communication from developer workstations.</li>
+<li>Use short-lived, narrowly scoped development and cloud credentials.</li>
+<li>Isolate agentic coding workloads where the risk warrants it.</li>
+<li>Correlate extension installation and update events with endpoint telemetry.</li>
+</ul>
+
+</p>
+
+
+
+<p>
+These measures won't eliminate every compromise.
+</p>
+
+
+
+<p>
+But they substantially improve the organization's ability to prevent, detect, and contain unauthorized behavior.
+</p>
+
+
+
+<p>
+The ownership question is equally important.
+</p>
+
+
+
+<p>
+AppSec may look after source-code security.
+</p>
+
+
+
+<p>
+Endpoint security may manage device protection.
+</p>
+
+
+
+<p>
+IAM may manage privileged credentials.
+</p>
+
+
+
+<p>
+Platform engineering may own development environments.
+</p>
+
+
+
+<p>
+<strong>Who owns the risk where all four intersect?</strong>
+</p>
+
+
+
+<p>
+That discussion needs to happen before an incident forces it.
+</p>
+
+
+
+<h3>4. The Common Problem: We Trusted the Outcome Without Verifying the Execution</h3>
+
+
+
+<p>
+Put the three developments side by side.
+</p>
+
+
+
+<p>
+<strong>OpenAI's vulnerability research:</strong> A security outcome could appear successful even when the exploitation path was not the intended one.
+</p>
+
+
+
+<p>
+<strong>The Tool Update Gap:</strong> An agent could complete legitimate tasks while malicious code operated within its updated tools.
+</p>
+
+
+
+<p>
+<strong>The Cursor marketplace incident:</strong> A development extension could continue working normally while malicious functionality attempted unauthorized access.
+</p>
+
+
+
+<p>
+Different environments.
+</p>
+
+
+
+<p>
+Different threat models.
+</p>
+
+
+
+<p>
+Different evidence.
+</p>
+
+
+
+<p>
+But one recurring engineering lesson:
+</p>
+
+
+
+<p>
+<strong>Correct-looking behavior is not sufficient evidence of secure execution.</strong>
+</p>
+
+
+
+<p>
+This is where I believe AI security architecture needs to mature.
+</p>
+
+
+
+<figure>
+<img alt="Article content" src="../../assets/articles/model-isnt-your-biggest-ai-security-problem-anymore-1.jpg"/>
+ </figure>
+
+
+
+<p>
+This doesn't mean replacing model safety with infrastructure security.
+</p>
+
+
+
+<p>
+It means recognizing that <strong>model safety is one layer of system security, not a substitute for it</strong>.
+</p>
+
+
+
+<p>
+A system prompt cannot revoke a stolen credential.
+</p>
+
+
+
+<p>
+A jailbreak detector cannot inspect every operation performed by a compromised executable.
+</p>
+
+
+
+<p>
+An AI-generated remediation summary cannot prove the vulnerability has been eliminated.
+</p>
+
+
+
+<p>
+These responsibilities belong to the architecture surrounding the model.
+</p>
+
+
+
+<p>
+And that architecture must be designed to operate safely even when individual components fail.
+</p>
+
+
+
+<h3>5. What Should a CISO Actually Do About This?</h3>
+
+
+
+<p>
+The obvious response would be to launch another large AI security transformation program.
+</p>
+
+
+
+<p>
+Create a committee.
+</p>
+
+
+
+<p>
+Build a framework.
+</p>
+
+
+
+<p>
+Purchase another platform.
+</p>
+
+
+
+<p>
+Produce a dashboard.
+</p>
+
+
+
+<p>
+Six months later, the same development tool might still be running with excessive privileges.
+</p>
+
+
+
+<p>
+Security budgets aren't infinite. Engineering capacity isn't either.
+</p>
+
+
+
+<p>
+I would start with a much simpler 90-day approach.
+</p>
+
+
+
+<h3>First 30 days: Find where AI can actually act</h3>
+
+
+
+<p>
+Forget the generic question, "Where are we using AI?"
+</p>
+
+
+
+<p>
+Ask something more useful.
+</p>
+
+
+
+<p>
+<strong>Where can AI-connected software execute commands, access credentials, modify code, or trigger actions with business consequences?</strong>
+</p>
+
+
+
+<p>
+Inventory those workflows.
+</p>
+
+
+
+<p>
+Identify their owners, effective permissions, external tool dependencies, and update mechanisms.
+</p>
+
+
+
+<p>
+Pay particular attention to developer workstations, autonomous remediation, sensitive APIs, and agents connected to production environments.
+</p>
+
+
+
+<p>
+<strong>Outcome:</strong> A risk-ranked inventory of consequential AI execution paths.
+</p>
+
+
+
+<h3>Days 31–60: Control one high-risk workflow properly</h3>
+
+
+
+<p>
+Choose a realistic use case.
+</p>
+
+
+
+<p>
+Perhaps an AI-assisted security investigation agent.
+</p>
+
+
+
+<p>
+Perhaps an automated remediation workflow.
+</p>
+
+
+
+<p>
+Perhaps an engineering environment using AI coding extensions.
+</p>
+
+
+
+<p>
+Implement independent action authorization, scoped identities, tool-version controls, and runtime restrictions.
+</p>
+
+
+
+<p>
+For vulnerability discovery, introduce reproducible evidence before findings reach engineering teams.
+</p>
+
+
+
+<p>
+Don't try to solve every possible agentic security problem in one quarter.
+</p>
+
+
+
+<p>
+<strong>Outcome:</strong> One proven reference architecture that can be reused.
+</p>
+
+
+
+<h3>Days 61–90: Test what happens when the trusted component becomes untrustworthy</h3>
+
+
+
+<p>
+Change a tool implementation without changing its declared API.
+</p>
+
+
+
+<p>
+Attempt an unauthorized action.
+</p>
+
+
+
+<p>
+Introduce an unapproved network destination in a controlled test.
+</p>
+
+
+
+<p>
+Check whether a tool can access secrets it doesn't need.
+</p>
+
+
+
+<p>
+Verify that an AI-generated vulnerability fix actually addresses the intended weakness.
+</p>
+
+
+
+<p>
+Then measure what was blocked, what was detected, and what escaped.
+</p>
+
+
+
+<p>
+<strong>Outcome:</strong> Evidence that security boundaries work when assumptions fail.
+</p>
+
+
+
+<p>
+The most useful executive measures aren't the number of AI governance policies written or the number of prompts tested.
+</p>
+
+
+
+<p>
+They're things such as:
+</p>
+
+
+
+<p>
+<strong>How many privileged AI workflows have enforceable boundaries?</strong>
+</p>
+
+
+
+<p>
+<strong>How many tool updates are revalidated before deployment?</strong>
+</p>
+
+
+
+<p>
+<strong>How many AI-discovered vulnerabilities are independently verified and remediated?</strong>
+</p>
+
+
+
+<p>
+<strong>How quickly can we revoke a compromised agent's access?</strong>
+</p>
+
+
+
+<p>
+These are questions a CEO, COO, or board can connect to operational resilience, customer trust, and business risk.
+</p>
+
+
+
+<h3>6. AI Security Is Becoming a Test of Engineering Discipline</h3>
+
+
+
+<p>
+I don't believe the answer is to slow down AI adoption.
+</p>
+
+
+
+<p>
+Organizations have legitimate reasons to use AI for development, security operations, investigation, and automation.
+</p>
+
+
+
+<p>
+Nor do I believe model security has become irrelevant. Prompt injection, unsafe model behavior, and data exposure remain serious concerns.
+</p>
+
+
+
+<p>
+But we're reaching a point where focusing primarily on the model risks missing the more consequential failure paths around it.
+</p>
+
+
+
+<p>
+<strong>The next major problem may not be an AI that ignores its instructions.</strong>
+</p>
+
+
+
+<p>
+It may be an AI that follows its instructions while invoking a compromised tool.
+</p>
+
+
+
+<p>
+A vulnerability pipeline that produces convincing results without sufficient proof.
+</p>
+
+
+
+<p>
+Or a developer extension that everyone trusts because it continues doing exactly what it was installed to do.
+</p>
+
+
+
+<p>
+The encouraging part is that we already know many of the engineering principles required to address these risks.
+</p>
+
+
+
+<p>
+Least privilege.
+</p>
+
+
+
+<p>
+Execution isolation.
+</p>
+
+
+
+<p>
+Independent authorization.
+</p>
+
+
+
+<p>
+Supply-chain integrity.
+</p>
+
+
+
+<p>
+Reproducible evidence.
+</p>
+
+
+
+<p>
+Accountability for consequential actions.
+</p>
+
+
+
+<p>
+None of these ideas is new.
+</p>
+
+
+
+<p>
+What AI changes is the speed, scale, and autonomy with which software can exercise privileges.
+</p>
+
+
+
+<p>
+That makes disciplined implementation more important, not less.
+</p>
+
+
+
+<p>
+<strong>The strongest AI security architecture is not one that assumes the model will always behave.</strong>
+</p>
+
+
+
+<p>
+<strong>It is one that remains defensible when the model is wrong, the tool changes, or the environment is compromised.</strong>
+</p>
+
+
+
+<p>
+So here is the question I would bring to the next AI architecture review:
+</p>
+
+
+
+<p>
+<strong>If our AI behaves exactly as intended tomorrow, what could still go wrong—and which engineering control would actually stop it?</strong>
+</p>
+
+
+
+<p>
+That conversation is where meaningful AI security maturity begins.
+</p>
+
+
+
+<h3>What Prompted This Article</h3>
+
+
+
+<p>
+This perspective was inspired by the <strong>6 November 2026 edition of my weekly AI Security Briefings</strong>, which examines emerging AI security research and translates it into practical implications for security architecture, engineering, and leadership.
+</p>
+
+
+
+<p>
+The edition, <em>AI Security: Scale Evidence, Revalidate Tools, Govern the Extension Supply Chain</em>, brought together the three primary sources discussed here.
+</p>
+
+
+
+<p>
+I publish these briefings to connect research with the decisions security and engineering leaders need to make—not just what the latest technology can do, but what the evidence actually demonstrates, where its limitations lie, and what should change in practice.
+</p>
+
+
+
+<p>
+<strong>Explore the weekly reading desk and research archive:</strong>
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Farunpillais%2Egithub%2Eio%2Fai-security-briefings%2Fbriefings%2F%23archive&amp;urlhash=eJlK&amp;trk=article-ssr-frontend-pulse_little-text-block">https://arunpillais.github.io/ai-security-briefings/briefings/#archive</a>
+</p>
+
+
+
+<h3>References and Further Reading</h3>
+
+
+
+<p>
+<strong>[1] OpenAI — A thousand fewer paths to root</strong> 4 November 2026
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fopenai%2Ecom%2Findex%2Fa-thousand-fewer-paths-to-root%2F&amp;urlhash=R2Ug&amp;trk=article-ssr-frontend-pulse_little-text-block">https://openai.com/index/a-thousand-fewer-paths-to-root/</a>
+</p>
+
+
+
+<p>
+Primary research on autonomous Linux-kernel vulnerability discovery, dynamic reproduction, exploitation, patch generation, and validation. Results were obtained in a controlled research environment. The reported $1.21 million represents API credits, not a complete enterprise operating-cost estimate.
+</p>
+
+
+
+<p>
+<strong>[2] Kan, S., Qi, Y., Han, Y., Luo, X., Xiong, G., and Gao, X. — Beyond Prompt Injection: The Tool Update Gap in LLM Agent Security</strong> arXiv preprint, 1 November 2026
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Farxiv%2Eorg%2Fhtml%2F2611%2E01976v1&amp;urlhash=qg7Y&amp;trk=article-ssr-frontend-pulse_little-text-block">https://arxiv.org/html/2611.01976v1</a>
+</p>
+
+
+
+<p>
+Research introducing ETUDE and examining malicious updates to previously trusted agent tools. Reported success rates reflect the paper's selected experimental workloads and configurations, not observed enterprise-wide attack prevalence.
+</p>
+
+
+
+<p>
+<strong>[3] Microsoft Security Research — Inside a malicious Claude Code-branded extension and its persistent SSH backdoor</strong> 30 October 2026
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fwww%2Emicrosoft%2Ecom%2Fen-us%2Fsecurity%2Fblog%2F2026%2F10%2F30%2Finside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor%2F&amp;urlhash=EUT-&amp;trk=article-ssr-frontend-pulse_little-text-block">https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/</a>
+</p>
+
+
+
+<p>
+Incident analysis of tampered extension versions briefly distributed through the Cursor marketplace. Documents malicious code and attempted unauthorized behavior without claiming universal compromise of affected installations.
+</p>
+
+
+
+<p>
+<strong>[4] OWASP — AI Agent Security Cheat Sheet</strong>
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fcheatsheetseries%2Eowasp%2Eorg%2Fcheatsheets%2FAI_Agent_Security_Cheat_Sheet%2Ehtml&amp;urlhash=L55X&amp;trk=article-ssr-frontend-pulse_little-text-block">https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html</a>
+</p>
+
+
+
+<p>
+Practical guidance on tool permissions, authorization boundaries, execution isolation, monitoring, and agent-related risks.
+</p>
+
+
+
+<p>
+<strong>[5] AWS — Firecracker MicroVM Project</strong>
+</p>
+
+
+
+<p>
+<a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Ffirecracker-microvm%2Egithub%2Eio%2F&amp;urlhash=cxki&amp;trk=article-ssr-frontend-pulse_little-text-block">https://firecracker-microvm.github.io/</a>
+</p>
+
+
+
+<p>
+Technical reference for lightweight virtualization and isolation approaches that can support controlled security-testing infrastructure.
+</p>
+
+
+
+<p>
+<em>Independent perspectives on translating emerging security research into practical architecture, measurable assurance, and business outcomes.</em>
+</p>
+
+ </article><a href="../">← All articles</a></main><footer><span>Arun Pillai · Independent perspectives on security and AI.</span><span><a href="/ai-security-briefings/insights/">Insights</a><a href="/ai-security-briefings/feed.xml">RSS</a><a href="mailto:pillaiarunsasidharan.reef@gmail.com">Contact</a></span></footer><script async="" data-goatcounter="https://arunpillai.goatcounter.com/count" src="https://gc.zgo.at/count.js"></script></body></html>
