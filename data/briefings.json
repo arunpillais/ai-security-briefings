@@ -233,6 +233,53 @@
           "limitations": "Preliminary preprint with roughly 60% accuracy and about 40% false-positive rate. Evaluation is limited to PrimeVul C/C++ function pairs, and test accuracy dropped six points versus cross-validation. Hidden-state access requires self-hosted open models, so the method cannot run behind ordinary model APIs."
         }
       ]
+    },
+    {
+      "id": "2026-11-06",
+      "date": "2026-11-06",
+      "status": "published",
+      "title": "AI Security: Scale Evidence, Revalidate Tools, Govern the Extension Supply Chain",
+      "summary": "Three primary sources published 30 October–4 November move the discussion from model-only safeguards to operational evidence: dynamically reproduce AI-found vulnerabilities, revalidate executable tools after every update, and govern developer-extension marketplaces as privileged software supply chains. The demonstrated results are substantial but bounded by vendor-controlled environments, preprint methodology and incident-specific evidence.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "A thousand fewer paths to root",
+          "publisher": "OpenAI",
+          "date": "2026-11-04",
+          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+          "mustRead": true,
+          "whatChanged": "OpenAI reports an autonomous Linux-kernel pipeline that moved from 2,308 candidates to 1,724 dynamically reproduced vulnerabilities and 948 working local-privilege-escalation exploits, then generated candidate patches for human review. The reported run cost was $1,213,430.",
+          "whyItMatters": "Demonstrated evidence supports reorganizing AI-assisted vulnerability work around reproduction, exploitability and patch validation rather than raw finding counts. For delivery governance, capacity planning must cover isolation, evidence retention, maintainer coordination and expert review because triage becomes the bottleneck.",
+          "worthReading": "Read Summary, The vulnerability research pipeline, Findings, Iteration improves patch generation and Vulnerabilities in testing infrastructure.",
+          "limitations": "Vendor-reported results using an upcoming model and a controlled Linux configuration; independent reproduction, complete patch-acceptance rates and false-negative rates are not provided. Hypothetical bounty valuations and future capability claims are projections, not demonstrated outcomes."
+        },
+        {
+          "title": "Beyond Prompt Injection: The Tool Update Gap in LLM Agent Security",
+          "publisher": "Shiyu Kan, Yue Qi, Yufei Han, Xinjian Luo, Guojun Xiong and Xiaofeng Gao — arXiv",
+          "date": "2026-11-01",
+          "url": "https://arxiv.org/html/2611.01976v1",
+          "mustRead": false,
+          "whatChanged": "The preprint demonstrates ETUDE, which adds malicious behavior to a previously trusted tool update while preserving legitimate behavior. Across three workloads and seven agent frameworks, the authors report 97.6% attack success and 95.9% legitimate task completion.",
+          "whyItMatters": "The attack executes in tool code outside the model context, so prompt-injection filters cannot see it. Architecture teams should bind authorization to an immutable artifact digest or verified release, re-run admission checks after updates, sandbox tool execution and alert on changed provenance or behavior.",
+          "worthReading": "Read Sections 1, 3–5 and the defense and limitations discussion: the tool-update gap, threat model, cross-framework evaluation and mitigation implications.",
+          "limitations": "Preprint with author-selected workloads and framework configurations; results do not establish prevalence in enterprise deployments. Aggregate rates depend on the tested update and permission paths, and proposed defenses are not shown as production-complete."
+        },
+        {
+          "title": "Inside a malicious Claude Code-branded extension and its persistent SSH backdoor",
+          "publisher": "Microsoft Security Research",
+          "date": "2026-10-30",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/",
+          "mustRead": false,
+          "whatChanged": "Microsoft analyzed two tampered extension versions briefly served through the Cursor marketplace. The injected loader attempted host reconnaissance, SSH-key installation, reverse tunneling and cross-platform persistence while normal extension behavior continued.",
+          "whyItMatters": "This is field evidence that AI developer tooling inherits classic extension-marketplace and auto-update risks. Enterprise controls should inventory editor extensions, restrict publishers and sources, delay new releases, correlate extension updates with endpoint telemetry, and remove persistence artifacts outside the extension directory during response.",
+          "worthReading": "Read Attack chain overview, Platform-specific startup persistence, Mitigation and protection guidance, Advanced hunting queries and Indicators of compromise.",
+          "limitations": "Incident-specific code analysis, not proof that every installation achieved remote access. Microsoft states the Visual Studio Marketplace, npm package and Anthropic systems were not affected; several behaviors were attempted and depended on host privileges and SSH configuration."
+        }
+      ]
     }
   ]
 }
