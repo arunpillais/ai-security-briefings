@@ -280,6 +280,53 @@
           "limitations": "Incident-specific code analysis, not proof that every installation achieved remote access. Microsoft states the Visual Studio Marketplace, npm package and Anthropic systems were not affected; several behaviors were attempted and depended on host privileges and SSH configuration."
         }
       ]
+    },
+    {
+      "id": "2026-11-13",
+      "date": "2026-11-13",
+      "status": "published",
+      "title": "AI Security: Prove Authorization, Red-Team Adaptively, Map Supplier Concentration",
+      "summary": "Three sources published 9–10 November sharpen architecture and delivery priorities for tool-using AI: authorization claims need effect-level evidence, prompt-injection evaluations must include adaptive attackers, and AI supplier reviews must cover shared components and standing integrations. The evidence is useful but bounded by a selected literature corpus, synthetic attack tasks and externally observed supplier signals.",
+      "topics": [
+        "AI/LLM security",
+        "Secure SDLC for AI",
+        "AI-assisted security engineering"
+      ],
+      "items": [
+        {
+          "title": "Authorization assurance for tool-using LLM agents: a structured review of enforcement semantics and effect-level security evidence",
+          "publisher": "Mohamed Abbas Elmasry — International Journal of Information Security",
+          "date": "2026-11-10",
+          "url": "https://link.springer.com/article/10.1007/s10207-026-01343-w",
+          "mustRead": true,
+          "whatChanged": "This structured review codes 92 source-claim records from a 30-source analytical corpus. Within its bounded evidence set, evaluated least-privilege work narrowed available authority without measuring trajectory-wide effective privilege; it found no evaluable revocation claim among 21 agent-focused sources and no delegation-containment claim in the 30-source corpus.",
+          "whyItMatters": "Architecture reviews should test authorization as an end-to-end system property: principal, credential holder, policy decision and enforcement points, executor, protected resource and observable effect. Delivery evidence should demonstrate non-bypassability, effective privilege, revocation during active and delegated sessions, and confirmation semantics—not merely a correct final state or blocked tool call.",
+          "worthReading": "Read Sections 1 and 3–4 for the claim model and method, the results on mediation, least privilege, revocation and delegation, the MAAP minimum reporting profile, and Section 13 on validity limits.",
+          "limitations": "The corpus is deliberately selected and uses a 15 July 2026 search cutoff, so findings are corpus-specific rather than prevalence estimates. MAAP is a preliminary reporting framework, not a validated score, control standard or certification instrument."
+        },
+        {
+          "title": "Scaling Adaptive Prompt Injection Attacks with Agent Swarms",
+          "publisher": "Alexey Kurakin, Vishal Karande, Alex Bie and colleagues — arXiv",
+          "date": "2026-11-09",
+          "url": "https://arxiv.org/html/2611.11861v1",
+          "mustRead": false,
+          "whatChanged": "The preprint introduces a multi-agent adaptive optimizer and synthetic tool-use tasks with randomly selected non-malicious attacker goals. Against the strongest tested attacker, the most robust target resisted 87% of scenarios after 150 queries but only 66% at the maximum budget; several open-weight targets resisted about 1% at maximum budget.",
+          "whyItMatters": "Static payload suites can materially overstate agent resilience. Release evaluations should vary attacker capability and query budget, retain attack strategies across runs, measure tool-level effects, and re-run adaptive tests whenever models, system prompts, tools or external mitigations change.",
+          "worthReading": "Read Sections 3–5, especially the evaluation design, ARR metric, Tables 1–4 and the comparison with prior adaptive attacks.",
+          "limitations": "Preprint using synthetic, randomly chosen tool-call goals rather than measured production harm. Several experiments disable out-of-model mitigations, results are model- and budget-dependent, and the strongest comparison covers a limited scenario set; it demonstrates residual vulnerability, not expected enterprise incident rates."
+        },
+        {
+          "title": "2026 AI Supply Chain Report",
+          "publisher": "Black Kite Research Group",
+          "date": "2026-11-10",
+          "url": "https://blackkite.com/reports/ai-supply-chain-report-2026",
+          "mustRead": false,
+          "whatChanged": "External assessment of 18,160 AI companies found 34.2% with at least one critical unpatched vulnerability and 9.8% with a CISA Known Exploited Vulnerability. A separate publicly discoverable MCP dataset contained 1,732 findings across 305 server entries; 48.8% were rated high or critical.",
+          "whyItMatters": "AI procurement cannot stop at model governance or questionnaires. Supplier reviews should map internet exposure, shared workflow and gateway components, MCP services, stolen-credential signals and every standing integration permission; test revocation before onboarding and monitor concentration risk continuously.",
+          "worthReading": "Read Key Findings, Shared Components and Standing Integrations, the four-step supplier-risk program and How Black Kite Built the Report.",
+          "limitations": "Vendor-authored external-observation study. Version matching and network or credential signals indicate potential exposure, not confirmed compromise; private deployments and permissions inside customer environments are invisible. MCP percentages describe findings, not the proportion of companies compromised."
+        }
+      ]
     }
   ]
 }
